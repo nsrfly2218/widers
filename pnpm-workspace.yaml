@@ -1,4 +1,8 @@
 packages:
   - core
   - preview
-  - 'shared/*'
+  - shared/*
+onlyBuiltDependencies:
+  - core-js
+  - core-js-pure
+  - sharp

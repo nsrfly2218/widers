@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>المحادثات</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="wd-container">
+      <!-- القسم الأول: القائمة الجانبية -->
+      <aside class="wd-sidebar">
+        <div class="wd-logo">
+          <img src="imgs/logo.png" alt="شعار المنصة" />
+        </div>
+        <nav class="wd-nav">
+          <ul>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-gauge"></i>
+              <span
+                ><a href="index.html" class="wd-nav-link">لوحة التحكم</a></span
+              >
+            </li>
+            <li class="wd-nav-item active">
+              <i class="fa-solid fa-comments"></i>
+              <span><a href="chat.html" class="wd-nav-link">المحادثات</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-users"></i>
+              <span
+                ><a href="contacts.html" class="wd-nav-link"
+                  >جهات الاتصال</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-diagram-project"></i>
+              <span><a href="flows.html" class="wd-nav-link">التدفقات</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-bullhorn"></i>
+              <span
+                ><a href="campaigns.html" class="wd-nav-link">الحملات</a></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-calendar"></i>
+              <span
+                ><a href="calendar.html" class="wd-nav-link">التقويم</a></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-file-alt"></i>
+              <span
+                ><a href="contents.html" class="wd-nav-link">المحتويات</a></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-code"></i>
+              <span
+                ><a href="developers.html" class="wd-nav-link"
+                  >المطورين</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-cog"></i>
+              <span
+                ><a href="settings.html" class="wd-nav-link">الإعدادات</a></span
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- القسم الثاني: القائمة الجانبية الثانية -->
+      <div class="wd-secondary-sidebar">
+        <div class="wd-account-switcher">
+          <div class="wd-account-info">
+            <img
+              src="imgs/logo.png"
+              alt="صورة الحساب"
+              class="wd-account-avatar"
+            />
+            <div class="wd-account-details">
+              <span class="wd-account-name">حساب الشركة</span>
+              <span class="wd-account-type">مدير</span>
+            </div>
+          </div>
+          <button class="wd-account-switch">
+            <i class="fas fa-exchange-alt"></i>
+          </button>
+        </div>
+        <div class="wd-secondary-content">
+          <nav class="wd-secondary-nav">
+            <ul>
+              <li class="wd-secondary-nav-item active">
+                <i class="fas fa-comments"></i>
+                <span>كل المحادثات</span>
+              </li>
+              <li class="wd-secondary-nav-item">
+                <i class="fas fa-flag"></i>
+                <span>الإشارات</span>
+              </li>
+            </ul>
+
+            <div class="wd-nav-section">
+              <h4 class="wd-nav-section-title">الفرق</h4>
+              <ul>
+                <li class="wd-secondary-nav-item">
+                  <span>فريق الدعم الفني</span>
+                </li>
+                <li class="wd-secondary-nav-item">
+                  <span>فريق التسويق</span>
+                </li>
+                <li class="wd-secondary-nav-item">
+                  <span>فريق المبيعات</span>
+                </li>
+              </ul>
+              <button class="wd-add-team-btn">
+                <i class="fas fa-plus"></i>
+                <span>إضافة فريق</span>
+              </button>
+            </div>
+
+            <div class="wd-nav-section">
+              <h4 class="wd-nav-section-title">قنوات التواصل</h4>
+              <ul>
+                <li class="wd-secondary-nav-item">
+                  <i class="fab fa-whatsapp"></i>
+                  <span>واتساب</span>
+                </li>
+                <li class="wd-secondary-nav-item">
+                  <i class="fab fa-facebook-messenger"></i>
+                  <span>ماسنجر</span>
+                </li>
+                <li class="wd-secondary-nav-item">
+                  <i class="fab fa-instagram"></i>
+                  <span>انستقرام</span>
+                </li>
+                <li class="wd-secondary-nav-item">
+                  <i class="fab fa-telegram"></i>
+                  <span>تلغرام</span>
+                </li>
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-globe"></i>
+                  <span>ويب</span>
+                </li>
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-envelope"></i>
+                  <span>البريد الإلكتروني</span>
+                </li>
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-sms"></i>
+                  <span>الرسائل النصية</span>
+                </li>
+              </ul>
+              <button class="wd-add-team-btn">
+                <i class="fas fa-plus"></i>
+                <span>إضافة قناة</span>
+              </button>
+            </div>
+
+            <div class="wd-nav-section">
+              <h4 class="wd-nav-section-title">الوسوم</h4>
+              <ul>
+                <li class="wd-secondary-nav-item">
+                  <span
+                    class="wd-tag-color"
+                    style="background-color: #ff6b6b"
+                  ></span>
+                  <span>باقة الأعمال</span>
+                </li>
+                <li class="wd-secondary-nav-item">
+                  <span
+                    class="wd-tag-color"
+                    style="background-color: #4ecdc4"
+                  ></span>
+                  <span>باقة الأعمال برو</span>
+                </li>
+                <li class="wd-secondary-nav-item">
+                  <span
+                    class="wd-tag-color"
+                    style="background-color: #45b7d1"
+                  ></span>
+                  <span>الباقة الاحترافية</span>
+                </li>
+              </ul>
+              <button class="wd-add-team-btn">
+                <i class="fas fa-plus"></i>
+                <span>إضافة وسم</span>
+              </button>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <!-- القسم الثالث: المحتوى الرئيسي -->
+      <main class="wd-main-content">
+        <div class="wd-content-header">
+          <div class="wd-header-left">
+            <button
+              class="wd-toggle-secondary"
+              onclick="toggleSecondarySidebar()"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+            <h1>المحادثات</h1>
+          </div>
+          <div class="wd-header-actions">
+            <button class="wd-btn">
+              <i class="fas fa-search"></i>
+              بحث
+            </button>
+          </div>
+        </div>
+
+        <div class="wd-content-body" style="margin: 0">
+          <div class="wd-chat-container">
+            <div class="wd-chat-sidebar">
+              <div class="wd-chat-sidebar-header">
+                <div class="wd-chat-search">
+                  <input type="text" placeholder="بحث في المحادثات..." />
+                  <i class="fas fa-search"></i>
+                  <button
+                    class="wd-chat-expand-btn"
+                    onclick="toggleChatSidebar()"
+                  >
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="wd-chat-filters">
+                  <button class="wd-filter-btn active">
+                    <span>محادثاتي</span>
+                    <div class="wd-message-count-box active">
+                      <span class="wd-message-count">3</span>
+                    </div>
+                  </button>
+                  <button class="wd-filter-btn">
+                    <span>غير مسند</span>
+                    <div class="wd-message-count-box">
+                      <span class="wd-message-count">999</span>
+                    </div>
+                  </button>
+                  <button class="wd-filter-btn">
+                    <span>الكل</span>
+                    <div class="wd-message-count-box">
+                      <span class="wd-message-count">1000</span>
+                    </div>
+                  </button>
+                  <div class="wd-filter-actions">
+                    <button class="wd-filter-action-btn">
+                      <i class="fas fa-filter"></i>
+                    </button>
+                    <button class="wd-filter-action-btn">
+                      <i class="fas fa-sort-amount-down"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-chat-list">
+                <div class="wd-chat-item">
+                  <img
+                    src="https://via.placeholder.com/45"
+                    alt="صورة المستخدم"
+                    class="wd-chat-avatar"
+                  />
+                  <div class="wd-chat-info">
+                    <div class="wd-chat-name">أحمد محمد</div>
+                    <div class="wd-chat-preview">
+                      مرحباً، كيف يمكنني مساعدتك اليوم؟
+                    </div>
+                  </div>
+                  <div class="wd-chat-meta">
+                    <div class="wd-chat-time">10:30 ص</div>
+                    <div class="wd-unread-count">2</div>
+                  </div>
+                </div>
+                <div class="wd-chat-item">
+                  <img
+                    src="https://via.placeholder.com/45"
+                    alt="صورة المستخدم"
+                    class="wd-chat-avatar"
+                  />
+                  <div class="wd-chat-info">
+                    <div class="wd-chat-name">سارة أحمد</div>
+                    <div class="wd-chat-preview">شكراً على مساعدتك</div>
+                  </div>
+                  <div class="wd-chat-meta">
+                    <div class="wd-chat-time">أمس</div>
+                  </div>
+                </div>
+                <div class="wd-chat-item">
+                  <img
+                    src="https://via.placeholder.com/45"
+                    alt="صورة المستخدم"
+                    class="wd-chat-avatar"
+                  />
+                  <div class="wd-chat-info">
+                    <div class="wd-chat-name">محمد علي</div>
+                    <div class="wd-chat-preview">
+                      هل يمكنك إرسال الملفات المطلوبة؟
+                    </div>
+                  </div>
+                  <div class="wd-chat-meta">
+                    <div class="wd-chat-time">الثلاثاء</div>
+                    <div class="wd-unread-count">1</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wd-chat-main">
+              <div class="wd-chat-default">
+                <div class="wd-chat-default-content">
+                  <i class="fas fa-comments"></i>
+                  <p>الرجاء اختيار محادثة من قائمة المحادثات</p>
+                </div>
+              </div>
+              <div class="wd-chat-window hidden">
+                <div class="wd-message received">
+                  <div class="wd-message-content">
+                    مرحباً، كيف يمكنني مساعدتك اليوم؟
+                    <div class="wd-message-time">10:30 ص</div>
+                  </div>
+                </div>
+                <div class="wd-message sent">
+                  <div class="wd-message-content">
+                    أريد معرفة المزيد عن خدماتكم
+                    <div class="wd-message-time">10:32 ص</div>
+                  </div>
+                </div>
+                <div class="wd-message received">
+                  <div class="wd-message-content">
+                    بالتأكيد، نحن نقدم مجموعة متنوعة من الخدمات. هل هناك خدمة
+                    معينة تهمك؟
+                    <div class="wd-message-time">10:33 ص</div>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-chat-input hidden">
+                <input type="text" placeholder="اكتب رسالتك هنا..." />
+                <button><i class="fas fa-paper-plane"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      let currentPage = 1;
+      const itemsPerPage = 5;
+      const totalItems = 20;
+      const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+      function updatePagination() {
+        document.getElementById("currentPage").textContent = currentPage;
+        document.getElementById("totalPages").textContent = totalPages;
+
+        const errorItems = document.querySelectorAll(".wd-error-item");
+        errorItems.forEach((item, index) => {
+          const startIndex = (currentPage - 1) * itemsPerPage;
+          const endIndex = startIndex + itemsPerPage;
+          item.style.display =
+            index >= startIndex && index < endIndex ? "flex" : "none";
+        });
+      }
+
+      function prevPage() {
+        if (currentPage > 1) {
+          currentPage--;
+          updatePagination();
+        }
+      }
+
+      function nextPage() {
+        if (currentPage < totalPages) {
+          currentPage++;
+          updatePagination();
+        }
+      }
+
+      // Initialize pagination
+      updatePagination();
+
+      function toggleSecondarySidebar() {
+        const secondarySidebar = document.querySelector(
+          ".wd-secondary-sidebar"
+        );
+        const mainContent = document.querySelector(".wd-main-content");
+        const contentBody = document.querySelector(".wd-content-body");
+        const contentHeader = document.querySelector(".wd-content-header");
+
+        secondarySidebar.classList.toggle("hidden");
+        mainContent.classList.toggle("secondary-hidden");
+        contentBody.classList.toggle("secondary-hidden");
+        contentHeader.classList.toggle("secondary-hidden");
+      }
+
+      function toggleChatSidebar() {
+        const chatSidebar = document.querySelector(".wd-chat-sidebar");
+        const chatMain = document.querySelector(".wd-chat-main");
+        const expandBtn = document.querySelector(".wd-chat-expand-btn i");
+
+        chatSidebar.classList.toggle("expanded");
+        chatMain.classList.toggle("hidden");
+
+        if (chatSidebar.classList.contains("expanded")) {
+          expandBtn.classList.remove("fa-expand");
+          expandBtn.classList.add("fa-compress");
+        } else {
+          expandBtn.classList.remove("fa-compress");
+          expandBtn.classList.add("fa-expand");
+        }
+      }
+
+      // إضافة مستمع أحداث لعناصر المحادثة
+      document.querySelectorAll(".wd-chat-item").forEach((item) => {
+        item.addEventListener("click", function () {
+          // إزالة الفئة النشطة من جميع المحادثات
+          document.querySelectorAll(".wd-chat-item").forEach((chat) => {
+            chat.classList.remove("active");
+          });
+
+          // إضافة الفئة النشطة للمحادثة المحددة
+          this.classList.add("active");
+
+          // إخفاء المحتوى الافتراضي وإظهار نافذة المحادثة
+          const defaultContent = document.querySelector(".wd-chat-default");
+          const chatWindow = document.querySelector(".wd-chat-window");
+          const chatInput = document.querySelector(".wd-chat-input");
+
+          defaultContent.classList.add("hidden");
+          chatWindow.classList.remove("hidden");
+          chatInput.classList.remove("hidden");
+
+          // إذا كان الشريط الجانبي موسعاً، قم بإعادة حجمه
+          const chatSidebar = document.querySelector(".wd-chat-sidebar");
+          const chatMain = document.querySelector(".wd-chat-main");
+
+          if (chatSidebar.classList.contains("expanded")) {
+            chatSidebar.classList.remove("expanded");
+            chatMain.classList.remove("hidden");
+
+            const expandBtn = document.querySelector(".wd-chat-expand-btn i");
+            expandBtn.classList.remove("fa-compress");
+            expandBtn.classList.add("fa-expand");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

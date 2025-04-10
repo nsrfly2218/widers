@@ -1,3 +1,6 @@
+/* استيراد خط Tajawal */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -6,8 +9,10 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Tajawal', sans-serif;
     background-color: #f5f5f5;
+    line-height: 1.6;
+    color: #333;
 }
 
 /* Container */
@@ -96,6 +101,8 @@ body {
     font-size: 12px;
     white-space: nowrap;
     z-index: 1000;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
 }
 
 .wd-nav-item:hover span {
@@ -103,13 +110,136 @@ body {
 }
 
 .wd-nav-item.active {
-    background-color: #00BC60;
     width: 40px;
     height: 40px;
+    border-radius: 5px;
 }
 
 .wd-nav-item.active i {
     color: #fff;
+}
+
+/* تنسيقات أيقونات القائمة الجانبية الرئيسية */
+.wd-nav-item i.fa-gauge { 
+    color: #4A90E2;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+.wd-nav-item i.fa-comments { 
+    color: #00BC60; 
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+.wd-nav-item i.fa-users { 
+    color: #9B59B6; 
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+.wd-nav-item i.fa-diagram-project { 
+    color: #E67E22; 
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+.wd-nav-item i.fa-bullhorn { 
+    color: #E74C3C; 
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+.wd-nav-item i.fa-calendar { 
+    color: #2ECC71; 
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+.wd-nav-item i.fa-file-alt { 
+    color: #3498DB; 
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+.wd-nav-item i.fa-code { 
+    color: #1ABC9C; 
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+.wd-nav-item i.fa-cog { 
+    color: #95A5A6; 
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+/* تنسيقات أيقونات القائمة الجانبية عند التحويم */
+.wd-nav-item:hover i.fa-gauge { 
+    color: #4A90E2; 
+}
+.wd-nav-item:hover i.fa-comments { 
+    color: #00BC60; 
+}
+.wd-nav-item:hover i.fa-users { 
+    color: #9B59B6; 
+}
+.wd-nav-item:hover i.fa-diagram-project { 
+    color: #E67E22; 
+}
+.wd-nav-item:hover i.fa-bullhorn { 
+    color: #E74C3C; 
+}
+.wd-nav-item:hover i.fa-calendar { 
+    color: #2ECC71; 
+}
+.wd-nav-item:hover i.fa-file-alt { 
+    color: #3498DB; 
+}
+.wd-nav-item:hover i.fa-code { 
+    color: #1ABC9C; 
+}
+.wd-nav-item:hover i.fa-cog { 
+    color: #95A5A6; 
+}
+
+/* تنسيقات أيقونات القائمة الجانبية عند التفعيل */
+.wd-nav-item.active i.fa-gauge { 
+    color: #fff; 
+    background-color: #4A90E2;
+}
+.wd-nav-item.active i.fa-comments { 
+    color: #fff; 
+    background-color: #00BC60;
+}
+.wd-nav-item.active i.fa-users { 
+    color: #fff; 
+    background-color: #9B59B6;
+}
+.wd-nav-item.active i.fa-diagram-project { 
+    color: #fff; 
+    background-color: #E67E22;
+}
+.wd-nav-item.active i.fa-bullhorn { 
+    color: #fff; 
+    background-color: #E74C3C;
+}
+.wd-nav-item.active i.fa-calendar { 
+    color: #fff; 
+    background-color: #2ECC71;
+}
+.wd-nav-item.active i.fa-file-alt { 
+    color: #fff; 
+    background-color: #3498DB;
+}
+.wd-nav-item.active i.fa-code { 
+    color: #fff; 
+    background-color: #1ABC9C;
+}
+.wd-nav-item.active i.fa-cog { 
+    color: #fff; 
+    background-color: #95A5A6;
 }
 
 /* القسم الثاني: القائمة الجانبية الثانية */
@@ -178,7 +308,7 @@ body {
 }
 
 .wd-main-content.secondary-hidden .wd-content-header {
-    right: 60px;
+    right: 65px;
 }
 
 .wd-header-left {
@@ -225,7 +355,6 @@ body {
     right: 265px;
     left: 0;
     bottom: 0;
-    background-color: #f8f9fa;
     overflow-y: auto;
     margin: 15px;
     padding: 0;
@@ -252,6 +381,8 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
 }
 
 .wd-btn i {
@@ -259,7 +390,7 @@ body {
 }
 
 .wd-section {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .wd-section-title {
@@ -270,76 +401,132 @@ body {
 
 .wd-cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 10px;
 }
 
 .wd-card {
     background-color: #fff;
-    border-radius: 0;
+    border-radius: 12px;
     overflow: hidden;
     margin: 0;
     border: none;
-    box-shadow: none;
-    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    min-width: 0;
 }
 
-.wd-card:last-child {
-    border-bottom: none;
+.wd-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .wd-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    border-bottom: 1px solid #eee;
+    padding: 15px;
+    background: linear-gradient(to left, rgba(0, 188, 96, 0.03), transparent);
 }
 
 .wd-card-header h3 {
-    font-size: 18px;
+    font-size: 16px;
     color: #333;
     margin: 0;
+    font-weight: 600;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
 }
 
 .wd-card-body {
-    padding: 20px;
+    padding: 15px;
 }
 
 /* تحليلات */
 .wd-stat-item {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.wd-stat-item:last-child {
+    margin-bottom: 0;
+}
+
+.wd-stat-item:hover {
+    background-color: #f8f9fa;
 }
 
 .wd-stat-item i {
-    font-size: 24px;
-    color: #00BC60;
+    font-size: 20px;
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 188, 96, 0.1);
     border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 .wd-stat-info {
     display: flex;
     flex-direction: column;
+    gap: 4px;
 }
 
 .wd-stat-value {
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 700;
     color: #333;
+    line-height: 1.2;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
 }
 
 .wd-stat-label {
-    font-size: 14px;
+    font-size: 13px;
     color: #666;
+    font-weight: 500;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
+}
+
+/* تنسيقات أيقونات لوحة التحكم */
+.wd-stat-item i.fa-comments { 
+    color: #00BC60; 
+    background-color: rgba(0, 188, 96, 0.1);
+}
+.wd-stat-item i.fa-chart-line { 
+    color: #4A90E2; 
+    background-color: rgba(74, 144, 226, 0.1);
+}
+.wd-stat-item i.fa-address-book { 
+    color: #9B59B6; 
+    background-color: rgba(155, 89, 182, 0.1);
+}
+.wd-stat-item i.fa-user-plus { 
+    color: #E67E22; 
+    background-color: rgba(230, 126, 34, 0.1);
+}
+.wd-stat-item i.fa-bullhorn { 
+    color: #E74C3C; 
+    background-color: rgba(231, 76, 60, 0.1);
+}
+.wd-stat-item i.fa-check-circle { 
+    color: #2ECC71; 
+    background-color: rgba(46, 204, 113, 0.1);
+}
+.wd-stat-item i.fa-file-alt { 
+    color: #3498DB; 
+    background-color: rgba(52, 152, 219, 0.1);
+}
+.wd-stat-item i.fa-download { 
+    color: #1ABC9C; 
+    background-color: rgba(26, 188, 156, 0.1);
 }
 
 /* قنوات التواصل */
@@ -385,6 +572,8 @@ body {
     font-size: 14px;
     color: #333;
     font-weight: 500;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 600;
 }
 
 .wd-channel-status {
@@ -445,12 +634,16 @@ body {
 .wd-news-text {
     font-size: 14px;
     color: #333;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
 }
 
 .wd-error-time,
 .wd-news-time {
     font-size: 12px;
     color: #999;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 400;
 }
 
 /* تنسيقات الأيقونات الخاصة */
@@ -481,6 +674,8 @@ body {
     cursor: pointer;
     color: #666;
     transition: all 0.3s ease;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
 }
 
 .wd-pagination-btn:hover {
@@ -496,6 +691,8 @@ body {
 .wd-page-info {
     font-size: 14px;
     color: #666;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
 }
 
 /* سجلات الأخطاء */
@@ -516,11 +713,130 @@ body {
     border-bottom: none;
 }
 
+/* تنسيقات العناوين */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+}
+
+/* تنسيقات النصوص */
+p, span, a, button, input, textarea, select {
+    font-family: 'Tajawal', sans-serif;
+}
+
+/* تنسيقات القائمة الجانبية */
+.wd-nav-item span {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
+}
+
+/* تنسيقات البطاقات */
+.wd-card-header h3 {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+}
+
+/* تنسيقات الإحصائيات */
+.wd-stat-label {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
+}
+
+.wd-stat-value {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+}
+
+/* تنسيقات أزرار الإجراءات السريعة */
+.wd-quick-action-btn span {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
+}
+
+/* تنسيقات قنوات التواصل */
+.wd-channel-name {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 600;
+}
+
+/* تنسيقات المحادثات */
+.wd-chat-name {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 600;
+}
+
+.wd-chat-preview {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 400;
+}
+
+/* تنسيقات سجلات الأخطاء وما هو جديد */
+.wd-error-text, .wd-news-text {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
+}
+
+.wd-error-time, .wd-news-time {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 400;
+}
+
+/* تنسيقات الحساب */
+.wd-account-name {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+}
+
+.wd-account-type {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
+}
+
+/* تنسيقات الباقة */
+.wd-package-details h4 {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+}
+
+.wd-package-status {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
+}
+
+/* تنسيقات الأقسام */
+.wd-nav-section-title {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+}
+
+/* تنسيقات الأزرار */
+.wd-btn {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
+}
+
+/* تنسيقات حقول الإدخال */
+input, textarea, select {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 400;
+}
+
+/* تنسيقات التنقل */
+.wd-pagination-btn {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
+}
+
+.wd-page-info {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 500;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .wd-secondary-sidebar {
         position: fixed;
-        right: 60px;
+        right: 65px;
         top: 0;
         height: 100vh;
         width: 200px;
@@ -535,37 +851,37 @@ body {
     }
 
     .wd-main-content {
-        margin-right: 260px;
+        margin-right: 265px;
     }
 
     .wd-main-content.secondary-hidden {
-        margin-right: 60px;
+        margin-right: 65px;
     }
 
     .wd-content-body {
-        right: 260px;
+        right: 265px;
     }
 
     .wd-content-body.secondary-hidden {
-        right: 60px;
+        right: 65px;
     }
 
     .wd-content-header {
-        right: 260px;
+        right: 265px;
     }
 
     .wd-content-header.secondary-hidden {
-        right: 60px;
+        right: 65px;
     }
 }
 
 @media (max-width: 480px) {
     .wd-sidebar {
-        width: 60px;
+        width: 65px;
     }
     
     .wd-main-content {
-        margin-right: 60px;
+        margin-right: 65px;
     }
     
     .wd-nav-item span {
@@ -586,12 +902,13 @@ body {
 .wd-secondary-nav-item {
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 8px;
     height: 35px;
     cursor: pointer;
     color: #666;
     transition: all 0.3s ease;
     margin-bottom: 3px;
+    font-size: 14px;
 }
 
 .wd-secondary-nav-item:last-child {
@@ -602,6 +919,7 @@ body {
     margin-left: 10px;
     width: 20px;
     text-align: center;
+    font-size: 14px;
 }
 
 .wd-secondary-nav-item:hover {
@@ -796,26 +1114,27 @@ body {
 
 .wd-quick-actions {
   display: flex;
-  gap: 15px;
-  margin-bottom: 25px;
+  gap: 12px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
-  padding: 10px 0;
+  padding: 8px 10px;
 }
 
 .wd-quick-action-btn {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
+  gap: 8px;
+  padding: 10px 16px;
   background-color: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: #333;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
+  min-width: 140px;
 }
 
 .wd-quick-action-btn::before {
@@ -825,7 +1144,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, rgba(0, 188, 96, 0.1), transparent);
+  background: linear-gradient(45deg, rgba(0, 188, 96, 0.08), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -835,7 +1154,7 @@ body {
   border-color: #00BC60;
   color: #00BC60;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .wd-quick-action-btn:hover::before {
@@ -843,12 +1162,20 @@ body {
 }
 
 .wd-quick-action-btn i {
-  font-size: 18px;
-  transition: transform 0.3s ease;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  color: #00BC60;
+  background: rgba(0, 188, 96, 0.1);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
 }
 
 .wd-quick-action-btn:hover i {
-  transform: scale(1.1);
+  transform: scale(1.1) rotate(5deg);
 }
 
 .wd-quick-action-btn span {
@@ -856,4 +1183,521 @@ body {
   font-weight: 500;
   position: relative;
   z-index: 1;
-} 
+}
+
+/* ألوان مختلفة لأزرار الإجراءات السريعة */
+.wd-quick-action-btn:nth-child(1) i { 
+  color: #00BC60; 
+  background: rgba(0, 188, 96, 0.1);
+}
+.wd-quick-action-btn:nth-child(2) i { 
+  color: #4A90E2; 
+  background: rgba(74, 144, 226, 0.1);
+}
+.wd-quick-action-btn:nth-child(3) i { 
+  color: #9B59B6; 
+  background: rgba(155, 89, 182, 0.1);
+}
+.wd-quick-action-btn:nth-child(4) i { 
+  color: #E67E22; 
+  background: rgba(230, 126, 34, 0.1);
+}
+.wd-quick-action-btn:nth-child(5) i { 
+  color: #E74C3C; 
+  background: rgba(231, 76, 60, 0.1);
+}
+
+.wd-quick-action-btn:nth-child(1):hover { 
+  border-color: #00BC60; 
+  color: #00BC60; 
+  background: rgba(0, 188, 96, 0.02);
+}
+.wd-quick-action-btn:nth-child(2):hover { 
+  border-color: #4A90E2; 
+  color: #4A90E2; 
+  background: rgba(74, 144, 226, 0.02);
+}
+.wd-quick-action-btn:nth-child(3):hover { 
+  border-color: #9B59B6; 
+  color: #9B59B6; 
+  background: rgba(155, 89, 182, 0.02);
+}
+.wd-quick-action-btn:nth-child(4):hover { 
+  border-color: #E67E22; 
+  color: #E67E22; 
+  background: rgba(230, 126, 34, 0.02);
+}
+.wd-quick-action-btn:nth-child(5):hover { 
+  border-color: #E74C3C; 
+  color: #E74C3C; 
+  background: rgba(231, 76, 60, 0.02);
+}
+
+.wd-quick-action-btn:nth-child(1)::before { 
+  background: linear-gradient(45deg, rgba(0, 188, 96, 0.08), transparent); 
+}
+.wd-quick-action-btn:nth-child(2)::before { 
+  background: linear-gradient(45deg, rgba(74, 144, 226, 0.08), transparent); 
+}
+.wd-quick-action-btn:nth-child(3)::before { 
+  background: linear-gradient(45deg, rgba(155, 89, 182, 0.08), transparent); 
+}
+.wd-quick-action-btn:nth-child(4)::before { 
+  background: linear-gradient(45deg, rgba(230, 126, 34, 0.08), transparent); 
+}
+.wd-quick-action-btn:nth-child(5)::before { 
+  background: linear-gradient(45deg, rgba(231, 76, 60, 0.08), transparent); 
+}
+
+.wd-nav-section {
+    margin: 4px 0;
+}
+
+.wd-nav-section-title {
+    font-size: 14px;
+    color: #666;
+    margin: 20px 8px 8px;
+    font-weight: 600;
+}
+
+.wd-add-team-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: none;
+    border: none;
+    color: #00BC60;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.wd-add-team-btn:hover {
+    background-color: rgba(0, 188, 96, 0.1);
+}
+
+.wd-add-team-btn i {
+    font-size: 14px;
+}
+
+.wd-add-team-btn span {
+    font-size: 14px;
+}
+
+.wd-tag-color {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    margin-left: 8px;
+}
+
+.wd-chat-container {
+  display: flex;
+  height: calc(100vh - 60px);
+  background: #fff;
+}
+
+.wd-chat-sidebar {
+  width: 360px;
+  border-left: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.wd-chat-sidebar.expanded {
+  position: fixed;
+  top: 60px;
+  right: 265px;
+  bottom: 0;
+  width: calc(100% - 265px);
+  z-index: 1000;
+  background: white;
+  margin: 0;
+  padding: 0;
+  transform-origin: right;
+  transition: all 0.3s ease;
+}
+
+.wd-chat-sidebar-header {
+  padding: 10px 10px 0px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+.wd-chat-search {
+  position: relative;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wd-chat-search input {
+  width: 100%;
+  padding: 10px 15px;
+  padding-right: 40px;
+  border: none;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  height: 30px;
+}
+
+.wd-chat-search i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.fas.fa-search{
+right: 10px;
+}
+
+.wd-chat-filters {
+    gap: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.wd-filter-btn {
+    background: none;
+    border: none;
+    padding: 4px 10px 10px 0;
+    margin-bottom: 0;
+    cursor: pointer;
+    color: inherit;
+    font-size: 14px;
+  }
+
+.wd-filter-btn.active {
+  color: #00BC60;
+  border-bottom: 2px solid #00BC60;
+}
+
+.wd-filter-actions {
+  display: flex;
+  gap: 5px;
+  margin-right: auto;
+}
+
+.wd-filter-action-btn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f3f5;
+  border: none;
+  color: #4c5155;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  margin-bottom: 6px;
+}
+
+.wd-filter-action-btn:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.wd-filter-action-btn i {
+  font-size: 14px;
+}
+
+.wd-chat-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.wd-chat-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 5px;
+}
+
+.wd-chat-item:hover {
+  background: #f9fafb;
+}
+
+.wd-chat-item.active {
+  background: #f0fdf4;
+}
+
+.wd-chat-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-left: 15px;
+  object-fit: cover;
+}
+
+.wd-chat-info {
+  flex: 1;
+}
+
+.wd-chat-name {
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.wd-chat-preview {
+  font-size: 13px;
+  color: #6b7280;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wd-chat-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.wd-chat-time {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.wd-unread-count {
+  background: #00BC60;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.wd-chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.wd-chat-window {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #f9fafb;
+}
+
+.wd-message {
+  display: flex;
+  margin-bottom: 20px;
+  max-width: 70%;
+}
+
+.wd-message.sent {
+  margin-right: auto;
+  flex-direction: row-reverse;
+}
+
+.wd-message.received {
+  margin-left: auto;
+}
+
+.wd-message-content {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.wd-message.sent .wd-message-content {
+  background: #00BC60;
+  color: white;
+}
+
+.wd-message-time {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 5px;
+  text-align: right;
+}
+
+.wd-chat-input {
+  padding: 20px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.wd-chat-input input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.wd-chat-input button {
+  background: none;
+  border: none;
+  color: #00BC60;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.wd-chat-input button:hover {
+  color: #00954d;
+}
+
+.wd-message-count-box {
+  display: inline-block;
+  background-color: #f1f3f5;
+  border-radius: 4px;
+  padding: 4px 6px;
+  margin-left: 5px;
+  font-size: 12px;
+  color: #000;
+}
+
+.wd-message-count-box.active {
+    background-color: #e9f9ee;
+    border-radius: 4px;
+    color: #00BC60;
+  }
+
+@media (max-width: 1200px) {
+  .wd-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .wd-cards-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .wd-card {
+    max-width: 100%;
+  }
+}
+
+.wd-section:last-child .wd-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.wd-section:last-child .wd-card {
+  flex: 1;
+  min-width: 300px;
+}
+
+.wd-section:last-child .wd-card:last-child {
+  flex: 2;
+  min-width: 600px;
+}
+
+@media (max-width: 992px) {
+  .wd-section:last-child .wd-card,
+  .wd-section:last-child .wd-card:last-child {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+}
+
+.wd-chat-expand-btn {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.wd-chat-expand-btn:hover {
+  background-color: #f1f3f5;
+  color: #333;
+}
+
+.wd-chat-expand-btn i {
+  font-size: 14px;
+}
+
+.wd-chat-sidebar.expanded {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  width: calc(100% - 265px);
+  z-index: 1000;
+  background: white;
+  margin: 0;
+  padding: 0;
+}
+
+.wd-main-content.secondary-hidden .wd-chat-sidebar.expanded {
+  right: 65px;
+  width: calc(100% - 65px);
+}
+
+.wd-chat-main.hidden {
+  display: none;
+}
+
+.wd-chat-sidebar.hidden {
+  display: none;
+}
+
+.wd-chat-default {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9fafb;
+}
+
+.wd-chat-default-content {
+  text-align: center;
+  padding: 40px;
+}
+
+.wd-chat-default-content i {
+  font-size: 48px;
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+.wd-chat-default-content h2 {
+  font-size: 24px;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.wd-chat-default-content p {
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.hidden {
+  display: none !important;
+}

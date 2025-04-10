@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لوحة التحكم</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="wd-container">
+      <!-- القسم الأول: القائمة الجانبية -->
+      <aside class="wd-sidebar">
+        <div class="wd-logo">
+          <img src="imgs/logo.png" alt="شعار المنصة" />
+        </div>
+        <nav class="wd-nav">
+          <ul>
+            <li class="wd-nav-item active">
+              <i class="fa-solid fa-gauge"></i>
+              <span><a href="index.html" class="wd-nav-link">لوحة التحكم</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-comments"></i>
+              <span><a href="chat.html" class="wd-nav-link">المحادثات</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-users"></i>
+              <span><a href="contacts.html" class="wd-nav-link">جهات الاتصال</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-diagram-project"></i>
+              <span><a href="flows.html" class="wd-nav-link">التدفقات</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-bullhorn"></i>
+              <span><a href="campaigns.html" class="wd-nav-link">الحملات</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-calendar"></i>
+              <span><a href="calendar.html" class="wd-nav-link">التقويم</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-file-alt"></i>
+              <span><a href="contents.html" class="wd-nav-link">المحتويات</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-code"></i>
+              <span><a href="developers.html" class="wd-nav-link">المطورين</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-cog"></i>
+              <span><a href="settings.html" class="wd-nav-link">الإعدادات</a></span>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- القسم الثاني: القائمة الجانبية الثانية -->
+      <div class="wd-secondary-sidebar">
+        <div class="wd-account-switcher">
+          <div class="wd-account-info">
+            <img
+              src="imgs/logo.png"
+              alt="صورة الحساب"
+              class="wd-account-avatar"
+            />
+            <div class="wd-account-details">
+              <span class="wd-account-name">حساب الشركة</span>
+              <span class="wd-account-type">مدير</span>
+            </div>
+          </div>
+          <button class="wd-account-switch">
+            <i class="fas fa-exchange-alt"></i>
+          </button>
+        </div>
+        <div class="wd-secondary-content">
+          <nav class="wd-secondary-nav">
+            <ul>
+              <li class="wd-secondary-nav-item active">
+                <i class="fas fa-chart-pie"></i>
+                <span>نظرة عامة</span>
+              </li>
+              <li class="wd-secondary-nav-item">
+                <i class="fas fa-broadcast-tower"></i>
+                <span>قنوات التواصل</span>
+              </li>
+              <li class="wd-secondary-nav-item">
+                <i class="fas fa-comments"></i>
+                <span>المحادثات</span>
+              </li>
+              <li class="wd-secondary-nav-item">
+                <i class="fas fa-users"></i>
+                <span>الموظفين</span>
+              </li>
+              <li class="wd-secondary-nav-item">
+                <i class="fas fa-user-friends"></i>
+                <span>الفرق</span>
+              </li>
+              <li class="wd-secondary-nav-item">
+                <i class="fas fa-tags"></i>
+                <span>الوسوم</span>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- القسم الثالث: المحتوى الرئيسي -->
+      <main class="wd-main-content">
+        <div class="wd-content-header">
+          <div class="wd-header-left">
+            <button
+              class="wd-toggle-secondary"
+              onclick="toggleSecondarySidebar()"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+            <h1>نظرة عامة</h1>
+          </div>
+          <div class="wd-header-actions">
+            <button class="wd-btn">
+              <i class="fas fa-download"></i>
+              تحميل التقرير
+            </button>
+          </div>
+        </div>
+
+        <div class="wd-content-body">
+          <!-- قسم التحليلات -->
+          <div class="wd-section">
+            <div class="wd-quick-actions">
+              <button class="wd-quick-action-btn">
+                <i class="fas fa-user-plus"></i>
+                <span>إنشاء جهة اتصال</span>
+              </button>
+              <button class="wd-quick-action-btn">
+                <i class="fas fa-robot"></i>
+                <span>إنشاء رد آلي</span>
+              </button>
+              <button class="wd-quick-action-btn">
+                <i class="fas fa-bullhorn"></i>
+                <span>إنشاء حملة إعلانية</span>
+              </button>
+              <button class="wd-quick-action-btn">
+                <i class="fas fa-file-alt"></i>
+                <span>إنشاء قالب</span>
+              </button>
+              <button class="wd-quick-action-btn">
+                <i class="fas fa-user-plus"></i>
+                <span>إضافة موظف</span>
+              </button>
+            </div>
+            <div class="wd-cards-container">
+              <div class="wd-card">
+                <div class="wd-card-header">
+                  <h3>المحادثات</h3>
+                </div>
+                <div class="wd-card-body">
+                  <div class="wd-stat-item">
+                    <i class="fas fa-comments"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">1,234</span>
+                      <span class="wd-stat-label">إجمالي المحادثات</span>
+                    </div>
+                  </div>
+                  <div class="wd-stat-item">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">+12%</span>
+                      <span class="wd-stat-label">نسبة النمو</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wd-card">
+                <div class="wd-card-header">
+                  <h3>جهات الاتصال</h3>
+                </div>
+                <div class="wd-card-body">
+                  <div class="wd-stat-item">
+                    <i class="fas fa-address-book"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">567</span>
+                      <span class="wd-stat-label">إجمالي جهات الاتصال</span>
+                    </div>
+                  </div>
+                  <div class="wd-stat-item">
+                    <i class="fas fa-user-plus"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">+45</span>
+                      <span class="wd-stat-label">جديد هذا الشهر</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wd-card">
+                <div class="wd-card-header">
+                  <h3>الحملات</h3>
+                </div>
+                <div class="wd-card-body">
+                  <div class="wd-stat-item">
+                    <i class="fas fa-bullhorn"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">89</span>
+                      <span class="wd-stat-label">الحملات النشطة</span>
+                    </div>
+                  </div>
+                  <div class="wd-stat-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">75%</span>
+                      <span class="wd-stat-label">معدل النجاح</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wd-card">
+                <div class="wd-card-header">
+                  <h3>القوالب</h3>
+                </div>
+                <div class="wd-card-body">
+                  <div class="wd-stat-item">
+                    <i class="fas fa-file-alt"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">34</span>
+                      <span class="wd-stat-label">إجمالي القوالب</span>
+                    </div>
+                  </div>
+                  <div class="wd-stat-item">
+                    <i class="fas fa-download"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">1,234</span>
+                      <span class="wd-stat-label">مرات الاستخدام</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- صفحة قنوات التواصل -->
+          <div id="channels-page" class="wd-page">
+            <div class="wd-section">
+              <div class="wd-cards-container">
+                <!-- قسم قنوات التواصل -->
+                <div class="wd-card">
+                  <div class="wd-card-header">
+                    <h3>قنوات التواصل</h3>
+                    <button class="wd-btn">
+                      <i class="fas fa-plus"></i>
+                      ربط قناة
+                    </button>
+                  </div>
+                  <div class="wd-card-body">
+                    <div class="wd-channels-grid">
+                      <div class="wd-channel-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div class="wd-channel-info">
+                          <span class="wd-channel-name">واتساب</span>
+                          <span class="wd-channel-status active">متصل</span>
+                        </div>
+                      </div>
+                      <div class="wd-channel-item">
+                        <i class="fab fa-facebook-messenger"></i>
+                        <div class="wd-channel-info">
+                          <span class="wd-channel-name">ماسنجر</span>
+                          <span class="wd-channel-status active">متصل</span>
+                        </div>
+                      </div>
+                      <div class="wd-channel-item">
+                        <i class="fab fa-instagram"></i>
+                        <div class="wd-channel-info">
+                          <span class="wd-channel-name">انستقرام</span>
+                          <span class="wd-channel-status active">متصل</span>
+                        </div>
+                      </div>
+                      <div class="wd-channel-item">
+                        <i class="fab fa-telegram"></i>
+                        <div class="wd-channel-info">
+                          <span class="wd-channel-name">تلغرام</span>
+                          <span class="wd-channel-status active">متصل</span>
+                        </div>
+                      </div>
+                      <div class="wd-channel-item">
+                        <i class="fas fa-globe"></i>
+                        <div class="wd-channel-info">
+                          <span class="wd-channel-name">ويب</span>
+                          <span class="wd-channel-status active">متصل</span>
+                        </div>
+                      </div>
+                      <div class="wd-channel-item">
+                        <i class="fas fa-sms"></i>
+                        <div class="wd-channel-info">
+                          <span class="wd-channel-name">رسائل نصية</span>
+                          <span class="wd-channel-status active">متصل</span>
+                        </div>
+                      </div>
+                      <div class="wd-channel-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="wd-channel-info">
+                          <span class="wd-channel-name">اتصالات</span>
+                          <span class="wd-channel-status active">متصل</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- قسم الباقة الحالية -->
+                <div class="wd-card">
+                  <div class="wd-card-header">
+                    <h3>الباقة الحالية</h3>
+                    <button class="wd-btn">
+                      <i class="fas fa-sync-alt"></i>
+                      تجديد الباقة
+                    </button>
+                  </div>
+                  <div class="wd-card-body">
+                    <div class="wd-package-info">
+                      <div class="wd-package-header">
+                        <div class="wd-package-icon">
+                          <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="wd-package-details">
+                          <h4>الباقة الاحترافية</h4>
+                          <span class="wd-package-status active">نشطة</span>
+                        </div>
+                      </div>
+                      <div class="wd-package-progress">
+                        <div class="wd-progress-info">
+                          <span>متبقي من الباقة</span>
+                          <span>15 يوم</span>
+                        </div>
+                        <div class="wd-progress-bar">
+                          <div
+                            class="wd-progress-fill"
+                            style="width: 50%"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="wd-package-features">
+                        <div class="wd-feature-item">
+                          <i class="fas fa-check-circle"></i>
+                          <span>عدد الموظفين : ٢٠</span>
+                        </div>
+                        <div class="wd-feature-item">
+                          <i class="fas fa-check-circle"></i>
+                          <span>جهات الاتصال : لا محدود</span>
+                        </div>
+                        <div class="wd-feature-item">
+                          <i class="fas fa-check-circle"></i>
+                          <span>الحملات : لا محدود</span>
+                        </div>
+                        <div class="wd-feature-item">
+                          <i class="fas fa-check-circle"></i>
+                          <span>أولوية الدعم أي وقت 24/7 </span>
+                        </div>
+                        <div class="wd-feature-item">
+                          <i class="fas fa-check-circle"></i>
+                          <span>مدير حساب خاص </span>
+                        </div>
+                      </div>
+                      <div class="wd-package-actions">
+                        <button class="wd-btn wd-btn-outline">
+                          <i class="fas fa-info-circle"></i>
+                          تفاصيل الباقة
+                        </button>
+                        <button class="wd-btn">
+                          <i class="fas fa-arrow-up"></i>
+                          ترقية الباقة
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- قسم سجلات الأخطاء وما هو جديد -->
+          <div class="wd-section">
+            <div class="wd-cards-container">
+              <div class="wd-card">
+                <div class="wd-card-header">
+                  <h3>سجلات الأخطاء</h3>
+                  <div class="wd-pagination">
+                    <button class="wd-pagination-btn" onclick="prevPage()">
+                      <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <span class="wd-page-info"
+                      >الصفحة <span id="currentPage">1</span> من
+                      <span id="totalPages">4</span></span
+                    >
+                    <button class="wd-pagination-btn" onclick="nextPage()">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="wd-card-body">
+                  <div class="wd-error-list">
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-circle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text"
+                          >خطأ في الاتصال بالخادم</span
+                        >
+                        <span class="wd-error-time">منذ 5 دقائق</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-triangle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text">فشل في إرسال الرسالة</span>
+                        <span class="wd-error-time">منذ 15 دقيقة</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-circle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text">انتهت صلاحية الجلسة</span>
+                        <span class="wd-error-time">منذ 30 دقيقة</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-triangle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text">فشل في تحميل البيانات</span>
+                        <span class="wd-error-time">منذ ساعة</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-circle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text">خطأ في قاعدة البيانات</span>
+                        <span class="wd-error-time">منذ ساعتين</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-triangle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text">فشل في تحديث الحالة</span>
+                        <span class="wd-error-time">منذ 3 ساعات</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-circle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text">خطأ في المصادقة</span>
+                        <span class="wd-error-time">منذ 4 ساعات</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-triangle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text">فشل في حفظ التغييرات</span>
+                        <span class="wd-error-time">منذ 5 ساعات</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-circle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text">خطأ في معالجة الطلب</span>
+                        <span class="wd-error-time">منذ 6 ساعات</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-triangle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text">فشل في تحميل الملف</span>
+                        <span class="wd-error-time">منذ 7 ساعات</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-circle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text"
+                          >خطأ في الاتصال بالخادم</span
+                        >
+                        <span class="wd-error-time">منذ 8 ساعات</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-triangle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text">فشل في إرسال الإشعار</span>
+                        <span class="wd-error-time">منذ 9 ساعات</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-circle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text">خطأ في تحميل الصور</span>
+                        <span class="wd-error-time">منذ 10 ساعات</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-triangle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text"
+                          >فشل في تحديث الإعدادات</span
+                        >
+                        <span class="wd-error-time">منذ 11 ساعة</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-circle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text"
+                          >خطأ في معالجة البيانات</span
+                        >
+                        <span class="wd-error-time">منذ 12 ساعة</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-triangle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text"
+                          >فشل في إنشاء النسخة الاحتياطية</span
+                        >
+                        <span class="wd-error-time">منذ 13 ساعة</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-circle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text"
+                          >خطأ في الاتصال بالخادم</span
+                        >
+                        <span class="wd-error-time">منذ 14 ساعة</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-triangle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text">فشل في تحميل القوالب</span>
+                        <span class="wd-error-time">منذ 15 ساعة</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-circle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text">خطأ في تحديث النظام</span>
+                        <span class="wd-error-time">منذ 16 ساعة</span>
+                      </div>
+                    </div>
+                    <div class="wd-error-item">
+                      <i class="fas fa-exclamation-triangle"></i>
+                      <div class="wd-error-info">
+                        <span class="wd-error-text"
+                          >فشل في إرسال البريد الإلكتروني</span
+                        >
+                        <span class="wd-error-time">منذ 17 ساعة</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wd-card">
+                <div class="wd-card-header">
+                  <h3>ما هو جديد</h3>
+                </div>
+                <div class="wd-card-body">
+                  <div class="wd-news-item">
+                    <i class="fas fa-star"></i>
+                    <div class="wd-news-info">
+                      <span class="wd-news-text"
+                        >تم إضافة ميزة جديدة للتحليلات</span
+                      >
+                      <span class="wd-news-time">منذ يومين</span>
+                    </div>
+                  </div>
+                  <div class="wd-news-item">
+                    <i class="fas fa-cog"></i>
+                    <div class="wd-news-info">
+                      <span class="wd-news-text">تم تحديث نظام الإعدادات</span>
+                      <span class="wd-news-time">منذ أسبوع</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      let currentPage = 1;
+      const itemsPerPage = 5;
+      const totalItems = 20;
+      const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+      function updatePagination() {
+        document.getElementById("currentPage").textContent = currentPage;
+        document.getElementById("totalPages").textContent = totalPages;
+
+        const errorItems = document.querySelectorAll(".wd-error-item");
+        errorItems.forEach((item, index) => {
+          const startIndex = (currentPage - 1) * itemsPerPage;
+          const endIndex = startIndex + itemsPerPage;
+          item.style.display =
+            index >= startIndex && index < endIndex ? "flex" : "none";
+        });
+      }
+
+      function prevPage() {
+        if (currentPage > 1) {
+          currentPage--;
+          updatePagination();
+        }
+      }
+
+      function nextPage() {
+        if (currentPage < totalPages) {
+          currentPage++;
+          updatePagination();
+        }
+      }
+
+      // Initialize pagination
+      updatePagination();
+
+      function toggleSecondarySidebar() {
+        const secondarySidebar = document.querySelector('.wd-secondary-sidebar');
+        const mainContent = document.querySelector('.wd-main-content');
+        const contentBody = document.querySelector('.wd-content-body');
+        const contentHeader = document.querySelector('.wd-content-header');
+        
+        secondarySidebar.classList.toggle('hidden');
+        mainContent.classList.toggle('secondary-hidden');
+        contentBody.classList.toggle('secondary-hidden');
+        contentHeader.classList.toggle('secondary-hidden');
+      }
+    </script>
+  </body>
+</html>

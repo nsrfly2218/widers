@@ -763,11 +763,39 @@ p, span, a, button, input, textarea, select {
 .wd-chat-name {
     font-family: 'Tajawal', sans-serif;
     font-weight: 600;
+    color: #111827;
+    margin-bottom: 4px;
+    font-size: 12px;
 }
 
 .wd-chat-preview {
-    font-family: 'Tajawal', sans-serif;
-    font-weight: 400;
+    font-size: 13px;
+    color: #6b7280;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    max-width: 180px;
+}
+
+.wd-chat-preview span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wd-chat-status {
+    display: flex;
+    align-items: center;
+    color: #00BC60;
+    font-size: 12px;
+    margin-right: 4px;
+}
+
+.wd-chat-status i {
+    font-size: 12px;
 }
 
 /* تنسيقات سجلات الأخطاء وما هو جديد */
@@ -1326,6 +1354,7 @@ input, textarea, select {
 }
 
 .wd-chat-sidebar-header {
+  height: 90px;
   padding: 10px 10px 0px;
   border-bottom: 1px solid #e5e7eb;
   background: #fff;
@@ -1364,70 +1393,99 @@ right: 10px;
 }
 
 .wd-chat-filters {
-    gap: 2px;
   display: flex;
   align-items: center;
+  gap: 14px;
+  margin: 0;
+  border-radius: 8px;
+  height: 40px;
 }
 
 .wd-filter-btn {
-    background: none;
-    border: none;
-    padding: 4px 10px 10px 0;
-    margin-bottom: 0;
-    cursor: pointer;
-    color: inherit;
-    font-size: 14px;
-  }
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  color: #666;
+}
 
 .wd-filter-btn.active {
   color: #00BC60;
-  border-bottom: 2px solid #00BC60;
+  border-bottom: 1px solid #00BC60;
+}
+
+.wd-message-count-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 4px 4px 0;
+  background: #f1f3f5;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+
+.wd-message-count-box .wd-message-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.wd-message-count-box.active {
+  background: #00BC60;
+  color: white;
 }
 
 .wd-filter-actions {
   display: flex;
-  gap: 5px;
+  align-items: center;
+  gap: 6px;
   margin-right: auto;
 }
 
 .wd-filter-action-btn {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f1f3f5;
   border: none;
-  color: #4c5155;
+  background: none;
+  border-radius: 6px;
+  color: #666;
   cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  margin-bottom: 6px;
+  transition: all 0.2s ease;
 }
 
 .wd-filter-action-btn:hover {
-  background-color: #f0f0f0;
+  background: rgba(0, 0, 0, 0.05);
   color: #333;
-}
-
-.wd-filter-action-btn i {
-  font-size: 14px;
 }
 
 .wd-chat-list {
   flex: 1;
   overflow-y: auto;
-  padding: 10px;
+  padding: 0;
 }
 
 .wd-chat-item {
   display: flex;
   align-items: center;
-  padding: 15px;
-  border-radius: 8px;
+  padding: 8px 12px;
   cursor: pointer;
   transition: all 0.3s;
-  margin-bottom: 5px;
+  margin-bottom: 0;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .wd-chat-item:hover {
@@ -1442,18 +1500,77 @@ right: 10px;
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  margin-left: 15px;
-  object-fit: cover;
+  margin-left: 10px;
+  background: rgba(0, 188, 96, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00BC60;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+.wd-chat-avatar span {
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .wd-chat-info {
   flex: 1;
+  max-width: 200px;
+  position: relative;
+}
+
+.wd-chat-text-box {
+  background-color: #00BC60;
+  color: white;
+  font-size: 8px;
+  padding: 8px 4px;
+  border-radius: 2px;
+  height: 17px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: fit-content;
+  min-width: 20px;
+}
+
+.wd-chat-classification {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  padding: 8px 4px;
+  border-radius: 2px;
+  height: 17px;
+  margin-top: 4px;
+  margin-right: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: fit-content;
+  min-width: 20px;
+  color: white;
+}
+
+.wd-chat-classification.urgent {
+  background-color: rgba(240, 179, 48, 0.9);
+}
+
+.wd-chat-classification.follow-up {
+  background-color: rgba(38, 196, 219, 0.9);
 }
 
 .wd-chat-name {
   font-weight: 600;
   color: #111827;
   margin-bottom: 4px;
+  font-size: 12px;
 }
 
 .wd-chat-preview {
@@ -1469,6 +1586,20 @@ right: 10px;
   flex-direction: column;
   align-items: flex-end;
   gap: 5px;
+  margin-right: auto;
+}
+
+.wd-employee-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.wd-employee-info i {
+  font-size: 12px;
+  color: #00BC60;
 }
 
 .wd-chat-time {
@@ -1479,10 +1610,14 @@ right: 10px;
 .wd-unread-count {
   background: #00BC60;
   color: white;
-  font-size: 12px;
-  padding: 2px 6px;
-  border-radius: 10px;
-  min-width: 20px;
+  font-size: 10px;
+  padding: 2px;
+  border-radius: 50%;
+  min-width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   text-align: center;
 }
 
@@ -1534,50 +1669,133 @@ right: 10px;
 }
 
 .wd-chat-input {
-  padding: 20px;
-  border-top: 1px solid #e5e7eb;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* تنسيقات أزرار نوع الرسالة */
+.wd-message-type-buttons {
+  display: flex;
+  background: #f8f9fa;
+  border-radius: 8px;
+  height: 40px;
   align-items: center;
 }
 
-.wd-chat-input input {
-  flex: 1;
-  padding: 12px 15px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
+.wd-reply-type-btn, .wd-note-type-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
   font-size: 14px;
+  height: 100%;
+}
+
+.wd-reply-type-btn {
+  color: #666;
+}
+
+.wd-reply-type-btn:hover {
+  background: #f5f5f5;
+  border: none;
+}
+
+.wd-reply-type-btn.active {
+  background: white;
+}
+
+.wd-note-type-btn {
+  color: #ffd700;
+  border-color: #ffd700;
+}
+
+.wd-note-type-btn:hover {
+  background: rgba(255, 215, 0, 0.1);
+}
+
+.wd-note-type-btn.active {
+  background:#fffbd1;
+}
+
+/* تنسيق حقل إدخال الرسالة */
+.wd-message-input {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.wd-message-input input {
+  width: 100%;
+  padding: 12px 15px;
+  border: none;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.wd-message-input input:focus {
   outline: none;
 }
 
-.wd-chat-input button {
-  background: none;
+/* تنسيقات شريط الإجراءات */
+.wd-message-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 15px;
+}
+
+.wd-action-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.wd-action-btn {
+  width: 32px;
+  height: 32px;
   border: none;
-  color: #00BC60;
-  font-size: 20px;
+  background: none;
+  color: #666;
   cursor: pointer;
-  padding: 10px;
-}
-
-.wd-chat-input button:hover {
-  color: #00954d;
-}
-
-.wd-message-count-box {
-  display: inline-block;
-  background-color: #f1f3f5;
+  transition: all 0.2s ease;
   border-radius: 4px;
-  padding: 4px 6px;
-  margin-left: 5px;
-  font-size: 12px;
-  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.wd-message-count-box.active {
-    background-color: #e9f9ee;
-    border-radius: 4px;
-    color: #00BC60;
-  }
+.wd-action-btn:hover {
+  background: #f5f5f5;
+  color: #00BC60;
+}
+
+.wd-send-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: #00BC60;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 12px;
+}
+
+.wd-send-btn:hover {
+  background: #00a050;
+}
+
+.wd-send-btn i {
+  font-size: 12px;
+}
 
 @media (max-width: 1200px) {
   .wd-cards-container {
@@ -1700,4 +1918,368 @@ right: 10px;
 
 .hidden {
   display: none !important;
+}
+
+.wd-chat-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #f9fafb;
+  position: relative;
+  overflow: hidden;
+}
+
+.wd-chat-header {
+  height: 90px;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.wd-chat-contact {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.wd-chat-contact:hover {
+  background-color: #f8f9fa;
+}
+
+.wd-chat-contact-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.wd-chat-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wd-chat-contact-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.wd-chat-contact-status {
+  font-size: 14px;
+  color: #00BC60;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.wd-chat-contact-status::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #00BC60;
+  border-radius: 50%;
+}
+
+.wd-chat-duration {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  gap: 10px;
+  color: #666;
+  font-size: 14px;
+}
+
+.wd-chat-duration i {
+  color: #00BC60;
+}
+
+.wd-chat-window {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #f9fafb;
+  scroll-behavior: smooth;
+}
+
+.wd-chat-window::-webkit-scrollbar {
+  width: 6px;
+}
+
+.wd-chat-window::-webkit-scrollbar-track {
+  background: #f1f3f5;
+}
+
+.wd-chat-window::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.wd-chat-window::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.wd-chat-info-bar {
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+.wd-contact-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  padding: 5px 10px;
+  background: #fff;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.wd-back-btn {
+  background: #f3f4f6;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+
+.wd-back-btn:hover {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+.wd-back-btn i {
+  font-size: 14px;
+}
+
+.wd-conversation-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: auto;
+}
+
+.wd-conversation-status {
+  position: relative;
+}
+
+.wd-conversation-status-btn {
+  background: #f3f4f6;
+  border: none;
+  color: #374151;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.wd-conversation-status-btn:hover {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+.wd-conversation-status-btn i:first-child {
+  font-size: 10px;
+  color: #10b981;
+}
+
+.wd-conversation-status-btn i:last-child {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.wd-conversation-status-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: 8px 0;
+  min-width: 180px;
+  display: none;
+  z-index: 100;
+  border: 1px solid #e5e7eb;
+  margin-top: 4px;
+}
+
+.wd-conversation-status-menu.active {
+  display: block;
+}
+
+.wd-conversation-status-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #374151;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.wd-conversation-status-item:hover {
+  background-color: #f3f4f6;
+}
+
+.wd-conversation-status-item i {
+  font-size: 12px;
+  width: 16px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.wd-conversation-status-item:nth-child(1) i {
+  color: #ef4444;
+}
+
+.wd-conversation-status-item:nth-child(2) i {
+  color: #10b981;
+}
+
+.wd-conversation-status-item:nth-child(3) i {
+  color: #f59e0b;
+}
+
+.wd-conversation-status-item:nth-child(4) i {
+  color: #6366f1;
+}
+
+.wd-mute-btn {
+  background: #f3f4f6;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+
+.wd-mute-btn:hover {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+.wd-mute-btn i {
+  font-size: 14px;
+}
+
+.wd-contact-assignment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #666666;
+}
+
+.wd-contact-assignment i {
+  color: #00BC60;
+  font-size: 12px;
+}
+
+.wd-shortcuts-menu {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin-bottom: 8px;
+  z-index: 100;
+}
+
+.wd-shortcuts-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.wd-shortcuts-header h4 {
+  font-size: 14px;
+  color: #111827;
+  margin: 0 0 4px 0;
+}
+
+.wd-shortcuts-header p {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.wd-shortcuts-list {
+  padding: 8px 0;
+}
+
+.wd-shortcut-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wd-shortcut-item:hover {
+  background: #f9fafb;
+}
+
+.wd-shortcut-item i {
+  font-size: 16px;
+  color: #00BC60;
+  width: 24px;
+  text-align: center;
+}
+
+.wd-shortcut-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.wd-shortcut-name {
+  font-size: 14px;
+  color: #111827;
+  font-weight: 500;
+}
+
+.wd-shortcut-desc {
+  font-size: 12px;
+  color: #6b7280;
 }

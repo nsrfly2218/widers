@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>المحادثات - لوحة التحكم</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="wd-container">
+      <!-- القسم الأول: القائمة الجانبية -->
+      <aside class="wd-sidebar">
+        <div class="wd-logo">
+          <img src="../imgs/logo.png" alt="شعار المنصة" />
+        </div>
+        <nav class="wd-nav">
+          <ul>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-gauge"></i>
+              <span><a href="../index.html" class="wd-nav-link">لوحة التحكم</a></span>
+            </li>
+            <li class="wd-nav-item active">
+              <i class="fa-solid fa-comments"></i>
+              <span><a href="../chat.html" class="wd-nav-link">المحادثات</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-users"></i>
+              <span><a href="../contacts.html" class="wd-nav-link">جهات الاتصال</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-diagram-project"></i>
+              <span><a href="../flows.html" class="wd-nav-link">التدفقات</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-bullhorn"></i>
+              <span><a href="../campaigns.html" class="wd-nav-link">الحملات</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-calendar"></i>
+              <span><a href="../calendar.html" class="wd-nav-link">التقويم</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-file-alt"></i>
+              <span><a href="../contents.html" class="wd-nav-link">المحتويات</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-code"></i>
+              <span><a href="../developers.html" class="wd-nav-link">المطورين</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-cog"></i>
+              <span><a href="../settings.html" class="wd-nav-link">الإعدادات</a></span>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- القسم الثاني: القائمة الجانبية الثانية -->
+      <div class="wd-secondary-sidebar">
+        <div class="wd-account-switcher">
+          <div class="wd-account-info">
+            <img
+              src="../imgs/logo.png"
+              alt="صورة الحساب"
+              class="wd-account-avatar"
+            />
+            <div class="wd-account-details">
+              <span class="wd-account-name">حساب الشركة</span>
+              <span class="wd-account-type">مدير</span>
+            </div>
+          </div>
+          <button class="wd-account-switch">
+            <i class="fas fa-exchange-alt"></i>
+          </button>
+        </div>
+        <div class="wd-secondary-content">
+          <nav class="wd-secondary-nav">
+            <ul>
+              <li class="wd-secondary-nav-item">
+                <i class="fas fa-chart-pie"></i>
+                <span><a href="../index.html" class="wd-secondary-nav-link">نظرة عامة</a></span>
+              </li>
+              <li class="wd-secondary-nav-item">
+                <i class="fas fa-broadcast-tower"></i>
+                <span><a href="../index.html#channels-page" class="wd-secondary-nav-link">قنوات التواصل</a></span>
+              </li>
+              <li class="wd-secondary-nav-item active">
+                <i class="fas fa-comments"></i>
+                <span>المحادثات</span>
+              </li>
+              <li class="wd-secondary-nav-item">
+                <i class="fas fa-users"></i>
+                <span><a href="../index.html#employees-page" class="wd-secondary-nav-link">الموظفين</a></span>
+              </li>
+              <li class="wd-secondary-nav-item">
+                <i class="fas fa-user-friends"></i>
+                <span><a href="../index.html#teams-page" class="wd-secondary-nav-link">الفرق</a></span>
+              </li>
+              <li class="wd-secondary-nav-item">
+                <i class="fas fa-tags"></i>
+                <span><a href="../index.html#tags-page" class="wd-secondary-nav-link">الوسوم</a></span>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- القسم الثالث: المحتوى الرئيسي -->
+      <main class="wd-main-content">
+        <div class="wd-content-header">
+          <div class="wd-header-left">
+            <button class="wd-toggle-secondary" onclick="toggleSecondarySidebar()">
+              <i class="fas fa-bars"></i>
+            </button>
+            <h1>المحادثات</h1>
+          </div>
+          <div class="wd-header-actions">
+            <button class="wd-btn">
+              <i class="fas fa-search"></i>
+              بحث
+            </button>
+            <button class="wd-btn">
+              <i class="fas fa-filter"></i>
+              تصفية
+            </button>
+          </div>
+        </div>
+
+        <div class="wd-contact-info-sidebar">
+          <div class="wd-contact-info-header">
+            <h2>معلومات جهة الاتصال</h2>
+            <button class="wd-close-sidebar" onclick="closeContactInfo()">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="wd-contact-info-content">
+            <div class="wd-contact-actions">
+              <button class="wd-action-btn" title="بدء محادثة جديدة">
+                <i class="fas fa-comment"></i>
+              </button>
+              <button class="wd-action-btn" title="تعديل جهة الاتصال">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="wd-action-btn" title="حذف المحادثة">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+            <!-- باقي محتوى معلومات جهة الاتصال -->
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

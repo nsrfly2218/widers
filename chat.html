@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>المحادثات</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -211,6 +214,12 @@
               <i class="fas fa-bars"></i>
             </button>
             <h1>المحادثات</h1>
+          </div>
+          <div class="wd-header-actions">
+            <button class="wd-btn">
+              <i class="fas fa-plus"></i>
+              بدء محادثة جديدة
+            </button>
           </div>
         </div>
 
@@ -874,14 +883,14 @@
               </div>
               <div class="wd-chat-content hidden">
                 <div class="wd-chat-info-bar">
-                  <div class="wd-contact-info">
+                  <div class="wd-chat-contact-info">
                     <button class="wd-back-btn" onclick="goBackToSidebar()">
                       <i class="fas fa-arrow-right"></i>
                     </button>
                     <div class="wd-chat-avatar">
                       <span>أ م</span>
                     </div>
-                    <div class="wd-contact-details">
+                    <div class="wd-chat-contact-details">
                       <div class="wd-chat-name">أحمد محمد</div>
                       <div class="wd-contact-assignment">
                         <i class="fab fa-whatsapp"></i>
@@ -925,23 +934,110 @@
                   </div>
                 </div>
                 <div class="wd-chat-window">
+                  <button class="wd-contact-info-toggle" onclick="toggleContactInfo()">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                  <div class="wd-contact-info-sidebar">
+                    <div class="wd-contact-info-header">
+                      <h3>معلومات جهة الاتصال</h3>
+                      <button class="wd-close-contact-info" onclick="toggleContactInfo()">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                    <div class="wd-contact-info-content">
+                      <div class="wd-contact-avatar">
+                        <span>أ م</span>
+                      </div>
+                      <div class="wd-contact-name">أحمد محمد</div>
+                      <div class="wd-contact-details">
+                        <div class="wd-contact-detail">
+                          <i class="fas fa-phone"></i>
+                          <span>+966501234567</span>
+                          <button class="wd-copy-btn" onclick="copyText('+966501234567')">
+                            <i class="fas fa-copy"></i>
+                          </button>
+                        </div>
+                        <div class="wd-contact-detail">
+                          <i class="fas fa-envelope"></i>
+                          <span>ahmed@example.com</span>
+                          <button class="wd-copy-btn" onclick="copyText('ahmed@example.com')">
+                            <i class="fas fa-copy"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="wd-contact-actions">
+                        <button class="wd-action-btn" title="بدء محادثة جديدة">
+                          <i class="fas fa-comment"></i>
+                        </button>
+                        <button class="wd-action-btn" title="تعديل جهة الاتصال">
+                          <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="wd-action-btn" title="حذف المحادثة">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                   <div class="wd-message received">
                     <div class="wd-message-content">
                       مرحباً، كيف يمكنني مساعدتك اليوم؟
-                      <div class="wd-message-time">10:30 ص</div>
+                      <div class="wd-message-time">10:30 ص - 2024-03-20</div>
                     </div>
                   </div>
                   <div class="wd-message sent">
                     <div class="wd-message-content">
                       أريد معرفة المزيد عن خدماتكم
-                      <div class="wd-message-time">10:32 ص</div>
+                      <div class="wd-message-time">10:32 ص - 2024-03-20</div>
                     </div>
                   </div>
                   <div class="wd-message received">
                     <div class="wd-message-content">
                       بالتأكيد، نحن نقدم مجموعة متنوعة من الخدمات. هل هناك خدمة
                       معينة تهمك؟
-                      <div class="wd-message-time">10:33 ص</div>
+                      <div class="wd-message-time">10:33 ص - 2024-03-20</div>
+                    </div>
+                  </div>
+                  <div class="wd-message sent">
+                    <div class="wd-message-content">
+                      نعم، أريد معرفة المزيد عن خدمة الدعم الفني
+                      <div class="wd-message-time">10:34 ص - 2024-03-20</div>
+                    </div>
+                  </div>
+                  <div class="wd-message received">
+                    <div class="wd-message-content">
+                      خدمة الدعم الفني متاحة 24/7 وتشمل المساعدة في حل المشكلات
+                      التقنية
+                      <div class="wd-message-time">10:35 ص - 2024-03-20</div>
+                    </div>
+                  </div>
+                  <div class="wd-message sent">
+                    <div class="wd-message-content">
+                      كم تكلفة الاشتراك في هذه الخدمة؟
+                      <div class="wd-message-time">10:36 ص - 2024-03-20</div>
+                    </div>
+                  </div>
+                  <div class="wd-message received">
+                    <div class="wd-message-content">
+                      تبدأ الأسعار من 199 ريال شهرياً مع خطة أساسية
+                      <div class="wd-message-time">10:37 ص - 2024-03-20</div>
+                    </div>
+                  </div>
+                  <div class="wd-message sent">
+                    <div class="wd-message-content">
+                      هل هناك فترة تجريبية مجانية؟
+                      <div class="wd-message-time">10:38 ص - 2024-03-20</div>
+                    </div>
+                  </div>
+                  <div class="wd-message received">
+                    <div class="wd-message-content">
+                      نعم، نقدم 14 يوم تجربة مجانية لجميع خدماتنا
+                      <div class="wd-message-time">10:39 ص - 2024-03-20</div>
+                    </div>
+                  </div>
+                  <div class="wd-message sent">
+                    <div class="wd-message-content">
+                      ممتاز، كيف يمكنني بدء الفترة التجريبية؟
+                      <div class="wd-message-time">10:40 ص - 2024-03-20</div>
                     </div>
                   </div>
                 </div>
@@ -957,7 +1053,11 @@
                     </button>
                   </div>
                   <div class="wd-message-input">
-                    <input type="text" placeholder="اكتب رسالتك هنا..." id="messageInput" />
+                    <input
+                      type="text"
+                      placeholder="اكتب رسالتك هنا..."
+                      id="messageInput"
+                    />
                     <div class="wd-shortcuts-menu hidden">
                       <div class="wd-shortcuts-header">
                         <h4>الاختصارات</h4>
@@ -968,7 +1068,9 @@
                           <i class="fas fa-file-alt"></i>
                           <div class="wd-shortcut-info">
                             <span class="wd-shortcut-name">/قالب</span>
-                            <span class="wd-shortcut-desc">إرسال قالب رسالة</span>
+                            <span class="wd-shortcut-desc"
+                              >إرسال قالب رسالة</span
+                            >
                           </div>
                         </div>
                         <div class="wd-shortcut-item">
@@ -982,14 +1084,18 @@
                           <i class="fas fa-tag"></i>
                           <div class="wd-shortcut-info">
                             <span class="wd-shortcut-name">/وسم</span>
-                            <span class="wd-shortcut-desc">إضافة وسم للمحادثة</span>
+                            <span class="wd-shortcut-desc"
+                              >إضافة وسم للمحادثة</span
+                            >
                           </div>
                         </div>
                         <div class="wd-shortcut-item">
                           <i class="fas fa-user"></i>
                           <div class="wd-shortcut-info">
                             <span class="wd-shortcut-name">/اسناد</span>
-                            <span class="wd-shortcut-desc">إسناد المحادثة لموظف</span>
+                            <span class="wd-shortcut-desc"
+                              >إسناد المحادثة لموظف</span
+                            >
                           </div>
                         </div>
                       </div>
@@ -1032,206 +1138,6 @@
       </main>
     </div>
 
-    <script>
-      // تبديل القائمة الجانبية الثانية
-      function toggleSecondarySidebar() {
-        const secondarySidebar = document.querySelector(
-          ".wd-secondary-sidebar"
-        );
-        const mainContent = document.querySelector(".wd-main-content");
-        const contentBody = document.querySelector(".wd-content-body");
-        const contentHeader = document.querySelector(".wd-content-header");
-
-        secondarySidebar.classList.toggle("hidden");
-        mainContent.classList.toggle("secondary-hidden");
-        contentBody.classList.toggle("secondary-hidden");
-        contentHeader.classList.toggle("secondary-hidden");
-      }
-
-      // تبديل شريط المحادثات
-      function toggleChatSidebar() {
-        const chatSidebar = document.querySelector(".wd-chat-sidebar");
-        const chatMain = document.querySelector(".wd-chat-main");
-        const expandBtn = document.querySelector(".wd-chat-expand-btn i");
-
-        chatSidebar.classList.toggle("expanded");
-        chatMain.classList.toggle("hidden");
-
-        if (chatSidebar.classList.contains("expanded")) {
-          expandBtn.classList.remove("fa-expand");
-          expandBtn.classList.add("fa-compress");
-        } else {
-          expandBtn.classList.remove("fa-compress");
-          expandBtn.classList.add("fa-expand");
-        }
-      }
-
-      // تفعيل المحادثات
-      document.querySelectorAll(".wd-chat-item").forEach((item) => {
-        item.addEventListener("click", function () {
-          // إزالة الفئة النشطة من جميع المحادثات
-          document.querySelectorAll(".wd-chat-item").forEach((chat) => {
-            chat.classList.remove("active");
-          });
-
-          // إضافة الفئة النشطة للمحادثة المحددة
-          this.classList.add("active");
-
-          // إخفاء المحتوى الافتراضي
-          const defaultContent = document.querySelector(".wd-chat-default");
-          defaultContent.classList.add("hidden");
-
-          // إظهار نافذة المحادثة وحقل الإدخال
-          const chatContent = document.querySelector(".wd-chat-content");
-          chatContent.classList.remove("hidden");
-
-          // التحقق من حالة زر التكبير
-          const expandBtn = document.querySelector(".wd-chat-expand-btn i");
-          const chatSidebar = document.querySelector(".wd-chat-sidebar");
-          const chatMain = document.querySelector(".wd-chat-main");
-
-          if (expandBtn.classList.contains("fa-compress")) {
-            chatSidebar.classList.add("hidden");
-            chatMain.classList.remove("hidden");
-            expandBtn.classList.remove("fa-compress");
-            expandBtn.classList.add("fa-expand");
-          }
-        });
-      });
-
-      // تبديل قائمة حالة المحادثة
-      document.querySelector(".wd-conversation-status-btn").addEventListener("click", function(e) {
-        e.stopPropagation();
-        const menu = this.nextElementSibling;
-        menu.classList.toggle("active");
-      });
-
-      // إغلاق القائمة عند النقر خارجها
-      document.addEventListener("click", function(e) {
-        const menu = document.querySelector(".wd-conversation-status-menu");
-        if (menu && !menu.contains(e.target)) {
-          menu.classList.remove("active");
-        }
-      });
-
-      // تحديث حالة المحادثة عند اختيار خيار
-      document.querySelectorAll(".wd-conversation-status-item").forEach(item => {
-        item.addEventListener("click", function() {
-          const statusBtn = document.querySelector(".wd-conversation-status-btn");
-          const icon = this.querySelector("i").cloneNode(true);
-          const text = this.querySelector("span").textContent;
-          
-          statusBtn.innerHTML = '';
-          statusBtn.appendChild(icon);
-          statusBtn.appendChild(document.createTextNode(text));
-          statusBtn.appendChild(document.createElement("i")).className = "fas fa-chevron-down";
-          
-          document.querySelector(".wd-conversation-status-menu").classList.remove("active");
-        });
-      });
-
-      // العودة إلى قائمة المحادثات
-      function goBackToSidebar() {
-        // إخفاء محتوى المحادثة
-        const chatContent = document.querySelector(".wd-chat-content");
-        chatContent.classList.add("hidden");
-        
-        // إظهار المحتوى الافتراضي
-        const defaultContent = document.querySelector(".wd-chat-default");
-        defaultContent.classList.remove("hidden");
-        
-        // إزالة الفئة النشطة من جميع المحادثات
-        document.querySelectorAll(".wd-chat-item").forEach((chat) => {
-          chat.classList.remove("active");
-        });
-        
-        // إعادة تعيين زر التكبير
-        const expandBtn = document.querySelector(".wd-chat-expand-btn i");
-        expandBtn.classList.remove("fa-compress");
-        expandBtn.classList.add("fa-expand");
-        
-        // إعادة تعيين شريط المحادثات
-        const chatSidebar = document.querySelector(".wd-chat-sidebar");
-        chatSidebar.classList.remove("expanded");
-        chatSidebar.classList.remove("hidden");
-        
-        // إعادة تعيين المحتوى الرئيسي
-        const chatMain = document.querySelector(".wd-chat-main");
-        chatMain.classList.remove("hidden");
-      }
-
-      // تفعيل زر الرد
-      document.querySelector('.wd-reply-type-btn').addEventListener('click', function() {
-        this.classList.toggle('active');
-        const noteBtn = document.querySelector('.wd-note-type-btn');
-        if (noteBtn.classList.contains('active')) {
-          noteBtn.classList.remove('active');
-        }
-
-        // إعادة الألوان إلى حالتها الأصلية
-        const messageInput = document.querySelector('#messageInput');
-        const messageActions = document.querySelector('.wd-message-actions');
-        const sendBtn = document.querySelector('.wd-send-btn');
-
-        messageInput.style.backgroundColor = '';
-        messageActions.style.backgroundColor = '';
-        sendBtn.style.backgroundColor = '#00BC60';
-        sendBtn.style.color = '#fff';
-      });
-
-      // تفعيل زر الملاحظة
-      document.querySelector('.wd-note-type-btn').addEventListener('click', function() {
-        this.classList.toggle('active');
-        const replyBtn = document.querySelector('.wd-reply-type-btn');
-        if (replyBtn.classList.contains('active')) {
-          replyBtn.classList.remove('active');
-        }
-
-        // التحقق من حالة زر الملاحظة وتغيير الألوان
-        const messageInput = document.querySelector('#messageInput');
-        const messageActions = document.querySelector('.wd-message-actions');
-        const sendBtn = document.querySelector('.wd-send-btn');
-
-        if (this.classList.contains('active')) {
-          messageInput.style.backgroundColor = '#fffbd1';
-          messageActions.style.backgroundColor = '#fffbd1';
-          sendBtn.style.backgroundColor = '#ffd700';
-          sendBtn.style.color = '#333';
-        } else {
-          messageInput.style.backgroundColor = '';
-          messageActions.style.backgroundColor = '';
-          sendBtn.style.backgroundColor = '#00BC60';
-          sendBtn.style.color = '#fff';
-        }
-      });
-
-      // تفعيل قائمة الاختصارات
-      const messageInput = document.getElementById('messageInput');
-      const shortcutsMenu = document.querySelector('.wd-shortcuts-menu');
-
-      messageInput.addEventListener('input', function(e) {
-        if (e.target.value.startsWith('/')) {
-          shortcutsMenu.classList.remove('hidden');
-        } else {
-          shortcutsMenu.classList.add('hidden');
-        }
-      });
-
-      // إضافة وصف الاختصار إلى صندوق الرسالة عند النقر
-      document.querySelectorAll('.wd-shortcut-item').forEach(item => {
-        item.addEventListener('click', function() {
-          const desc = this.querySelector('.wd-shortcut-desc').textContent;
-          messageInput.value = desc;
-          shortcutsMenu.classList.add('hidden');
-        });
-      });
-
-      // إغلاق القائمة عند النقر خارجها
-      document.addEventListener('click', function(e) {
-        if (!messageInput.contains(e.target) && !shortcutsMenu.contains(e.target)) {
-          shortcutsMenu.classList.add('hidden');
-        }
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>

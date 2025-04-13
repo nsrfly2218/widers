@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جهات الاتصال</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="wd-container">
+      <!-- القسم الأول: القائمة الجانبية -->
+      <aside class="wd-sidebar">
+        <div class="wd-logo">
+          <img src="imgs/logo.png" alt="شعار المنصة" />
+        </div>
+        <nav class="wd-nav">
+          <ul>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-gauge"></i>
+              <span
+                ><a href="index.html" class="wd-nav-link">لوحة التحكم</a></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-comments"></i>
+              <span><a href="chat.html" class="wd-nav-link">المحادثات</a></span>
+            </li>
+            <li class="wd-nav-item active">
+              <i class="fa-solid fa-users"></i>
+              <span
+                ><a href="contacts.html" class="wd-nav-link"
+                  >جهات الاتصال</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-diagram-project"></i>
+              <span><a href="flows.html" class="wd-nav-link">التدفقات</a></span>
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-bullhorn"></i>
+              <span
+                ><a href="campaigns.html" class="wd-nav-link">الحملات</a></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-calendar"></i>
+              <span
+                ><a href="calendar.html" class="wd-nav-link">التقويم</a></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-file-alt"></i>
+              <span
+                ><a href="contents.html" class="wd-nav-link">المحتويات</a></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-code"></i>
+              <span
+                ><a href="developers.html" class="wd-nav-link"
+                  >المطورين</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-cog"></i>
+              <span
+                ><a href="settings.html" class="wd-nav-link">الإعدادات</a></span
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- القسم الثاني: القائمة الجانبية الثانية -->
+      <div class="wd-secondary-sidebar">
+        <div class="wd-account-switcher">
+          <div class="wd-account-info">
+            <img
+              src="imgs/logo.png"
+              alt="صورة الحساب"
+              class="wd-account-avatar"
+            />
+            <div class="wd-account-details">
+              <span class="wd-account-name">حساب الشركة</span>
+              <span class="wd-account-type">مدير</span>
+            </div>
+          </div>
+          <button class="wd-account-switch">
+            <i class="fas fa-exchange-alt"></i>
+          </button>
+        </div>
+        <div class="wd-secondary-content">
+          <nav class="wd-secondary-nav">
+            <ul>
+              <li class="wd-secondary-nav-item active">
+                <i class="fas fa-users"></i>
+                <span>جميع جهات الاتصال</span>
+              </li>
+              <li class="wd-secondary-nav-item">
+                <i class="fas fa-list"></i>
+                <span>الحقول</span>
+              </li>
+              <li class="wd-secondary-nav-item">
+                <i class="fas fa-layer-group"></i>
+                <span>المجموعات</span>
+              </li>
+              <li class="wd-secondary-nav-item">
+                <i class="fas fa-file-import"></i>
+                <span>استيراد</span>
+              </li>
+            </ul>
+
+            <div class="wd-nav-section">
+              <h4 class="wd-nav-section-title">مشار إليه بواسطة</h4>
+              <ul>
+                <li class="wd-secondary-nav-item">
+                  <span
+                    class="wd-tag-color"
+                    style="background-color: #ff6b6b"
+                  ></span>
+                  <span>باقة الأعمال</span>
+                </li>
+                <li class="wd-secondary-nav-item">
+                  <span
+                    class="wd-tag-color"
+                    style="background-color: #4ecdc4"
+                  ></span>
+                  <span>باقة الأعمال برو</span>
+                </li>
+                <li class="wd-secondary-nav-item">
+                  <span
+                    class="wd-tag-color"
+                    style="background-color: #45b7d1"
+                  ></span>
+                  <span>الباقة الاحترافية</span>
+                </li>
+              </ul>
+              <button class="wd-add-team-btn">
+                <i class="fas fa-plus"></i>
+                <span>إضافة وسم</span>
+              </button>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <!-- القسم الثالث: المحتوى الرئيسي -->
+      <main class="wd-main-content">
+        <div class="wd-content-header">
+          <div class="wd-header-left">
+            <button
+              class="wd-toggle-secondary"
+              onclick="toggleSecondarySidebar()"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+            <h1>جهات الاتصال</h1>
+          </div>
+          <div class="wd-header-actions">
+            <div class="wd-search-box">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="بحث عن جهة اتصال..." />
+            </div>
+            <button class="wd-btn">
+              <i class="fas fa-plus"></i>
+              إضافة جهة اتصال
+            </button>
+          </div>
+        </div>
+
+        <div class="wd-content-body" style="margin: 0">
+          <div class="wd-contacts-table">
+            <div class="wd-table-header">
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">الاسم</div>
+                <div class="wd-table-cell">البريد الإلكتروني</div>
+                <div class="wd-table-cell">رقم الهاتف</div>
+                <div class="wd-table-cell">المجموعة</div>
+                <div class="wd-table-cell">الحالة</div>
+                <div class="wd-table-cell">الإجراءات</div>
+              </div>
+            </div>
+            <div class="wd-table-body">
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar1.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>أحمد محمد</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">ahmed@example.com</div>
+                <div class="wd-table-cell">+966501234567</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #ff6b6b">العملاء</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status active">مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar2.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>سارة أحمد</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">sara@example.com</div>
+                <div class="wd-table-cell">+966502345678</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #4ecdc4">الموردون</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status inactive">مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar3.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>محمد علي</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">mohamed@example.com</div>
+                <div class="wd-table-cell">+966503456789</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #45b7d1">الموظفون</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status active">مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar4.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>فاطمة خالد</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">fatima@example.com</div>
+                <div class="wd-table-cell">+966504567890</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #ff6b6b">العملاء</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status active">مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar5.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>خالد سعيد</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">khaled@example.com</div>
+                <div class="wd-table-cell">+966505678901</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #4ecdc4">الموردون</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status inactive"> مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar6.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>نورا عبدالله</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">nora@example.com</div>
+                <div class="wd-table-cell">+966506789012</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #45b7d1">الموظفون</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status active">مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar7.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>عبدالرحمن سعود</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">abdulrahman@example.com</div>
+                <div class="wd-table-cell">+966507890123</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #ff6b6b">العملاء</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status inactive"> مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar8.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>لمى فيصل</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">lama@example.com</div>
+                <div class="wd-table-cell">+966508901234</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #4ecdc4">الموردون</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status active">مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar9.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>فيصل ناصر</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">faisal@example.com</div>
+                <div class="wd-table-cell">+966509012345</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #45b7d1">الموظفون</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status inactive"> مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar10.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>هند محمد</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">hind@example.com</div>
+                <div class="wd-table-cell">+966510123456</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #ff6b6b">العملاء</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status active">مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar11.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>سعود عبدالعزيز</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">saud@example.com</div>
+                <div class="wd-table-cell">+966511234567</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #4ecdc4">الموردون</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status inactive"> مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar12.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>نورة سعد</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">noura@example.com</div>
+                <div class="wd-table-cell">+966512345678</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #45b7d1">الموظفون</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status active">مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar13.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>تركي أحمد</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">turki@example.com</div>
+                <div class="wd-table-cell">+966513456789</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #ff6b6b">العملاء</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status inactive"> مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar14.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>ريم عبدالله</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">reem@example.com</div>
+                <div class="wd-table-cell">+966514567890</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #4ecdc4">الموردون</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status active">مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar15.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>بدر محمد</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">badr@example.com</div>
+                <div class="wd-table-cell">+966515678901</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #45b7d1">الموظفون</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status inactive"> مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar16.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>جواهر خالد</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">jawaher@example.com</div>
+                <div class="wd-table-cell">+966516789012</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #ff6b6b">العملاء</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status active">مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar17.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>سعد عبدالرحمن</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">saad@example.com</div>
+                <div class="wd-table-cell">+966517890123</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #4ecdc4">الموردون</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status inactive"> مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar18.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>منى فيصل</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">mona@example.com</div>
+                <div class="wd-table-cell">+966518901234</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #45b7d1">الموظفون</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status active">مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar19.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>عبدالله سعود</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">abdullah@example.com</div>
+                <div class="wd-table-cell">+966519012345</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #ff6b6b">العملاء</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status inactive"> مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="wd-table-row">
+                <div class="wd-table-cell">
+                  <input type="checkbox" />
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-contact-info">
+                    <img src="imgs/avatar20.png" alt="صورة المستخدم" class="wd-contact-avatar" />
+                    <span>هناء محمد</span>
+                  </div>
+                </div>
+                <div class="wd-table-cell">hana@example.com</div>
+                <div class="wd-table-cell">+966520123456</div>
+                <div class="wd-table-cell">
+                  <span class="wd-tag" style="background-color: #4ecdc4">الموردون</span>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status active">مشترك</span>
+                </div>
+                <div class="wd-table-cell">
+                  <div class="wd-actions">
+                    <button class="wd-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="wd-pagination">
+            <button class="wd-pagination-btn" onclick="prevPage()">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            <span class="wd-page-info">
+              الصفحة <span id="currentPage">1</span> من <span id="totalPages">4</span>
+            </span>
+            <button class="wd-pagination-btn" onclick="nextPage()">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

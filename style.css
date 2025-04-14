@@ -2557,7 +2557,7 @@ right: 10px;
 
 .wd-table-row {
   display: grid;
-  grid-template-columns: 40px 200px 150px 300px 120px 80px 100px;
+  grid-template-columns: 40px 190px 140px 200px 100px 70px 100px;
   padding: 12px 20px;
   align-items: center;
   gap: 20px;

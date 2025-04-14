@@ -300,29 +300,20 @@ function toggleContactInfo() {
 
 // Copy text to clipboard
 function copyText(text) {
-  // Create a temporary textarea element
-  const textarea = document.createElement('textarea');
-  textarea.value = text;
-  textarea.style.position = 'fixed';
-  textarea.style.opacity = 0;
-  document.body.appendChild(textarea);
-  
-  // Select and copy the text
-  textarea.select();
-  document.execCommand('copy');
-  
-  // Remove the temporary element
-  document.body.removeChild(textarea);
-  
-  // Show success message
-  const toast = document.createElement('div');
-  toast.className = 'wd-toast';
-  toast.textContent = 'تم نسخ النص بنجاح';
-  document.body.appendChild(toast);
-  
-  // Remove toast after 2 seconds
-  setTimeout(() => {
-    document.body.removeChild(toast);
-  }, 2000);
+  // Use the Clipboard API to copy text
+  navigator.clipboard.writeText(text).then(() => {
+    // Show success message
+    const toast = document.createElement('div');
+    toast.className = 'wd-toast';
+    toast.textContent = 'تم نسخ النص بنجاح';
+    document.body.appendChild(toast);
+    
+    // Remove toast after 2 seconds
+    setTimeout(() => {
+      document.body.removeChild(toast);
+    }, 2000);
+  }).catch(err => {
+    console.error('Failed to copy: ', err);
+  });
 }
 

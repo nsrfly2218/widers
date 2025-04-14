@@ -1,6 +1,3 @@
-/* استيراد خط Tajawal */
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
-
 :root {
     --border-color: #f1f3f5;
     --wd-font-family: -apple-system, 'Cairo', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -2537,22 +2534,38 @@ right: 10px;
   color: #6b7280;
 }
 
-/* Contacts Table Styles */
+/* تنسيقات جدول جهات الاتصال */
 .wd-contacts-table {
-  background: white;
-  overflow: hidden;
+    background: white;
+    overflow-x: auto;
+    width: 100%;
+    max-height: calc(100vh - 120px); /* ارتفاع الشاشة - ارتفاع الرأس والقدم */
+}
+
+.wd-contacts-table-container {
+  width: 100%;
+  min-width: 1200px;
 }
 
 .wd-table-header {
-  background: #f8f9fa;
-  border-bottom: 1px solid var(--border-color);
+    background: #f8f9fa; /* Ensure a solid background color */
+    border-bottom: 1px solid var(--border-color);
+    position: sticky; /* Make it sticky */
+    top: 0; /* Stick to the top of the table */
+    z-index: 10; /* Ensure it is above other content */
 }
 
 .wd-table-row {
   display: grid;
-  grid-template-columns: 50px 1fr 1fr 1fr 1fr 1fr 100px;
+  grid-template-columns: 40px 200px 150px 300px 120px 80px 100px;
   padding: 12px 20px;
   align-items: center;
+  gap: 20px;
+  font-size: 14px; /* Sets the font size for all text in the table row */
+}
+
+.wd-table-row .wd-table-cell {
+  font-size: 14px; /* Ensures that table cells also inherit the same font size */
 }
 
 .wd-table-body .wd-table-row {
@@ -2565,19 +2578,41 @@ right: 10px;
 
 .wd-table-cell {
   padding: 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .wd-contact-info {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
 }
 
 .wd-contact-avatar {
-  width: 32px;
-  height: 32px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-  object-fit: cover;
+  margin-left: 10px;
+  background: rgba(0, 188, 96, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #00BC60;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+.wd-contact-name {
+  font-weight: 500;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 .wd-status {
@@ -2588,23 +2623,13 @@ right: 10px;
   font-weight: 500;
   background-color: rgba(46, 204, 113, 0.1);
   color: #2ECC71;
-}
-
-.wd-status.active {
-  background-color: rgba(46, 204, 113, 0.1);
-  color: #2ECC71;
-  font-size: 0.75rem;
-}
-
-.wd-status.inactive {
-  background-color: rgba(46, 204, 113, 0.1);
-  color: #2ECC71;
-  font-size: 0.75rem;
+  width: fit-content;
 }
 
 .wd-actions {
   display: flex;
   gap: 8px;
+  justify-content: flex-end;
 }
 
 .wd-action-btn {
@@ -2615,6 +2640,11 @@ right: 10px;
   padding: 4px;
   border-radius: 4px;
   transition: all 0.2s;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .wd-action-btn:hover {
@@ -2626,69 +2656,39 @@ right: 10px;
   font-size: 16px;
 }
 
-/* Search Box Styles */
-.wd-search-box {
-  position: relative;
-  width: 300px;
+/* تنسيقات الترقيم */
+.wd-pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: white;
+  border-top: 1px solid var(--border-color);
 }
 
-.wd-search-box input {
-  width: 100%;
-  padding: 8px 12px 8px 35px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+.wd-pagination-info {
+  color: #666;
   font-size: 14px;
 }
 
-.wd-search-box i {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #666;
-}
-
-/* Header Actions Styles */
-.wd-header-actions {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-.wd-filter-action-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-  color: #666;
-  transition: all 0.2s;
-}
-
-.wd-filter-action-btn:hover {
-  background: #f5f5f5;
-  border-color: #ccc;
-}
-
-/* Pagination Styles */
 .wd-pagination {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
+  gap: 8px;
 }
 
 .wd-pagination-btn {
   background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
-  padding: 8px 12px;
+  padding: 6px 12px;
   cursor: pointer;
   color: #666;
   transition: all 0.2s;
+  min-width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .wd-pagination-btn:hover {
@@ -2696,116 +2696,80 @@ right: 10px;
   border-color: #ccc;
 }
 
-.wd-page-info {
-  color: #666;
-  font-size: 14px;
-}
-
-.wd-chat-contact-details {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-/* Toast notification styles */
-.wd-toast {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #00BC60;
+.wd-pagination-btn.active {
+  background: #00BC60;
+  border-color: #00BC60;
   color: white;
-  padding: 12px 24px;
-  border-radius: 4px;
-  font-family: 'Tajawal', sans-serif;
-  font-weight: 500;
-  animation: fadeInOut 2s ease-in-out;
-  z-index: 1000;
 }
 
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  10% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  90% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+.wd-pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
-/* تنسيقات أزرار إجراءات جهة الاتصال */
+.wd-tag {
+    display: inline-block; /* Allows the tag to wrap around its content */
+    padding: 4px 8px; /* Adds some space inside the tag */
+    border-radius: 4px; /* Rounds the corners of the tag */
+    font-size: 0.75rem; /* Sets the font size */
+    font-weight: 500; /* Sets the font weight */
+    color: #fff; /* Sets the text color */
+    background-color: rgba(0, 188, 96, 0.1); /* Default background color */
+    transition: background-color 0.3s ease; /* Adds a transition effect */
+}
+
+.wd-tag:hover {
+    background-color: rgba(0, 188, 96, 0.2); /* Darkens the background on hover */
+}
+
+/* Additional tag types with different colors */
+.wd-tag.red {
+    background-color: rgba(231, 76, 60, 0.1); /* Red background */
+    color: #E74C3C; /* Red text */
+}
+
+.wd-tag.red:hover {
+    background-color: rgba(231, 76, 60, 0.2); /* Darkens red on hover */
+}
+
+.wd-tag.blue {
+    background-color: rgba(52, 152, 219, 0.1); /* Blue background */
+    color: #3498DB; /* Blue text */
+}
+
+.wd-tag.blue:hover {
+    background-color: rgba(52, 152, 219, 0.2); /* Darkens blue on hover */
+}
+
+.wd-tag.yellow {
+    background-color: rgba(255, 215, 0, 0.1); /* Yellow background */
+    color: #FFD700; /* Yellow text */
+}
+
+.wd-tag.yellow:hover {
+    background-color: rgba(255, 215, 0, 0.2); /* Darkens yellow on hover */
+}
+
 .wd-contact-actions {
   display: flex;
-  gap: 10px;
+  gap: 8px;
+  justify-content: flex-start;
 }
 
-.wd-action-btn {
-  width: 32px;
-  height: 32px;
-  border: none;
-  border-radius: 4px;
-  background-color: #f5f5f5;
-  color: #666;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
+.export-btn {
+    background-color: #3498DB; /* Background color for the export button */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 8px 16px; /* Padding for the button */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    display: flex; /* Flex display for icon alignment */
+    align-items: center; /* Center icon vertically */
+    gap: 8px; /* Space between icon and text */
+    transition: background-color 0.2s; /* Transition effect */
 }
 
-.wd-action-btn:hover {
-  background-color: #e9e9e9;
-  color: #333;
+.export-btn:hover {
+    background-color: #2980B9; /* Darker shade on hover */
 }
 
-.wd-action-btn i {
-  font-size: 16px;
-}
-
-/* تنسيقات شريط معلومات جهة الاتصال */
-.wd-contact-info-sidebar {
-  width: 300px;
-  background-color: #fff;
-  border-right: 1px solid #eee;
-  display: flex;
-  flex-direction: column;
-}
-
-.wd-contact-info-header {
-  padding: 15px;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.wd-contact-info-header h2 {
-  margin: 0;
-  font-size: 18px;
-  color: #333;
-}
-
-.wd-close-sidebar {
-  background: none;
-  border: none;
-  color: #666;
-  cursor: pointer;
-  padding: 5px;
-}
-
-.wd-close-sidebar:hover {
-  color: #333;
-}
-
-.wd-contact-info-content {
-  flex: 1;
-  overflow-y: auto;
-}

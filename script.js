@@ -317,3 +317,40 @@ function copyText(text) {
   });
 }
 
+// التحكم في قائمة الحساب العائمة
+const profileBtn = document.querySelector('.wd-profile-floating-btn');
+const profileMenu = document.querySelector('.wd-profile-floating-menu');
+const statusOptions = document.querySelectorAll('.wd-profile-floating-status-option');
+
+// فتح وإغلاق القائمة
+profileBtn.addEventListener('click', () => {
+  profileMenu.classList.toggle('show');
+});
+
+// إغلاق القائمة عند النقر خارجها
+document.addEventListener('click', (e) => {
+  if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
+    profileMenu.classList.remove('show');
+  }
+});
+
+// تغيير حالة المستخدم
+statusOptions.forEach(option => {
+  option.addEventListener('click', () => {
+    // إزالة الفئة النشطة من جميع الخيارات
+    statusOptions.forEach(opt => opt.classList.remove('active'));
+    // إضافة الفئة النشطة للخيار المحدد
+    option.classList.add('active');
+    
+    // تغيير لون زر الحساب حسب الحالة
+    const status = option.getAttribute('data-status');
+    if (status === 'available') {
+      profileBtn.style.background = '#00BC60';
+    } else if (status === 'busy') {
+      profileBtn.style.background = '#FFD700';
+    } else {
+      profileBtn.style.background = '#666';
+    }
+  });
+});
+

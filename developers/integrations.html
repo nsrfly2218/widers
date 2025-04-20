@@ -3,88 +3,242 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>التكاملات - وادي</title>
+    <title>التكاملات</title>
+    <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="integrations.css" />
-  </head>
+    <style>
+      .wd-content-body {
+        padding: 20px;
+      }
 
+      .wd-search-container {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .wd-search-input {
+        position: relative;
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .wd-search-input i {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+      }
+
+      .wd-search-input input {
+        width: 100%;
+        padding: 12px 40px 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .wd-search-input input:focus {
+        outline: none;
+        border-color: #25D366;
+        box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.1);
+      }
+
+      .wd-filter-options {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .wd-filter-select {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: white;
+        color: #333;
+        font-size: 14px;
+        min-width: 150px;
+      }
+
+      .wd-table-container {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+
+      .wd-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .wd-table th {
+        background: #f8f9fa;
+        padding: 15px;
+        text-align: right;
+        font-weight: 600;
+        color: #333;
+        border-bottom: 2px solid #eee;
+      }
+
+      .wd-table td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        color: #555;
+      }
+
+      .wd-table tr:hover {
+        background-color: #f8f9fa;
+      }
+
+      .wd-integration-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .wd-integration-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8f9fa;
+        color: #333;
+        font-size: 20px;
+      }
+
+      .wd-integration-details {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .wd-integration-name {
+        font-weight: 500;
+        color: #333;
+      }
+
+      .wd-integration-description {
+        font-size: 13px;
+        color: #666;
+      }
+
+      .wd-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+
+      .wd-status-active {
+        background: #e6f4ea;
+        color: #1e7e34;
+      }
+
+      .wd-status-inactive {
+        background: #f8d7da;
+        color: #721c24;
+      }
+
+      .wd-btn-icon {
+        padding: 8px;
+        margin: 0 5px;
+        border-radius: 6px;
+        color: #666;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-btn-icon:hover {
+        background: #f0f0f0;
+        color: #333;
+      }
+
+      .wd-btn-icon i {
+        font-size: 16px;
+      }
+
+      .wd-btn-icon[title]:hover:after {
+        content: attr(title);
+        position: absolute;
+        background: #333;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        margin-top: 5px;
+        z-index: 1;
+      }
+
+      @media (max-width: 768px) {
+        .wd-search-container {
+          flex-direction: column;
+        }
+        
+        .wd-filter-options {
+          width: 100%;
+        }
+        
+        .wd-filter-select {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
   <body>
     <div class="wd-container">
       <!-- القسم الأول: القائمة الجانبية -->
       <aside class="wd-sidebar">
         <div class="wd-logo">
-          <img src="../imgs/logo.png" alt="شعار المنصة" />
+          <img src="/imgs/logo.png" alt="شعار المنصة" />
         </div>
         <nav class="wd-nav">
           <ul>
             <li class="wd-nav-item">
               <i class="fa-solid fa-gauge"></i>
-              <span
-                ><a href="../index.html" class="wd-nav-link"
-                  >لوحة التحكم</a
-                ></span
-              >
+              <span><a href="/index.html" class="wd-nav-link">لوحة التحكم</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-comments"></i>
-              <span
-                ><a href="../chat.html" class="wd-nav-link">المحادثات</a></span
-              >
+              <span><a href="/chat.html" class="wd-nav-link">المحادثات</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-users"></i>
-              <span
-                ><a href="../contacts.html" class="wd-nav-link"
-                  >جهات الاتصال</a
-                ></span
-              >
+              <span><a href="/contacts.html" class="wd-nav-link">جهات الاتصال</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-diagram-project"></i>
-              <span
-                ><a href="../flows.html" class="wd-nav-link">التدفقات</a></span
-              >
+              <span><a href="/flows.html" class="wd-nav-link">التدفقات</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-bullhorn"></i>
-              <span
-                ><a href="../campaigns.html" class="wd-nav-link"
-                  >الحملات</a
-                ></span
-              >
+              <span><a href="/campaigns.html" class="wd-nav-link">الحملات</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-calendar"></i>
-              <span
-                ><a href="../calendar.html" class="wd-nav-link"
-                  >التقويم</a
-                ></span
-              >
-            </li>
-            <li class="wd-nav-item">
-              <i class="fas fa-file-alt"></i>
-              <span
-                ><a href="../contents.html" class="wd-nav-link"
-                  >المحتويات</a
-                ></span
-              >
+              <span><a href="/calendar.html" class="wd-nav-link">التقويم</a></span>
             </li>
             <li class="wd-nav-item active">
+              <i class="fas fa-file-alt"></i>
+              <span><a href="/contents.html" class="wd-nav-link">المحتويات</a></span>
+            </li>
+            <li class="wd-nav-item">
               <i class="fas fa-code"></i>
-              <span
-                ><a href="../developers.html" class="wd-nav-link"
-                  >المطورين</a
-                ></span
-              >
+              <span><a href="/developers.html" class="wd-nav-link">المطورين</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-cog"></i>
-              <span
-                ><a href="../settings.html" class="wd-nav-link"
-                  >الإعدادات</a
-                ></span
-              >
+              <span><a href="/settings.html" class="wd-nav-link">الإعدادات</a></span>
             </li>
           </ul>
         </nav>
@@ -94,11 +248,7 @@
       <div class="wd-secondary-sidebar">
         <div class="wd-account-switcher">
           <div class="wd-account-info">
-            <img
-              src="../imgs/logo.png"
-              alt="صورة الحساب"
-              class="wd-account-avatar"
-            />
+            <img src="/imgs/logo.png" alt="صورة الحساب" class="wd-account-avatar" />
             <div class="wd-account-details">
               <span class="wd-account-name">حساب الشركة</span>
               <span class="wd-account-type">مدير</span>
@@ -111,28 +261,70 @@
         <div class="wd-secondary-content">
           <nav class="wd-secondary-nav">
             <ul>
-              <a href="../developers.html" class="wd-nav-link">
+              <a href="/contents.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
-                  <i class="fas fa-file-alt"></i>
+                  <i class="fas fa-user-cog"></i>
+                  <span>متغيرات المستخدم</span>
+                </li>
+              </a>
+              <a href="/contents/system.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-cogs"></i>
+                  <span>متغيرات النظام</span>
+                </li>
+              </a>
+              <a href="/contents/tags.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-tags"></i>
+                  <span>الوسوم</span>
+                </li>
+              </a>
+              <a href="/contents/shortcuts.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-keyboard"></i>
+                  <span>الاختصارات</span>
+                </li>
+              </a>
+              <a href="/contents/whatsapp.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fab fa-whatsapp"></i>
+                  <span>قوالب الواتساب</span>
+                </li>
+              </a>
+              <a href="/contents/email.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-envelope"></i>
+                  <span>قوالب البريد الالكتروني</span>
+                </li>
+              </a>
+              <a href="/contents/sms.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-comment-dots"></i>
+                  <span>قوالب الرسائل النصية</span>
+                </li>
+              </a>
+              <a href="/contents/logs.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-history"></i>
                   <span>السجلات</span>
                 </li>
               </a>
-              <a href="../developers/integrations.html" class="wd-nav-link">
-                <li class="wd-secondary-nav-item active">
-                  <i class="fas fa-plug"></i>
-                  <span>التكاملات</span>
-                </li>
-              </a>
-              <a href="../developers/webhook.html" class="wd-nav-link">
+              <a href="/contents/webhooks.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
-                  <i class="fas fa-random"></i>
-                  <span>Webhook</span>
+                  <i class="fas fa-plug"></i>
+                  <span>Webhooks</span>
                 </li>
               </a>
-              <a href="../developers/api.html" class="wd-nav-link">
+              <a href="/contents/api.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-code"></i>
                   <span>API</span>
+                </li>
+              </a>
+              <a href="/contents/integrations.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item active">
+                  <i class="fas fa-puzzle-piece"></i>
+                  <span>التكاملات</span>
                 </li>
               </a>
             </ul>
@@ -144,10 +336,7 @@
       <div class="wd-main-content">
         <div class="wd-content-header">
           <div class="wd-header-left">
-            <button
-              class="wd-toggle-secondary"
-              onclick="toggleSecondarySidebar()"
-            >
+            <button class="wd-toggle-secondary" onclick="toggleSecondarySidebar()">
               <i class="fas fa-bars"></i>
             </button>
             <h1>التكاملات</h1>
@@ -155,224 +344,143 @@
           <div class="wd-header-actions">
             <button class="wd-btn wd-btn-primary">
               <i class="fas fa-plus"></i>
-              إضافة تكامل جديد
+              إضافة تكامل
             </button>
           </div>
         </div>
 
         <div class="wd-content-body">
-          <!-- قسم الذكاء الاصطناعي -->
-          <div class="wd-integrations-section">
-            <h2 class="wd-integrations-section-title">الذكاء الاصطناعي</h2>
-            <div class="wd-integrations-grid">
-              <div class="wd-integration-card">
-                <div class="wd-integration-header">
-                  <div class="wd-integration-icon">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2TKB50IOUwjyQgxYT5zalJ4akVf8vB87XEw&s" alt="OpenAI" width="32" height="32">
-                  </div>
-                  <div class="wd-integration-info">
-                    <h3 class="wd-integration-name">OpenAI</h3>
-                    <p class="wd-integration-description">تكامل مع ChatGPT و GPT-4</p>
-                  </div>
-                </div>
-                <div class="wd-integration-status connected">متصل</div>
-                <div class="wd-integration-actions">
-                  <button class="wd-integration-btn wd-integration-btn-primary">
-                    <i class="fas fa-code"></i>
-                    الوثائق
-                  </button>
-                  <button class="wd-integration-btn wd-integration-btn-secondary">
-                    <i class="fas fa-cog"></i>
-                    الإعدادات
-                  </button>
-                </div>
-              </div>
-
-              <div class="wd-integration-card">
-                <div class="wd-integration-header">
-                  <div class="wd-integration-icon">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Gemini" width="32" height="32">
-                  </div>
-                  <div class="wd-integration-info">
-                    <h3 class="wd-integration-name">Google Gemini</h3>
-                    <p class="wd-integration-description">تكامل مع نموذج Gemini من جوجل</p>
-                  </div>
-                </div>
-                <div class="wd-integration-status disconnected">غير متصل</div>
-                <div class="wd-integration-actions">
-                  <button class="wd-integration-btn wd-integration-btn-connect">
-                    <i class="fas fa-plug"></i>
-                    ربط
-                  </button>
-                  <button class="wd-integration-btn wd-integration-btn-primary">
-                    <i class="fas fa-code"></i>
-                    الوثائق
-                  </button>
-                </div>
-              </div>
-
-              <div class="wd-integration-card">
-                <div class="wd-integration-header">
-                  <div class="wd-integration-icon">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/DeepSeek_logo.svg" alt="DeepSeek" width="32" height="32">
-                  </div>
-                  <div class="wd-integration-info">
-                    <h3 class="wd-integration-name">DeepSeek</h3>
-                    <p class="wd-integration-description">تكامل مع DeepSeek AI</p>
-                  </div>
-                </div>
-                <div class="wd-integration-status disconnected">غير متصل</div>
-                <div class="wd-integration-actions">
-                  <button class="wd-integration-btn wd-integration-btn-connect">
-                    <i class="fas fa-plug"></i>
-                    ربط
-                  </button>
-                  <button class="wd-integration-btn wd-integration-btn-primary">
-                    <i class="fas fa-code"></i>
-                    الوثائق
-                  </button>
-                </div>
-              </div>
+          <div class="wd-search-container">
+            <div class="wd-search-input">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="ابحث في التكاملات..." id="integrationSearch">
+            </div>
+            <div class="wd-filter-options">
+              <select class="wd-filter-select">
+                <option value="">جميع الفئات</option>
+                <option value="crm">CRM</option>
+                <option value="marketing">التسويق</option>
+                <option value="payment">المدفوعات</option>
+                <option value="analytics">التحليلات</option>
+              </select>
+              <select class="wd-filter-select">
+                <option value="">جميع الحالات</option>
+                <option value="active">نشط</option>
+                <option value="inactive">غير نشط</option>
+              </select>
             </div>
           </div>
 
-          <!-- قسم التجارة الإلكترونية -->
-          <div class="wd-integrations-section">
-            <h2 class="wd-integrations-section-title">التجارة الإلكترونية</h2>
-            <div class="wd-integrations-grid">
-              <div class="wd-integration-card">
-                <div class="wd-integration-header">
-                  <div class="wd-integration-icon">
-                    <img src="https://avatars.githubusercontent.com/u/44970666?s=280&v=4" alt="سلة" width="32" height="32">
-                  </div>
-                  <div class="wd-integration-info">
-                    <h3 class="wd-integration-name">سلة</h3>
-                    <p class="wd-integration-description">تكامل مع منصة سلة للتجارة الإلكترونية</p>
-                  </div>
-                </div>
-                <div class="wd-integration-status connected">متصل</div>
-                <div class="wd-integration-actions">
-                  <button class="wd-integration-btn wd-integration-btn-primary">
-                    <i class="fas fa-code"></i>
-                    الوثائق
-                  </button>
-                  <button class="wd-integration-btn wd-integration-btn-secondary">
-                    <i class="fas fa-cog"></i>
-                    الإعدادات
-                  </button>
-                </div>
-              </div>
-
-              <div class="wd-integration-card">
-                <div class="wd-integration-header">
-                  <div class="wd-integration-icon">
-                    <img src="https://avatars.githubusercontent.com/u/40963257?s=280&v=4" alt="زد" width="32" height="32">
-                  </div>
-                  <div class="wd-integration-info">
-                    <h3 class="wd-integration-name">زد</h3>
-                    <p class="wd-integration-description">تكامل مع منصة زد للتجارة الإلكترونية</p>
-                  </div>
-                </div>
-                <div class="wd-integration-status disconnected">غير متصل</div>
-                <div class="wd-integration-actions">
-                  <button class="wd-integration-btn wd-integration-btn-connect">
-                    <i class="fas fa-plug"></i>
-                    ربط
-                  </button>
-                  <button class="wd-integration-btn wd-integration-btn-primary">
-                    <i class="fas fa-code"></i>
-                    الوثائق
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- قسم التقويم -->
-          <div class="wd-integrations-section">
-            <h2 class="wd-integrations-section-title">التقويم</h2>
-            <div class="wd-integrations-grid">
-              <div class="wd-integration-card">
-                <div class="wd-integration-header">
-                  <div class="wd-integration-icon">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCrLgV-ZF_jRcG2wkXAaVnUmIi7KlcyzgOJg&s" alt="كالندلي" width="32" height="32">
-                  </div>
-                  <div class="wd-integration-info">
-                    <h3 class="wd-integration-name">تقويم Calendly</h3>
-                    <p class="wd-integration-description">تكامل مع خدمة تقويم Calendly</p>
-                  </div>
-                </div>
-                <div class="wd-integration-status disconnected">غير متصل</div>
-                <div class="wd-integration-actions">
-                  <button class="wd-integration-btn wd-integration-btn-connect">
-                    <i class="fas fa-plug"></i>
-                    ربط
-                  </button>
-                  <button class="wd-integration-btn wd-integration-btn-primary">
-                    <i class="fas fa-code"></i>
-                    الوثائق
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- قسم قواعد البيانات -->
-          <div class="wd-integrations-section">
-            <h2 class="wd-integrations-section-title">قواعد البيانات</h2>
-            <div class="wd-integrations-grid">
-              <div class="wd-integration-card">
-                <div class="wd-integration-header">
-                  <div class="wd-integration-icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968557.png" alt="جداول جوجل" width="32" height="32">
-                  </div>
-                  <div class="wd-integration-info">
-                    <h3 class="wd-integration-name">جداول Google Sheets</h3>
-                    <p class="wd-integration-description">تكامل مع جداول جوجل</p>
-                  </div>
-                </div>
-                <div class="wd-integration-status connected">متصل</div>
-                <div class="wd-integration-actions">
-                  <button class="wd-integration-btn wd-integration-btn-primary">
-                    <i class="fas fa-code"></i>
-                    الوثائق
-                  </button>
-                  <button class="wd-integration-btn wd-integration-btn-secondary">
-                    <i class="fas fa-cog"></i>
-                    الإعدادات
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- قسم الخرائط -->
-          <div class="wd-integrations-section">
-            <h2 class="wd-integrations-section-title">الخرائط</h2>
-            <div class="wd-integrations-grid">
-              <div class="wd-integration-card">
-                <div class="wd-integration-header">
-                  <div class="wd-integration-icon">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Google_Maps_Logo_2020.svg/2275px-Google_Maps_Logo_2020.svg.png" alt="خرائط جوجل" width="32" height="32">
-                  </div>
-                  <div class="wd-integration-info">
-                    <h3 class="wd-integration-name">خرائط قوقل</h3>
-                    <p class="wd-integration-description">تكامل مع خرائط جوجل</p>
-                  </div>
-                </div>
-                <div class="wd-integration-status disconnected">غير متصل</div>
-                <div class="wd-integration-actions">
-                  <button class="wd-integration-btn wd-integration-btn-connect">
-                    <i class="fas fa-plug"></i>
-                    ربط
-                  </button>
-                  <button class="wd-integration-btn wd-integration-btn-primary">
-                    <i class="fas fa-code"></i>
-                    الوثائق
-                  </button>
-                </div>
-              </div>
-            </div>
+          <div class="wd-table-container">
+            <table class="wd-table">
+              <thead>
+                <tr>
+                  <th>التكامل</th>
+                  <th>الوصف</th>
+                  <th>الفئة</th>
+                  <th>الحالة</th>
+                  <th>الإجراءات</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="wd-integration-info">
+                      <div class="wd-integration-icon">
+                        <i class="fab fa-salesforce"></i>
+                      </div>
+                      <div class="wd-integration-details">
+                        <div class="wd-integration-name">Salesforce</div>
+                        <div class="wd-integration-description">تكامل مع نظام إدارة علاقات العملاء</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>مزامنة جهات الاتصال والفرص مع Salesforce</td>
+                  <td>CRM</td>
+                  <td>
+                    <span class="wd-status wd-status-active">
+                      <i class="fas fa-circle"></i>
+                      نشط
+                    </span>
+                  </td>
+                  <td>
+                    <button class="wd-btn wd-btn-icon" title="تعديل">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-btn wd-btn-icon" title="إعدادات">
+                      <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="wd-btn wd-btn-icon" title="حذف">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="wd-integration-info">
+                      <div class="wd-integration-icon">
+                        <i class="fab fa-mailchimp"></i>
+                      </div>
+                      <div class="wd-integration-details">
+                        <div class="wd-integration-name">Mailchimp</div>
+                        <div class="wd-integration-description">تكامل مع منصة التسويق عبر البريد الإلكتروني</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>مزامنة القوائم وحملات البريد الإلكتروني</td>
+                  <td>التسويق</td>
+                  <td>
+                    <span class="wd-status wd-status-active">
+                      <i class="fas fa-circle"></i>
+                      نشط
+                    </span>
+                  </td>
+                  <td>
+                    <button class="wd-btn wd-btn-icon" title="تعديل">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-btn wd-btn-icon" title="إعدادات">
+                      <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="wd-btn wd-btn-icon" title="حذف">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="wd-integration-info">
+                      <div class="wd-integration-icon">
+                        <i class="fab fa-stripe"></i>
+                      </div>
+                      <div class="wd-integration-details">
+                        <div class="wd-integration-name">Stripe</div>
+                        <div class="wd-integration-description">تكامل مع نظام المدفوعات</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>معالجة المدفوعات والاشتراكات</td>
+                  <td>المدفوعات</td>
+                  <td>
+                    <span class="wd-status wd-status-inactive">
+                      <i class="fas fa-circle"></i>
+                      غير نشط
+                    </span>
+                  </td>
+                  <td>
+                    <button class="wd-btn wd-btn-icon" title="تعديل">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-btn wd-btn-icon" title="إعدادات">
+                      <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="wd-btn wd-btn-icon" title="حذف">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -384,11 +492,7 @@
       </button>
       <div class="wd-profile-floating-menu" id="profileFloatingMenu">
         <div class="wd-profile-floating-header">
-          <img
-            src="../imgs/logo.png"
-            alt="صورة المستخدم"
-            class="wd-profile-floating-avatar"
-          />
+          <img src="/imgs/logo.png" alt="صورة المستخدم" class="wd-profile-floating-avatar" />
           <div class="wd-profile-floating-info">
             <span class="wd-profile-floating-name">اسم المستخدم</span>
             <span class="wd-profile-floating-email">user@example.com</span>
@@ -397,24 +501,15 @@
         <div class="wd-profile-floating-status">
           <span class="wd-profile-floating-status-title">تعيين نفسك ك:</span>
           <div class="wd-profile-floating-status-options">
-            <button
-              class="wd-profile-floating-status-option active"
-              data-status="available"
-            >
+            <button class="wd-profile-floating-status-option active" data-status="available">
               <i class="fas fa-circle"></i>
               <span>متصل</span>
             </button>
-            <button
-              class="wd-profile-floating-status-option"
-              data-status="busy"
-            >
+            <button class="wd-profile-floating-status-option" data-status="busy">
               <i class="fas fa-circle"></i>
               <span>مشغول</span>
             </button>
-            <button
-              class="wd-profile-floating-status-option"
-              data-status="offline"
-            >
+            <button class="wd-profile-floating-status-option" data-status="offline">
               <i class="fas fa-circle"></i>
               <span>غير متصل</span>
             </button>
@@ -437,6 +532,6 @@
       </div>
     </div>
 
-    <script src="../script.js"></script>
+    <script src="/script.js"></script>
   </body>
-</html>
+</html> 

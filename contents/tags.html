@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>متغيرات المستخدم</title>
+    <title>الوسوم</title>
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
@@ -95,19 +95,18 @@
         background-color: #f8f9fa;
       }
 
-      .wd-variable-info {
+      .wd-tag-info {
         display: flex;
         flex-direction: column;
         gap: 5px;
       }
 
-      .wd-variable-name {
+      .wd-tag-name {
         font-weight: 500;
         color: #333;
-        font-family: monospace;
       }
 
-      .wd-variable-description {
+      .wd-tag-description {
         font-size: 13px;
         color: #666;
         white-space: nowrap;
@@ -116,27 +115,21 @@
         max-width: 300px;
       }
 
-      .wd-variable-value {
-        font-family: monospace;
-        background: #f8f9fa;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 13px;
-        color: #333;
-      }
-
-      .wd-variable-type {
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        padding: 4px 8px;
-        border-radius: 4px;
-        background: #f0f0f0;
+      .wd-status {
+        padding: 6px 12px;
+        border-radius: 20px;
         font-size: 12px;
+        font-weight: 500;
       }
 
-      .wd-variable-type i {
-        color: #25D366;
+      .wd-status-active {
+        background-color: #e6f4ea;
+        color: #1e7e34;
+      }
+
+      .wd-status-draft {
+        background-color: #fff3cd;
+        color: #856404;
       }
 
       .wd-btn-icon {
@@ -169,6 +162,28 @@
         font-size: 12px;
         margin-top: 5px;
         z-index: 1;
+      }
+
+      .wd-tag-type {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        background: #f0f0f0;
+        font-size: 12px;
+      }
+
+      .wd-tag-type i {
+        color: #25D366;
+      }
+
+      .wd-tag-color {
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-left: 5px;
       }
 
       @media (max-width: 768px) {
@@ -253,7 +268,7 @@
           <nav class="wd-secondary-nav">
             <ul>
               <a href="/contents.html" class="wd-nav-link">
-                <li class="wd-secondary-nav-item active">
+                <li class="wd-secondary-nav-item">
                   <i class="fas fa-user-cog"></i>
                   <span>متغيرات المستخدم</span>
                 </li>
@@ -265,7 +280,7 @@
                 </li>
               </a>
               <a href="/contents/tags.html" class="wd-nav-link">
-                <li class="wd-secondary-nav-item">
+                <li class="wd-secondary-nav-item active">
                   <i class="fas fa-tags"></i>
                   <span>الوسوم</span>
                 </li>
@@ -306,12 +321,12 @@
             <button class="wd-toggle-secondary" onclick="toggleSecondarySidebar()">
               <i class="fas fa-bars"></i>
             </button>
-            <h1>متغيرات المستخدم</h1>
+            <h1>الوسوم</h1>
           </div>
           <div class="wd-header-actions">
             <button class="wd-btn wd-btn-primary">
               <i class="fas fa-plus"></i>
-              إضافة متغير
+              إضافة وسم
             </button>
           </div>
         </div>
@@ -320,21 +335,19 @@
           <div class="wd-search-container">
             <div class="wd-search-input">
               <i class="fas fa-search"></i>
-              <input type="text" placeholder="ابحث عن متغير..." id="userVariableSearch">
+              <input type="text" placeholder="ابحث عن وسم..." id="tagSearch">
             </div>
             <div class="wd-filter-options">
               <select class="wd-filter-select">
                 <option value="">جميع الفئات</option>
-                <option value="profile">الملف الشخصي</option>
-                <option value="preferences">التفضيلات</option>
-                <option value="custom">مخصص</option>
+                <option value="customer">العملاء</option>
+                <option value="product">المنتجات</option>
+                <option value="service">الخدمات</option>
               </select>
               <select class="wd-filter-select">
-                <option value="">جميع الأنواع</option>
-                <option value="string">نص</option>
-                <option value="number">رقم</option>
-                <option value="boolean">منطقي</option>
-                <option value="date">تاريخ</option>
+                <option value="">جميع الحالات</option>
+                <option value="active">نشط</option>
+                <option value="draft">مسودة</option>
               </select>
             </div>
           </div>
@@ -343,98 +356,126 @@
             <table class="wd-table">
               <thead>
                 <tr>
-                  <th>اسم المتغير</th>
-                  <th>القيمة</th>
+                  <th>اسم الوسم</th>
                   <th>الوصف</th>
-                  <th>النوع</th>
+                  <th>الفئة</th>
+                  <th>اللون</th>
+                  <th>الحالة</th>
                   <th>الإجراءات</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>
-                    <div class="wd-variable-info">
-                      <div class="wd-variable-name">USER_NAME</div>
+                    <div class="wd-tag-info">
+                      <div class="wd-tag-name">عميل مميز</div>
                     </div>
                   </td>
                   <td>
-                    <div class="wd-variable-value">أحمد محمد</div>
-                  </td>
-                  <td>
-                    <div class="wd-variable-description">
-                      اسم المستخدم الحالي
+                    <div class="wd-tag-description">
+                      العملاء الذين لديهم اشتراك مميز في الخدمة
                     </div>
                   </td>
                   <td>
-                    <span class="wd-variable-type">
-                      <i class="fas fa-font"></i>
-                      نص
+                    <span class="wd-tag-type">
+                      <i class="fas fa-users"></i>
+                      العملاء
                     </span>
                   </td>
                   <td>
+                    <span class="wd-tag-color" style="background-color: #ffd700;"></span>
+                  </td>
+                  <td>
+                    <span class="wd-status wd-status-active">نشط</span>
+                  </td>
+                  <td>
+                    <button class="wd-btn wd-btn-icon" title="معاينة">
+                      <i class="fas fa-eye"></i>
+                    </button>
                     <button class="wd-btn wd-btn-icon" title="تعديل">
                       <i class="fas fa-edit"></i>
                     </button>
                     <button class="wd-btn wd-btn-icon" title="نسخ">
                       <i class="fas fa-copy"></i>
+                    </button>
+                    <button class="wd-btn wd-btn-icon" title="حذف">
+                      <i class="fas fa-trash"></i>
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <div class="wd-variable-info">
-                      <div class="wd-variable-name">USER_TIMEZONE</div>
+                    <div class="wd-tag-info">
+                      <div class="wd-tag-name">طلب جديد</div>
                     </div>
                   </td>
                   <td>
-                    <div class="wd-variable-value">Asia/Riyadh</div>
-                  </td>
-                  <td>
-                    <div class="wd-variable-description">
-                      المنطقة الزمنية للمستخدم
+                    <div class="wd-tag-description">
+                      العملاء الذين قاموا بطلب جديد في آخر 24 ساعة
                     </div>
                   </td>
                   <td>
-                    <span class="wd-variable-type">
-                      <i class="fas fa-globe"></i>
-                      نص
+                    <span class="wd-tag-type">
+                      <i class="fas fa-shopping-cart"></i>
+                      المنتجات
                     </span>
                   </td>
                   <td>
+                    <span class="wd-tag-color" style="background-color: #4CAF50;"></span>
+                  </td>
+                  <td>
+                    <span class="wd-status wd-status-active">نشط</span>
+                  </td>
+                  <td>
+                    <button class="wd-btn wd-btn-icon" title="معاينة">
+                      <i class="fas fa-eye"></i>
+                    </button>
                     <button class="wd-btn wd-btn-icon" title="تعديل">
                       <i class="fas fa-edit"></i>
                     </button>
                     <button class="wd-btn wd-btn-icon" title="نسخ">
                       <i class="fas fa-copy"></i>
+                    </button>
+                    <button class="wd-btn wd-btn-icon" title="حذف">
+                      <i class="fas fa-trash"></i>
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <div class="wd-variable-info">
-                      <div class="wd-variable-name">USER_NOTIFICATIONS</div>
+                    <div class="wd-tag-info">
+                      <div class="wd-tag-name">دعم فني</div>
                     </div>
                   </td>
                   <td>
-                    <div class="wd-variable-value">true</div>
-                  </td>
-                  <td>
-                    <div class="wd-variable-description">
-                      تفعيل إشعارات المستخدم
+                    <div class="wd-tag-description">
+                      العملاء الذين يحتاجون إلى دعم فني
                     </div>
                   </td>
                   <td>
-                    <span class="wd-variable-type">
-                      <i class="fas fa-toggle-on"></i>
-                      منطقي
+                    <span class="wd-tag-type">
+                      <i class="fas fa-headset"></i>
+                      الخدمات
                     </span>
                   </td>
                   <td>
+                    <span class="wd-tag-color" style="background-color: #2196F3;"></span>
+                  </td>
+                  <td>
+                    <span class="wd-status wd-status-draft">مسودة</span>
+                  </td>
+                  <td>
+                    <button class="wd-btn wd-btn-icon" title="معاينة">
+                      <i class="fas fa-eye"></i>
+                    </button>
                     <button class="wd-btn wd-btn-icon" title="تعديل">
                       <i class="fas fa-edit"></i>
                     </button>
                     <button class="wd-btn wd-btn-icon" title="نسخ">
                       <i class="fas fa-copy"></i>
+                    </button>
+                    <button class="wd-btn wd-btn-icon" title="حذف">
+                      <i class="fas fa-trash"></i>
                     </button>
                   </td>
                 </tr>
@@ -493,4 +534,4 @@
 
     <script src="/script.js"></script>
   </body>
-</html> 
+</html>

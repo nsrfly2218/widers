@@ -3,76 +3,266 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>جهات الاتصال</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-  </head>
+    <title>التدفقات</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+      .wd-content-body {
+        padding: 20px;
+      }
 
+      .wd-flows-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .wd-flows-actions {
+        display: flex;
+        gap: 15px;
+      }
+
+      .wd-flows-search {
+        position: relative;
+        width: 300px;
+      }
+
+      .wd-flows-search input {
+        width: 100%;
+        padding: 10px 15px;
+        padding-right: 40px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      .wd-flows-search i {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+      }
+
+      .wd-flows-filters {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .wd-flows-filter {
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: #f8f9fa;
+        border: 1px solid #ddd;
+      }
+
+      .wd-flows-filter.active {
+        background: #6610f2;
+        color: white;
+        border: none;
+      }
+
+      .wd-flows-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .wd-flow-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .wd-flow-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .wd-flow-header {
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .wd-flow-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .wd-flow-description {
+        color: #666;
+        font-size: 14px;
+      }
+
+      .wd-flow-body {
+        padding: 20px;
+      }
+
+      .wd-flow-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .wd-flow-info-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #666;
+        font-size: 14px;
+      }
+
+      .wd-flow-info-item i {
+        color: #6610f2;
+      }
+
+      .wd-flow-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .wd-flow-status.active {
+        background: #e8f5e9;
+        color: #2e7d32;
+      }
+
+      .wd-flow-status.inactive {
+        background: #ffebee;
+        color: #c62828;
+      }
+
+      .wd-flow-actions {
+        display: flex;
+        gap: 10px;
+        padding: 15px;
+        border-top: 1px solid #eee;
+      }
+
+      .wd-flow-btn {
+        flex: 1;
+        padding: 8px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+
+      .wd-flow-btn.primary {
+        background: #6610f2;
+        color: white;
+        border: none;
+      }
+
+      .wd-flow-btn.primary:hover {
+        background: #5a0dd8;
+      }
+
+      .wd-flow-btn.secondary {
+        background: white;
+        color: #6610f2;
+        border: 1px solid #6610f2;
+      }
+
+      .wd-flow-btn.secondary:hover {
+        background: #f8f9fa;
+      }
+
+      .wd-flow-btn.danger {
+        background: white;
+        color: #dc3545;
+        border: 1px solid #dc3545;
+      }
+
+      .wd-flow-btn.danger:hover {
+        background: #fff5f5;
+      }
+
+      @media (max-width: 768px) {
+        .wd-flows-header {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .wd-flows-actions {
+          width: 100%;
+        }
+
+        .wd-flows-search {
+          width: 100%;
+        }
+
+        .wd-flows-filters {
+          overflow-x: auto;
+          padding-bottom: 10px;
+        }
+
+        .wd-flows-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
   <body>
     <div class="wd-container">
       <!-- القسم الأول: القائمة الجانبية -->
       <aside class="wd-sidebar">
         <div class="wd-logo">
-          <img src="imgs/logo.png" alt="شعار المنصة" />
+          <img src="/imgs/logo.png" alt="شعار المنصة" />
         </div>
         <nav class="wd-nav">
           <ul>
             <li class="wd-nav-item">
               <i class="fa-solid fa-gauge"></i>
-              <span
-                ><a href="index.html" class="wd-nav-link">لوحة التحكم</a></span
-              >
+              <span><a href="/index.html" class="wd-nav-link">لوحة التحكم</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-comments"></i>
-              <span><a href="chat.html" class="wd-nav-link">المحادثات</a></span>
+              <span><a href="/chat.html" class="wd-nav-link">المحادثات</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-users"></i>
-              <span
-                ><a href="contacts.html" class="wd-nav-link"
-                  >جهات الاتصال</a
-                ></span
-              >
+              <span><a href="/contacts.html" class="wd-nav-link">جهات الاتصال</a></span>
             </li>
             <li class="wd-nav-item active">
               <i class="fa-solid fa-diagram-project"></i>
-              <span><a href="flows.html" class="wd-nav-link">التدفقات</a></span>
+              <span><a href="/flows.html" class="wd-nav-link">التدفقات</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-bullhorn"></i>
-              <span
-                ><a href="campaigns.html" class="wd-nav-link">الحملات</a></span
-              >
+              <span><a href="/campaigns.html" class="wd-nav-link">الحملات</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-calendar"></i>
-              <span
-                ><a href="calendar.html" class="wd-nav-link">التقويم</a></span
-              >
+              <span><a href="/calendar.html" class="wd-nav-link">التقويم</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-file-alt"></i>
-              <span
-                ><a href="contents.html" class="wd-nav-link">المحتويات</a></span
-              >
+              <span><a href="/contents.html" class="wd-nav-link">المحتويات</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-code"></i>
-              <span
-                ><a href="developers.html" class="wd-nav-link"
-                  >المطورين</a
-                ></span
-              >
+              <span><a href="/developers.html" class="wd-nav-link">المطورين</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-cog"></i>
-              <span
-                ><a href="settings.html" class="wd-nav-link">الإعدادات</a></span
-              >
+              <span><a href="/settings.html" class="wd-nav-link">الإعدادات</a></span>
             </li>
           </ul>
         </nav>
@@ -82,11 +272,7 @@
       <div class="wd-secondary-sidebar">
         <div class="wd-account-switcher">
           <div class="wd-account-info">
-            <img
-              src="imgs/logo.png"
-              alt="صورة الحساب"
-              class="wd-account-avatar"
-            />
+            <img src="/imgs/logo.png" alt="صورة الحساب" class="wd-account-avatar" />
             <div class="wd-account-details">
               <span class="wd-account-name">حساب الشركة</span>
               <span class="wd-account-type">مدير</span>
@@ -99,20 +285,188 @@
         <div class="wd-secondary-content">
           <nav class="wd-secondary-nav">
             <ul>
-              <li class="wd-secondary-nav-item active">
-                <i class="fas fa-cogs"></i>
-                <span>منشئ التدفق</span>
-              </li>
-              <li class="wd-secondary-nav-item">
-                <i class="fas fa-diagram-project"></i>
-                <span>التدفقات</span>
-              </li>
+              <a href="/flows/templates.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-layer-group"></i>
+                  <span>القوالب</span>
+                </li>
+              </a>
+              <a href="/flows/builder.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-pencil-ruler"></i>
+                  <span>منشئ التدفقات</span>
+                </li>
+              </a>
+              <a href="/flows/analytics.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-chart-line"></i>
+                  <span>التحليلات</span>
+                </li>
+              </a>
             </ul>
           </nav>
         </div>
       </div>
 
       <!-- القسم الثالث: المحتوى الرئيسي -->
+      <div class="wd-main-content">
+        <div class="wd-content-header">
+          <div class="wd-header-left">
+            <button class="wd-toggle-secondary" onclick="toggleSecondarySidebar()">
+              <i class="fas fa-bars"></i>
+            </button>
+            <h1>التدفقات</h1>
+          </div>
+          <div class="wd-header-right">
+            <button class="wd-btn primary" onclick="window.location.href='/flows/builder.html'">
+              <i class="fas fa-plus"></i>
+              <span>تدفق جديد</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="wd-content-body">
+          <div class="wd-flows-header">
+            <div class="wd-flows-actions">
+              <div class="wd-flows-search">
+                <input type="text" placeholder="ابحث عن تدفق..." />
+                <i class="fas fa-search"></i>
+              </div>
+            </div>
+            <div class="wd-flows-filters">
+              <button class="wd-flows-filter active">الكل</button>
+              <button class="wd-flows-filter">نشط</button>
+              <button class="wd-flows-filter">غير نشط</button>
+              <button class="wd-flows-filter">مسودة</button>
+            </div>
+          </div>
+
+          <div class="wd-flows-grid">
+            <div class="wd-flow-card">
+              <div class="wd-flow-header">
+                <div class="wd-flow-title">ترحيب العملاء</div>
+                <div class="wd-flow-description">تدفق الترحيب بالعملاء الجدد وتقديم الخدمات</div>
+              </div>
+              <div class="wd-flow-body">
+                <div class="wd-flow-info">
+                  <div class="wd-flow-info-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>تم الإنشاء: 15 مارس 2024</span>
+                  </div>
+                  <div class="wd-flow-info-item">
+                    <i class="fas fa-sync"></i>
+                    <span>تم التحديث: 20 مارس 2024</span>
+                  </div>
+                  <div class="wd-flow-info-item">
+                    <i class="fas fa-users"></i>
+                    <span>تم استخدامه: 1,234 مرة</span>
+                  </div>
+                </div>
+                <div class="wd-flow-status active">
+                  <i class="fas fa-circle"></i>
+                  <span>نشط</span>
+                </div>
+              </div>
+              <div class="wd-flow-actions">
+                <button class="wd-flow-btn primary" onclick="window.location.href='/flows/builder.html?id=1'">
+                  <i class="fas fa-edit"></i>
+                  <span>تعديل</span>
+                </button>
+                <button class="wd-flow-btn secondary">
+                  <i class="fas fa-copy"></i>
+                  <span>نسخ</span>
+                </button>
+                <button class="wd-flow-btn danger">
+                  <i class="fas fa-trash"></i>
+                  <span>حذف</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="wd-flow-card">
+              <div class="wd-flow-header">
+                <div class="wd-flow-title">دعم العملاء</div>
+                <div class="wd-flow-description">تدفق معالجة استفسارات وشكاوى العملاء</div>
+              </div>
+              <div class="wd-flow-body">
+                <div class="wd-flow-info">
+                  <div class="wd-flow-info-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>تم الإنشاء: 10 مارس 2024</span>
+                  </div>
+                  <div class="wd-flow-info-item">
+                    <i class="fas fa-sync"></i>
+                    <span>تم التحديث: 18 مارس 2024</span>
+                  </div>
+                  <div class="wd-flow-info-item">
+                    <i class="fas fa-users"></i>
+                    <span>تم استخدامه: 856 مرة</span>
+                  </div>
+                </div>
+                <div class="wd-flow-status active">
+                  <i class="fas fa-circle"></i>
+                  <span>نشط</span>
+                </div>
+              </div>
+              <div class="wd-flow-actions">
+                <button class="wd-flow-btn primary" onclick="window.location.href='/flows/builder.html?id=2'">
+                  <i class="fas fa-edit"></i>
+                  <span>تعديل</span>
+                </button>
+                <button class="wd-flow-btn secondary">
+                  <i class="fas fa-copy"></i>
+                  <span>نسخ</span>
+                </button>
+                <button class="wd-flow-btn danger">
+                  <i class="fas fa-trash"></i>
+                  <span>حذف</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="wd-flow-card">
+              <div class="wd-flow-header">
+                <div class="wd-flow-title">حجز المواعيد</div>
+                <div class="wd-flow-description">تدفق حجز وتعديل المواعيد مع العملاء</div>
+              </div>
+              <div class="wd-flow-body">
+                <div class="wd-flow-info">
+                  <div class="wd-flow-info-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>تم الإنشاء: 5 مارس 2024</span>
+                  </div>
+                  <div class="wd-flow-info-item">
+                    <i class="fas fa-sync"></i>
+                    <span>تم التحديث: 12 مارس 2024</span>
+                  </div>
+                  <div class="wd-flow-info-item">
+                    <i class="fas fa-users"></i>
+                    <span>تم استخدامه: 432 مرة</span>
+                  </div>
+                </div>
+                <div class="wd-flow-status inactive">
+                  <i class="fas fa-circle"></i>
+                  <span>غير نشط</span>
+                </div>
+              </div>
+              <div class="wd-flow-actions">
+                <button class="wd-flow-btn primary" onclick="window.location.href='/flows/builder.html?id=3'">
+                  <i class="fas fa-edit"></i>
+                  <span>تعديل</span>
+                </button>
+                <button class="wd-flow-btn secondary">
+                  <i class="fas fa-copy"></i>
+                  <span>نسخ</span>
+                </button>
+                <button class="wd-flow-btn danger">
+                  <i class="fas fa-trash"></i>
+                  <span>حذف</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="wd-profile-floating">
@@ -121,7 +475,7 @@
       </button>
       <div class="wd-profile-floating-menu" id="profileFloatingMenu">
         <div class="wd-profile-floating-header">
-          <img src="imgs/logo.png" alt="صورة المستخدم" class="wd-profile-floating-avatar" />
+          <img src="/imgs/logo.png" alt="صورة المستخدم" class="wd-profile-floating-avatar" />
           <div class="wd-profile-floating-info">
             <span class="wd-profile-floating-name">اسم المستخدم</span>
             <span class="wd-profile-floating-email">user@example.com</span>
@@ -161,6 +515,6 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
   </body>
-</html>
+</html> 

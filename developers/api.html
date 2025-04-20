@@ -3,55 +3,259 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>API - وادي</title>
+    <title>API</title>
+    <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="stylesheet" href="../style.css" />
-  </head>
+    <style>
+      .wd-content-body {
+        padding: 20px;
+      }
 
+      .wd-search-container {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .wd-search-input {
+        position: relative;
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .wd-search-input i {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+      }
+
+      .wd-search-input input {
+        width: 100%;
+        padding: 12px 40px 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .wd-search-input input:focus {
+        outline: none;
+        border-color: #25D366;
+        box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.1);
+      }
+
+      .wd-filter-options {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .wd-filter-select {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: white;
+        color: #333;
+        font-size: 14px;
+        min-width: 150px;
+      }
+
+      .wd-table-container {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+
+      .wd-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .wd-table th {
+        background: #f8f9fa;
+        padding: 15px;
+        text-align: right;
+        font-weight: 600;
+        color: #333;
+        border-bottom: 2px solid #eee;
+      }
+
+      .wd-table td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        color: #555;
+      }
+
+      .wd-table tr:hover {
+        background-color: #f8f9fa;
+      }
+
+      .wd-api-info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .wd-api-name {
+        font-weight: 500;
+        color: #333;
+      }
+
+      .wd-api-endpoint {
+        font-family: monospace;
+        background: #f8f9fa;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 13px;
+        color: #333;
+        word-break: break-all;
+      }
+
+      .wd-api-method {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .wd-api-method-get {
+        background: #e6f4ea;
+        color: #1e7e34;
+      }
+
+      .wd-api-method-post {
+        background: #e6f4ea;
+        color: #1e7e34;
+      }
+
+      .wd-api-method-put {
+        background: #fff3cd;
+        color: #856404;
+      }
+
+      .wd-api-method-delete {
+        background: #f8d7da;
+        color: #721c24;
+      }
+
+      .wd-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+
+      .wd-status-active {
+        background: #e6f4ea;
+        color: #1e7e34;
+      }
+
+      .wd-status-inactive {
+        background: #f8d7da;
+        color: #721c24;
+      }
+
+      .wd-btn-icon {
+        padding: 8px;
+        margin: 0 5px;
+        border-radius: 6px;
+        color: #666;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-btn-icon:hover {
+        background: #f0f0f0;
+        color: #333;
+      }
+
+      .wd-btn-icon i {
+        font-size: 16px;
+      }
+
+      .wd-btn-icon[title]:hover:after {
+        content: attr(title);
+        position: absolute;
+        background: #333;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        margin-top: 5px;
+        z-index: 1;
+      }
+
+      @media (max-width: 768px) {
+        .wd-search-container {
+          flex-direction: column;
+        }
+        
+        .wd-filter-options {
+          width: 100%;
+        }
+        
+        .wd-filter-select {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
   <body>
     <div class="wd-container">
       <!-- القسم الأول: القائمة الجانبية -->
       <aside class="wd-sidebar">
         <div class="wd-logo">
-          <img src="../imgs/logo.png" alt="شعار المنصة" />
+          <img src="/imgs/logo.png" alt="شعار المنصة" />
         </div>
         <nav class="wd-nav">
           <ul>
             <li class="wd-nav-item">
               <i class="fa-solid fa-gauge"></i>
-              <span><a href="../index.html" class="wd-nav-link">لوحة التحكم</a></span>
+              <span><a href="/index.html" class="wd-nav-link">لوحة التحكم</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-comments"></i>
-              <span><a href="../chat.html" class="wd-nav-link">المحادثات</a></span>
+              <span><a href="/chat.html" class="wd-nav-link">المحادثات</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-users"></i>
-              <span><a href="../contacts.html" class="wd-nav-link">جهات الاتصال</a></span>
+              <span><a href="/contacts.html" class="wd-nav-link">جهات الاتصال</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-diagram-project"></i>
-              <span><a href="../flows.html" class="wd-nav-link">التدفقات</a></span>
+              <span><a href="/flows.html" class="wd-nav-link">التدفقات</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-bullhorn"></i>
-              <span><a href="../campaigns.html" class="wd-nav-link">الحملات</a></span>
+              <span><a href="/campaigns.html" class="wd-nav-link">الحملات</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-calendar"></i>
-              <span><a href="../calendar.html" class="wd-nav-link">التقويم</a></span>
-            </li>
-            <li class="wd-nav-item">
-              <i class="fas fa-file-alt"></i>
-              <span><a href="../contents.html" class="wd-nav-link">المحتويات</a></span>
+              <span><a href="/calendar.html" class="wd-nav-link">التقويم</a></span>
             </li>
             <li class="wd-nav-item active">
+              <i class="fas fa-file-alt"></i>
+              <span><a href="/contents.html" class="wd-nav-link">المحتويات</a></span>
+            </li>
+            <li class="wd-nav-item">
               <i class="fas fa-code"></i>
-              <span><a href="../developers.html" class="wd-nav-link">المطورين</a></span>
+              <span><a href="/developers.html" class="wd-nav-link">المطورين</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-cog"></i>
-              <span><a href="../settings.html" class="wd-nav-link">الإعدادات</a></span>
+              <span><a href="/settings.html" class="wd-nav-link">الإعدادات</a></span>
             </li>
           </ul>
         </nav>
@@ -61,7 +265,7 @@
       <div class="wd-secondary-sidebar">
         <div class="wd-account-switcher">
           <div class="wd-account-info">
-            <img src="../imgs/logo.png" alt="صورة الحساب" class="wd-account-avatar" />
+            <img src="/imgs/logo.png" alt="صورة الحساب" class="wd-account-avatar" />
             <div class="wd-account-details">
               <span class="wd-account-name">حساب الشركة</span>
               <span class="wd-account-type">مدير</span>
@@ -74,25 +278,61 @@
         <div class="wd-secondary-content">
           <nav class="wd-secondary-nav">
             <ul>
-              <a href="../developers.html" class="wd-nav-link">
+              <a href="/contents.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
-                  <i class="fas fa-file-alt"></i>
+                  <i class="fas fa-user-cog"></i>
+                  <span>متغيرات المستخدم</span>
+                </li>
+              </a>
+              <a href="/contents/system.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-cogs"></i>
+                  <span>متغيرات النظام</span>
+                </li>
+              </a>
+              <a href="/contents/tags.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-tags"></i>
+                  <span>الوسوم</span>
+                </li>
+              </a>
+              <a href="/contents/shortcuts.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-keyboard"></i>
+                  <span>الاختصارات</span>
+                </li>
+              </a>
+              <a href="/contents/whatsapp.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fab fa-whatsapp"></i>
+                  <span>قوالب الواتساب</span>
+                </li>
+              </a>
+              <a href="/contents/email.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-envelope"></i>
+                  <span>قوالب البريد الالكتروني</span>
+                </li>
+              </a>
+              <a href="/contents/sms.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-comment-dots"></i>
+                  <span>قوالب الرسائل النصية</span>
+                </li>
+              </a>
+              <a href="/contents/logs.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-history"></i>
                   <span>السجلات</span>
                 </li>
               </a>
-              <a href="../developers/integrations.html" class="wd-nav-link">
+              <a href="/contents/webhooks.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-plug"></i>
-                  <span>التكاملات</span>
+                  <span>Webhooks</span>
                 </li>
               </a>
-              <a href="../developers/webhook.html" class="wd-nav-link">
-                <li class="wd-secondary-nav-item">
-                  <i class="fas fa-random"></i>
-                  <span>Webhook</span>
-                </li>
-              </a>
-              <a href="../developers/api.html" class="wd-nav-link">
+              <a href="/contents/api.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item active">
                   <i class="fas fa-code"></i>
                   <span>API</span>
@@ -114,118 +354,138 @@
           </div>
           <div class="wd-header-actions">
             <button class="wd-btn wd-btn-primary">
-              <i class="fas fa-key"></i>
-              إنشاء مفتاح API
+              <i class="fas fa-plus"></i>
+              إضافة API
             </button>
           </div>
         </div>
 
-        <div class="wd-api-section">
-          <div class="wd-api-intro">
-            <h2>واجهة برمجة التطبيقات (API)</h2>
-            <p>واجهة برمجة التطبيقات (API) الخاصة بوادي تتيح لك التفاعل مع المنصة برمجياً، مما يسمح لك بدمج خدمات وادي مع تطبيقاتك وخدماتك الخاصة.</p>
-          </div>
-
-          <div class="wd-api-features">
-            <h3>مميزات API</h3>
-            <div class="wd-features-grid">
-              <div class="wd-feature-card">
-                <i class="fas fa-shield-alt"></i>
-                <h4>أمان متقدم</h4>
-                <p>تشفير البيانات وتوثيق الطلبات باستخدام OAuth 2.0</p>
-              </div>
-              <div class="wd-feature-card">
-                <i class="fas fa-bolt"></i>
-                <h4>أداء عالي</h4>
-                <p>استجابة سريعة مع معدل استدعاءات مرتفع</p>
-              </div>
-              <div class="wd-feature-card">
-                <i class="fas fa-code"></i>
-                <h4>توثيق شامل</h4>
-                <p>أمثلة وشرح مفصل لكل نقطة نهاية</p>
-              </div>
-              <div class="wd-feature-card">
-                <i class="fas fa-language"></i>
-                <h4>دعم متعدد</h4>
-                <p>مكتبات جاهزة للغات برمجة مختلفة</p>
-              </div>
+        <div class="wd-content-body">
+          <div class="wd-search-container">
+            <div class="wd-search-input">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="ابحث في API..." id="apiSearch">
+            </div>
+            <div class="wd-filter-options">
+              <select class="wd-filter-select">
+                <option value="">جميع الطرق</option>
+                <option value="get">GET</option>
+                <option value="post">POST</option>
+                <option value="put">PUT</option>
+                <option value="delete">DELETE</option>
+              </select>
+              <select class="wd-filter-select">
+                <option value="">جميع الحالات</option>
+                <option value="active">نشط</option>
+                <option value="inactive">غير نشط</option>
+              </select>
             </div>
           </div>
 
-          <div class="wd-api-keys">
-            <div class="wd-api-keys-header">
-              <h3>مفاتيح API</h3>
-              <div class="wd-search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="بحث في المفاتيح...">
-              </div>
-            </div>
-
-            <div class="wd-api-table">
-              <div class="wd-table-header">
-                <div class="wd-table-cell">الاسم</div>
-                <div class="wd-table-cell">المفتاح</div>
-                <div class="wd-table-cell">الصلاحيات</div>
-                <div class="wd-table-cell">تاريخ الإنشاء</div>
-                <div class="wd-table-cell">آخر استخدام</div>
-                <div class="wd-table-cell">الإجراءات</div>
-              </div>
-              <div class="wd-table-body">
-                <div class="wd-table-row">
-                  <div class="wd-table-cell">
-                    <div class="wd-api-name">
-                      <i class="fas fa-key"></i>
-                      <span>مفتاح التطبيق الرئيسي</span>
+          <div class="wd-table-container">
+            <table class="wd-table">
+              <thead>
+                <tr>
+                  <th>الاسم</th>
+                  <th>Endpoint</th>
+                  <th>الطريقة</th>
+                  <th>الحالة</th>
+                  <th>الإجراءات</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="wd-api-info">
+                      <div class="wd-api-name">الحصول على الرسائل</div>
                     </div>
-                  </div>
-                  <div class="wd-table-cell">
-                    <code>sk_live_51Np...</code>
-                  </div>
-                  <div class="wd-table-cell">
-                    <span class="wd-tag">قراءة</span>
-                    <span class="wd-tag">كتابة</span>
-                  </div>
-                  <div class="wd-table-cell">15 يناير 2024</div>
-                  <div class="wd-table-cell">منذ 5 دقائق</div>
-                  <div class="wd-table-cell">
+                  </td>
+                  <td>
+                    <div class="wd-api-endpoint">/api/v1/messages</div>
+                  </td>
+                  <td>
+                    <span class="wd-api-method wd-api-method-get">
+                      <i class="fas fa-arrow-right"></i>
+                      GET
+                    </span>
+                  </td>
+                  <td>
+                    <span class="wd-status wd-status-active">
+                      <i class="fas fa-circle"></i>
+                      نشط
+                    </span>
+                  </td>
+                  <td>
                     <button class="wd-btn wd-btn-icon" title="تعديل">
                       <i class="fas fa-edit"></i>
                     </button>
                     <button class="wd-btn wd-btn-icon" title="حذف">
                       <i class="fas fa-trash"></i>
                     </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="wd-api-docs">
-            <h3>توثيق API</h3>
-            <div class="wd-docs-content">
-              <div class="wd-docs-step">
-                <h4>1. المصادقة</h4>
-                <p>للمصادقة على طلبات API، يجب تضمين مفتاح API في رأس الطلب:</p>
-                <pre><code>Authorization: Bearer sk_live_51Np...</code></pre>
-              </div>
-              <div class="wd-docs-step">
-                <h4>2. نقاط النهاية</h4>
-                <p>أهم نقاط النهاية في API:</p>
-                <ul>
-                  <li><code>GET /api/v1/contacts</code> - استرجاع جهات الاتصال</li>
-                  <li><code>POST /api/v1/messages</code> - إرسال رسالة</li>
-                  <li><code>GET /api/v1/campaigns</code> - استرجاع الحملات</li>
-                </ul>
-              </div>
-              <div class="wd-docs-step">
-                <h4>3. أمثلة</h4>
-                <p>مثال على إرسال رسالة باستخدام cURL:</p>
-                <pre><code>curl -X POST https://api.wadi.com/v1/messages \
-  -H "Authorization: Bearer sk_live_51Np..." \
-  -H "Content-Type: application/json" \
-  -d '{"to": "966501234567", "text": "مرحباً!"}'</code></pre>
-              </div>
-            </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="wd-api-info">
+                      <div class="wd-api-name">إرسال رسالة</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="wd-api-endpoint">/api/v1/messages/send</div>
+                  </td>
+                  <td>
+                    <span class="wd-api-method wd-api-method-post">
+                      <i class="fas fa-arrow-right"></i>
+                      POST
+                    </span>
+                  </td>
+                  <td>
+                    <span class="wd-status wd-status-active">
+                      <i class="fas fa-circle"></i>
+                      نشط
+                    </span>
+                  </td>
+                  <td>
+                    <button class="wd-btn wd-btn-icon" title="تعديل">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-btn wd-btn-icon" title="حذف">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="wd-api-info">
+                      <div class="wd-api-name">تحديث جهة اتصال</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="wd-api-endpoint">/api/v1/contacts/{id}</div>
+                  </td>
+                  <td>
+                    <span class="wd-api-method wd-api-method-put">
+                      <i class="fas fa-arrow-right"></i>
+                      PUT
+                    </span>
+                  </td>
+                  <td>
+                    <span class="wd-status wd-status-inactive">
+                      <i class="fas fa-circle"></i>
+                      غير نشط
+                    </span>
+                  </td>
+                  <td>
+                    <button class="wd-btn wd-btn-icon" title="تعديل">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-btn wd-btn-icon" title="حذف">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -237,7 +497,7 @@
       </button>
       <div class="wd-profile-floating-menu" id="profileFloatingMenu">
         <div class="wd-profile-floating-header">
-          <img src="../imgs/logo.png" alt="صورة المستخدم" class="wd-profile-floating-avatar" />
+          <img src="/imgs/logo.png" alt="صورة المستخدم" class="wd-profile-floating-avatar" />
           <div class="wd-profile-floating-info">
             <span class="wd-profile-floating-name">اسم المستخدم</span>
             <span class="wd-profile-floating-email">user@example.com</span>
@@ -277,6 +537,6 @@
       </div>
     </div>
 
-    <script src="../script.js"></script>
+    <script src="/script.js"></script>
   </body>
-</html>
+</html> 

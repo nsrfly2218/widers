@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>الحملات</title>
+    <title>الموارد</title>
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
@@ -11,20 +11,20 @@
         padding: 20px;
       }
 
-      .wd-campaigns-header {
+      .wd-resources-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 20px;
       }
 
-      .wd-campaigns-search {
+      .wd-resources-search {
         display: flex;
         gap: 10px;
         align-items: center;
       }
 
-      .wd-campaigns-search-input {
+      .wd-resources-search-input {
         padding: 8px 12px;
         border: 1px solid #ddd;
         border-radius: 6px;
@@ -32,12 +32,12 @@
         font-size: 14px;
       }
 
-      .wd-campaigns-filters {
+      .wd-resources-filters {
         display: flex;
         gap: 10px;
       }
 
-      .wd-campaigns-filter {
+      .wd-resources-filter {
         padding: 8px 12px;
         border: 1px solid #ddd;
         border-radius: 6px;
@@ -47,24 +47,24 @@
         transition: all 0.3s ease;
       }
 
-      .wd-campaigns-filter:hover {
+      .wd-resources-filter:hover {
         background: #f8f9fa;
       }
 
-      .wd-campaigns-filter.active {
+      .wd-resources-filter.active {
         background: #25D366;
         color: white;
         border-color: #25D366;
       }
 
-      .wd-campaigns-grid {
+      .wd-resources-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 20px;
         margin-top: 20px;
       }
 
-      .wd-campaign-card {
+      .wd-resource-card {
         background: white;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -72,43 +72,43 @@
         transition: all 0.3s ease;
       }
 
-      .wd-campaign-card:hover {
+      .wd-resource-card:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
 
-      .wd-campaign-image {
+      .wd-resource-image {
         width: 100%;
         height: 200px;
         object-fit: cover;
       }
 
-      .wd-campaign-content {
+      .wd-resource-content {
         padding: 15px;
       }
 
-      .wd-campaign-title {
+      .wd-resource-title {
         font-size: 16px;
         font-weight: 600;
         color: #333;
         margin-bottom: 8px;
       }
 
-      .wd-campaign-description {
+      .wd-resource-description {
         font-size: 14px;
         color: #666;
         margin-bottom: 12px;
         line-height: 1.5;
       }
 
-      .wd-campaign-meta {
+      .wd-resource-meta {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 12px;
       }
 
-      .wd-campaign-type {
+      .wd-resource-type {
         display: inline-flex;
         align-items: center;
         gap: 6px;
@@ -120,19 +120,19 @@
         color: #666;
       }
 
-      .wd-campaign-status {
+      .wd-resource-capacity {
         font-size: 12px;
         color: #666;
       }
 
-      .wd-campaign-actions {
+      .wd-resource-actions {
         display: flex;
         gap: 8px;
         border-top: 1px solid #eee;
         padding-top: 12px;
       }
 
-      .wd-campaign-action {
+      .wd-resource-action {
         flex: 1;
         padding: 8px;
         border-radius: 4px;
@@ -142,46 +142,46 @@
         text-align: center;
       }
 
-      .wd-campaign-action.view {
+      .wd-resource-action.view {
         background: #e6f4ea;
         color: #1e7e34;
       }
 
-      .wd-campaign-action.edit {
+      .wd-resource-action.edit {
         background: #fff3cd;
         color: #856404;
       }
 
-      .wd-campaign-action.delete {
+      .wd-resource-action.delete {
         background: #f8d7da;
         color: #721c24;
       }
 
-      .wd-campaign-action:hover {
+      .wd-resource-action:hover {
         opacity: 0.9;
       }
 
       @media (max-width: 768px) {
-        .wd-campaigns-header {
+        .wd-resources-header {
           flex-direction: column;
           gap: 10px;
         }
         
-        .wd-campaigns-search {
+        .wd-resources-search {
           width: 100%;
         }
         
-        .wd-campaigns-search-input {
+        .wd-resources-search-input {
           width: 100%;
         }
         
-        .wd-campaigns-filters {
+        .wd-resources-filters {
           width: 100%;
           overflow-x: auto;
           padding-bottom: 10px;
         }
         
-        .wd-campaigns-grid {
+        .wd-resources-grid {
           grid-template-columns: 1fr;
         }
       }
@@ -212,11 +212,11 @@
               <i class="fa-solid fa-diagram-project"></i>
               <span><a href="/flows.html" class="wd-nav-link">التدفقات</a></span>
             </li>
-            <li class="wd-nav-item active">
+            <li class="wd-nav-item">
               <i class="fas fa-bullhorn"></i>
               <span><a href="/campaigns.html" class="wd-nav-link">الحملات</a></span>
             </li>
-            <li class="wd-nav-item">
+            <li class="wd-nav-item active">
               <i class="fas fa-calendar"></i>
               <span><a href="/calendar.html" class="wd-nav-link">التقويم</a></span>
             </li>
@@ -253,34 +253,22 @@
         <div class="wd-secondary-content">
           <nav class="wd-secondary-nav">
             <ul>
-              <a href="/campaigns.html" class="wd-nav-link">
+              <a href="/calendar.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-calendar"></i>
+                  <span>التقويم</span>
+                </li>
+              </a>
+              <a href="/calendar/bookings.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-calendar-check"></i>
+                  <span>الحجوزات</span>
+                </li>
+              </a>
+              <a href="/calendar/resources.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item active">
-                  <i class="fas fa-bullhorn"></i>
-                  <span>الحملات</span>
-                </li>
-              </a>
-              <a href="/campaigns/scheduled.html" class="wd-nav-link">
-                <li class="wd-secondary-nav-item">
-                  <i class="fas fa-clock"></i>
-                  <span>الحملات المجدولة</span>
-                </li>
-              </a>
-              <a href="/campaigns/whatsapp.html" class="wd-nav-link">
-                <li class="wd-secondary-nav-item">
-                  <i class="fab fa-whatsapp"></i>
-                  <span>حملات واتساب</span>
-                </li>
-              </a>
-              <a href="/campaigns/email.html" class="wd-nav-link">
-                <li class="wd-secondary-nav-item">
-                  <i class="fas fa-envelope"></i>
-                  <span>حملات البريد</span>
-                </li>
-              </a>
-              <a href="/campaigns/sms.html" class="wd-nav-link">
-                <li class="wd-secondary-nav-item">
-                  <i class="fas fa-sms"></i>
-                  <span>حملات الرسائل</span>
+                  <i class="fas fa-cubes"></i>
+                  <span>الموارد</span>
                 </li>
               </a>
             </ul>
@@ -295,56 +283,56 @@
             <button class="wd-toggle-secondary" onclick="toggleSecondarySidebar()">
               <i class="fas fa-bars"></i>
             </button>
-            <h1>الحملات</h1>
+            <h1>الموارد</h1>
           </div>
           <div class="wd-header-actions">
             <button class="wd-btn wd-btn-primary">
               <i class="fas fa-plus"></i>
-              حملة جديدة
+              إضافة مورد
             </button>
           </div>
         </div>
 
         <div class="wd-content-body">
-          <div class="wd-campaigns-header">
-            <div class="wd-campaigns-search">
-              <input type="text" class="wd-campaigns-search-input" placeholder="بحث في الحملات..." />
+          <div class="wd-resources-header">
+            <div class="wd-resources-search">
+              <input type="text" class="wd-resources-search-input" placeholder="بحث في الموارد..." />
               <i class="fas fa-search"></i>
             </div>
-            <div class="wd-campaigns-filters">
-              <button class="wd-campaigns-filter active">الكل</button>
-              <button class="wd-campaigns-filter">نشطة</button>
-              <button class="wd-campaigns-filter">مكتملة</button>
-              <button class="wd-campaigns-filter">مسودة</button>
+            <div class="wd-resources-filters">
+              <button class="wd-resources-filter active">الكل</button>
+              <button class="wd-resources-filter">قاعات</button>
+              <button class="wd-resources-filter">معدات</button>
+              <button class="wd-resources-filter">موظفون</button>
             </div>
           </div>
 
-          <div class="wd-campaigns-grid">
-            <div class="wd-campaign-card">
-              <img src="/imgs/campaign1.jpg" alt="حملة تسويقية" class="wd-campaign-image" />
-              <div class="wd-campaign-content">
-                <h3 class="wd-campaign-title">حملة العروض الصيفية</h3>
-                <p class="wd-campaign-description">حملة تسويقية للعروض الصيفية مع خصومات تصل إلى 50%</p>
-                <div class="wd-campaign-meta">
-                  <span class="wd-campaign-type">
-                    <i class="fas fa-bullhorn"></i>
-                    تسويقية
+          <div class="wd-resources-grid">
+            <div class="wd-resource-card">
+              <img src="/imgs/room1.jpg" alt="قاعة اجتماعات" class="wd-resource-image" />
+              <div class="wd-resource-content">
+                <h3 class="wd-resource-title">قاعة اجتماعات رئيسية</h3>
+                <p class="wd-resource-description">قاعة مجهزة بأحدث التقنيات لعقد الاجتماعات والعروض التقديمية</p>
+                <div class="wd-resource-meta">
+                  <span class="wd-resource-type">
+                    <i class="fas fa-door-open"></i>
+                    قاعة
                   </span>
-                  <span class="wd-campaign-status">
-                    <i class="fas fa-circle" style="color: #28a745"></i>
-                    نشطة
+                  <span class="wd-resource-capacity">
+                    <i class="fas fa-users"></i>
+                    20 شخص
                   </span>
                 </div>
-                <div class="wd-campaign-actions">
-                  <button class="wd-campaign-action view">
+                <div class="wd-resource-actions">
+                  <button class="wd-resource-action view">
                     <i class="fas fa-eye"></i>
                     عرض
                   </button>
-                  <button class="wd-campaign-action edit">
+                  <button class="wd-resource-action edit">
                     <i class="fas fa-edit"></i>
                     تعديل
                   </button>
-                  <button class="wd-campaign-action delete">
+                  <button class="wd-resource-action delete">
                     <i class="fas fa-trash"></i>
                     حذف
                   </button>
@@ -352,31 +340,31 @@
               </div>
             </div>
 
-            <div class="wd-campaign-card">
-              <img src="/imgs/campaign2.jpg" alt="حملة توعوية" class="wd-campaign-image" />
-              <div class="wd-campaign-content">
-                <h3 class="wd-campaign-title">حملة التوعية الصحية</h3>
-                <p class="wd-campaign-description">حملة توعوية حول الصحة العامة والوقاية من الأمراض</p>
-                <div class="wd-campaign-meta">
-                  <span class="wd-campaign-type">
-                    <i class="fas fa-heart"></i>
-                    توعوية
+            <div class="wd-resource-card">
+              <img src="/imgs/equipment1.jpg" alt="معدات عرض" class="wd-resource-image" />
+              <div class="wd-resource-content">
+                <h3 class="wd-resource-title">جهاز عرض</h3>
+                <p class="wd-resource-description">جهاز عرض عالي الدقة مع شاشة كبيرة للعروض التقديمية</p>
+                <div class="wd-resource-meta">
+                  <span class="wd-resource-type">
+                    <i class="fas fa-tv"></i>
+                    معدات
                   </span>
-                  <span class="wd-campaign-status">
-                    <i class="fas fa-circle" style="color: #ffc107"></i>
-                    مسودة
+                  <span class="wd-resource-capacity">
+                    <i class="fas fa-check"></i>
+                    متاح
                   </span>
                 </div>
-                <div class="wd-campaign-actions">
-                  <button class="wd-campaign-action view">
+                <div class="wd-resource-actions">
+                  <button class="wd-resource-action view">
                     <i class="fas fa-eye"></i>
                     عرض
                   </button>
-                  <button class="wd-campaign-action edit">
+                  <button class="wd-resource-action edit">
                     <i class="fas fa-edit"></i>
                     تعديل
                   </button>
-                  <button class="wd-campaign-action delete">
+                  <button class="wd-resource-action delete">
                     <i class="fas fa-trash"></i>
                     حذف
                   </button>
@@ -384,31 +372,31 @@
               </div>
             </div>
 
-            <div class="wd-campaign-card">
-              <img src="/imgs/campaign3.jpg" alt="حملة ولاء" class="wd-campaign-image" />
-              <div class="wd-campaign-content">
-                <h3 class="wd-campaign-title">برنامج ولاء العملاء</h3>
-                <p class="wd-campaign-description">حملة مكافآت وخصومات حصرية للعملاء المميزين</p>
-                <div class="wd-campaign-meta">
-                  <span class="wd-campaign-type">
-                    <i class="fas fa-star"></i>
-                    ولاء
+            <div class="wd-resource-card">
+              <img src="/imgs/staff1.jpg" alt="مدرب" class="wd-resource-image" />
+              <div class="wd-resource-content">
+                <h3 class="wd-resource-title">أحمد محمد - مدرب</h3>
+                <p class="wd-resource-description">مدرب معتمد في مجال تطوير الأعمال والقيادة</p>
+                <div class="wd-resource-meta">
+                  <span class="wd-resource-type">
+                    <i class="fas fa-user-tie"></i>
+                    موظف
                   </span>
-                  <span class="wd-campaign-status">
-                    <i class="fas fa-circle" style="color: #6c757d"></i>
-                    مكتملة
+                  <span class="wd-resource-capacity">
+                    <i class="fas fa-check"></i>
+                    متاح
                   </span>
                 </div>
-                <div class="wd-campaign-actions">
-                  <button class="wd-campaign-action view">
+                <div class="wd-resource-actions">
+                  <button class="wd-resource-action view">
                     <i class="fas fa-eye"></i>
                     عرض
                   </button>
-                  <button class="wd-campaign-action edit">
+                  <button class="wd-resource-action edit">
                     <i class="fas fa-edit"></i>
                     تعديل
                   </button>
-                  <button class="wd-campaign-action delete">
+                  <button class="wd-resource-action delete">
                     <i class="fas fa-trash"></i>
                     حذف
                   </button>

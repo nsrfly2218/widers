@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الوسوم - التحليلات</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
+    <div class="wd-container">
+      <!-- القسم الأول: القائمة الجانبية -->
+      <aside class="wd-sidebar">
+        <div class="wd-logo">
+          <img src="/imgs/logo.png" alt="شعار المنصة" />
+        </div>
+        <nav class="wd-nav">
+          <ul>
+            <li class="wd-nav-item active">
+              <i class="fa-solid fa-gauge"></i>
+              <span
+                ><a href="/index.html" class="wd-nav-link"
+                  >لوحة التحكم</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-comments"></i>
+              <span
+                ><a href="/chat.html" class="wd-nav-link">المحادثات</a></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-users"></i>
+              <span
+                ><a href="/contacts.html" class="wd-nav-link"
+                  >جهات الاتصال</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-diagram-project"></i>
+              <span
+                ><a href="/flows.html" class="wd-nav-link">التدفقات</a></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-bullhorn"></i>
+              <span
+                ><a href="/campaigns.html" class="wd-nav-link"
+                  >الحملات</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-calendar"></i>
+              <span
+                ><a href="/calendar.html" class="wd-nav-link"
+                  >التقويم</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-file-alt"></i>
+              <span
+                ><a href="/contents.html" class="wd-nav-link"
+                  >المحتويات</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-code"></i>
+              <span
+                ><a href="/developers.html" class="wd-nav-link"
+                  >المطورين</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-cog"></i>
+              <span
+                ><a href="/settings.html" class="wd-nav-link"
+                  >الإعدادات</a
+                ></span
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- القسم الثاني: القائمة الجانبية الثانية -->
+      <div class="wd-secondary-sidebar">
+        <div class="wd-account-switcher">
+          <div class="wd-account-info">
+            <img
+              src="/imgs/logo.png"
+              alt="صورة الحساب"
+              class="wd-account-avatar"
+            />
+            <div class="wd-account-details">
+              <span class="wd-account-name">حساب الشركة</span>
+              <span class="wd-account-type">مدير</span>
+            </div>
+          </div>
+          <button class="wd-account-switch">
+            <i class="fas fa-exchange-alt"></i>
+          </button>
+        </div>
+        <div class="wd-secondary-content">
+          <nav class="wd-secondary-nav">
+            <ul>
+              <a href="/index.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-chart-pie"></i>
+                  <span>نظرة عامة</span>
+                </li>
+              </a>
+              <a href="/analytics/channels.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-broadcast-tower"></i>
+                  <span>قنوات التواصل</span>
+                </li>
+              </a>
+              <a href="/analytics/chat.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-comments"></i>
+                  <span>المحادثات</span>
+                </li>
+              </a>
+              <a href="/analytics/agents.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-users"></i>
+                  <span>الموظفين</span>
+                </li>
+              </a>
+              <a href="/analytics/teams.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-user-friends"></i>
+                  <span>الفرق</span>
+                </li>
+              </a>
+              <a href="/analytics/tags.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item active">
+                  <i class="fas fa-tags"></i>
+                  <span>الوسوم</span>
+                </li>
+              </a>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- القسم الثالث: المحتوى الرئيسي -->
+      <main class="wd-main-content">
+        <div class="wd-content-header">
+          <div class="wd-header-left">
+            <button
+              class="wd-toggle-secondary"
+              onclick="toggleSecondarySidebar()"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+            <h1>تحليلات الوسوم</h1>
+          </div>
+          <div class="wd-header-actions">
+            <button class="wd-btn">
+              <i class="fas fa-download"></i>
+              تحميل التقرير
+            </button>
+            <button class="wd-btn">
+              <i class="fas fa-calendar"></i>
+              الفترة الزمنية
+            </button>
+          </div>
+        </div>
+
+        <div class="wd-content-body">
+          <!-- قسم الإحصائيات البسيطة -->
+          <div class="wd-section">
+            <div class="wd-cards-container">
+              <div class="wd-card">
+                <div class="wd-card-header">
+                  <h3>إجمالي الوسوم</h3>
+                </div>
+                <div class="wd-card-body">
+                  <div class="wd-stat-item">
+                    <i class="fas fa-tags"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">45</span>
+                      <span class="wd-stat-label">وسم</span>
+                    </div>
+                  </div>
+                  <div class="wd-stat-item">
+                    <i class="fas fa-tag"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">+5</span>
+                      <span class="wd-stat-label">جديد هذا الشهر</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wd-card">
+                <div class="wd-card-header">
+                  <h3>متوسط استخدام الوسم</h3>
+                </div>
+                <div class="wd-card-body">
+                  <div class="wd-stat-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">156</span>
+                      <span class="wd-stat-label">استخدام</span>
+                    </div>
+                  </div>
+                  <div class="wd-stat-item">
+                    <i class="fas fa-arrow-up"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">+8%</span>
+                      <span class="wd-stat-label">زيادة</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wd-card">
+                <div class="wd-card-header">
+                  <h3>الوسوم الأكثر استخداماً</h3>
+                </div>
+                <div class="wd-card-body">
+                  <div class="wd-stat-item">
+                    <i class="fas fa-star"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">#دعم_فني</span>
+                      <span class="wd-stat-label">450 استخدام</span>
+                    </div>
+                  </div>
+                  <div class="wd-stat-item">
+                    <i class="fas fa-star"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">#مبيعات</span>
+                      <span class="wd-stat-label">380 استخدام</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wd-card">
+                <div class="wd-card-header">
+                  <h3>معدل التصنيف</h3>
+                </div>
+                <div class="wd-card-body">
+                  <div class="wd-stat-item">
+                    <i class="fas fa-percentage"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">85%</span>
+                      <span class="wd-stat-label">تصنيف صحيح</span>
+                    </div>
+                  </div>
+                  <div class="wd-stat-item">
+                    <i class="fas fa-arrow-up"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">+4%</span>
+                      <span class="wd-stat-label">تحسن</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- قسم التحليلات الاحترافية -->
+          <div class="wd-section">
+            <div class="wd-cards-container">
+              <div class="wd-card wd-chart-card">
+                <div class="wd-card-header">
+                  <h3>توزيع الوسوم حسب النوع</h3>
+                </div>
+                <div class="wd-card-body">
+                  <canvas id="tagsTypeDistributionChart"></canvas>
+                </div>
+              </div>
+
+              <div class="wd-card wd-chart-card">
+                <div class="wd-card-header">
+                  <h3>اتجاه استخدام الوسوم</h3>
+                </div>
+                <div class="wd-card-body">
+                  <canvas id="tagsUsageTrendChart"></canvas>
+                </div>
+              </div>
+
+              <div class="wd-card wd-chart-card">
+                <div class="wd-card-header">
+                  <h3>الوسوم الأكثر شيوعاً</h3>
+                </div>
+                <div class="wd-card-body">
+                  <canvas id="popularTagsChart"></canvas>
+                </div>
+              </div>
+
+              <div class="wd-card wd-chart-card">
+                <div class="wd-card-header">
+                  <h3>مقارنة أداء الوسوم</h3>
+                </div>
+                <div class="wd-card-body">
+                  <canvas id="tagsPerformanceChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      // توزيع الوسوم حسب النوع
+      const tagsTypeDistributionCtx = document
+        .getElementById("tagsTypeDistributionChart")
+        .getContext("2d");
+      new Chart(tagsTypeDistributionCtx, {
+        type: "pie",
+        data: {
+          labels: ["دعم فني", "مبيعات", "شكاوى", "استفسارات", "آخر"],
+          datasets: [
+            {
+              data: [35, 25, 20, 15, 5],
+              backgroundColor: [
+                "#00bc60",
+                "#4a90e2",
+                "#9b59b6",
+                "#e67e22",
+                "#e74c3c",
+              ],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "bottom",
+            },
+          },
+        },
+      });
+
+      // اتجاه استخدام الوسوم
+      const tagsUsageTrendCtx = document
+        .getElementById("tagsUsageTrendChart")
+        .getContext("2d");
+      new Chart(tagsUsageTrendCtx, {
+        type: "line",
+        data: {
+          labels: ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو"],
+          datasets: [
+            {
+              label: "عدد مرات الاستخدام",
+              data: [1200, 1900, 3000, 5000, 2000, 3000],
+              borderColor: "#00bc60",
+              tension: 0.1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "bottom",
+            },
+          },
+        },
+      });
+
+      // الوسوم الأكثر شيوعاً
+      const popularTagsCtx = document
+        .getElementById("popularTagsChart")
+        .getContext("2d");
+      new Chart(popularTagsCtx, {
+        type: "bar",
+        data: {
+          labels: [
+            "#دعم_فني",
+            "#مبيعات",
+            "#شكاوى",
+            "#استفسارات",
+            "#خدمة_عملاء",
+          ],
+          datasets: [
+            {
+              label: "عدد مرات الاستخدام",
+              data: [450, 380, 250, 200, 150],
+              backgroundColor: "#4a90e2",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "bottom",
+            },
+          },
+        },
+      });
+
+      // مقارنة أداء الوسوم
+      const tagsPerformanceCtx = document
+        .getElementById("tagsPerformanceChart")
+        .getContext("2d");
+      new Chart(tagsPerformanceCtx, {
+        type: "radar",
+        data: {
+          labels: [
+            "معدل الاستخدام",
+            "دقة التصنيف",
+            "تغطية المحادثات",
+            "تنوع الاستخدام",
+            "معدل التكرار",
+          ],
+          datasets: [
+            {
+              label: "هذا الشهر",
+              data: [90, 85, 80, 95, 75],
+              backgroundColor: "rgba(0, 188, 96, 0.2)",
+              borderColor: "#00bc60",
+            },
+            {
+              label: "الشهر الماضي",
+              data: [80, 75, 70, 85, 65],
+              backgroundColor: "rgba(74, 144, 226, 0.2)",
+              borderColor: "#4a90e2",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "bottom",
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

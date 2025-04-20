@@ -3,67 +3,264 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>جهات الاتصال</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>السجلات</title>
+    <link rel="stylesheet" href="/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-  </head>
+    <style>
+      .wd-content-body {
+        padding: 20px;
+      }
 
+      .wd-search-container {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .wd-search-input {
+        position: relative;
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .wd-search-input i {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+      }
+
+      .wd-search-input input {
+        width: 100%;
+        padding: 12px 40px 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .wd-search-input input:focus {
+        outline: none;
+        border-color: #25d366;
+        box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.1);
+      }
+
+      .wd-filter-options {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .wd-filter-select {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: white;
+        color: #333;
+        font-size: 14px;
+        min-width: 150px;
+      }
+
+      .wd-table-container {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+
+      .wd-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .wd-table th {
+        background: #f8f9fa;
+        padding: 15px;
+        text-align: right;
+        font-weight: 600;
+        color: #333;
+        border-bottom: 2px solid #eee;
+      }
+
+      .wd-table td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        color: #555;
+      }
+
+      .wd-table tr:hover {
+        background-color: #f8f9fa;
+      }
+
+      .wd-log-info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .wd-log-message {
+        font-weight: 500;
+        color: #333;
+      }
+
+      .wd-log-details {
+        font-size: 13px;
+        color: #666;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 300px;
+      }
+
+      .wd-log-timestamp {
+        font-family: monospace;
+        background: #f8f9fa;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 13px;
+        color: #333;
+      }
+
+      .wd-log-level {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+
+      .wd-log-level i {
+        color: #25d366;
+      }
+
+      .wd-log-level-info {
+        background: #e6f4ea;
+        color: #1e7e34;
+      }
+
+      .wd-log-level-warning {
+        background: #fff3cd;
+        color: #856404;
+      }
+
+      .wd-log-level-error {
+        background: #f8d7da;
+        color: #721c24;
+      }
+
+      .wd-btn-icon {
+        padding: 8px;
+        margin: 0 5px;
+        border-radius: 6px;
+        color: #666;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-btn-icon:hover {
+        background: #f0f0f0;
+        color: #333;
+      }
+
+      .wd-btn-icon i {
+        font-size: 16px;
+      }
+
+      .wd-btn-icon[title]:hover:after {
+        content: attr(title);
+        position: absolute;
+        background: #333;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        margin-top: 5px;
+        z-index: 1;
+      }
+
+      @media (max-width: 768px) {
+        .wd-search-container {
+          flex-direction: column;
+        }
+
+        .wd-filter-options {
+          width: 100%;
+        }
+
+        .wd-filter-select {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
   <body>
     <div class="wd-container">
       <!-- القسم الأول: القائمة الجانبية -->
       <aside class="wd-sidebar">
         <div class="wd-logo">
-          <img src="imgs/logo.png" alt="شعار المنصة" />
+          <img src="/imgs/logo.png" alt="شعار المنصة" />
         </div>
         <nav class="wd-nav">
           <ul>
             <li class="wd-nav-item">
               <i class="fa-solid fa-gauge"></i>
               <span
-                ><a href="index.html" class="wd-nav-link">لوحة التحكم</a></span
+                ><a href="/index.html" class="wd-nav-link">لوحة التحكم</a></span
               >
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-comments"></i>
-              <span><a href="chat.html" class="wd-nav-link">المحادثات</a></span>
+              <span
+                ><a href="/chat.html" class="wd-nav-link">المحادثات</a></span
+              >
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-users"></i>
               <span
-                ><a href="contacts.html" class="wd-nav-link"
+                ><a href="/contacts.html" class="wd-nav-link"
                   >جهات الاتصال</a
                 ></span
               >
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-diagram-project"></i>
-              <span><a href="flows.html" class="wd-nav-link">التدفقات</a></span>
+              <span
+                ><a href="/flows.html" class="wd-nav-link">التدفقات</a></span
+              >
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-bullhorn"></i>
               <span
-                ><a href="campaigns.html" class="wd-nav-link">الحملات</a></span
+                ><a href="/campaigns.html" class="wd-nav-link">الحملات</a></span
               >
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-calendar"></i>
               <span
-                ><a href="calendar.html" class="wd-nav-link">التقويم</a></span
-              >
-            </li>
-            <li class="wd-nav-item">
-              <i class="fas fa-file-alt"></i>
-              <span
-                ><a href="contents.html" class="wd-nav-link">المحتويات</a></span
+                ><a href="/calendar.html" class="wd-nav-link">التقويم</a></span
               >
             </li>
             <li class="wd-nav-item active">
+              <i class="fas fa-file-alt"></i>
+              <span
+                ><a href="/contents.html" class="wd-nav-link"
+                  >المحتويات</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
               <i class="fas fa-code"></i>
               <span
-                ><a href="developers.html" class="wd-nav-link"
+                ><a href="/developers.html" class="wd-nav-link"
                   >المطورين</a
                 ></span
               >
@@ -71,7 +268,9 @@
             <li class="wd-nav-item">
               <i class="fas fa-cog"></i>
               <span
-                ><a href="settings.html" class="wd-nav-link">الإعدادات</a></span
+                ><a href="/settings.html" class="wd-nav-link"
+                  >الإعدادات</a
+                ></span
               >
             </li>
           </ul>
@@ -83,7 +282,7 @@
         <div class="wd-account-switcher">
           <div class="wd-account-info">
             <img
-              src="imgs/logo.png"
+              src="/imgs/logo.png"
               alt="صورة الحساب"
               class="wd-account-avatar"
             />
@@ -99,30 +298,30 @@
         <div class="wd-secondary-content">
           <nav class="wd-secondary-nav">
             <ul>
-              <a href="developers.html" class="wd-nav-link">
-              <li class="wd-secondary-nav-item active">
-                <i class="fas fa-file-alt"></i>
-                <span>السجلات</span>
-              </li>
-            </a>
-              <a href="developers/integrations.html" class="wd-nav-link">
-              <li class="wd-secondary-nav-item">
-                <i class="fas fa-plug"></i>
-                <span>التكاملات</span>
-              </li>
-            </a>
-              <a href="developers/webhook.html" class="wd-nav-link">
-              <li class="wd-secondary-nav-item">
-                <i class="fas fa-random"></i>
-                <span>Webhook</span>
-              </li>
-            </a>
-              <a href="developers/api.html" class="wd-nav-link">
-              <li class="wd-secondary-nav-item">
-                <i class="fas fa-code"></i>
-                <span>API</span>
-              </li>
-            </a>
+              <a href="/developers.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-user-cog"></i>
+                  <span>السجلات</span>
+                </li>
+              </a>
+              <a href="/developers/integrations.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-cogs"></i>
+                  <span>التكاملات</span>
+                </li>
+              </a>
+              <a href="/developers/webhook.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-tags"></i>
+                  <span>Webhook</span>
+                </li>
+              </a>
+              <a href="/developers/api.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-keyboard"></i>
+                  <span>API</span>
+                </li>
+              </a>
             </ul>
           </nav>
         </div>
@@ -142,106 +341,143 @@
           </div>
           <div class="wd-header-actions">
             <button class="wd-btn wd-btn-primary">
-              <i class="fas fa-plus"></i>
-              إضافة سجل جديد
+              <i class="fas fa-download"></i>
+              تصدير السجلات
             </button>
           </div>
         </div>
 
-        <div class="wd-logs-section">
-          <div class="wd-logs-filters">
-            <div class="wd-search-box">
+        <div class="wd-content-body">
+          <div class="wd-search-container">
+            <div class="wd-search-input">
               <i class="fas fa-search"></i>
-              <input type="text" placeholder="بحث في السجلات...">
+              <input
+                type="text"
+                placeholder="ابحث في السجلات..."
+                id="logsSearch"
+              />
             </div>
-            <div class="wd-filters-group">
+            <div class="wd-filter-options">
               <select class="wd-filter-select">
-                <option value="">نوع السجل</option>
-                <option value="error">خطأ</option>
-                <option value="warning">تحذير</option>
+                <option value="">جميع المستويات</option>
                 <option value="info">معلومات</option>
+                <option value="warning">تحذير</option>
+                <option value="error">خطأ</option>
               </select>
               <select class="wd-filter-select">
-                <option value="">الفترة الزمنية</option>
-                <option value="today">اليوم</option>
-                <option value="week">الأسبوع</option>
-                <option value="month">الشهر</option>
+                <option value="">جميع المصادر</option>
+                <option value="system">النظام</option>
+                <option value="user">المستخدم</option>
+                <option value="api">API</option>
               </select>
-              <button class="wd-btn wd-btn-secondary">
-                <i class="fas fa-filter"></i>
-                تطبيق الفلاتر
-              </button>
             </div>
           </div>
 
-          <div class="wd-logs-table">
-            <div class="wd-table-header">
-              <div class="wd-table-cell">التاريخ</div>
-              <div class="wd-table-cell">نوع السجل</div>
-              <div class="wd-table-cell">الوصف</div>
-              <div class="wd-table-cell">المصدر</div>
-              <div class="wd-table-cell">الإجراءات</div>
-            </div>
-            <div class="wd-table-body">
-              <div class="wd-table-row">
-                <div class="wd-table-cell">2024-03-15 14:30</div>
-                <div class="wd-table-cell">
-                  <span class="wd-log-type error">خطأ</span>
-                </div>
-                <div class="wd-table-cell">فشل في الاتصال بخدمة API</div>
-                <div class="wd-table-cell">خدمة التكامل</div>
-                <div class="wd-table-cell">
-                  <button class="wd-btn wd-btn-icon" title="عرض التفاصيل">
-                    <i class="fas fa-eye"></i>
-                  </button>
-                  <button class="wd-btn wd-btn-icon" title="حذف السجل">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="wd-table-row">
-                <div class="wd-table-cell">2024-03-15 13:45</div>
-                <div class="wd-table-cell">
-                  <span class="wd-log-type warning">تحذير</span>
-                </div>
-                <div class="wd-table-cell">انخفاض في سرعة الاستجابة</div>
-                <div class="wd-table-cell">خادم الويب</div>
-                <div class="wd-table-cell">
-                  <button class="wd-btn wd-btn-icon" title="عرض التفاصيل">
-                    <i class="fas fa-eye"></i>
-                  </button>
-                  <button class="wd-btn wd-btn-icon" title="حذف السجل">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="wd-table-row">
-                <div class="wd-table-cell">2024-03-15 12:20</div>
-                <div class="wd-table-cell">
-                  <span class="wd-log-type info">معلومات</span>
-                </div>
-                <div class="wd-table-cell">تم تحديث البيانات بنجاح</div>
-                <div class="wd-table-cell">قاعدة البيانات</div>
-                <div class="wd-table-cell">
-                  <button class="wd-btn wd-btn-icon" title="عرض التفاصيل">
-                    <i class="fas fa-eye"></i>
-                  </button>
-                  <button class="wd-btn wd-btn-icon" title="حذف السجل">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="wd-pagination">
-            <button class="wd-pagination-btn" disabled>
-              <i class="fas fa-chevron-right"></i>
-            </button>
-            <span class="wd-page-info">الصفحة 1 من 5</span>
-            <button class="wd-pagination-btn">
-              <i class="fas fa-chevron-left"></i>
-            </button>
+          <div class="wd-table-container">
+            <table class="wd-table">
+              <thead>
+                <tr>
+                  <th>الرسالة</th>
+                  <th>التفاصيل</th>
+                  <th>المستوى</th>
+                  <th>التاريخ</th>
+                  <th>الإجراءات</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="wd-log-info">
+                      <div class="wd-log-message">
+                        تم تسجيل دخول المستخدم بنجاح
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="wd-log-details">
+                      المستخدم: أحمد محمد - IP: 192.168.1.1
+                    </div>
+                  </td>
+                  <td>
+                    <span class="wd-log-level wd-log-level-info">
+                      <i class="fas fa-info-circle"></i>
+                      معلومات
+                    </span>
+                  </td>
+                  <td>
+                    <div class="wd-log-timestamp">2024-03-15 14:30:22</div>
+                  </td>
+                  <td>
+                    <button class="wd-btn wd-btn-icon" title="عرض التفاصيل">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="wd-btn wd-btn-icon" title="حذف">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="wd-log-info">
+                      <div class="wd-log-message">فشل محاولة تسجيل الدخول</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="wd-log-details">
+                      اسم المستخدم: admin - IP: 192.168.1.2
+                    </div>
+                  </td>
+                  <td>
+                    <span class="wd-log-level wd-log-level-warning">
+                      <i class="fas fa-exclamation-triangle"></i>
+                      تحذير
+                    </span>
+                  </td>
+                  <td>
+                    <div class="wd-log-timestamp">2024-03-15 14:25:10</div>
+                  </td>
+                  <td>
+                    <button class="wd-btn wd-btn-icon" title="عرض التفاصيل">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="wd-btn wd-btn-icon" title="حذف">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="wd-log-info">
+                      <div class="wd-log-message">
+                        خطأ في الاتصال بقاعدة البيانات
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="wd-log-details">
+                      Error: Connection timeout - Server: db1
+                    </div>
+                  </td>
+                  <td>
+                    <span class="wd-log-level wd-log-level-error">
+                      <i class="fas fa-times-circle"></i>
+                      خطأ
+                    </span>
+                  </td>
+                  <td>
+                    <div class="wd-log-timestamp">2024-03-15 14:20:05</div>
+                  </td>
+                  <td>
+                    <button class="wd-btn wd-btn-icon" title="عرض التفاصيل">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="wd-btn wd-btn-icon" title="حذف">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -253,7 +489,11 @@
       </button>
       <div class="wd-profile-floating-menu" id="profileFloatingMenu">
         <div class="wd-profile-floating-header">
-          <img src="imgs/logo.png" alt="صورة المستخدم" class="wd-profile-floating-avatar" />
+          <img
+            src="/imgs/logo.png"
+            alt="صورة المستخدم"
+            class="wd-profile-floating-avatar"
+          />
           <div class="wd-profile-floating-info">
             <span class="wd-profile-floating-name">اسم المستخدم</span>
             <span class="wd-profile-floating-email">user@example.com</span>
@@ -262,15 +502,24 @@
         <div class="wd-profile-floating-status">
           <span class="wd-profile-floating-status-title">تعيين نفسك ك:</span>
           <div class="wd-profile-floating-status-options">
-            <button class="wd-profile-floating-status-option active" data-status="available">
+            <button
+              class="wd-profile-floating-status-option active"
+              data-status="available"
+            >
               <i class="fas fa-circle"></i>
               <span>متصل</span>
             </button>
-            <button class="wd-profile-floating-status-option" data-status="busy">
+            <button
+              class="wd-profile-floating-status-option"
+              data-status="busy"
+            >
               <i class="fas fa-circle"></i>
               <span>مشغول</span>
             </button>
-            <button class="wd-profile-floating-status-option" data-status="offline">
+            <button
+              class="wd-profile-floating-status-option"
+              data-status="offline"
+            >
               <i class="fas fa-circle"></i>
               <span>غير متصل</span>
             </button>
@@ -293,6 +542,6 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
   </body>
 </html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>الحملات</title>
+    <title>حملات الرسائل</title>
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
@@ -11,20 +11,20 @@
         padding: 20px;
       }
 
-      .wd-campaigns-header {
+      .wd-sms-campaigns-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 20px;
       }
 
-      .wd-campaigns-search {
+      .wd-sms-campaigns-search {
         display: flex;
         gap: 10px;
         align-items: center;
       }
 
-      .wd-campaigns-search-input {
+      .wd-sms-campaigns-search-input {
         padding: 8px 12px;
         border: 1px solid #ddd;
         border-radius: 6px;
@@ -32,12 +32,12 @@
         font-size: 14px;
       }
 
-      .wd-campaigns-filters {
+      .wd-sms-campaigns-filters {
         display: flex;
         gap: 10px;
       }
 
-      .wd-campaigns-filter {
+      .wd-sms-campaigns-filter {
         padding: 8px 12px;
         border: 1px solid #ddd;
         border-radius: 6px;
@@ -47,24 +47,24 @@
         transition: all 0.3s ease;
       }
 
-      .wd-campaigns-filter:hover {
+      .wd-sms-campaigns-filter:hover {
         background: #f8f9fa;
       }
 
-      .wd-campaigns-filter.active {
-        background: #25D366;
+      .wd-sms-campaigns-filter.active {
+        background: #6610f2;
         color: white;
-        border-color: #25D366;
+        border-color: #6610f2;
       }
 
-      .wd-campaigns-grid {
+      .wd-sms-campaigns-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 20px;
         margin-top: 20px;
       }
 
-      .wd-campaign-card {
+      .wd-sms-campaign-card {
         background: white;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -72,43 +72,43 @@
         transition: all 0.3s ease;
       }
 
-      .wd-campaign-card:hover {
+      .wd-sms-campaign-card:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
 
-      .wd-campaign-image {
+      .wd-sms-campaign-image {
         width: 100%;
         height: 200px;
         object-fit: cover;
       }
 
-      .wd-campaign-content {
+      .wd-sms-campaign-content {
         padding: 15px;
       }
 
-      .wd-campaign-title {
+      .wd-sms-campaign-title {
         font-size: 16px;
         font-weight: 600;
         color: #333;
         margin-bottom: 8px;
       }
 
-      .wd-campaign-description {
+      .wd-sms-campaign-description {
         font-size: 14px;
         color: #666;
         margin-bottom: 12px;
         line-height: 1.5;
       }
 
-      .wd-campaign-meta {
+      .wd-sms-campaign-meta {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 12px;
       }
 
-      .wd-campaign-type {
+      .wd-sms-campaign-type {
         display: inline-flex;
         align-items: center;
         gap: 6px;
@@ -120,19 +120,19 @@
         color: #666;
       }
 
-      .wd-campaign-status {
+      .wd-sms-campaign-status {
         font-size: 12px;
         color: #666;
       }
 
-      .wd-campaign-actions {
+      .wd-sms-campaign-actions {
         display: flex;
         gap: 8px;
         border-top: 1px solid #eee;
         padding-top: 12px;
       }
 
-      .wd-campaign-action {
+      .wd-sms-campaign-action {
         flex: 1;
         padding: 8px;
         border-radius: 4px;
@@ -142,46 +142,46 @@
         text-align: center;
       }
 
-      .wd-campaign-action.view {
+      .wd-sms-campaign-action.view {
         background: #e6f4ea;
         color: #1e7e34;
       }
 
-      .wd-campaign-action.edit {
+      .wd-sms-campaign-action.edit {
         background: #fff3cd;
         color: #856404;
       }
 
-      .wd-campaign-action.delete {
+      .wd-sms-campaign-action.delete {
         background: #f8d7da;
         color: #721c24;
       }
 
-      .wd-campaign-action:hover {
+      .wd-sms-campaign-action:hover {
         opacity: 0.9;
       }
 
       @media (max-width: 768px) {
-        .wd-campaigns-header {
+        .wd-sms-campaigns-header {
           flex-direction: column;
           gap: 10px;
         }
         
-        .wd-campaigns-search {
+        .wd-sms-campaigns-search {
           width: 100%;
         }
         
-        .wd-campaigns-search-input {
+        .wd-sms-campaigns-search-input {
           width: 100%;
         }
         
-        .wd-campaigns-filters {
+        .wd-sms-campaigns-filters {
           width: 100%;
           overflow-x: auto;
           padding-bottom: 10px;
         }
         
-        .wd-campaigns-grid {
+        .wd-sms-campaigns-grid {
           grid-template-columns: 1fr;
         }
       }
@@ -254,7 +254,7 @@
           <nav class="wd-secondary-nav">
             <ul>
               <a href="/campaigns.html" class="wd-nav-link">
-                <li class="wd-secondary-nav-item active">
+                <li class="wd-secondary-nav-item">
                   <i class="fas fa-bullhorn"></i>
                   <span>الحملات</span>
                 </li>
@@ -278,7 +278,7 @@
                 </li>
               </a>
               <a href="/campaigns/sms.html" class="wd-nav-link">
-                <li class="wd-secondary-nav-item">
+                <li class="wd-secondary-nav-item active">
                   <i class="fas fa-sms"></i>
                   <span>حملات الرسائل</span>
                 </li>
@@ -295,56 +295,56 @@
             <button class="wd-toggle-secondary" onclick="toggleSecondarySidebar()">
               <i class="fas fa-bars"></i>
             </button>
-            <h1>الحملات</h1>
+            <h1>حملات الرسائل</h1>
           </div>
           <div class="wd-header-actions">
             <button class="wd-btn wd-btn-primary">
-              <i class="fas fa-plus"></i>
-              حملة جديدة
+              <i class="fas fa-sms"></i>
+              حملة رسائل جديدة
             </button>
           </div>
         </div>
 
         <div class="wd-content-body">
-          <div class="wd-campaigns-header">
-            <div class="wd-campaigns-search">
-              <input type="text" class="wd-campaigns-search-input" placeholder="بحث في الحملات..." />
+          <div class="wd-sms-campaigns-header">
+            <div class="wd-sms-campaigns-search">
+              <input type="text" class="wd-sms-campaigns-search-input" placeholder="بحث في حملات الرسائل..." />
               <i class="fas fa-search"></i>
             </div>
-            <div class="wd-campaigns-filters">
-              <button class="wd-campaigns-filter active">الكل</button>
-              <button class="wd-campaigns-filter">نشطة</button>
-              <button class="wd-campaigns-filter">مكتملة</button>
-              <button class="wd-campaigns-filter">مسودة</button>
+            <div class="wd-sms-campaigns-filters">
+              <button class="wd-sms-campaigns-filter active">الكل</button>
+              <button class="wd-sms-campaigns-filter">نشطة</button>
+              <button class="wd-sms-campaigns-filter">مكتملة</button>
+              <button class="wd-sms-campaigns-filter">مسودة</button>
             </div>
           </div>
 
-          <div class="wd-campaigns-grid">
-            <div class="wd-campaign-card">
-              <img src="/imgs/campaign1.jpg" alt="حملة تسويقية" class="wd-campaign-image" />
-              <div class="wd-campaign-content">
-                <h3 class="wd-campaign-title">حملة العروض الصيفية</h3>
-                <p class="wd-campaign-description">حملة تسويقية للعروض الصيفية مع خصومات تصل إلى 50%</p>
-                <div class="wd-campaign-meta">
-                  <span class="wd-campaign-type">
-                    <i class="fas fa-bullhorn"></i>
-                    تسويقية
+          <div class="wd-sms-campaigns-grid">
+            <div class="wd-sms-campaign-card">
+              <img src="/imgs/sms1.jpg" alt="حملة رسائل" class="wd-sms-campaign-image" />
+              <div class="wd-sms-campaign-content">
+                <h3 class="wd-sms-campaign-title">تذكير المواعيد</h3>
+                <p class="wd-sms-campaign-description">رسائل تذكير للمواعيد والجلسات القادمة</p>
+                <div class="wd-sms-campaign-meta">
+                  <span class="wd-sms-campaign-type">
+                    <i class="fas fa-bell"></i>
+                    تذكير
                   </span>
-                  <span class="wd-campaign-status">
+                  <span class="wd-sms-campaign-status">
                     <i class="fas fa-circle" style="color: #28a745"></i>
                     نشطة
                   </span>
                 </div>
-                <div class="wd-campaign-actions">
-                  <button class="wd-campaign-action view">
+                <div class="wd-sms-campaign-actions">
+                  <button class="wd-sms-campaign-action view">
                     <i class="fas fa-eye"></i>
                     عرض
                   </button>
-                  <button class="wd-campaign-action edit">
+                  <button class="wd-sms-campaign-action edit">
                     <i class="fas fa-edit"></i>
                     تعديل
                   </button>
-                  <button class="wd-campaign-action delete">
+                  <button class="wd-sms-campaign-action delete">
                     <i class="fas fa-trash"></i>
                     حذف
                   </button>
@@ -352,31 +352,31 @@
               </div>
             </div>
 
-            <div class="wd-campaign-card">
-              <img src="/imgs/campaign2.jpg" alt="حملة توعوية" class="wd-campaign-image" />
-              <div class="wd-campaign-content">
-                <h3 class="wd-campaign-title">حملة التوعية الصحية</h3>
-                <p class="wd-campaign-description">حملة توعوية حول الصحة العامة والوقاية من الأمراض</p>
-                <div class="wd-campaign-meta">
-                  <span class="wd-campaign-type">
-                    <i class="fas fa-heart"></i>
-                    توعوية
+            <div class="wd-sms-campaign-card">
+              <img src="/imgs/sms2.jpg" alt="حملة رسائل" class="wd-sms-campaign-image" />
+              <div class="wd-sms-campaign-content">
+                <h3 class="wd-sms-campaign-title">عروض خاصة</h3>
+                <p class="wd-sms-campaign-description">رسائل عروض وخصومات حصرية للعملاء</p>
+                <div class="wd-sms-campaign-meta">
+                  <span class="wd-sms-campaign-type">
+                    <i class="fas fa-percent"></i>
+                    عروض
                   </span>
-                  <span class="wd-campaign-status">
+                  <span class="wd-sms-campaign-status">
                     <i class="fas fa-circle" style="color: #ffc107"></i>
                     مسودة
                   </span>
                 </div>
-                <div class="wd-campaign-actions">
-                  <button class="wd-campaign-action view">
+                <div class="wd-sms-campaign-actions">
+                  <button class="wd-sms-campaign-action view">
                     <i class="fas fa-eye"></i>
                     عرض
                   </button>
-                  <button class="wd-campaign-action edit">
+                  <button class="wd-sms-campaign-action edit">
                     <i class="fas fa-edit"></i>
                     تعديل
                   </button>
-                  <button class="wd-campaign-action delete">
+                  <button class="wd-sms-campaign-action delete">
                     <i class="fas fa-trash"></i>
                     حذف
                   </button>
@@ -384,31 +384,31 @@
               </div>
             </div>
 
-            <div class="wd-campaign-card">
-              <img src="/imgs/campaign3.jpg" alt="حملة ولاء" class="wd-campaign-image" />
-              <div class="wd-campaign-content">
-                <h3 class="wd-campaign-title">برنامج ولاء العملاء</h3>
-                <p class="wd-campaign-description">حملة مكافآت وخصومات حصرية للعملاء المميزين</p>
-                <div class="wd-campaign-meta">
-                  <span class="wd-campaign-type">
-                    <i class="fas fa-star"></i>
-                    ولاء
+            <div class="wd-sms-campaign-card">
+              <img src="/imgs/sms3.jpg" alt="حملة رسائل" class="wd-sms-campaign-image" />
+              <div class="wd-sms-campaign-content">
+                <h3 class="wd-sms-campaign-title">تأكيد الحجوزات</h3>
+                <p class="wd-sms-campaign-description">رسائل تأكيد الحجوزات وتفاصيل المواعيد</p>
+                <div class="wd-sms-campaign-meta">
+                  <span class="wd-sms-campaign-type">
+                    <i class="fas fa-calendar-check"></i>
+                    تأكيد
                   </span>
-                  <span class="wd-campaign-status">
+                  <span class="wd-sms-campaign-status">
                     <i class="fas fa-circle" style="color: #6c757d"></i>
                     مكتملة
                   </span>
                 </div>
-                <div class="wd-campaign-actions">
-                  <button class="wd-campaign-action view">
+                <div class="wd-sms-campaign-actions">
+                  <button class="wd-sms-campaign-action view">
                     <i class="fas fa-eye"></i>
                     عرض
                   </button>
-                  <button class="wd-campaign-action edit">
+                  <button class="wd-sms-campaign-action edit">
                     <i class="fas fa-edit"></i>
                     تعديل
                   </button>
-                  <button class="wd-campaign-action delete">
+                  <button class="wd-sms-campaign-action delete">
                     <i class="fas fa-trash"></i>
                     حذف
                   </button>

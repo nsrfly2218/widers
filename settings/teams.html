@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>إعدادات الحساب</title>
+    <title>الفرق</title>
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
@@ -11,135 +11,169 @@
         padding: 20px;
       }
 
-      .wd-settings-container {
+      .wd-teams-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .wd-teams-search {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .wd-teams-search-input {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        width: 300px;
+        font-size: 14px;
+      }
+
+      .wd-teams-filters {
+        display: flex;
+        gap: 10px;
+      }
+
+      .wd-teams-filter {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background: white;
+        color: #333;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-teams-filter:hover {
+        background: #f8f9fa;
+      }
+
+      .wd-teams-filter.active {
+        background: #6610f2;
+        color: white;
+        border-color: #6610f2;
+      }
+
+      .wd-teams-grid {
         display: grid;
-        grid-template-columns: 300px 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 20px;
       }
 
-      .wd-settings-sidebar {
+      .wd-team-card {
         background: white;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        padding: 20px;
-      }
-
-      .wd-settings-nav {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .wd-settings-nav-item {
-        padding: 12px;
-        border-radius: 6px;
-        margin-bottom: 8px;
-        cursor: pointer;
+        overflow: hidden;
         transition: all 0.3s ease;
+      }
+
+      .wd-team-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .wd-team-header {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        gap: 10px;
       }
 
-      .wd-settings-nav-item:hover {
-        background: #f8f9fa;
-      }
-
-      .wd-settings-nav-item.active {
-        background: #6610f2;
-        color: white;
-      }
-
-      .wd-settings-content {
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        padding: 20px;
-      }
-
-      .wd-settings-section {
-        margin-bottom: 30px;
-      }
-
-      .wd-settings-section-title {
-        font-size: 18px;
+      .wd-team-title {
+        font-size: 16px;
         font-weight: 600;
         color: #333;
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #eee;
       }
 
-      .wd-form-group {
-        margin-bottom: 20px;
-      }
-
-      .wd-form-label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: 500;
-        color: #555;
-      }
-
-      .wd-form-input {
-        width: 100%;
-        padding: 10px 15px;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        font-size: 14px;
-        transition: all 0.3s ease;
-      }
-
-      .wd-form-input:focus {
-        outline: none;
-        border-color: #6610f2;
-        box-shadow: 0 0 0 2px rgba(102, 16, 242, 0.1);
-      }
-
-      .wd-form-textarea {
-        width: 100%;
-        padding: 10px 15px;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        font-size: 14px;
-        min-height: 100px;
-        resize: vertical;
-      }
-
-      .wd-form-actions {
+      .wd-team-actions {
         display: flex;
-        justify-content: flex-end;
-        gap: 10px;
-        margin-top: 30px;
+        gap: 8px;
       }
 
-      .wd-btn {
-        padding: 10px 20px;
+      .wd-team-action {
+        padding: 6px;
         border-radius: 6px;
-        font-size: 14px;
-        font-weight: 500;
+        color: #666;
+        background: transparent;
+        border: none;
         cursor: pointer;
         transition: all 0.3s ease;
       }
 
-      .wd-btn-primary {
-        background: #6610f2;
-        color: white;
-        border: none;
-      }
-
-      .wd-btn-secondary {
-        background: #f8f9fa;
+      .wd-team-action:hover {
+        background: #f0f0f0;
         color: #333;
-        border: 1px solid #ddd;
       }
 
-      .wd-btn:hover {
-        opacity: 0.9;
+      .wd-team-content {
+        padding: 15px;
+      }
+
+      .wd-team-members {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .wd-team-member {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        background: #f8f9fa;
+        border-radius: 20px;
+        font-size: 12px;
+      }
+
+      .wd-team-member-avatar {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .wd-team-stats {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+        font-size: 12px;
+        color: #666;
+      }
+
+      .wd-team-stat {
+        display: flex;
+        align-items: center;
+        gap: 6px;
       }
 
       @media (max-width: 768px) {
-        .wd-settings-container {
+        .wd-teams-header {
+          flex-direction: column;
+          gap: 10px;
+        }
+        
+        .wd-teams-search {
+          width: 100%;
+        }
+        
+        .wd-teams-search-input {
+          width: 100%;
+        }
+        
+        .wd-teams-filters {
+          width: 100%;
+          overflow-x: auto;
+          padding-bottom: 10px;
+        }
+        
+        .wd-teams-grid {
           grid-template-columns: 1fr;
         }
       }
@@ -212,7 +246,7 @@
           <nav class="wd-secondary-nav">
             <ul>
               <a href="/settings/account.html" class="wd-nav-link">
-                <li class="wd-secondary-nav-item active">
+                <li class="wd-secondary-nav-item">
                   <i class="fas fa-user-cog"></i>
                   <span>إعدادات الحساب</span>
                 </li>
@@ -224,7 +258,7 @@
                 </li>
               </a>
               <a href="/settings/teams.html" class="wd-nav-link">
-                <li class="wd-secondary-nav-item">
+                <li class="wd-secondary-nav-item active">
                   <i class="fas fa-user-friends"></i>
                   <span>الفرق</span>
                 </li>
@@ -283,55 +317,143 @@
             <button class="wd-toggle-secondary" onclick="toggleSecondarySidebar()">
               <i class="fas fa-bars"></i>
             </button>
-            <h1>إعدادات الحساب</h1>
+            <h1>الفرق</h1>
+          </div>
+          <div class="wd-header-actions">
+            <button class="wd-btn wd-btn-primary">
+              <i class="fas fa-plus"></i>
+              فريق جديد
+            </button>
           </div>
         </div>
 
         <div class="wd-content-body">
-          <div class="wd-settings-container">
-            <div class="wd-settings-sidebar">
-              <ul class="wd-settings-nav">
-                <li class="wd-settings-nav-item active">
-                  <i class="fas fa-user"></i>
-                  <span>الملف الشخصي</span>
-                </li>
-                <li class="wd-settings-nav-item">
-                  <i class="fas fa-lock"></i>
-                  <span>الأمان</span>
-                </li>
-                <li class="wd-settings-nav-item">
-                  <i class="fas fa-bell"></i>
-                  <span>الإشعارات</span>
-                </li>
-                <li class="wd-settings-nav-item">
-                  <i class="fas fa-palette"></i>
-                  <span>المظهر</span>
-                </li>
-              </ul>
+          <div class="wd-teams-header">
+            <div class="wd-teams-search">
+              <input type="text" class="wd-teams-search-input" placeholder="بحث في الفرق..." />
+              <i class="fas fa-search"></i>
+            </div>
+            <div class="wd-teams-filters">
+              <button class="wd-teams-filter active">الكل</button>
+              <button class="wd-teams-filter">دعم فني</button>
+              <button class="wd-teams-filter">مبيعات</button>
+              <button class="wd-teams-filter">تسويق</button>
+            </div>
+          </div>
+
+          <div class="wd-teams-grid">
+            <div class="wd-team-card">
+              <div class="wd-team-header">
+                <div class="wd-team-title">فريق الدعم الفني</div>
+                <div class="wd-team-actions">
+                  <button class="wd-team-action" title="تعديل">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="wd-team-action" title="حذف">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="wd-team-content">
+                <div class="wd-team-members">
+                  <div class="wd-team-member">
+                    <img src="/imgs/avatar1.jpg" alt="صورة الموظف" class="wd-team-member-avatar" />
+                    <span>أحمد محمد</span>
+                  </div>
+                  <div class="wd-team-member">
+                    <img src="/imgs/avatar2.jpg" alt="صورة الموظف" class="wd-team-member-avatar" />
+                    <span>سارة أحمد</span>
+                  </div>
+                  <div class="wd-team-member">
+                    <img src="/imgs/avatar3.jpg" alt="صورة الموظف" class="wd-team-member-avatar" />
+                    <span>محمد علي</span>
+                  </div>
+                </div>
+                <div class="wd-team-stats">
+                  <div class="wd-team-stat">
+                    <i class="fas fa-users"></i>
+                    <span>3 أعضاء</span>
+                  </div>
+                  <div class="wd-team-stat">
+                    <i class="fas fa-comments"></i>
+                    <span>24 محادثة نشطة</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="wd-settings-content">
-              <div class="wd-settings-section">
-                <h2 class="wd-settings-section-title">الملف الشخصي</h2>
-                <div class="wd-form-group">
-                  <label class="wd-form-label">اسم الشركة</label>
-                  <input type="text" class="wd-form-input" value="شركة التقنية المتقدمة" />
+            <div class="wd-team-card">
+              <div class="wd-team-header">
+                <div class="wd-team-title">فريق المبيعات</div>
+                <div class="wd-team-actions">
+                  <button class="wd-team-action" title="تعديل">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="wd-team-action" title="حذف">
+                    <i class="fas fa-trash"></i>
+                  </button>
                 </div>
-                <div class="wd-form-group">
-                  <label class="wd-form-label">البريد الإلكتروني</label>
-                  <input type="email" class="wd-form-input" value="info@techcompany.com" />
+              </div>
+              <div class="wd-team-content">
+                <div class="wd-team-members">
+                  <div class="wd-team-member">
+                    <img src="/imgs/avatar4.jpg" alt="صورة الموظف" class="wd-team-member-avatar" />
+                    <span>خالد سعيد</span>
+                  </div>
+                  <div class="wd-team-member">
+                    <img src="/imgs/avatar5.jpg" alt="صورة الموظف" class="wd-team-member-avatar" />
+                    <span>نورا عبدالله</span>
+                  </div>
                 </div>
-                <div class="wd-form-group">
-                  <label class="wd-form-label">رقم الهاتف</label>
-                  <input type="tel" class="wd-form-input" value="+966 12 345 6789" />
+                <div class="wd-team-stats">
+                  <div class="wd-team-stat">
+                    <i class="fas fa-users"></i>
+                    <span>2 أعضاء</span>
+                  </div>
+                  <div class="wd-team-stat">
+                    <i class="fas fa-comments"></i>
+                    <span>12 محادثة نشطة</span>
+                  </div>
                 </div>
-                <div class="wd-form-group">
-                  <label class="wd-form-label">العنوان</label>
-                  <textarea class="wd-form-textarea">شارع الملك فهد، الرياض، المملكة العربية السعودية</textarea>
+              </div>
+            </div>
+
+            <div class="wd-team-card">
+              <div class="wd-team-header">
+                <div class="wd-team-title">فريق التسويق</div>
+                <div class="wd-team-actions">
+                  <button class="wd-team-action" title="تعديل">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="wd-team-action" title="حذف">
+                    <i class="fas fa-trash"></i>
+                  </button>
                 </div>
-                <div class="wd-form-actions">
-                  <button class="wd-btn wd-btn-secondary">إلغاء</button>
-                  <button class="wd-btn wd-btn-primary">حفظ التغييرات</button>
+              </div>
+              <div class="wd-team-content">
+                <div class="wd-team-members">
+                  <div class="wd-team-member">
+                    <img src="/imgs/avatar6.jpg" alt="صورة الموظف" class="wd-team-member-avatar" />
+                    <span>ريم محمد</span>
+                  </div>
+                  <div class="wd-team-member">
+                    <img src="/imgs/avatar7.jpg" alt="صورة الموظف" class="wd-team-member-avatar" />
+                    <span>عبدالرحمن أحمد</span>
+                  </div>
+                  <div class="wd-team-member">
+                    <img src="/imgs/avatar8.jpg" alt="صورة الموظف" class="wd-team-member-avatar" />
+                    <span>فاطمة خالد</span>
+                  </div>
+                </div>
+                <div class="wd-team-stats">
+                  <div class="wd-team-stat">
+                    <i class="fas fa-users"></i>
+                    <span>3 أعضاء</span>
+                  </div>
+                  <div class="wd-team-stat">
+                    <i class="fas fa-comments"></i>
+                    <span>18 محادثة نشطة</span>
+                  </div>
                 </div>
               </div>
             </div>

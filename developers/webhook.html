@@ -3,73 +3,243 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Webhook - وادي</title>
+    <title>Webhooks</title>
+    <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="stylesheet" href="../style.css" />
-  </head>
+    <style>
+      .wd-content-body {
+        padding: 20px;
+      }
 
+      .wd-search-container {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .wd-search-input {
+        position: relative;
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .wd-search-input i {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+      }
+
+      .wd-search-input input {
+        width: 100%;
+        padding: 12px 40px 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .wd-search-input input:focus {
+        outline: none;
+        border-color: #25D366;
+        box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.1);
+      }
+
+      .wd-filter-options {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .wd-filter-select {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: white;
+        color: #333;
+        font-size: 14px;
+        min-width: 150px;
+      }
+
+      .wd-table-container {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+
+      .wd-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .wd-table th {
+        background: #f8f9fa;
+        padding: 15px;
+        text-align: right;
+        font-weight: 600;
+        color: #333;
+        border-bottom: 2px solid #eee;
+      }
+
+      .wd-table td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        color: #555;
+      }
+
+      .wd-table tr:hover {
+        background-color: #f8f9fa;
+      }
+
+      .wd-webhook-info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .wd-webhook-name {
+        font-weight: 500;
+        color: #333;
+      }
+
+      .wd-webhook-url {
+        font-family: monospace;
+        background: #f8f9fa;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 13px;
+        color: #333;
+        word-break: break-all;
+      }
+
+      .wd-webhook-events {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      .wd-webhook-event {
+        background: #e6f4ea;
+        color: #1e7e34;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+
+      .wd-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+
+      .wd-status-active {
+        background: #e6f4ea;
+        color: #1e7e34;
+      }
+
+      .wd-status-inactive {
+        background: #f8d7da;
+        color: #721c24;
+      }
+
+      .wd-btn-icon {
+        padding: 8px;
+        margin: 0 5px;
+        border-radius: 6px;
+        color: #666;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-btn-icon:hover {
+        background: #f0f0f0;
+        color: #333;
+      }
+
+      .wd-btn-icon i {
+        font-size: 16px;
+      }
+
+      .wd-btn-icon[title]:hover:after {
+        content: attr(title);
+        position: absolute;
+        background: #333;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        margin-top: 5px;
+        z-index: 1;
+      }
+
+      @media (max-width: 768px) {
+        .wd-search-container {
+          flex-direction: column;
+        }
+        
+        .wd-filter-options {
+          width: 100%;
+        }
+        
+        .wd-filter-select {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
   <body>
     <div class="wd-container">
       <!-- القسم الأول: القائمة الجانبية -->
       <aside class="wd-sidebar">
         <div class="wd-logo">
-          <img src="../imgs/logo.png" alt="شعار المنصة" />
+          <img src="/imgs/logo.png" alt="شعار المنصة" />
         </div>
         <nav class="wd-nav">
           <ul>
             <li class="wd-nav-item">
               <i class="fa-solid fa-gauge"></i>
-              <span
-                ><a href="../index.html" class="wd-nav-link">لوحة التحكم</a></span
-              >
+              <span><a href="/index.html" class="wd-nav-link">لوحة التحكم</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-comments"></i>
-              <span><a href="../chat.html" class="wd-nav-link">المحادثات</a></span>
+              <span><a href="/chat.html" class="wd-nav-link">المحادثات</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-users"></i>
-              <span
-                ><a href="../contacts.html" class="wd-nav-link"
-                  >جهات الاتصال</a
-                ></span
-              >
+              <span><a href="/contacts.html" class="wd-nav-link">جهات الاتصال</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-diagram-project"></i>
-              <span><a href="../flows.html" class="wd-nav-link">التدفقات</a></span>
+              <span><a href="/flows.html" class="wd-nav-link">التدفقات</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-bullhorn"></i>
-              <span
-                ><a href="../campaigns.html" class="wd-nav-link">الحملات</a></span
-              >
+              <span><a href="/campaigns.html" class="wd-nav-link">الحملات</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-calendar"></i>
-              <span
-                ><a href="../calendar.html" class="wd-nav-link">التقويم</a></span
-              >
-            </li>
-            <li class="wd-nav-item">
-              <i class="fas fa-file-alt"></i>
-              <span
-                ><a href="../contents.html" class="wd-nav-link">المحتويات</a></span
-              >
+              <span><a href="/calendar.html" class="wd-nav-link">التقويم</a></span>
             </li>
             <li class="wd-nav-item active">
+              <i class="fas fa-file-alt"></i>
+              <span><a href="/contents.html" class="wd-nav-link">المحتويات</a></span>
+            </li>
+            <li class="wd-nav-item">
               <i class="fas fa-code"></i>
-              <span
-                ><a href="../developers.html" class="wd-nav-link"
-                  >المطورين</a
-                ></span
-              >
+              <span><a href="/developers.html" class="wd-nav-link">المطورين</a></span>
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-cog"></i>
-              <span
-                ><a href="../settings.html" class="wd-nav-link">الإعدادات</a></span
-              >
+              <span><a href="/settings.html" class="wd-nav-link">الإعدادات</a></span>
             </li>
           </ul>
         </nav>
@@ -79,11 +249,7 @@
       <div class="wd-secondary-sidebar">
         <div class="wd-account-switcher">
           <div class="wd-account-info">
-            <img
-              src="../imgs/logo.png"
-              alt="صورة الحساب"
-              class="wd-account-avatar"
-            />
+            <img src="/imgs/logo.png" alt="صورة الحساب" class="wd-account-avatar" />
             <div class="wd-account-details">
               <span class="wd-account-name">حساب الشركة</span>
               <span class="wd-account-type">مدير</span>
@@ -96,30 +262,60 @@
         <div class="wd-secondary-content">
           <nav class="wd-secondary-nav">
             <ul>
-              <a href="../developers.html" class="wd-nav-link">
-              <li class="wd-secondary-nav-item">
-                <i class="fas fa-file-alt"></i>
-                <span>السجلات</span>
-              </li>
-            </a>
-              <a href="../developers/integrations.html" class="wd-nav-link">
-              <li class="wd-secondary-nav-item">
-                <i class="fas fa-plug"></i>
-                <span>التكاملات</span>
-              </li>
-            </a>
-              <a href="../developers/webhook.html" class="wd-nav-link">
-              <li class="wd-secondary-nav-item active">
-                <i class="fas fa-random"></i>
-                <span>Webhook</span>
-              </li>
-            </a>
-              <a href="../developers/api.html" class="wd-nav-link">
-              <li class="wd-secondary-nav-item">
-                <i class="fas fa-code"></i>
-                <span>API</span>
-              </li>
-            </a>
+              <a href="/contents.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-user-cog"></i>
+                  <span>متغيرات المستخدم</span>
+                </li>
+              </a>
+              <a href="/contents/system.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-cogs"></i>
+                  <span>متغيرات النظام</span>
+                </li>
+              </a>
+              <a href="/contents/tags.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-tags"></i>
+                  <span>الوسوم</span>
+                </li>
+              </a>
+              <a href="/contents/shortcuts.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-keyboard"></i>
+                  <span>الاختصارات</span>
+                </li>
+              </a>
+              <a href="/contents/whatsapp.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fab fa-whatsapp"></i>
+                  <span>قوالب الواتساب</span>
+                </li>
+              </a>
+              <a href="/contents/email.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-envelope"></i>
+                  <span>قوالب البريد الالكتروني</span>
+                </li>
+              </a>
+              <a href="/contents/sms.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-comment-dots"></i>
+                  <span>قوالب الرسائل النصية</span>
+                </li>
+              </a>
+              <a href="/contents/logs.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-history"></i>
+                  <span>السجلات</span>
+                </li>
+              </a>
+              <a href="/contents/webhooks.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item active">
+                  <i class="fas fa-plug"></i>
+                  <span>Webhooks</span>
+                </li>
+              </a>
             </ul>
           </nav>
         </div>
@@ -132,170 +328,141 @@
             <button class="wd-toggle-secondary" onclick="toggleSecondarySidebar()">
               <i class="fas fa-bars"></i>
             </button>
-            <h1>Webhook</h1>
+            <h1>Webhooks</h1>
           </div>
           <div class="wd-header-actions">
             <button class="wd-btn wd-btn-primary">
               <i class="fas fa-plus"></i>
-              إنشاء Webhook جديد
+              إضافة Webhook
             </button>
           </div>
         </div>
 
-        <div class="wd-webhook-section">
-          <div class="wd-webhook-intro">
-            <h2>ما هو Webhook؟</h2>
-            <p>Webhook هو طريقة لإرسال معلومات تلقائية من تطبيق إلى آخر عند حدوث حدث معين. بدلاً من أن يقوم التطبيق بالاستعلام المستمر عن التحديثات، يقوم Webhook بإرسال البيانات مباشرة إلى عنوان URL محدد عند حدوث التغييرات.</p>
-          </div>
-
-          <div class="wd-webhook-features">
-            <h3>مميزات Webhook في وادي</h3>
-            <div class="wd-features-grid">
-              <div class="wd-feature-card">
-                <i class="fas fa-bolt"></i>
-                <h4>تنفيذ فوري</h4>
-                <p>استقبال البيانات في الوقت الفعلي عند حدوث الأحداث</p>
-              </div>
-              <div class="wd-feature-card">
-                <i class="fas fa-shield-alt"></i>
-                <h4>أمان متقدم</h4>
-                <p>تشفير البيانات وتوقيع الطلبات للتأكد من صحتها</p>
-              </div>
-              <div class="wd-feature-card">
-                <i class="fas fa-cogs"></i>
-                <h4>تخصيص متقدم</h4>
-                <p>تخصيص الأحداث والبيانات المرسلة حسب احتياجاتك</p>
-              </div>
-              <div class="wd-feature-card">
-                <i class="fas fa-chart-line"></i>
-                <h4>تحليلات متقدمة</h4>
-                <p>تتبع وتقييم أداء Webhooks الخاصة بك</p>
-              </div>
+        <div class="wd-content-body">
+          <div class="wd-search-container">
+            <div class="wd-search-input">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="ابحث في Webhooks..." id="webhooksSearch">
+            </div>
+            <div class="wd-filter-options">
+              <select class="wd-filter-select">
+                <option value="">جميع الحالات</option>
+                <option value="active">نشط</option>
+                <option value="inactive">غير نشط</option>
+              </select>
+              <select class="wd-filter-select">
+                <option value="">جميع الأحداث</option>
+                <option value="message">الرسائل</option>
+                <option value="contact">جهات الاتصال</option>
+                <option value="campaign">الحملات</option>
+              </select>
             </div>
           </div>
 
-          <div class="wd-webhook-list">
-            <div class="wd-webhook-filters">
-              <div class="wd-search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="بحث في Webhooks...">
-              </div>
-              <div class="wd-filters-group">
-                <select class="wd-filter-select">
-                  <option value="">حالة Webhook</option>
-                  <option value="active">نشط</option>
-                  <option value="inactive">غير نشط</option>
-                  <option value="error">خطأ</option>
-                </select>
-                <button class="wd-btn wd-btn-secondary">
-                  <i class="fas fa-filter"></i>
-                  تطبيق الفلاتر
-                </button>
-              </div>
-            </div>
-
-            <div class="wd-webhook-table">
-              <div class="wd-table-header">
-                <div class="wd-table-cell">الاسم</div>
-                <div class="wd-table-cell">عنوان URL</div>
-                <div class="wd-table-cell">الأحداث</div>
-                <div class="wd-table-cell">الحالة</div>
-                <div class="wd-table-cell">آخر تحديث</div>
-                <div class="wd-table-cell">الإجراءات</div>
-              </div>
-              <div class="wd-table-body">
-                <div class="wd-table-row">
-                  <div class="wd-table-cell">
-                    <div class="wd-webhook-name">
-                      <i class="fas fa-random"></i>
-                      <span>مزامنة العملاء</span>
+          <div class="wd-table-container">
+            <table class="wd-table">
+              <thead>
+                <tr>
+                  <th>الاسم</th>
+                  <th>URL</th>
+                  <th>الأحداث</th>
+                  <th>الحالة</th>
+                  <th>الإجراءات</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="wd-webhook-info">
+                      <div class="wd-webhook-name">تحديثات الرسائل</div>
                     </div>
-                  </div>
-                  <div class="wd-table-cell">https://api.example.com/webhook/customers</div>
-                  <div class="wd-table-cell">
-                    <span class="wd-webhook-event">إنشاء عميل</span>
-                    <span class="wd-webhook-event">تحديث عميل</span>
-                  </div>
-                  <div class="wd-table-cell">
-                    <span class="wd-status active">نشط</span>
-                  </div>
-                  <div class="wd-table-cell">منذ 5 دقائق</div>
-                  <div class="wd-table-cell">
+                  </td>
+                  <td>
+                    <div class="wd-webhook-url">https://api.example.com/webhooks/messages</div>
+                  </td>
+                  <td>
+                    <div class="wd-webhook-events">
+                      <span class="wd-webhook-event">رسالة جديدة</span>
+                      <span class="wd-webhook-event">تحديث حالة</span>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="wd-status wd-status-active">
+                      <i class="fas fa-circle"></i>
+                      نشط
+                    </span>
+                  </td>
+                  <td>
                     <button class="wd-btn wd-btn-icon" title="تعديل">
                       <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="تعطيل">
-                      <i class="fas fa-toggle-on"></i>
                     </button>
                     <button class="wd-btn wd-btn-icon" title="حذف">
                       <i class="fas fa-trash"></i>
                     </button>
-                  </div>
-                </div>
-                <div class="wd-table-row">
-                  <div class="wd-table-cell">
-                    <div class="wd-webhook-name">
-                      <i class="fas fa-random"></i>
-                      <span>مزامنة الطلبات</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="wd-webhook-info">
+                      <div class="wd-webhook-name">مزامنة جهات الاتصال</div>
                     </div>
-                  </div>
-                  <div class="wd-table-cell">https://api.example.com/webhook/orders</div>
-                  <div class="wd-table-cell">
-                    <span class="wd-webhook-event">طلب جديد</span>
-                    <span class="wd-webhook-event">تحديث حالة</span>
-                  </div>
-                  <div class="wd-table-cell">
-                    <span class="wd-status error">خطأ</span>
-                  </div>
-                  <div class="wd-table-cell">منذ ساعة</div>
-                  <div class="wd-table-cell">
+                  </td>
+                  <td>
+                    <div class="wd-webhook-url">https://api.example.com/webhooks/contacts</div>
+                  </td>
+                  <td>
+                    <div class="wd-webhook-events">
+                      <span class="wd-webhook-event">جهة اتصال جديدة</span>
+                      <span class="wd-webhook-event">تحديث جهة اتصال</span>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="wd-status wd-status-active">
+                      <i class="fas fa-circle"></i>
+                      نشط
+                    </span>
+                  </td>
+                  <td>
                     <button class="wd-btn wd-btn-icon" title="تعديل">
                       <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="تفعيل">
-                      <i class="fas fa-toggle-off"></i>
                     </button>
                     <button class="wd-btn wd-btn-icon" title="حذف">
                       <i class="fas fa-trash"></i>
                     </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="wd-webhook-docs">
-            <h3>كيفية استخدام Webhook</h3>
-            <div class="wd-docs-content">
-              <div class="wd-docs-step">
-                <h4>1. إنشاء Webhook جديد</h4>
-                <p>انقر على زر "إنشاء Webhook جديد" وأدخل المعلومات المطلوبة:</p>
-                <ul>
-                  <li>اسم Webhook</li>
-                  <li>عنوان URL الوجهة</li>
-                  <li>الأحداث التي تريد الاشتراك فيها</li>
-                  <li>إعدادات الأمان</li>
-                </ul>
-              </div>
-              <div class="wd-docs-step">
-                <h4>2. تكوين الخادم الخاص بك</h4>
-                <p>تأكد من أن خادمك قادر على:</p>
-                <ul>
-                  <li>استقبال طلبات POST</li>
-                  <li>معالجة البيانات المرسلة</li>
-                  <li>الرد برمز حالة 200 للنجاح</li>
-                </ul>
-              </div>
-              <div class="wd-docs-step">
-                <h4>3. اختبار Webhook</h4>
-                <p>استخدم أداة الاختبار المدمجة للتأكد من أن Webhook يعمل بشكل صحيح:</p>
-                <ul>
-                  <li>إرسال طلب اختبار</li>
-                  <li>مراجعة سجل الطلبات</li>
-                  <li>التحقق من استجابة الخادم</li>
-                </ul>
-              </div>
-            </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="wd-webhook-info">
+                      <div class="wd-webhook-name">تتبع الحملات</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="wd-webhook-url">https://api.example.com/webhooks/campaigns</div>
+                  </td>
+                  <td>
+                    <div class="wd-webhook-events">
+                      <span class="wd-webhook-event">حملة جديدة</span>
+                      <span class="wd-webhook-event">تحديث حالة</span>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="wd-status wd-status-inactive">
+                      <i class="fas fa-circle"></i>
+                      غير نشط
+                    </span>
+                  </td>
+                  <td>
+                    <button class="wd-btn wd-btn-icon" title="تعديل">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-btn wd-btn-icon" title="حذف">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -307,7 +474,7 @@
       </button>
       <div class="wd-profile-floating-menu" id="profileFloatingMenu">
         <div class="wd-profile-floating-header">
-          <img src="../imgs/logo.png" alt="صورة المستخدم" class="wd-profile-floating-avatar" />
+          <img src="/imgs/logo.png" alt="صورة المستخدم" class="wd-profile-floating-avatar" />
           <div class="wd-profile-floating-info">
             <span class="wd-profile-floating-name">اسم المستخدم</span>
             <span class="wd-profile-floating-email">user@example.com</span>
@@ -347,6 +514,6 @@
       </div>
     </div>
 
-    <script src="../script.js"></script>
+    <script src="/script.js"></script>
   </body>
-</html>
+</html> 

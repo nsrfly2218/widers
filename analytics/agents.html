@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>الموظفين - التحليلات</title>
+    <title>لوحة التحكم - الموظفين</title>
     <link rel="stylesheet" href="../style.css" />
     <link
       rel="stylesheet"
@@ -45,24 +45,32 @@
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-diagram-project"></i>
-              <span><a href="../flows.html" class="wd-nav-link">التدفقات</a></span>
+              <span
+                ><a href="../flows.html" class="wd-nav-link">التدفقات</a></span
+              >
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-bullhorn"></i>
               <span
-                ><a href="../campaigns.html" class="wd-nav-link">الحملات</a></span
+                ><a href="../campaigns.html" class="wd-nav-link"
+                  >الحملات</a
+                ></span
               >
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-calendar"></i>
               <span
-                ><a href="../calendar.html" class="wd-nav-link">التقويم</a></span
+                ><a href="../calendar.html" class="wd-nav-link"
+                  >التقويم</a
+                ></span
               >
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-file-alt"></i>
               <span
-                ><a href="../contents.html" class="wd-nav-link">المحتويات</a></span
+                ><a href="../contents.html" class="wd-nav-link"
+                  >المحتويات</a
+                ></span
               >
             </li>
             <li class="wd-nav-item">
@@ -76,7 +84,9 @@
             <li class="wd-nav-item">
               <i class="fas fa-cog"></i>
               <span
-                ><a href="../settings.html" class="wd-nav-link">الإعدادات</a></span
+                ><a href="../settings.html" class="wd-nav-link"
+                  >الإعدادات</a
+                ></span
               >
             </li>
           </ul>
@@ -113,7 +123,7 @@
               <a href="../analytics/channels.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-broadcast-tower"></i>
-                  <span>قنوات التواصل</span>
+                  <span>قنوات التواصل <span class="wd-coming-soon">قريباً</span></span>
                 </li>
               </a>
               <a href="../analytics/chat.html" class="wd-nav-link">
@@ -131,13 +141,13 @@
               <a href="../analytics/teams.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-user-friends"></i>
-                  <span>الفرق</span>
+                  <span>الفرق <span class="wd-coming-soon">قريباً</span></span>
                 </li>
               </a>
               <a href="../analytics/tags.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-tags"></i>
-                  <span>الوسوم</span>
+                  <span>الوسوم <span class="wd-coming-soon">قريباً</span></span>
                 </li>
               </a>
             </ul>
@@ -158,13 +168,90 @@
             <h1>تحليلات الموظفين</h1>
           </div>
           <div class="wd-header-actions">
+            <div class="wd-dropdown">
+              <button class="wd-btn" onclick="toggleDropdown('timeDropdown')">
+                <i class="fas fa-calendar"></i>
+                الفترة الزمنية
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="wd-dropdown-menu" id="timeDropdown">
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectTimePeriod('today')"
+                >
+                  <i class="fas fa-calendar-day"></i>
+                  <span>اليوم</span>
+                </div>
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectTimePeriod('week')"
+                >
+                  <i class="fas fa-calendar-week"></i>
+                  <span>الأسبوع</span>
+                </div>
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectTimePeriod('month')"
+                >
+                  <i class="fas fa-calendar-alt"></i>
+                  <span>الشهر</span>
+                </div>
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectTimePeriod('quarter')"
+                >
+                  <i class="fas fa-calendar"></i>
+                  <span>الربع</span>
+                </div>
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectTimePeriod('year')"
+                >
+                  <i class="fas fa-calendar-check"></i>
+                  <span>السنة</span>
+                </div>
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectTimePeriod('custom')"
+                >
+                  <i class="fas fa-calendar-plus"></i>
+                  <span>مخصص</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="wd-dropdown">
+              <button
+                class="wd-btn"
+                onclick="toggleDropdown('employeeDropdown')"
+              >
+                <i class="fas fa-user"></i>
+                اختر موظف
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="wd-dropdown-menu" id="employeeDropdown">
+                <div class="wd-dropdown-item" onclick="selectEmployee('all')">
+                  <i class="fas fa-users"></i>
+                  <span>الكل</span>
+                </div>
+                <div class="wd-dropdown-item" onclick="selectEmployee('ahmed')">
+                  <i class="fas fa-user"></i>
+                  <span>أحمد</span>
+                </div>
+                <div class="wd-dropdown-item" onclick="selectEmployee('sara')">
+                  <i class="fas fa-user"></i>
+                  <span>سارة</span>
+                </div>
+                <div class="wd-dropdown-item" onclick="selectEmployee('ali')">
+                  <i class="fas fa-user"></i>
+                  <span>علي</span>
+                </div>
+              </div>
+            </div>
+
             <button class="wd-btn">
               <i class="fas fa-download"></i>
               تحميل التقرير
-            </button>
-            <button class="wd-btn">
-              <i class="fas fa-calendar"></i>
-              الفترة الزمنية
             </button>
           </div>
         </div>
@@ -430,6 +517,78 @@
           },
         },
       });
+
+      function selectTimePeriod(period) {
+        const dropdown = document.getElementById("timeDropdown");
+        const button = dropdown.previousElementSibling;
+        const icon = button.querySelector("i.fa-calendar");
+        const text = button.querySelector("span");
+
+        // تحديث نص الزر
+        text.textContent =
+          period === "today"
+            ? "اليوم"
+            : period === "week"
+            ? "الأسبوع"
+            : period === "month"
+            ? "الشهر"
+            : period === "quarter"
+            ? "الربع"
+            : period === "year"
+            ? "السنة"
+            : "مخصص";
+
+        // تحديث أيقونة الزر
+        icon.className =
+          period === "today"
+            ? "fas fa-calendar-day"
+            : period === "week"
+            ? "fas fa-calendar-week"
+            : period === "month"
+            ? "fas fa-calendar-alt"
+            : period === "quarter"
+            ? "fas fa-calendar"
+            : period === "year"
+            ? "fas fa-calendar-check"
+            : "fas fa-calendar-plus";
+
+        // تحديث البيانات حسب الفترة المحددة
+        updateChartsData(period);
+
+        // إغلاق القائمة
+        dropdown.classList.remove("show");
+      }
+
+      function toggleDropdown(dropdownId) {
+        const dropdown = document.getElementById(dropdownId);
+        dropdown.classList.toggle("show");
+      }
+
+      function selectEmployee(employeeId) {
+        const dropdown = document.getElementById("employeeDropdown");
+        const button = dropdown.previousElementSibling;
+        const icon = button.querySelector("i.fa-user");
+        const text = button.querySelector("span");
+
+        // تحديث نص الزر
+        text.textContent =
+          employeeId === "all"
+            ? "جميع الموظفين"
+            : employeeId === "ahmed"
+            ? "أحمد محمد"
+            : employeeId === "sara"
+            ? "سارة أحمد"
+            : "علي حسن";
+
+        // تحديث أيقونة الزر
+        icon.className = employeeId === "all" ? "fas fa-users" : "fas fa-user";
+
+        // تحديث البيانات حسب الموظف المحدد
+        updateEmployeeData(employeeId);
+
+        // إغلاق القائمة
+        dropdown.classList.remove("show");
+      }
     </script>
   </body>
 </html>

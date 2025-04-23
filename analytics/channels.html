@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>قنوات التواصل - التحليلات</title>
+    <title>لوحة التحكم - قنوات التواصل</title>
     <link rel="stylesheet" href="../style.css" />
     <link
       rel="stylesheet"
@@ -17,7 +17,7 @@
       <!-- القسم الأول: القائمة الجانبية -->
       <aside class="wd-sidebar">
         <div class="wd-logo">
-            <img src="../imgs/logo.png" alt="شعار المنصة" />
+          <img src="../imgs/logo.png" alt="شعار المنصة" />
         </div>
         <nav class="wd-nav">
           <ul>
@@ -52,13 +52,17 @@
             <li class="wd-nav-item">
               <i class="fas fa-bullhorn"></i>
               <span
-                ><a href="../campaigns.html" class="wd-nav-link">الحملات</a></span
+                ><a href="../campaigns.html" class="wd-nav-link"
+                  >الحملات</a
+                ></span
               >
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-calendar"></i>
               <span
-                ><a href="../calendar.html" class="wd-nav-link">التقويم</a></span
+                ><a href="../calendar.html" class="wd-nav-link"
+                  >التقويم</a
+                ></span
               >
             </li>
             <li class="wd-nav-item">
@@ -119,7 +123,10 @@
               <a href="../analytics/channels.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item active">
                   <i class="fas fa-broadcast-tower"></i>
-                  <span>قنوات التواصل</span>
+                  <span
+                    >قنوات التواصل
+                    <span class="wd-coming-soon">قريباً</span></span
+                  >
                 </li>
               </a>
               <a href="../analytics/chat.html" class="wd-nav-link">
@@ -137,13 +144,13 @@
               <a href="../analytics/teams.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-user-friends"></i>
-                  <span>الفرق</span>
+                  <span>الفرق <span class="wd-coming-soon">قريباً</span></span>
                 </li>
               </a>
               <a href="../analytics/tags.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-tags"></i>
-                  <span>الوسوم</span>
+                  <span>الوسوم <span class="wd-coming-soon">قريباً</span></span>
                 </li>
               </a>
             </ul>
@@ -164,154 +171,123 @@
             <h1>تحليلات قنوات التواصل</h1>
           </div>
           <div class="wd-header-actions">
+            <!--
+            <div class="wd-dropdown">
+              <button
+                class="wd-btn"
+                onclick="toggleDropdown('channelDropdown')"
+              >
+                <i class="fas fa-filter"></i>
+                اختيار القناة
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="wd-dropdown-menu" id="channelDropdown">
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectChannel('whatsapp')"
+                >
+                  <i class="fab fa-whatsapp"></i>
+                  <span>واتساب</span>
+                </div>
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectChannel('messenger')"
+                >
+                  <i class="fab fa-facebook-messenger"></i>
+                  <span>ماسنجر</span>
+                </div>
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectChannel('instagram')"
+                >
+                  <i class="fab fa-instagram"></i>
+                  <span>انستقرام</span>
+                </div>
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectChannel('telegram')"
+                >
+                  <i class="fab fa-telegram"></i>
+                  <span>تلغرام</span>
+                </div>
+                <div class="wd-dropdown-item" onclick="selectChannel('web')">
+                  <i class="fas fa-globe"></i>
+                  <span>ويب</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="wd-dropdown">
+              <button class="wd-btn" onclick="toggleDropdown('timeDropdown')">
+                <i class="fas fa-calendar"></i>
+                الفترة الزمنية
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="wd-dropdown-menu" id="timeDropdown">
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectTimePeriod('today')"
+                >
+                  <i class="fas fa-calendar-day"></i>
+                  <span>اليوم</span>
+                </div>
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectTimePeriod('week')"
+                >
+                  <i class="fas fa-calendar-week"></i>
+                  <span>الأسبوع</span>
+                </div>
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectTimePeriod('month')"
+                >
+                  <i class="fas fa-calendar-alt"></i>
+                  <span>الشهر</span>
+                </div>
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectTimePeriod('quarter')"
+                >
+                  <i class="fas fa-calendar"></i>
+                  <span>الربع</span>
+                </div>
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectTimePeriod('year')"
+                >
+                  <i class="fas fa-calendar-check"></i>
+                  <span>السنة</span>
+                </div>
+                <div
+                  class="wd-dropdown-item"
+                  onclick="selectTimePeriod('custom')"
+                >
+                  <i class="fas fa-calendar-plus"></i>
+                  <span>مخصص</span>
+                </div>
+              </div>
+            </div>
+
             <button class="wd-btn">
               <i class="fas fa-download"></i>
               تحميل التقرير
             </button>
-            <button class="wd-btn">
-              <i class="fas fa-calendar"></i>
-              الفترة الزمنية
-            </button>
+            -->
           </div>
         </div>
 
         <div class="wd-content-body">
-          <!-- قسم الإحصائيات البسيطة -->
-          <div class="wd-section">
-            <div class="wd-cards-container">
-              <div class="wd-card">
-                <div class="wd-card-header">
-                  <h3>إجمالي المحادثات</h3>
-                </div>
-                <div class="wd-card-body">
-                  <div class="wd-stat-item">
-                    <i class="fas fa-comments"></i>
-                    <div class="wd-stat-info">
-                      <span class="wd-stat-value">12,345</span>
-                      <span class="wd-stat-label">محادثة</span>
-                    </div>
-                  </div>
-                  <div class="wd-stat-item">
-                    <i class="fas fa-chart-line"></i>
-                    <div class="wd-stat-info">
-                      <span class="wd-stat-value">+15%</span>
-                      <span class="wd-stat-label">نسبة النمو</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="wd-card">
-                <div class="wd-card-header">
-                  <h3>متوسط وقت الرد</h3>
-                </div>
-                <div class="wd-card-body">
-                  <div class="wd-stat-item">
-                    <i class="fas fa-clock"></i>
-                    <div class="wd-stat-info">
-                      <span class="wd-stat-value">2.5</span>
-                      <span class="wd-stat-label">دقيقة</span>
-                    </div>
-                  </div>
-                  <div class="wd-stat-item">
-                    <i class="fas fa-arrow-down"></i>
-                    <div class="wd-stat-info">
-                      <span class="wd-stat-value">-10%</span>
-                      <span class="wd-stat-label">تحسن</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="wd-card">
-                <div class="wd-card-header">
-                  <h3>معدل الرضا</h3>
-                </div>
-                <div class="wd-card-body">
-                  <div class="wd-stat-item">
-                    <i class="fas fa-smile"></i>
-                    <div class="wd-stat-info">
-                      <span class="wd-stat-value">92%</span>
-                      <span class="wd-stat-label">رضا العملاء</span>
-                    </div>
-                  </div>
-                  <div class="wd-stat-item">
-                    <i class="fas fa-arrow-up"></i>
-                    <div class="wd-stat-info">
-                      <span class="wd-stat-value">+5%</span>
-                      <span class="wd-stat-label">تحسن</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="wd-card">
-                <div class="wd-card-header">
-                  <h3>نسبة الحل</h3>
-                </div>
-                <div class="wd-card-body">
-                  <div class="wd-stat-item">
-                    <i class="fas fa-check-circle"></i>
-                    <div class="wd-stat-info">
-                      <span class="wd-stat-value">88%</span>
-                      <span class="wd-stat-label">معدل الحل</span>
-                    </div>
-                  </div>
-                  <div class="wd-stat-item">
-                    <i class="fas fa-arrow-up"></i>
-                    <div class="wd-stat-info">
-                      <span class="wd-stat-value">+3%</span>
-                      <span class="wd-stat-label">تحسن</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- قسم التحليلات الاحترافية -->
-          <div class="wd-section">
-            <div class="wd-cards-container">
-              <div class="wd-card wd-chart-card">
-                <div class="wd-card-header">
-                  <h3>توزيع المحادثات حسب القنوات</h3>
-                </div>
-                <div class="wd-card-body">
-                  <canvas id="channelsDistributionChart"></canvas>
-                </div>
-              </div>
-
-              <div class="wd-card wd-chart-card">
-                <div class="wd-card-header">
-                  <h3>اتجاه المحادثات</h3>
-                </div>
-                <div class="wd-card-body">
-                  <canvas id="conversationsTrendChart"></canvas>
-                </div>
-              </div>
-
-              <div class="wd-card wd-chart-card">
-                <div class="wd-card-header">
-                  <h3>أوقات الذروة</h3>
-                </div>
-                <div class="wd-card-body">
-                  <canvas id="peakHoursChart"></canvas>
-                </div>
-              </div>
-
-              <div class="wd-card wd-chart-card">
-                <div class="wd-card-header">
-                  <h3>مقارنة أداء القنوات</h3>
-                </div>
-                <div class="wd-card-body">
-                  <canvas id="channelsPerformanceChart"></canvas>
-                </div>
-              </div>
-            </div>
+          <div class="wd-coming-soon-container">
+            <i class="fas fa-broadcast-tower"></i>
+            <h1>تحليلات قنوات التواصل</h1>
+            <p>قريباً سيتم إضافة تحليلات قنوات التواصل</p>
           </div>
         </div>
       </main>
     </div>
+
+    <script src="../script.js"></script>
 
     <script>
       // توزيع المحادثات حسب القنوات
@@ -436,6 +412,132 @@
           },
         },
       });
+
+      function toggleDropdown(dropdownId) {
+        const dropdown = document.getElementById(dropdownId);
+        dropdown.classList.toggle("show");
+      }
+
+      function selectChannel(channel) {
+        const dropdown = document.getElementById("channelDropdown");
+        const button = dropdown.previousElementSibling;
+        const icon = button.querySelector("i.fa-filter");
+        const text = button.querySelector("span");
+
+        // تحديث نص الزر
+        text.textContent =
+          channel === "whatsapp"
+            ? "واتساب"
+            : channel === "messenger"
+            ? "ماسنجر"
+            : channel === "instagram"
+            ? "انستقرام"
+            : channel === "telegram"
+            ? "تلغرام"
+            : "ويب";
+
+        // تحديث أيقونة الزر
+        icon.className =
+          channel === "whatsapp"
+            ? "fab fa-whatsapp"
+            : channel === "messenger"
+            ? "fab fa-facebook-messenger"
+            : channel === "instagram"
+            ? "fab fa-instagram"
+            : channel === "telegram"
+            ? "fab fa-telegram"
+            : "fas fa-globe";
+
+        // تحديث الرسوم البيانية
+        updateCharts([channel]);
+
+        // إغلاق القائمة
+        dropdown.classList.remove("show");
+      }
+
+      function selectTimePeriod(period) {
+        const dropdown = document.getElementById("timeDropdown");
+        const button = dropdown.previousElementSibling;
+        const icon = button.querySelector("i.fa-calendar");
+        const text = button.querySelector("span");
+
+        // تحديث نص الزر
+        text.textContent =
+          period === "today"
+            ? "اليوم"
+            : period === "week"
+            ? "الأسبوع"
+            : period === "month"
+            ? "الشهر"
+            : period === "quarter"
+            ? "الربع"
+            : period === "year"
+            ? "السنة"
+            : "مخصص";
+
+        // تحديث أيقونة الزر
+        icon.className =
+          period === "today"
+            ? "fas fa-calendar-day"
+            : period === "week"
+            ? "fas fa-calendar-week"
+            : period === "month"
+            ? "fas fa-calendar-alt"
+            : period === "quarter"
+            ? "fas fa-calendar"
+            : period === "year"
+            ? "fas fa-calendar-check"
+            : "fas fa-calendar-plus";
+
+        // تحديث البيانات حسب الفترة المحددة
+        updateChartsData(period);
+
+        // إغلاق القائمة
+        dropdown.classList.remove("show");
+      }
+
+      // إغلاق القوائم المنسدلة عند النقر خارجها
+      window.onclick = function (event) {
+        if (!event.target.matches(".wd-btn")) {
+          const dropdowns = document.getElementsByClassName("wd-dropdown-menu");
+          for (let i = 0; i < dropdowns.length; i++) {
+            const openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains("show")) {
+              openDropdown.classList.remove("show");
+            }
+          }
+        }
+      };
     </script>
+
+    <style>
+      .wd-coming-soon {
+        background-color: #f0f0f0;
+        color: #666;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        margin-right: 8px;
+      }
+
+      .wd-coming-soon-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        text-align: center;
+        color: #666;
+      }
+
+      .wd-coming-soon-container i {
+        font-size: 48px;
+        margin-bottom: 16px;
+      }
+
+      .wd-coming-soon-container h1 {
+        margin-bottom: 8px;
+      }
+    </style>
   </body>
 </html>

@@ -188,6 +188,138 @@
           grid-template-columns: 1fr;
         }
       }
+
+      .wd-campaign-form {
+        background-color: #fff;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 24px;
+      }
+
+      .wd-form-group {
+        margin-bottom: 24px;
+      }
+
+      .wd-form-control {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .wd-form-control:focus {
+        border-color: #4a90e2;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+      }
+
+      .wd-required {
+        color: #dc3545;
+        margin-right: 4px;
+      }
+
+      .wd-error-message {
+        color: #dc3545;
+        font-size: 0.85em;
+        margin-top: 8px;
+        display: none;
+      }
+
+      .wd-targeting-section {
+        background-color: #f8f9fa;
+        padding: 16px;
+        border-radius: 8px;
+        margin-bottom: 24px;
+      }
+
+      .wd-targeting-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .wd-add-condition {
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-add-condition:hover {
+        background-color: #357abd;
+      }
+
+      .wd-condition-group {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .wd-message-type {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .wd-message-type-option {
+        flex: 1;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-message-type-option:hover {
+        border-color: #4a90e2;
+        background-color: #f8f9fa;
+      }
+
+      .wd-message-type-option.selected {
+        border-color: #4a90e2;
+        background-color: #e9f0f9;
+      }
+
+      .wd-schedule-options {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .wd-schedule-option {
+        flex: 1;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-schedule-option:hover {
+        border-color: #4a90e2;
+        background-color: #f8f9fa;
+      }
+
+      .wd-schedule-option.selected {
+        border-color: #4a90e2;
+        background-color: #e9f0f9;
+      }
+
+      .wd-schedule-datetime {
+        display: none;
+        margin-top: 16px;
+      }
+
+      .wd-schedule-datetime.show {
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -326,9 +458,11 @@
             <h1>الحملات</h1>
           </div>
           <div class="wd-header-actions">
-            <button class="wd-btn wd-btn-primary">
-              <i class="fas fa-plus"></i>
-              حملة جديدة
+            <button
+              class="wd-btn wd-btn-primary"
+              onclick="window.location.href='add/new-campaign.html'"
+            >
+              <i class="fas fa-plus"></i> حملة جديدة
             </button>
           </div>
         </div>
@@ -530,5 +664,132 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+      function showNewCampaignForm() {
+        document.getElementById("newCampaignForm").style.display = "block";
+      }
+
+      function hideNewCampaignForm() {
+        document.getElementById("newCampaignForm").style.display = "none";
+      }
+
+      function selectMessageType(type) {
+        document
+          .querySelectorAll(".wd-message-type-option")
+          .forEach((option) => {
+            option.classList.remove("selected");
+          });
+        event.currentTarget.classList.add("selected");
+
+        document.getElementById("templateSection").style.display =
+          type === "template" ? "block" : "none";
+        document.getElementById("flowSection").style.display =
+          type === "flow" ? "block" : "none";
+      }
+
+      function selectSchedule(type) {
+        document.querySelectorAll(".wd-schedule-option").forEach((option) => {
+          option.classList.remove("selected");
+        });
+        event.currentTarget.classList.add("selected");
+
+        document
+          .getElementById("scheduleDatetime")
+          .classList.toggle("show", type === "later");
+      }
+
+      function addTargetingCondition() {
+        const conditionsContainer = document.getElementById(
+          "targetingConditions"
+        );
+        const conditionGroup = document.createElement("div");
+        conditionGroup.className = "wd-condition-group";
+        conditionGroup.innerHTML = `
+          <select class="wd-form-control" style="flex: 1">
+            <option value="">اختر نوع الشرط</option>
+            <option value="tag">الوسم</option>
+            <option value="group">المجموعة</option>
+          </select>
+          <select class="wd-form-control" style="flex: 1">
+            <option value="">اختر القيمة</option>
+            <option value="business">باقة الأعمال</option>
+            <option value="business-pro">باقة الأعمال برو</option>
+            <option value="professional">الباقة الاحترافية</option>
+          </select>
+          <button class="wd-btn wd-btn-secondary" onclick="this.parentElement.remove()">
+            <i class="fas fa-times"></i>
+          </button>
+        `;
+        conditionsContainer.appendChild(conditionGroup);
+      }
+
+      function createCampaign() {
+        const campaignName = document.getElementById("campaignName").value;
+        const channel = document.getElementById("channel").value;
+        const messageType = document
+          .querySelector(".wd-message-type-option.selected")
+          ?.getAttribute("onclick")
+          ?.includes("template")
+          ? "template"
+          : "flow";
+        const template = document.getElementById("template").value;
+        const flow = document.getElementById("flow").value;
+        const scheduleType = document
+          .querySelector(".wd-schedule-option.selected")
+          ?.getAttribute("onclick")
+          ?.includes("now")
+          ? "now"
+          : "later";
+        const scheduleTime = document.getElementById("scheduleTime").value;
+
+        // إخفاء جميع رسائل الخطأ
+        document
+          .querySelectorAll(".wd-error-message")
+          .forEach((el) => (el.style.display = "none"));
+
+        let isValid = true;
+
+        if (!campaignName) {
+          document.getElementById("campaignNameError").style.display = "block";
+          document.getElementById("campaignNameError").textContent =
+            "الرجاء إدخال اسم الحملة";
+          isValid = false;
+        }
+
+        if (!channel) {
+          document.getElementById("channelError").style.display = "block";
+          document.getElementById("channelError").textContent =
+            "الرجاء اختيار قناة التواصل";
+          isValid = false;
+        }
+
+        if (messageType === "template" && !template) {
+          document.getElementById("templateError").style.display = "block";
+          document.getElementById("templateError").textContent =
+            "الرجاء اختيار قالب الرسالة";
+          isValid = false;
+        }
+
+        if (messageType === "flow" && !flow) {
+          document.getElementById("flowError").style.display = "block";
+          document.getElementById("flowError").textContent =
+            "الرجاء اختيار التدفق";
+          isValid = false;
+        }
+
+        if (scheduleType === "later" && !scheduleTime) {
+          document.getElementById("scheduleError").style.display = "block";
+          document.getElementById("scheduleError").textContent =
+            "الرجاء تحديد وقت الجدولة";
+          isValid = false;
+        }
+
+        if (isValid) {
+          // هنا يمكنك إضافة الكود لإنشاء الحملة
+          alert("تم إنشاء الحملة بنجاح");
+          hideNewCampaignForm();
+        }
+      }
+    </script>
   </body>
 </html>

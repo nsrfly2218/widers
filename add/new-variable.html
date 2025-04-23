@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إضافة متغير جديد</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      .wd-variable-form {
+        background-color: #fff;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 24px;
+      }
+
+      .wd-form-group {
+        margin-bottom: 24px;
+      }
+
+      .wd-form-control {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .wd-form-control:focus {
+        border-color: #4a90e2;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+      }
+
+      .wd-required {
+        color: #dc3545;
+        margin-right: 4px;
+      }
+
+      .wd-error-message {
+        color: #dc3545;
+        font-size: 0.85em;
+        margin-top: 8px;
+        display: none;
+      }
+
+      .wd-variable-preview {
+        background-color: #f8f9fa;
+        padding: 16px;
+        border-radius: 8px;
+        margin-top: 16px;
+      }
+
+      .wd-variable-preview h4 {
+        margin-bottom: 8px;
+        color: #666;
+      }
+
+      .wd-variable-preview pre {
+        background-color: #fff;
+        padding: 12px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        font-family: monospace;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wd-container">
+      <!-- القسم الأول: القائمة الجانبية -->
+      <aside class="wd-sidebar">
+        <div class="wd-logo">
+          <img src="../imgs/logo.png" alt="شعار المنصة" />
+        </div>
+        <nav class="wd-nav">
+          <ul>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-gauge"></i>
+              <span
+                ><a href="../index.html" class="wd-nav-link"
+                  >لوحة التحكم</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-comments"></i>
+              <span
+                ><a href="../chat.html" class="wd-nav-link">المحادثات</a></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-users"></i>
+              <span
+                ><a href="../contacts.html" class="wd-nav-link"
+                  >جهات الاتصال</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-diagram-project"></i>
+              <span
+                ><a href="../flows.html" class="wd-nav-link">التدفقات</a></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-bullhorn"></i>
+              <span
+                ><a href="../campaigns.html" class="wd-nav-link"
+                  >الحملات</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-calendar"></i>
+              <span
+                ><a href="../calendar.html" class="wd-nav-link"
+                  >التقويم</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-file-alt"></i>
+              <span
+                ><a href="../contents.html" class="wd-nav-link"
+                  >المحتويات</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-code"></i>
+              <span
+                ><a href="../developers.html" class="wd-nav-link"
+                  >المطورين</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-cog"></i>
+              <span
+                ><a href="../settings.html" class="wd-nav-link"
+                  >الإعدادات</a
+                ></span
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- القسم الثاني: المحتوى الرئيسي -->
+      <main class="wd-main-content">
+        <div class="wd-content-header">
+          <div class="wd-header-left">
+            <button
+              class="wd-back-btn"
+              onclick="window.location.href='../developers.html'"
+            >
+              <i class="fas fa-arrow-right"></i>
+            </button>
+            <h1>إضافة متغير جديد</h1>
+          </div>
+        </div>
+
+        <div class="wd-content-body">
+          <div class="wd-variable-form">
+            <div class="wd-form-group">
+              <label for="variableName"
+                >اسم المتغير <span class="wd-required">*</span></label
+              >
+              <input
+                type="text"
+                id="variableName"
+                class="wd-form-control"
+                placeholder="أدخل اسم المتغير"
+              />
+              <div class="wd-error-message" id="variableNameError"></div>
+            </div>
+
+            <div class="wd-form-group">
+              <label for="variableType"
+                >نوع المتغير <span class="wd-required">*</span></label
+              >
+              <select
+                id="variableType"
+                class="wd-form-control"
+                onchange="updateVariablePreview()"
+              >
+                <option value="">اختر نوع المتغير</option>
+                <option value="text">نص</option>
+                <option value="number">رقم</option>
+                <option value="boolean">قيمة منطقية</option>
+                <option value="array">مصفوفة</option>
+                <option value="object">كائن</option>
+              </select>
+              <div class="wd-error-message" id="variableTypeError"></div>
+            </div>
+
+            <div class="wd-form-group">
+              <label for="variableValue"
+                >قيمة المتغير <span class="wd-required">*</span></label
+              >
+              <textarea
+                id="variableValue"
+                class="wd-form-control"
+                rows="4"
+                placeholder="أدخل قيمة المتغير"
+                oninput="updateVariablePreview()"
+              ></textarea>
+              <div class="wd-error-message" id="variableValueError"></div>
+            </div>
+
+            <div class="wd-variable-preview">
+              <h4>معاينة المتغير</h4>
+              <pre id="variablePreview">// سيتم عرض معاينة المتغير هنا</pre>
+            </div>
+
+            <div class="wd-form-actions">
+              <button
+                class="wd-btn wd-btn-secondary"
+                onclick="window.location.href='../developers.html'"
+              >
+                إلغاء
+              </button>
+              <button class="wd-btn wd-btn-primary" onclick="createVariable()">
+                إنشاء المتغير
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+      function updateVariablePreview() {
+        const name = document.getElementById("variableName").value;
+        const type = document.getElementById("variableType").value;
+        const value = document.getElementById("variableValue").value;
+        const preview = document.getElementById("variablePreview");
+
+        if (!name || !type || !value) {
+          preview.textContent = "// سيتم عرض معاينة المتغير هنا";
+          return;
+        }
+
+        let formattedValue = value;
+        try {
+          if (type === "array" || type === "object") {
+            formattedValue = JSON.stringify(JSON.parse(value), null, 2);
+          }
+        } catch (e) {
+          formattedValue = value;
+        }
+
+        preview.textContent = `const ${name} = ${formattedValue};`;
+      }
+
+      function createVariable() {
+        const name = document.getElementById("variableName").value;
+        const type = document.getElementById("variableType").value;
+        const value = document.getElementById("variableValue").value;
+
+        // إخفاء جميع رسائل الخطأ
+        document
+          .querySelectorAll(".wd-error-message")
+          .forEach((el) => (el.style.display = "none"));
+
+        let isValid = true;
+
+        if (!name) {
+          document.getElementById("variableNameError").style.display = "block";
+          document.getElementById("variableNameError").textContent =
+            "الرجاء إدخال اسم المتغير";
+          isValid = false;
+        }
+
+        if (!type) {
+          document.getElementById("variableTypeError").style.display = "block";
+          document.getElementById("variableTypeError").textContent =
+            "الرجاء اختيار نوع المتغير";
+          isValid = false;
+        }
+
+        if (!value) {
+          document.getElementById("variableValueError").style.display = "block";
+          document.getElementById("variableValueError").textContent =
+            "الرجاء إدخال قيمة المتغير";
+          isValid = false;
+        }
+
+        if (isValid) {
+          // هنا يمكنك إضافة الكود لإنشاء المتغير
+          alert("تم إنشاء المتغير بنجاح");
+          window.location.href = "../developers.html";
+        }
+      }
+    </script>
+  </body>
+</html>

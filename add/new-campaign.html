@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إنشاء حملة جديدة</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      .wd-campaign-form {
+        background-color: #fff;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 24px;
+      }
+
+      .wd-form-group {
+        margin-bottom: 24px;
+      }
+
+      .wd-form-control {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .wd-form-control:focus {
+        border-color: #4a90e2;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+      }
+
+      .wd-required {
+        color: #dc3545;
+        margin-right: 4px;
+      }
+
+      .wd-error-message {
+        color: #dc3545;
+        font-size: 0.85em;
+        margin-top: 8px;
+        display: none;
+      }
+
+      .wd-targeting-section {
+        background-color: #f8f9fa;
+        padding: 16px;
+        border-radius: 8px;
+        margin-bottom: 24px;
+      }
+
+      .wd-targeting-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .wd-add-condition {
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-add-condition:hover {
+        background-color: #357abd;
+      }
+
+      .wd-condition-group {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .wd-message-type {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .wd-message-type-option {
+        flex: 1;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-message-type-option:hover {
+        border-color: #4a90e2;
+        background-color: #f8f9fa;
+      }
+
+      .wd-message-type-option.selected {
+        border-color: #4a90e2;
+        background-color: #e9f0f9;
+      }
+
+      .wd-schedule-options {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .wd-schedule-option {
+        flex: 1;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-schedule-option:hover {
+        border-color: #4a90e2;
+        background-color: #f8f9fa;
+      }
+
+      .wd-schedule-option.selected {
+        border-color: #4a90e2;
+        background-color: #e9f0f9;
+      }
+
+      .wd-schedule-datetime {
+        display: none;
+        margin-top: 16px;
+      }
+
+      .wd-schedule-datetime.show {
+        display: block;
+      }
+
+      .wd-target-count {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px;
+        background-color: #f8f9fa;
+        border-radius: 6px;
+        font-size: 16px;
+      }
+
+      .wd-target-count-value {
+        font-weight: 600;
+        color: #4a90e2;
+      }
+
+      .wd-target-count-label {
+        color: #666;
+      }
+
+      .wd-slider-container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        background-color: #f8f9fa;
+        border-radius: 6px;
+      }
+
+      .wd-slider {
+        width: 100%;
+        height: 6px;
+        -webkit-appearance: none;
+        background: #ddd;
+        border-radius: 3px;
+        outline: none;
+      }
+
+      .wd-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        background: #4a90e2;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-slider::-webkit-slider-thumb:hover {
+        background: #357abd;
+        transform: scale(1.1);
+      }
+
+      .wd-slider-value {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 14px;
+        color: #666;
+      }
+
+      .wd-slider-value span:first-child {
+        font-weight: 600;
+        color: #4a90e2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wd-container">
+      <!-- القسم الأول: القائمة الجانبية -->
+      <aside class="wd-sidebar">
+        <div class="wd-logo">
+          <img src="../imgs/logo.png" alt="شعار المنصة" />
+        </div>
+        <nav class="wd-nav">
+          <ul>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-gauge"></i>
+              <span
+                ><a href="../index.html" class="wd-nav-link"
+                  >لوحة التحكم</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-comments"></i>
+              <span
+                ><a href="../chat.html" class="wd-nav-link">المحادثات</a></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-users"></i>
+              <span
+                ><a href="../contacts.html" class="wd-nav-link"
+                  >جهات الاتصال</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-diagram-project"></i>
+              <span
+                ><a href="../flows.html" class="wd-nav-link">التدفقات</a></span
+              >
+            </li>
+            <li class="wd-nav-item active">
+              <i class="fas fa-bullhorn"></i>
+              <span
+                ><a href="../campaigns.html" class="wd-nav-link"
+                  >الحملات</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-calendar"></i>
+              <span
+                ><a href="../calendar.html" class="wd-nav-link"
+                  >التقويم</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-file-alt"></i>
+              <span
+                ><a href="../contents.html" class="wd-nav-link"
+                  >المحتويات</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-code"></i>
+              <span
+                ><a href="../developers.html" class="wd-nav-link"
+                  >المطورين</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-cog"></i>
+              <span
+                ><a href="../settings.html" class="wd-nav-link"
+                  >الإعدادات</a
+                ></span
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- القسم الثاني: المحتوى الرئيسي -->
+      <main class="wd-main-content">
+        <div class="wd-content-header">
+          <div class="wd-header-left">
+            <button
+              class="wd-back-btn"
+              onclick="window.location.href='../campaigns.html'"
+            >
+              <i class="fas fa-arrow-right"></i>
+            </button>
+            <h1>إنشاء حملة جديدة</h1>
+          </div>
+        </div>
+
+        <div class="wd-content-body">
+          <div class="wd-campaign-form">
+            <div class="wd-form-group">
+              <label for="campaignName"
+                >اسم الحملة <span class="wd-required">*</span></label
+              >
+              <input
+                type="text"
+                id="campaignName"
+                class="wd-form-control"
+                placeholder="أدخل اسم الحملة"
+              />
+              <div class="wd-error-message" id="campaignNameError"></div>
+            </div>
+
+            <div class="wd-form-group">
+              <label for="channel"
+                >قناة التواصل <span class="wd-required">*</span></label
+              >
+              <select id="channel" class="wd-form-control">
+                <option value="">اختر قناة التواصل</option>
+                <option value="whatsapp">واتساب</option>
+                <option value="messenger">ماسنجر</option>
+                <option value="instagram">انستقرام</option>
+                <option value="telegram">تلغرام</option>
+                <option value="web">ويب</option>
+                <option value="email">البريد الإلكتروني</option>
+                <option value="sms">الرسائل النصية</option>
+              </select>
+              <div class="wd-error-message" id="channelError"></div>
+            </div>
+
+            <div class="wd-form-group">
+              <label>عدد جهات الاتصال المستهدفة</label>
+              <div class="wd-target-count">
+                <span class="wd-target-count-value">0</span>
+                <span class="wd-target-count-label">جهة اتصال</span>
+              </div>
+            </div>
+
+            <div class="wd-targeting-section">
+              <div class="wd-targeting-header">
+                <h3>شروط الاستهداف</h3>
+                <button
+                  class="wd-add-condition"
+                  onclick="addTargetingCondition()"
+                >
+                  <i class="fas fa-plus"></i> إضافة شرط
+                </button>
+              </div>
+              <div id="targetingConditions">
+                <!-- سيتم إضافة شروط الاستهداف هنا -->
+              </div>
+            </div>
+
+            <div class="wd-form-group">
+              <label>نوع الرسالة <span class="wd-required">*</span></label>
+              <div class="wd-message-type">
+                <div
+                  class="wd-message-type-option"
+                  onclick="selectMessageType('template')"
+                >
+                  <i class="fas fa-file-alt"></i>
+                  <h4>قالب رسالة</h4>
+                  <p>اختر من قوالب الرسائل الجاهزة</p>
+                </div>
+                <div
+                  class="wd-message-type-option"
+                  onclick="selectMessageType('flow')"
+                >
+                  <i class="fas fa-project-diagram"></i>
+                  <h4>تدفق</h4>
+                  <p>اختر من التدفقات الجاهزة</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="wd-form-group"
+              id="templateSection"
+              style="display: none"
+            >
+              <label for="template"
+                >قالب الرسالة <span class="wd-required">*</span></label
+              >
+              <select id="template" class="wd-form-control">
+                <option value="">اختر قالب الرسالة</option>
+                <option value="welcome">ترحيب بالعميل</option>
+                <option value="support">دعم فني</option>
+                <option value="sales">عرض مبيعات</option>
+                <option value="followup">متابعة</option>
+              </select>
+              <div class="wd-error-message" id="templateError"></div>
+            </div>
+
+            <div class="wd-form-group" id="flowSection" style="display: none">
+              <label for="flow"
+                >التدفق <span class="wd-required">*</span></label
+              >
+              <select id="flow" class="wd-form-control">
+                <option value="">اختر التدفق</option>
+                <option value="flow1">تدفق التسويق</option>
+                <option value="flow2">تدفق الدعم الفني</option>
+                <option value="flow3">تدفق المبيعات</option>
+              </select>
+              <div class="wd-error-message" id="flowError"></div>
+            </div>
+
+            <div class="wd-form-group">
+              <label for="maxContactsPerMinute"
+                >الحد الأقصى لعدد جهات الاتصال في الدقيقة</label
+              >
+              <div class="wd-slider-container">
+                <input
+                  type="range"
+                  id="maxContactsPerMinute"
+                  class="wd-slider"
+                  min="1"
+                  max="100"
+                  value="100"
+                  oninput="updateSliderValue(this.value)"
+                />
+                <div class="wd-slider-value">
+                  <span id="sliderValue">100</span>
+                  <span>جهة اتصال</span>
+                </div>
+              </div>
+              <div class="wd-error-message" id="maxContactsError"></div>
+            </div>
+
+            <div class="wd-form-group">
+              <label>جدولة الحملة <span class="wd-required">*</span></label>
+              <div class="wd-schedule-options">
+                <div class="wd-schedule-option" onclick="selectSchedule('now')">
+                  <i class="fas fa-bolt"></i>
+                  <h4>إرسال الآن</h4>
+                  <p>بدء الحملة فوراً</p>
+                </div>
+                <div
+                  class="wd-schedule-option"
+                  onclick="selectSchedule('later')"
+                >
+                  <i class="fas fa-clock"></i>
+                  <h4>جدولة</h4>
+                  <p>تحديد وقت بدء الحملة</p>
+                </div>
+              </div>
+              <div class="wd-schedule-datetime" id="scheduleDatetime">
+                <input
+                  type="datetime-local"
+                  id="scheduleTime"
+                  class="wd-form-control"
+                />
+                <div class="wd-error-message" id="scheduleError"></div>
+              </div>
+            </div>
+
+            <div class="wd-form-actions">
+              <button
+                class="wd-btn wd-btn-secondary"
+                onclick="window.location.href='../campaigns.html'"
+              >
+                إلغاء
+              </button>
+              <button class="wd-btn wd-btn-primary" onclick="createCampaign()">
+                إنشاء الحملة
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+      function selectMessageType(type) {
+        document
+          .querySelectorAll(".wd-message-type-option")
+          .forEach((option) => {
+            option.classList.remove("selected");
+          });
+        event.currentTarget.classList.add("selected");
+
+        document.getElementById("templateSection").style.display =
+          type === "template" ? "block" : "none";
+        document.getElementById("flowSection").style.display =
+          type === "flow" ? "block" : "none";
+      }
+
+      function selectSchedule(type) {
+        document.querySelectorAll(".wd-schedule-option").forEach((option) => {
+          option.classList.remove("selected");
+        });
+        event.currentTarget.classList.add("selected");
+
+        document
+          .getElementById("scheduleDatetime")
+          .classList.toggle("show", type === "later");
+      }
+
+      function addTargetingCondition() {
+        const conditionsContainer = document.getElementById(
+          "targetingConditions"
+        );
+        const conditionGroup = document.createElement("div");
+        conditionGroup.className = "wd-condition-group";
+        conditionGroup.innerHTML = `
+          <select class="wd-form-control" style="flex: 1" onchange="updateTargetCount()">
+            <option value="">اختر نوع الشرط</option>
+            <option value="tag">الوسم</option>
+            <option value="group">المجموعة</option>
+          </select>
+          <select class="wd-form-control" style="flex: 1" onchange="updateTargetCount()">
+            <option value="">اختر القيمة</option>
+            <option value="business">باقة الأعمال</option>
+            <option value="business-pro">باقة الأعمال برو</option>
+            <option value="professional">الباقة الاحترافية</option>
+          </select>
+          <button class="wd-btn wd-btn-secondary" onclick="this.parentElement.remove(); updateTargetCount()">
+            <i class="fas fa-times"></i>
+          </button>
+        `;
+        conditionsContainer.appendChild(conditionGroup);
+        updateTargetCount();
+      }
+
+      function updateTargetCount() {
+        const conditions = document.querySelectorAll(".wd-condition-group");
+        let totalCount = 0;
+
+        // هنا يمكنك إضافة منطق لحساب العدد الفعلي بناءً على الشروط
+        // هذا مثال بسيط يعرض عدد الشروط مضروباً في 100
+        totalCount = conditions.length * 100;
+
+        const countElement = document.querySelector(".wd-target-count-value");
+        countElement.textContent = totalCount;
+
+        const labelElement = document.querySelector(".wd-target-count-label");
+        labelElement.textContent =
+          totalCount === 1 ? "جهة اتصال" : "جهات اتصال";
+      }
+
+      function createCampaign() {
+        const campaignName = document.getElementById("campaignName").value;
+        const channel = document.getElementById("channel").value;
+        const maxContactsPerMinute = document.getElementById(
+          "maxContactsPerMinute"
+        ).value;
+        const messageType = document
+          .querySelector(".wd-message-type-option.selected")
+          ?.getAttribute("onclick")
+          ?.includes("template")
+          ? "template"
+          : "flow";
+        const template = document.getElementById("template").value;
+        const flow = document.getElementById("flow").value;
+        const scheduleType = document
+          .querySelector(".wd-schedule-option.selected")
+          ?.getAttribute("onclick")
+          ?.includes("now")
+          ? "now"
+          : "later";
+        const scheduleTime = document.getElementById("scheduleTime").value;
+
+        // إخفاء جميع رسائل الخطأ
+        document
+          .querySelectorAll(".wd-error-message")
+          .forEach((el) => (el.style.display = "none"));
+
+        let isValid = true;
+
+        if (!campaignName) {
+          document.getElementById("campaignNameError").style.display = "block";
+          document.getElementById("campaignNameError").textContent =
+            "الرجاء إدخال اسم الحملة";
+          isValid = false;
+        }
+
+        if (!channel) {
+          document.getElementById("channelError").style.display = "block";
+          document.getElementById("channelError").textContent =
+            "الرجاء اختيار قناة التواصل";
+          isValid = false;
+        }
+
+        if (maxContactsPerMinute > 100) {
+          document.getElementById("maxContactsError").style.display = "block";
+          document.getElementById("maxContactsError").textContent =
+            "الحد الأقصى لعدد جهات الاتصال في الدقيقة هو 100";
+          isValid = false;
+        }
+
+        if (messageType === "template" && !template) {
+          document.getElementById("templateError").style.display = "block";
+          document.getElementById("templateError").textContent =
+            "الرجاء اختيار قالب الرسالة";
+          isValid = false;
+        }
+
+        if (messageType === "flow" && !flow) {
+          document.getElementById("flowError").style.display = "block";
+          document.getElementById("flowError").textContent =
+            "الرجاء اختيار التدفق";
+          isValid = false;
+        }
+
+        if (scheduleType === "later" && !scheduleTime) {
+          document.getElementById("scheduleError").style.display = "block";
+          document.getElementById("scheduleError").textContent =
+            "الرجاء تحديد وقت الجدولة";
+          isValid = false;
+        }
+
+        if (isValid) {
+          // هنا يمكنك إضافة الكود لإنشاء الحملة
+          alert("تم إنشاء الحملة بنجاح");
+          window.location.href = "../campaigns.html";
+        }
+      }
+
+      function updateSliderValue(value) {
+        document.getElementById("sliderValue").textContent = value;
+      }
+    </script>
+  </body>
+</html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>الوسوم - التحليلات</title>
+    <title>لوحة التحكم - الوسوم</title>
     <link rel="stylesheet" href="../style.css" />
     <link
       rel="stylesheet"
@@ -17,7 +17,7 @@
       <!-- القسم الأول: القائمة الجانبية -->
       <aside class="wd-sidebar">
         <div class="wd-logo">
-            <img src="../imgs/logo.png" alt="شعار المنصة" />
+          <img src="../imgs/logo.png" alt="شعار المنصة" />
         </div>
         <nav class="wd-nav">
           <ul>
@@ -123,7 +123,7 @@
               <a href="../analytics/channels.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-broadcast-tower"></i>
-                  <span>قنوات التواصل</span>
+                  <span>قنوات التواصل <span class="wd-coming-soon">قريباً</span></span>
                 </li>
               </a>
               <a href="../analytics/chat.html" class="wd-nav-link">
@@ -141,13 +141,13 @@
               <a href="../analytics/teams.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-user-friends"></i>
-                  <span>الفرق</span>
+                  <span>الفرق <span class="wd-coming-soon">قريباً</span></span>
                 </li>
               </a>
               <a href="../analytics/tags.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item active">
                   <i class="fas fa-tags"></i>
-                  <span>الوسوم</span>
+                  <span>الوسوم <span class="wd-coming-soon">قريباً</span></span>
                 </li>
               </a>
             </ul>
@@ -168,19 +168,77 @@
             <h1>تحليلات الوسوم</h1>
           </div>
           <div class="wd-header-actions">
+            <!--
+            <div class="wd-dropdown">
+              <button class="wd-btn" onclick="toggleDropdown('timeDropdown')">
+                <i class="fas fa-calendar"></i>
+                الفترة الزمنية
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="wd-dropdown-menu" id="timeDropdown">
+                <div class="wd-dropdown-item" onclick="selectTimePeriod('today')">
+                  <i class="fas fa-calendar-day"></i>
+                  <span>اليوم</span>
+                </div>
+                <div class="wd-dropdown-item" onclick="selectTimePeriod('week')">
+                  <i class="fas fa-calendar-week"></i>
+                  <span>الأسبوع</span>
+                </div>
+                <div class="wd-dropdown-item" onclick="selectTimePeriod('month')">
+                  <i class="fas fa-calendar-alt"></i>
+                  <span>الشهر</span>
+                </div>
+                <div class="wd-dropdown-item" onclick="selectTimePeriod('quarter')">
+                  <i class="fas fa-calendar"></i>
+                  <span>الربع</span>
+                </div>
+                <div class="wd-dropdown-item" onclick="selectTimePeriod('year')">
+                  <i class="fas fa-calendar-check"></i>
+                  <span>السنة</span>
+                </div>
+                <div class="wd-dropdown-item" onclick="selectTimePeriod('custom')">
+                  <i class="fas fa-calendar-plus"></i>
+                  <span>مخصص</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="wd-dropdown">
+              <button class="wd-btn" onclick="toggleDropdown('tagDropdown')">
+                <i class="fas fa-tag"></i>
+                اختر وسم
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="wd-dropdown-menu" id="tagDropdown">
+                <div class="wd-dropdown-item" onclick="selectTag('all')">
+                  <i class="fas fa-tags"></i>
+                  <span>جميع الوسوم</span>
+                </div>
+                <div class="wd-dropdown-item" onclick="selectTag('support')">
+                  <i class="fas fa-headset"></i>
+                  <span>#دعم_فني</span>
+                </div>
+                <div class="wd-dropdown-item" onclick="selectTag('sales')">
+                  <i class="fas fa-shopping-cart"></i>
+                  <span>#مبيعات</span>
+                </div>
+                <div class="wd-dropdown-item" onclick="selectTag('complaints')">
+                  <i class="fas fa-exclamation-circle"></i>
+                  <span>#شكاوى</span>
+                </div>
+              </div>
+            </div>
+
             <button class="wd-btn">
               <i class="fas fa-download"></i>
               تحميل التقرير
             </button>
-            <button class="wd-btn">
-              <i class="fas fa-calendar"></i>
-              الفترة الزمنية
-            </button>
+            -->
           </div>
         </div>
 
         <div class="wd-content-body">
-          <!-- قسم الإحصائيات البسيطة -->
+          <!--
           <div class="wd-section">
             <div class="wd-cards-container">
               <div class="wd-card">
@@ -273,7 +331,6 @@
             </div>
           </div>
 
-          <!-- قسم التحليلات الاحترافية -->
           <div class="wd-section">
             <div class="wd-cards-container">
               <div class="wd-card wd-chart-card">
@@ -313,8 +370,44 @@
               </div>
             </div>
           </div>
+          -->
+          <div class="wd-coming-soon-container">
+            <i class="fas fa-tags"></i>
+            <h1>تحليلات الوسوم</h1>
+            <p>قريباً سيتم إضافة تحليلات الوسوم</p>
+          </div>
         </div>
       </main>
+
+      <style>
+        .wd-coming-soon {
+          background-color: #f0f0f0;
+          color: #666;
+          padding: 2px 8px;
+          border-radius: 4px;
+          font-size: 12px;
+          margin-right: 8px;
+        }
+
+        .wd-coming-soon-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          text-align: center;
+          color: #666;
+        }
+
+        .wd-coming-soon-container i {
+          font-size: 48px;
+          margin-bottom: 16px;
+        }
+
+        .wd-coming-soon-container h1 {
+          margin-bottom: 8px;
+        }
+      </style>
     </div>
 
     <script>
@@ -446,6 +539,85 @@
           },
         },
       });
+
+      function selectTimePeriod(period) {
+        const dropdown = document.getElementById("timeDropdown");
+        const button = dropdown.previousElementSibling;
+        const icon = button.querySelector("i.fa-calendar");
+        const text = button.querySelector("span");
+
+        // تحديث نص الزر
+        text.textContent =
+          period === "today"
+            ? "اليوم"
+            : period === "week"
+            ? "الأسبوع"
+            : period === "month"
+            ? "الشهر"
+            : period === "quarter"
+            ? "الربع"
+            : period === "year"
+            ? "السنة"
+            : "مخصص";
+
+        // تحديث أيقونة الزر
+        icon.className =
+          period === "today"
+            ? "fas fa-calendar-day"
+            : period === "week"
+            ? "fas fa-calendar-week"
+            : period === "month"
+            ? "fas fa-calendar-alt"
+            : period === "quarter"
+            ? "fas fa-calendar"
+            : period === "year"
+            ? "fas fa-calendar-check"
+            : "fas fa-calendar-plus";
+
+        // تحديث البيانات حسب الفترة المحددة
+        updateChartsData(period);
+
+        // إغلاق القائمة
+        dropdown.classList.remove("show");
+      }
+
+      function toggleDropdown(dropdownId) {
+        const dropdown = document.getElementById(dropdownId);
+        dropdown.classList.toggle("show");
+      }
+
+      function selectTag(tagId) {
+        const dropdown = document.getElementById("tagDropdown");
+        const button = dropdown.previousElementSibling;
+        const icon = button.querySelector("i.fa-tag");
+        const text = button.querySelector("span");
+
+        // تحديث نص الزر
+        text.textContent =
+          tagId === "all"
+            ? "جميع الوسوم"
+            : tagId === "support"
+            ? "#دعم_فني"
+            : tagId === "sales"
+            ? "#مبيعات"
+            : "#شكاوى";
+
+        // تحديث أيقونة الزر
+        icon.className =
+          tagId === "all"
+            ? "fas fa-tags"
+            : tagId === "support"
+            ? "fas fa-headset"
+            : tagId === "sales"
+            ? "fas fa-shopping-cart"
+            : "fas fa-exclamation-circle";
+
+        // تحديث البيانات حسب الوسم المحدد
+        updateTagData(tagId);
+
+        // إغلاق القائمة
+        dropdown.classList.remove("show");
+      }
     </script>
   </body>
 </html>

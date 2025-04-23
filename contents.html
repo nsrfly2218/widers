@@ -107,7 +107,6 @@
       .wd-variable-name {
         font-weight: 500;
         color: #333;
-        font-family: monospace;
       }
 
       .wd-variable-description {
@@ -120,7 +119,6 @@
       }
 
       .wd-variable-value {
-        font-family: monospace;
         background: #f8f9fa;
         padding: 4px 8px;
         border-radius: 4px;
@@ -336,10 +334,13 @@
             </button>
             <h1>متغيرات المستخدم</h1>
           </div>
-          <div class="wd-header-actions">
-            <button class="wd-btn wd-btn-primary">
+          <div class="wd-header-right">
+            <button
+              class="wd-btn wd-btn-primary"
+              onclick="window.location.href='add/new-template.html'"
+            >
               <i class="fas fa-plus"></i>
-              إضافة متغير
+              إضافة قالب جديد
             </button>
           </div>
         </div>

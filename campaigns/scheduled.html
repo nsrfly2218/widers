@@ -13,6 +13,58 @@
       .wd-content-body {
         padding: 20px;
       }
+      .wd-search-container {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .wd-search-input {
+        position: relative;
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .wd-search-input i {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+      }
+
+      .wd-search-input input {
+        width: 100%;
+        padding: 12px 40px 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .wd-search-input input:focus {
+        outline: none;
+        border-color: #25d366;
+        box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.1);
+      }
+
+      .wd-filter-options {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .wd-filter-select {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: white;
+        color: #333;
+        font-size: 14px;
+        min-width: 150px;
+      }
 
       .wd-scheduled-campaigns-header {
         display: flex;
@@ -143,6 +195,7 @@
         cursor: pointer;
         transition: all 0.3s ease;
         text-align: center;
+        border: none;
       }
 
       .wd-scheduled-campaign-action.view {
@@ -307,19 +360,28 @@
               <a href="../campaigns/whatsapp.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fab fa-whatsapp"></i>
-                  <span>حملات واتساب</span>
+                  <span
+                    >حملات واتساب
+                    <span class="wd-coming-soon">قريباً</span></span
+                  >
                 </li>
               </a>
               <a href="../campaigns/email.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-envelope"></i>
-                  <span>حملات البريد</span>
+                  <span
+                    >حملات البريد
+                    <span class="wd-coming-soon">قريباً</span></span
+                  >
                 </li>
               </a>
               <a href="../campaigns/sms.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-sms"></i>
-                  <span>حملات الرسائل</span>
+                  <span
+                    >حملات الرسائل
+                    <span class="wd-coming-soon">قريباً</span></span
+                  >
                 </li>
               </a>
             </ul>
@@ -339,43 +401,42 @@
             </button>
             <h1>الحملات المجدولة</h1>
           </div>
-          <div class="wd-header-actions">
-            <button class="wd-btn wd-btn-primary">
-              <i class="fas fa-plus"></i>
-              جدولة حملة جديدة
-            </button>
-          </div>
         </div>
 
         <div class="wd-content-body">
-          <div class="wd-scheduled-campaigns-header">
-            <div class="wd-scheduled-campaigns-search">
+          <div class="wd-search-container">
+            <div class="wd-search-input">
+              <i class="fas fa-search"></i>
               <input
                 type="text"
-                class="wd-scheduled-campaigns-search-input"
-                placeholder="بحث في الحملات المجدولة..."
+                placeholder="ابحث عن حملة..."
+                id="userVariableSearch"
               />
-              <i class="fas fa-search"></i>
             </div>
-            <div class="wd-scheduled-campaigns-filters">
-              <button class="wd-scheduled-campaigns-filter active">الكل</button>
-              <button class="wd-scheduled-campaigns-filter">اليوم</button>
-              <button class="wd-scheduled-campaigns-filter">الأسبوع</button>
-              <button class="wd-scheduled-campaigns-filter">الشهر</button>
+            <div class="wd-filter-options">
+              <select class="wd-filter-select">
+                <option value="">الكل</option>
+                <option value="today">اليوم</option>
+                <option value="week">الأسبوع</option>
+                <option value="month">الشهر</option>
+                <option value="year">السنة</option>
+              </select>
+              <select class="wd-filter-select">
+                <option value="">الكل</option>
+                <option value="marketing">Marketing</option>
+                <option value="utility">Utility</option>
+                <option value="authentication">Authentication</option>
+                <option value="carousel">Carousel</option>
+              </select>
             </div>
           </div>
-
           <div class="wd-scheduled-campaigns-grid">
             <div class="wd-scheduled-campaign-card">
-              <img
-                src="../imgs/campaign1.jpg"
-                alt="حملة تسويقية"
-                class="wd-scheduled-campaign-image"
-              />
               <div class="wd-scheduled-campaign-content">
                 <h3 class="wd-scheduled-campaign-title">حملة العروض الصيفية</h3>
                 <p class="wd-scheduled-campaign-description">
-                  حملة تسويقية للعروض الصيفية مع خصومات تصل إلى 50%
+                  حملة تسويقية للعروض الصيفية مع خصومات تصل إلى 50% للعملاء
+                  المميزين
                 </p>
                 <div class="wd-scheduled-campaign-meta">
                   <span class="wd-scheduled-campaign-type">
@@ -392,33 +453,20 @@
                     <i class="fas fa-eye"></i>
                     عرض
                   </button>
-                  <button class="wd-scheduled-campaign-action edit">
-                    <i class="fas fa-edit"></i>
-                    تعديل
-                  </button>
-                  <button class="wd-scheduled-campaign-action delete">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
                 </div>
               </div>
             </div>
 
             <div class="wd-scheduled-campaign-card">
-              <img
-                src="../imgs/campaign2.jpg"
-                alt="حملة توعوية"
-                class="wd-scheduled-campaign-image"
-              />
               <div class="wd-scheduled-campaign-content">
-                <h3 class="wd-scheduled-campaign-title">حملة التوعية الصحية</h3>
+                <h3 class="wd-scheduled-campaign-title">حملة تنظيف البيئة</h3>
                 <p class="wd-scheduled-campaign-description">
-                  حملة توعوية حول الصحة العامة والوقاية من الأمراض
+                  حملة تنظيف البيئة لتحسين الصحة العامة والوقاية من الأمراض
                 </p>
                 <div class="wd-scheduled-campaign-meta">
                   <span class="wd-scheduled-campaign-type">
-                    <i class="fas fa-heart"></i>
-                    توعوية
+                    <i class="fas fa-question-circle"></i>
+                    مساعدة
                   </span>
                   <span class="wd-scheduled-campaign-schedule">
                     <i class="fas fa-calendar-alt"></i>
@@ -430,33 +478,20 @@
                     <i class="fas fa-eye"></i>
                     عرض
                   </button>
-                  <button class="wd-scheduled-campaign-action edit">
-                    <i class="fas fa-edit"></i>
-                    تعديل
-                  </button>
-                  <button class="wd-scheduled-campaign-action delete">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
                 </div>
               </div>
             </div>
 
             <div class="wd-scheduled-campaign-card">
-              <img
-                src="../imgs/campaign3.jpg"
-                alt="حملة ولاء"
-                class="wd-scheduled-campaign-image"
-              />
               <div class="wd-scheduled-campaign-content">
-                <h3 class="wd-scheduled-campaign-title">برنامج ولاء العملاء</h3>
+                <h3 class="wd-scheduled-campaign-title">حملة المصادقة</h3>
                 <p class="wd-scheduled-campaign-description">
-                  حملة مكافآت وخصومات حصرية للعملاء المميزين
+                  حملة المصادقة للمستخدمين المميزين
                 </p>
                 <div class="wd-scheduled-campaign-meta">
                   <span class="wd-scheduled-campaign-type">
-                    <i class="fas fa-star"></i>
-                    ولاء
+                    <i class="fas fa-check-circle"></i>
+                    مصادقة
                   </span>
                   <span class="wd-scheduled-campaign-schedule">
                     <i class="fas fa-calendar-alt"></i>
@@ -467,14 +502,6 @@
                   <button class="wd-scheduled-campaign-action view">
                     <i class="fas fa-eye"></i>
                     عرض
-                  </button>
-                  <button class="wd-scheduled-campaign-action edit">
-                    <i class="fas fa-edit"></i>
-                    تعديل
-                  </button>
-                  <button class="wd-scheduled-campaign-action delete">
-                    <i class="fas fa-trash"></i>
-                    حذف
                   </button>
                 </div>
               </div>

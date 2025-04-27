@@ -13,6 +13,26 @@
       .wd-content-body {
         padding: 20px;
       }
+      .wd-coming-soon-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+
+      .wd-coming-soon-container i {
+        font-size: 48px;
+        margin-bottom: 10px;
+      }
+
+      .wd-coming-soon-container h1 {
+        margin-bottom: 8px;
+      }
+
+      .wd-coming-soon-container p {
+        color: #666;
+      }
 
       .wd-channels-header {
         display: flex;
@@ -342,19 +362,16 @@
               <a href="../settings/teams.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-user-friends"></i>
-                  <span>الفرق</span>
+                  <span>الفرق <span class="wd-coming-soon">قريباً</span></span>
                 </li>
               </a>
               <a href="../settings/channels.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item active">
                   <i class="fas fa-comments"></i>
-                  <span>قنوات التواصل</span>
-                </li>
-              </a>
-              <a href="../settings/timezone.html" class="wd-nav-link">
-                <li class="wd-secondary-nav-item">
-                  <i class="fas fa-clock"></i>
-                  <span>المنطقة الزمنية</span>
+                  <span
+                    >قنوات التواصل
+                    <span class="wd-coming-soon">قريباً</span></span
+                  >
                 </li>
               </a>
               <a href="../settings/webhook.html" class="wd-nav-link">
@@ -404,15 +421,23 @@
             </button>
             <h1>قنوات التواصل</h1>
           </div>
+          <!--
           <div class="wd-header-actions">
             <button class="wd-btn wd-btn-primary">
               <i class="fas fa-plus"></i>
               قناة جديدة
             </button>
           </div>
+          -->
         </div>
 
         <div class="wd-content-body">
+          <div class="wd-coming-soon-container">
+            <i class="fas fa-comments"></i>
+            <h1>قنوات التواصل</h1>
+            <p>قريباً سيتم إضافة قنوات التواصل</p>
+          </div>
+          <!--
           <div class="wd-channels-header">
             <div class="wd-channels-search">
               <input
@@ -610,6 +635,7 @@
               </div>
             </div>
           </div>
+          -->
         </div>
       </div>
     </div>

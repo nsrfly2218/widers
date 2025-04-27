@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>السجلات</title>
+    <title>السجلات - المطورين</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -199,6 +199,122 @@
           width: 100%;
         }
       }
+
+      .wd-logs-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .wd-logs-table th,
+      .wd-logs-table td {
+        padding: 12px 15px;
+        text-align: right;
+        border-bottom: 1px solid #eee;
+      }
+
+      .wd-logs-table th {
+        background: #f8f9fa;
+        font-weight: 500;
+        color: #333;
+      }
+
+      .wd-logs-table tr:hover {
+        background: #f8f9fa;
+      }
+
+      .wd-logs-table .wd-log-time {
+        white-space: nowrap;
+        color: #666;
+        font-size: 12px;
+      }
+
+      .wd-log-contact {
+        position: relative;
+        cursor: pointer;
+      }
+
+      .wd-contact-tooltip {
+        display: none;
+        position: absolute;
+        background: white;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 250px;
+        z-index: 1000;
+        right: 100%;
+        top: 0;
+        margin-top: 10px;
+      }
+
+      .wd-log-contact:hover .wd-contact-tooltip {
+        display: block;
+      }
+
+      .wd-contact-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .wd-contact-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+      }
+
+      .wd-contact-name {
+        font-weight: 500;
+        color: #333;
+      }
+
+      .wd-contact-detail {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 0;
+        color: #666;
+      }
+
+      .wd-contact-detail i {
+        width: 20px;
+        color: #4a90e2;
+      }
+
+      .wd-contact-detail span {
+        flex: 1;
+      }
+
+      .wd-copy-btn {
+        background: none;
+        border: none;
+        color: #4a90e2;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 4px;
+        transition: background 0.3s ease;
+      }
+
+      .wd-copy-btn:hover {
+        background: #f0f7ff;
+      }
+
+      .wd-copy-btn i {
+        font-size: 14px;
+      }
     </style>
   </head>
   <body>
@@ -330,17 +446,8 @@
             </button>
             <h1>السجلات</h1>
           </div>
-          <div class="wd-header-right">
-            <button
-              class="wd-btn wd-btn-primary"
-              onclick="window.location.href='add/new-webhook.html'"
-            >
-              <i class="fas fa-plus"></i>
-              إضافة ويب هوك جديد
-            </button>
-          </div>
           <div class="wd-header-actions">
-            <button class="wd-btn wd-btn-primary">
+            <button class="wd-btn">
               <i class="fas fa-download"></i>
               تصدير السجلات
             </button>
@@ -359,126 +466,86 @@
             </div>
             <div class="wd-filter-options">
               <select class="wd-filter-select">
-                <option value="">جميع المستويات</option>
-                <option value="info">معلومات</option>
-                <option value="warning">تحذير</option>
-                <option value="error">خطأ</option>
-              </select>
-              <select class="wd-filter-select">
-                <option value="">جميع المصادر</option>
-                <option value="system">النظام</option>
-                <option value="user">المستخدم</option>
-                <option value="api">API</option>
+                <option value="">كل السجلات</option>
+                <option value="success">نجاح</option>
+                <option value="error">فشل</option>
               </select>
             </div>
           </div>
 
-          <div class="wd-table-container">
-            <table class="wd-table">
-              <thead>
-                <tr>
-                  <th>الرسالة</th>
-                  <th>التفاصيل</th>
-                  <th>المستوى</th>
-                  <th>التاريخ</th>
-                  <th>الإجراءات</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="wd-log-info">
-                      <div class="wd-log-message">
-                        تم تسجيل دخول المستخدم بنجاح
+          <table class="wd-logs-table">
+            <thead>
+              <tr>
+                <th>الوقت والتاريخ</th>
+                <th>جهة الاتصال</th>
+                <th>التدفق</th>
+                <th>الخطوة</th>
+                <th>الوصف</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="wd-log-time">2024-03-20 14:30:45</td>
+                <td class="wd-log-contact">
+                  <div class="wd-contact-tooltip">
+                    <div class="wd-contact-header">
+                      <div class="wd-contact-avatar">
+                        <i class="fas fa-user"></i>
                       </div>
+                      <div class="wd-contact-name">أحمد محمد</div>
                     </div>
-                  </td>
-                  <td>
-                    <div class="wd-log-details">
-                      المستخدم: أحمد محمد - IP: 192.168.1.1
+                    <div class="wd-contact-detail">
+                      <i class="fas fa-phone"></i>
+                      <span>+966501234567</span>
+                      <button
+                        class="wd-copy-btn"
+                        onclick="copyToClipboard('+966501234567')"
+                      >
+                        <i class="fas fa-copy"></i>
+                      </button>
                     </div>
-                  </td>
-                  <td>
-                    <span class="wd-log-level wd-log-level-info">
-                      <i class="fas fa-info-circle"></i>
-                      معلومات
-                    </span>
-                  </td>
-                  <td>
-                    <div class="wd-log-timestamp">2024-03-15 14:30:22</div>
-                  </td>
-                  <td>
-                    <button class="wd-btn wd-btn-icon" title="عرض التفاصيل">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="حذف">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="wd-log-info">
-                      <div class="wd-log-message">فشل محاولة تسجيل الدخول</div>
+                    <div class="wd-contact-detail">
+                      <i class="fas fa-envelope"></i>
+                      <span>ahmed@example.com</span>
+                      <button
+                        class="wd-copy-btn"
+                        onclick="copyToClipboard('ahmed@example.com')"
+                      >
+                        <i class="fas fa-copy"></i>
+                      </button>
                     </div>
-                  </td>
-                  <td>
-                    <div class="wd-log-details">
-                      اسم المستخدم: admin - IP: 192.168.1.2
-                    </div>
-                  </td>
-                  <td>
-                    <span class="wd-log-level wd-log-level-warning">
-                      <i class="fas fa-exclamation-triangle"></i>
-                      تحذير
-                    </span>
-                  </td>
-                  <td>
-                    <div class="wd-log-timestamp">2024-03-15 14:25:10</div>
-                  </td>
-                  <td>
-                    <button class="wd-btn wd-btn-icon" title="عرض التفاصيل">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="حذف">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="wd-log-info">
-                      <div class="wd-log-message">
-                        خطأ في الاتصال بقاعدة البيانات
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="wd-log-details">
-                      Error: Connection timeout - Server: db1
-                    </div>
-                  </td>
-                  <td>
-                    <span class="wd-log-level wd-log-level-error">
-                      <i class="fas fa-times-circle"></i>
-                      خطأ
-                    </span>
-                  </td>
-                  <td>
-                    <div class="wd-log-timestamp">2024-03-15 14:20:05</div>
-                  </td>
-                  <td>
-                    <button class="wd-btn wd-btn-icon" title="عرض التفاصيل">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="حذف">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                  </div>
+                  أحمد محمد
+                </td>
+                <td class="wd-log-flow">تدفق التسجيل</td>
+                <td class="wd-log-step">ارسال رسالة 1</td>
+                <td class="wd-log-description">
+                  (#200) You do not have the necessary permissions required to
+                  send messages on behalf of this WhatsApp Business Account
+                </td>
+              </tr>
+              <tr>
+                <td class="wd-log-time">2024-03-20 14:25:12</td>
+                <td class="wd-log-contact">سارة أحمد</td>
+                <td class="wd-log-flow">تدفق الدعم الفني</td>
+                <td class="wd-log-step">ارسال رسالة 2</td>
+                <td class="wd-log-description">
+                  (#200) You do not have the necessary permissions required to
+                  send messages on behalf of this WhatsApp Business Account
+                </td>
+              </tr>
+              <tr>
+                <td class="wd-log-time">2024-03-20 14:20:30</td>
+                <td class="wd-log-contact">محمد علي</td>
+                <td class="wd-log-flow">تدفق المبيعات</td>
+                <td class="wd-log-step">ارسال رسالة 3</td>
+                <td class="wd-log-description">
+                  (#200) You do not have the necessary permissions required to
+                  send messages on behalf of this WhatsApp Business Account
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -543,5 +610,17 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+      function copyToClipboard(text) {
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            // يمكن إضافة رسالة نجاح هنا
+          })
+          .catch((err) => {
+            console.error("فشل نسخ النص:", err);
+          });
+      }
+    </script>
   </body>
 </html>

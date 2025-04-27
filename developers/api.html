@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>API</title>
+    <title>API - المطورين</title>
     <link rel="stylesheet" href="../style.css" />
     <link
       rel="stylesheet"
@@ -213,6 +213,32 @@
           width: 100%;
         }
       }
+
+      .wd-api-section {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .wd-api-field {
+        margin-bottom: 20px;
+      }
+
+      .wd-api-label {
+        display: block;
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 8px;
+      }
+
+      .wd-api-value {
+        background: #f8f9fa;
+        padding: 12px 15px;
+        border-radius: 6px;
+        font-family: monospace;
+        color: #333;
+        word-break: break-all;
+      }
     </style>
   </head>
   <body>
@@ -359,139 +385,33 @@
             <h1>API</h1>
           </div>
           <div class="wd-header-actions">
-            <button class="wd-btn wd-btn-primary">
-              <i class="fas fa-plus"></i>
-              إضافة API
-            </button>
+            <a
+              class="wd-btn"
+              href="https://documenter.getpostman.com/view/8538142/2s9Ykn8gvj"
+              target="_blank"
+            >
+              <i class="fas fa-file-alt"></i>
+              الوثائق
+            </a>
+            <a class="wd-btn" href="../developers/campaigns.html">
+              <i class="fas fa-bullhorn"></i>
+              حملات API
+            </a>
           </div>
         </div>
 
         <div class="wd-content-body">
-          <div class="wd-search-container">
-            <div class="wd-search-input">
-              <i class="fas fa-search"></i>
-              <input type="text" placeholder="ابحث في API..." id="apiSearch" />
+          <div class="wd-api-section">
+            <div class="wd-api-field">
+              <label class="wd-api-label">API endpoint</label>
+              <div class="wd-api-value">https://apps.widers.net/</div>
             </div>
-            <div class="wd-filter-options">
-              <select class="wd-filter-select">
-                <option value="">جميع الطرق</option>
-                <option value="get">GET</option>
-                <option value="post">POST</option>
-                <option value="put">PUT</option>
-                <option value="delete">DELETE</option>
-              </select>
-              <select class="wd-filter-select">
-                <option value="">جميع الحالات</option>
-                <option value="active">نشط</option>
-                <option value="inactive">غير نشط</option>
-              </select>
+            <div class="wd-api-field">
+              <label class="wd-api-label">You API token</label>
+              <div class="wd-api-value">
+                ug7LFStSfFw9RGYhtGKKL2MWlcIB5CsGnnAK54qr14b8d8c8
+              </div>
             </div>
-          </div>
-
-          <div class="wd-table-container">
-            <table class="wd-table">
-              <thead>
-                <tr>
-                  <th>الاسم</th>
-                  <th>Endpoint</th>
-                  <th>الطريقة</th>
-                  <th>الحالة</th>
-                  <th>الإجراءات</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="wd-api-info">
-                      <div class="wd-api-name">الحصول على الرسائل</div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="wd-api-endpoint">/api/v1/messages</div>
-                  </td>
-                  <td>
-                    <span class="wd-api-method wd-api-method-get">
-                      <i class="fas fa-arrow-right"></i>
-                      GET
-                    </span>
-                  </td>
-                  <td>
-                    <span class="wd-status wd-status-active">
-                      <i class="fas fa-circle"></i>
-                      نشط
-                    </span>
-                  </td>
-                  <td>
-                    <button class="wd-btn wd-btn-icon" title="تعديل">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="حذف">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="wd-api-info">
-                      <div class="wd-api-name">إرسال رسالة</div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="wd-api-endpoint">/api/v1/messages/send</div>
-                  </td>
-                  <td>
-                    <span class="wd-api-method wd-api-method-post">
-                      <i class="fas fa-arrow-right"></i>
-                      POST
-                    </span>
-                  </td>
-                  <td>
-                    <span class="wd-status wd-status-active">
-                      <i class="fas fa-circle"></i>
-                      نشط
-                    </span>
-                  </td>
-                  <td>
-                    <button class="wd-btn wd-btn-icon" title="تعديل">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="حذف">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="wd-api-info">
-                      <div class="wd-api-name">تحديث جهة اتصال</div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="wd-api-endpoint">/api/v1/contacts/{id}</div>
-                  </td>
-                  <td>
-                    <span class="wd-api-method wd-api-method-put">
-                      <i class="fas fa-arrow-right"></i>
-                      PUT
-                    </span>
-                  </td>
-                  <td>
-                    <span class="wd-status wd-status-inactive">
-                      <i class="fas fa-circle"></i>
-                      غير نشط
-                    </span>
-                  </td>
-                  <td>
-                    <button class="wd-btn wd-btn-icon" title="تعديل">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="حذف">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
       </div>

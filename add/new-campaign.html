@@ -291,8 +291,8 @@
       </aside>
 
       <!-- القسم الثاني: المحتوى الرئيسي -->
-      <main class="wd-main-content">
-        <div class="wd-content-header">
+      <main class="wd-main-content" style="right: 65px">
+        <div class="wd-content-header" style="right: 65px">
           <div class="wd-header-left">
             <button
               class="wd-back-btn"
@@ -304,7 +304,7 @@
           </div>
         </div>
 
-        <div class="wd-content-body">
+        <div class="wd-content-body" style="right: 65px">
           <div class="wd-campaign-form">
             <div class="wd-form-group">
               <label for="campaignName"
@@ -317,6 +317,16 @@
                 placeholder="أدخل اسم الحملة"
               />
               <div class="wd-error-message" id="campaignNameError"></div>
+            </div>
+
+            <div class="wd-form-group">
+              <label for="campaignDescription">وصف الحملة</label>
+              <textarea
+                id="campaignDescription"
+                class="wd-form-control"
+                placeholder="أدخل وصفاً للحملة"
+                rows="3"
+              ></textarea>
             </div>
 
             <div class="wd-form-group">

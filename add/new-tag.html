@@ -4,12 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>إضافة وسم جديد</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="../style.css" />
     <link
       rel="stylesheet"
@@ -86,8 +80,9 @@
       }
 
       .wd-tag-preview span {
+        color: #fff;
         padding: 4px 12px;
-        border-radius: 16px;
+        border-radius: 2px;
         font-size: 14px;
         font-weight: 500;
       }
@@ -176,12 +171,12 @@
       </aside>
 
       <!-- القسم الثاني: المحتوى الرئيسي -->
-      <main class="wd-main-content">
-        <div class="wd-content-header">
+      <main class="wd-main-content" style="right: 65px">
+        <div class="wd-content-header" style="right: 65px">
           <div class="wd-header-left">
             <button
               class="wd-back-btn"
-              onclick="window.location.href='../contacts.html'"
+              onclick="window.location.href='../contents/tags.html'"
             >
               <i class="fas fa-arrow-right"></i>
             </button>
@@ -189,7 +184,7 @@
           </div>
         </div>
 
-        <div class="wd-content-body">
+        <div class="wd-content-body" style="right: 65px">
           <div class="wd-tag-form">
             <div class="wd-form-group">
               <label for="tagName"
@@ -258,9 +253,7 @@
               >
                 إلغاء
               </button>
-              <button class="wd-btn wd-btn-primary" onclick="createTag()">
-                إنشاء الوسم
-              </button>
+              <button class="wd-btn" onclick="createTag()">إنشاء الوسم</button>
             </div>
           </div>
         </div>
@@ -285,7 +278,6 @@
         const preview = document.getElementById("tagPreview");
         preview.textContent = name || "معاينة الوسم";
         preview.style.backgroundColor = selectedColor;
-        preview.style.color = getContrastColor(selectedColor);
       }
 
       function getContrastColor(hexColor) {
@@ -324,7 +316,7 @@
         if (isValid) {
           // هنا يمكنك إضافة الكود لإنشاء الوسم
           alert("تم إنشاء الوسم بنجاح");
-          window.location.href = "../contacts.html";
+          window.location.href = "../contents/tags.html";
         }
       }
 

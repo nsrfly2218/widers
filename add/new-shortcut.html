@@ -4,12 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>إضافة اختصار جديد</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="../style.css" />
     <link
       rel="stylesheet"
@@ -168,12 +162,12 @@
       </aside>
 
       <!-- القسم الثاني: المحتوى الرئيسي -->
-      <main class="wd-main-content">
-        <div class="wd-content-header">
+      <main class="wd-main-content" style="right: 65px">
+        <div class="wd-content-header" style="right: 65px">
           <div class="wd-header-left">
             <button
               class="wd-back-btn"
-              onclick="window.location.href='../settings.html'"
+              onclick="window.location.href='../contents/shortcuts.html'"
             >
               <i class="fas fa-arrow-right"></i>
             </button>
@@ -181,7 +175,7 @@
           </div>
         </div>
 
-        <div class="wd-content-body">
+        <div class="wd-content-body" style="right: 65px">
           <div class="wd-shortcut-form">
             <div class="wd-form-group">
               <label for="shortcutName"
@@ -195,20 +189,6 @@
                 oninput="updateShortcutPreview()"
               />
               <div class="wd-error-message" id="shortcutNameError"></div>
-            </div>
-
-            <div class="wd-form-group">
-              <label for="shortcutTrigger"
-                >مفتاح الاختصار <span class="wd-required">*</span></label
-              >
-              <input
-                type="text"
-                id="shortcutTrigger"
-                class="wd-form-control"
-                placeholder="أدخل مفتاح الاختصار"
-                oninput="updateShortcutPreview()"
-              />
-              <div class="wd-error-message" id="shortcutTriggerError"></div>
             </div>
 
             <div class="wd-form-group">
@@ -229,7 +209,7 @@
               <h4>معاينة الاختصار</h4>
               <div class="wd-preview-box">
                 <div class="wd-preview-trigger" id="previewTrigger">
-                  مفتاح الاختصار
+                  اسم الاختصار
                 </div>
                 <div class="wd-preview-response" id="previewResponse">
                   الرد التلقائي
@@ -240,11 +220,11 @@
             <div class="wd-form-actions">
               <button
                 class="wd-btn wd-btn-secondary"
-                onclick="window.location.href='../settings.html'"
+                onclick="window.location.href='../contents/shortcuts.html'"
               >
                 إلغاء
               </button>
-              <button class="wd-btn wd-btn-primary" onclick="createShortcut()">
+              <button class="wd-btn" onclick="createShortcut()">
                 إنشاء الاختصار
               </button>
             </div>
@@ -256,18 +236,17 @@
     <script src="../script.js"></script>
     <script>
       function updateShortcutPreview() {
-        const trigger = document.getElementById("shortcutTrigger").value;
+        const name = document.getElementById("shortcutName").value;
         const response = document.getElementById("shortcutResponse").value;
 
         document.getElementById("previewTrigger").textContent =
-          trigger || "مفتاح الاختصار";
+          name || "اسم الاختصار";
         document.getElementById("previewResponse").textContent =
           response || "الرد التلقائي";
       }
 
       function createShortcut() {
         const name = document.getElementById("shortcutName").value;
-        const trigger = document.getElementById("shortcutTrigger").value;
         const response = document.getElementById("shortcutResponse").value;
 
         // إخفاء جميع رسائل الخطأ
@@ -284,14 +263,6 @@
           isValid = false;
         }
 
-        if (!trigger) {
-          document.getElementById("shortcutTriggerError").style.display =
-            "block";
-          document.getElementById("shortcutTriggerError").textContent =
-            "الرجاء إدخال مفتاح الاختصار";
-          isValid = false;
-        }
-
         if (!response) {
           document.getElementById("shortcutResponseError").style.display =
             "block";
@@ -303,7 +274,7 @@
         if (isValid) {
           // هنا يمكنك إضافة الكود لإنشاء الاختصار
           alert("تم إنشاء الاختصار بنجاح");
-          window.location.href = "../settings.html";
+          window.location.href = "../contents/shortcuts.html";
         }
       }
     </script>

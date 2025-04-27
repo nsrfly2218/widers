@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Webhooks</title>
+    <title>Webhooks - المطورين</title>
     <link rel="stylesheet" href="../style.css" />
     <link
       rel="stylesheet"
@@ -197,6 +197,34 @@
           width: 100%;
         }
       }
+
+      .wd-webhook-section {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .wd-webhook-field {
+        margin-bottom: 20px;
+      }
+
+      .wd-webhook-label {
+        display: block;
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 8px;
+      }
+
+      .wd-webhook-value {
+        background: #f8f9fa;
+        padding: 12px 15px;
+        border-radius: 6px;
+        font-family: monospace;
+        color: #333;
+        word-break: break-all;
+      }
     </style>
   </head>
   <body>
@@ -211,7 +239,9 @@
             <li class="wd-nav-item">
               <i class="fa-solid fa-gauge"></i>
               <span
-                ><a href="../index.html" class="wd-nav-link">لوحة التحكم</a></span
+                ><a href="../index.html" class="wd-nav-link"
+                  >لوحة التحكم</a
+                ></span
               >
             </li>
             <li class="wd-nav-item">
@@ -237,13 +267,17 @@
             <li class="wd-nav-item">
               <i class="fas fa-bullhorn"></i>
               <span
-                ><a href="../campaigns.html" class="wd-nav-link">الحملات</a></span
+                ><a href="../campaigns.html" class="wd-nav-link"
+                  >الحملات</a
+                ></span
               >
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-calendar"></i>
               <span
-                ><a href="../calendar.html" class="wd-nav-link">التقويم</a></span
+                ><a href="../calendar.html" class="wd-nav-link"
+                  >التقويم</a
+                ></span
               >
             </li>
             <li class="wd-nav-item">
@@ -265,7 +299,9 @@
             <li class="wd-nav-item">
               <i class="fas fa-cog"></i>
               <span
-                ><a href="../settings.html" class="wd-nav-link">الإعدادات</a></span
+                ><a href="../settings.html" class="wd-nav-link"
+                  >الإعدادات</a
+                ></span
               >
             </li>
           </ul>
@@ -335,10 +371,10 @@
             <h1>Webhooks</h1>
           </div>
           <div class="wd-header-actions">
-            <button class="wd-btn wd-btn-primary">
+            <a href="../add/new-webhook.html" class="wd-btn">
               <i class="fas fa-plus"></i>
               إضافة Webhook
-            </button>
+            </a>
           </div>
         </div>
 
@@ -352,19 +388,6 @@
                 id="webhooksSearch"
               />
             </div>
-            <div class="wd-filter-options">
-              <select class="wd-filter-select">
-                <option value="">جميع الحالات</option>
-                <option value="active">نشط</option>
-                <option value="inactive">غير نشط</option>
-              </select>
-              <select class="wd-filter-select">
-                <option value="">جميع الأحداث</option>
-                <option value="message">الرسائل</option>
-                <option value="contact">جهات الاتصال</option>
-                <option value="campaign">الحملات</option>
-              </select>
-            </div>
           </div>
 
           <div class="wd-table-container">
@@ -372,9 +395,8 @@
               <thead>
                 <tr>
                   <th>الاسم</th>
-                  <th>URL</th>
-                  <th>الأحداث</th>
-                  <th>الحالة</th>
+                  <th>رابط الويبهوك</th>
+                  <th>التدفق المشغل</th>
                   <th>الإجراءات</th>
                 </tr>
               </thead>
@@ -387,28 +409,28 @@
                   </td>
                   <td>
                     <div class="wd-webhook-url">
-                      https://api.example.com/webhooks/messages
+                      https://apps.widers.net/webhook/113148adf7fed0a5abf8272b1ed73cd3a8ed4619707864f6841b0fbe63167248
                     </div>
                   </td>
                   <td>
-                    <div class="wd-webhook-events">
-                      <span class="wd-webhook-event">رسالة جديدة</span>
-                      <span class="wd-webhook-event">تحديث حالة</span>
+                    <div class="wd-webhook-flow">تدفق التسجيل</div>
+                  </td>
+                  <td>
+                    <div class="wd-actions">
+                      <a
+                        href="webhook-logs.html"
+                        class="wd-btn wd-btn-icon"
+                        title="السجلات"
+                      >
+                        <i class="fas fa-list"></i>
+                      </a>
+                      <button class="wd-btn wd-btn-icon" title="تعديل">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="wd-btn wd-btn-icon" title="حذف">
+                        <i class="fas fa-trash"></i>
+                      </button>
                     </div>
-                  </td>
-                  <td>
-                    <span class="wd-status wd-status-active">
-                      <i class="fas fa-circle"></i>
-                      نشط
-                    </span>
-                  </td>
-                  <td>
-                    <button class="wd-btn wd-btn-icon" title="تعديل">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="حذف">
-                      <i class="fas fa-trash"></i>
-                    </button>
                   </td>
                 </tr>
                 <tr>
@@ -419,60 +441,28 @@
                   </td>
                   <td>
                     <div class="wd-webhook-url">
-                      https://api.example.com/webhooks/contacts
+                      https://apps.widers.net/webhook/113148adf7fed0a5abf8272b1ed73cd3a8ed4619707864f6841b0fbe63167248
                     </div>
                   </td>
                   <td>
-                    <div class="wd-webhook-events">
-                      <span class="wd-webhook-event">جهة اتصال جديدة</span>
-                      <span class="wd-webhook-event">تحديث جهة اتصال</span>
+                    <div class="wd-webhook-flow">تدفق المبيعات</div>
+                  </td>
+                  <td>
+                    <div class="wd-actions">
+                      <a
+                        href="webhook-logs.html"
+                        class="wd-btn wd-btn-icon"
+                        title="السجلات"
+                      >
+                        <i class="fas fa-list"></i>
+                      </a>
+                      <button class="wd-btn wd-btn-icon" title="تعديل">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="wd-btn wd-btn-icon" title="حذف">
+                        <i class="fas fa-trash"></i>
+                      </button>
                     </div>
-                  </td>
-                  <td>
-                    <span class="wd-status wd-status-active">
-                      <i class="fas fa-circle"></i>
-                      نشط
-                    </span>
-                  </td>
-                  <td>
-                    <button class="wd-btn wd-btn-icon" title="تعديل">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="حذف">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="wd-webhook-info">
-                      <div class="wd-webhook-name">تتبع الحملات</div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="wd-webhook-url">
-                      https://api.example.com/webhooks/campaigns
-                    </div>
-                  </td>
-                  <td>
-                    <div class="wd-webhook-events">
-                      <span class="wd-webhook-event">حملة جديدة</span>
-                      <span class="wd-webhook-event">تحديث حالة</span>
-                    </div>
-                  </td>
-                  <td>
-                    <span class="wd-status wd-status-inactive">
-                      <i class="fas fa-circle"></i>
-                      غير نشط
-                    </span>
-                  </td>
-                  <td>
-                    <button class="wd-btn wd-btn-icon" title="تعديل">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="حذف">
-                      <i class="fas fa-trash"></i>
-                    </button>
                   </td>
                 </tr>
               </tbody>
@@ -541,6 +531,6 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
   </body>
 </html>

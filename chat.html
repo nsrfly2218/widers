@@ -103,12 +103,15 @@
                 <i class="fas fa-comments"></i>
                 <span>كل المحادثات</span>
               </li>
+              <!--
               <li class="wd-secondary-nav-item">
                 <i class="fas fa-flag"></i>
                 <span>الإشارات</span>
               </li>
+              -->
             </ul>
 
+            <!--
             <div class="wd-nav-section">
               <h4 class="wd-nav-section-title">الفرق</h4>
               <ul>
@@ -127,6 +130,7 @@
                 <span>إضافة فريق</span>
               </button>
             </div>
+            -->
 
             <div class="wd-nav-section">
               <h4 class="wd-nav-section-title">قنوات التواصل</h4>
@@ -135,6 +139,7 @@
                   <i class="fab fa-whatsapp"></i>
                   <span>واتساب</span>
                 </li>
+                <!--
                 <li class="wd-secondary-nav-item">
                   <i class="fab fa-facebook-messenger"></i>
                   <span>ماسنجر</span>
@@ -159,11 +164,14 @@
                   <i class="fas fa-sms"></i>
                   <span>الرسائل النصية</span>
                 </li>
+                -->
               </ul>
+              <!--
               <button class="wd-add-team-btn">
                 <i class="fas fa-plus"></i>
                 <span>إضافة قناة</span>
               </button>
+              -->
             </div>
 
             <div class="wd-nav-section">
@@ -191,10 +199,10 @@
                   <span>الباقة الاحترافية</span>
                 </li>
               </ul>
-              <button class="wd-add-team-btn">
+              <a class="wd-add-team-btn" href="/add/new-tag.html">
                 <i class="fas fa-plus"></i>
                 <span>إضافة وسم</span>
-              </button>
+              </a>
             </div>
           </nav>
         </div>
@@ -941,6 +949,45 @@
                     <i class="fas fa-chevron-right"></i>
                   </button>
                   <div class="wd-contact-info-sidebar">
+                    <div class="wd-contact-info-nav">
+                      <button
+                        class="wd-contact-info-nav-item active"
+                        data-section="info"
+                      >
+                        <i class="fas fa-user"></i>
+                      </button>
+                      <button
+                        class="wd-contact-info-nav-item"
+                        data-section="ai"
+                      >
+                        <i class="fas fa-robot"></i>
+                      </button>
+                      <button
+                        class="wd-contact-info-nav-item"
+                        data-section="journeys"
+                      >
+                        <i class="fas fa-route"></i>
+                      </button>
+                      <button
+                        class="wd-contact-info-nav-item"
+                        data-section="email"
+                      >
+                        <i class="fas fa-envelope"></i>
+                      </button>
+                      <button
+                        class="wd-contact-info-nav-item"
+                        data-section="notes"
+                      >
+                        <i class="fas fa-sticky-note"></i>
+                      </button>
+                      <button
+                        class="wd-contact-info-nav-item"
+                        data-section="reservations"
+                      >
+                        <i class="fas fa-calendar-check"></i>
+                      </button>
+                    </div>
+
                     <div class="wd-contact-info-header">
                       <h3>معلومات جهة الاتصال</h3>
                       <button
@@ -1035,38 +1082,6 @@
                         </div>
                       </div>
 
-                      <!-- قسم متغيرات المحادثة -->
-                      <div class="wd-contact-section" draggable="true">
-                        <div class="wd-section-header">
-                          <h4>متغيرات المحادثة</h4>
-                          <button class="wd-section-toggle">
-                            <i class="fas fa-chevron-down"></i>
-                          </button>
-                        </div>
-                        <div class="wd-section-content">
-                          <div class="wd-variable-item">
-                            <span class="wd-variable-name">اسم العميل</span>
-                            <span class="wd-variable-value">أحمد محمد</span>
-                          </div>
-                          <div class="wd-variable-item">
-                            <span class="wd-variable-name">رقم الهاتف</span>
-                            <span class="wd-variable-value">+966501234567</span>
-                          </div>
-                          <div class="wd-variable-item">
-                            <span class="wd-variable-name"
-                              >البريد الإلكتروني</span
-                            >
-                            <span class="wd-variable-value"
-                              >ahmed@example.com</span
-                            >
-                          </div>
-                          <div class="wd-variable-item">
-                            <span class="wd-variable-name">المدينة</span>
-                            <span class="wd-variable-value">الرياض</span>
-                          </div>
-                        </div>
-                      </div>
-
                       <!-- قسم إجراءات المحادثة -->
                       <div class="wd-contact-section" draggable="true">
                         <div class="wd-section-header">
@@ -1146,6 +1161,38 @@
                                 </div>
                               </div>
                             </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- قسم متغيرات المحادثة -->
+                      <div class="wd-contact-section" draggable="true">
+                        <div class="wd-section-header">
+                          <h4>متغيرات المحادثة</h4>
+                          <button class="wd-section-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                          </button>
+                        </div>
+                        <div class="wd-section-content">
+                          <div class="wd-variable-item">
+                            <span class="wd-variable-name">اسم العميل</span>
+                            <span class="wd-variable-value">أحمد محمد</span>
+                          </div>
+                          <div class="wd-variable-item">
+                            <span class="wd-variable-name">رقم الهاتف</span>
+                            <span class="wd-variable-value">+966501234567</span>
+                          </div>
+                          <div class="wd-variable-item">
+                            <span class="wd-variable-name"
+                              >البريد الإلكتروني</span
+                            >
+                            <span class="wd-variable-value"
+                              >ahmed@example.com</span
+                            >
+                          </div>
+                          <div class="wd-variable-item">
+                            <span class="wd-variable-name">المدينة</span>
+                            <span class="wd-variable-value">الرياض</span>
                           </div>
                         </div>
                       </div>
@@ -1563,5 +1610,50 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navItems = document.querySelectorAll(".wd-contact-info-nav-item");
+        const contentSections = {
+          info: document.querySelector(".wd-contact-info-content"),
+          ai: document.createElement("div"),
+          journeys: document.createElement("div"),
+          email: document.createElement("div"),
+          notes: document.createElement("div"),
+          reservations: document.createElement("div"),
+        };
+
+        // Initialize content sections
+        Object.keys(contentSections).forEach((section) => {
+          if (section !== "info") {
+            contentSections[section].className = "wd-contact-info-content";
+            contentSections[section].style.display = "none";
+            contentSections[section].innerHTML = `<h3>${
+              section.charAt(0).toUpperCase() + section.slice(1)
+            } Content</h3>`;
+            contentSections[section].parentNode.insertBefore(
+              contentSections[section],
+              contentSections.info.nextSibling
+            );
+          }
+        });
+
+        // Handle navigation
+        navItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            const section = this.dataset.section;
+
+            // Update active state
+            navItems.forEach((navItem) => navItem.classList.remove("active"));
+            this.classList.add("active");
+
+            // Show selected section
+            Object.keys(contentSections).forEach((key) => {
+              contentSections[key].style.display =
+                key === section ? "flex" : "none";
+            });
+          });
+        });
+      });
+    </script>
   </body>
 </html>

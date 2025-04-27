@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إضافة فريق جديد</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      .wd-team-layout {
+        display: flex;
+        gap: 20px;
+        height: calc(100vh - 100px);
+      }
+
+      .wd-team-form {
+        flex: 1;
+        overflow-y: auto;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+      }
+
+      .wd-team-preview {
+        width: 350px;
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+
+      .wd-preview-header {
+        padding: 15px;
+        background: #fff;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .wd-preview-header h3 {
+        margin: 0 0 10px 0;
+        color: #333;
+        font-size: 18px;
+      }
+
+      .wd-preview-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #4a90e2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+        color: white;
+        font-size: 24px;
+      }
+
+      .wd-preview-content {
+        flex: 1;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        overflow-y: auto;
+      }
+
+      .wd-preview-info {
+        margin-bottom: 15px;
+      }
+
+      .wd-preview-info-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+        color: #666;
+        font-size: 14px;
+      }
+
+      .wd-preview-info-item i {
+        color: #00bc60;
+        width: 20px;
+      }
+
+      .wd-preview-members {
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+      }
+
+      .wd-preview-members-title {
+        font-size: 14px;
+        color: #2c3e50;
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+
+      .wd-preview-member {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px;
+        background: #f8f9fa;
+        border-radius: 6px;
+        margin-bottom: 8px;
+      }
+
+      .wd-preview-member-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .wd-preview-member-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .wd-preview-member-name {
+        font-size: 14px;
+        color: #2c3e50;
+      }
+
+      .wd-form-section {
+        margin-bottom: 30px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      .wd-form-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .wd-form-section-title {
+        font-size: 18px;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #f0f0f0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .wd-form-section-title i {
+        color: #00bc60;
+        font-size: 20px;
+      }
+
+      .wd-form-group {
+        margin-bottom: 20px;
+      }
+
+      .wd-form-group:last-child {
+        margin-bottom: 0;
+      }
+
+      .wd-form-label {
+        display: block;
+        font-size: 14px;
+        color: #2c3e50;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .wd-form-input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #2c3e50;
+        transition: all 0.3s ease;
+        background: #fff;
+      }
+
+      .wd-form-input:focus {
+        border-color: #00bc60;
+        box-shadow: 0 0 0 3px rgba(0, 188, 96, 0.1);
+        outline: none;
+      }
+
+      .wd-form-textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #2c3e50;
+        min-height: 100px;
+        resize: vertical;
+        transition: all 0.3s ease;
+        background: #fff;
+      }
+
+      .wd-form-textarea:focus {
+        border-color: #00bc60;
+        box-shadow: 0 0 0 3px rgba(0, 188, 96, 0.1);
+        outline: none;
+      }
+
+      .wd-form-select {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #2c3e50;
+        background: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-form-select:focus {
+        border-color: #00bc60;
+        box-shadow: 0 0 0 3px rgba(0, 188, 96, 0.1);
+        outline: none;
+      }
+
+      .wd-form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 20px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      .wd-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-btn-secondary {
+        background: #f8f9fa;
+        border: 1px solid #ddd;
+        color: #333;
+      }
+
+      .wd-btn-secondary:hover {
+        background: #e9ecef;
+      }
+
+      .wd-btn-primary {
+        background: #4a90e2;
+        border: none;
+        color: white;
+      }
+
+      .wd-btn-primary:hover {
+        background: #357abd;
+      }
+
+      .wd-members-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .wd-member-card {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-member-card:hover {
+        background: #e9ecef;
+      }
+
+      .wd-member-card.selected {
+        background: #e3f2fd;
+        border: 1px solid #4a90e2;
+      }
+
+      .wd-member-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .wd-member-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .wd-member-info {
+        flex: 1;
+      }
+
+      .wd-member-name {
+        font-size: 14px;
+        color: #2c3e50;
+        margin-bottom: 2px;
+      }
+
+      .wd-member-role {
+        font-size: 12px;
+        color: #666;
+      }
+
+      @media (max-width: 768px) {
+        .wd-team-layout {
+          flex-direction: column;
+        }
+
+        .wd-team-preview {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+
+        .wd-members-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .wd-form-actions {
+          flex-direction: column;
+        }
+
+        .wd-btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wd-container">
+      <!-- القائمة الجانبية -->
+      <aside class="wd-sidebar">
+        <div class="wd-logo">
+          <img src="../imgs/logo.png" alt="شعار المنصة" />
+        </div>
+        <nav class="wd-nav">
+          <ul>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-gauge"></i>
+              <span
+                ><a href="../index.html" class="wd-nav-link"
+                  >لوحة التحكم</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-comments"></i>
+              <span
+                ><a href="../chat.html" class="wd-nav-link">المحادثات</a></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-users"></i>
+              <span
+                ><a href="../contacts.html" class="wd-nav-link"
+                  >جهات الاتصال</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fa-solid fa-diagram-project"></i>
+              <span
+                ><a href="../flows.html" class="wd-nav-link">التدفقات</a></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-bullhorn"></i>
+              <span
+                ><a href="../campaigns.html" class="wd-nav-link"
+                  >الحملات</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-calendar"></i>
+              <span
+                ><a href="../calendar.html" class="wd-nav-link"
+                  >التقويم</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-file-alt"></i>
+              <span
+                ><a href="../contents.html" class="wd-nav-link"
+                  >المحتويات</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item">
+              <i class="fas fa-code"></i>
+              <span
+                ><a href="../developers.html" class="wd-nav-link"
+                  >المطورين</a
+                ></span
+              >
+            </li>
+            <li class="wd-nav-item active">
+              <i class="fas fa-cog"></i>
+              <span
+                ><a href="../settings.html" class="wd-nav-link"
+                  >الإعدادات</a
+                ></span
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- المحتوى الرئيسي -->
+      <main class="wd-main-content" style="right: 65px">
+        <div class="wd-content-header" style="right: 65px">
+          <div class="wd-header-left">
+            <button
+              class="wd-back-btn"
+              onclick="window.location.href='../settings/teams.html'"
+            >
+              <i class="fas fa-arrow-right"></i>
+            </button>
+            <h1>إضافة فريق جديد</h1>
+          </div>
+        </div>
+
+        <div class="wd-content-body" style="right: 65px">
+          <div class="wd-team-layout">
+            <div class="wd-team-form">
+              <!-- معلومات الفريق -->
+              <div class="wd-form-section">
+                <h3 class="wd-section-title">
+                  <i class="fas fa-users"></i>
+                  معلومات الفريق
+                </h3>
+                <div class="wd-form-group">
+                  <label for="teamName"
+                    >اسم الفريق <span class="wd-required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="teamName"
+                    class="wd-form-control"
+                    required
+                  />
+                </div>
+                <div class="wd-form-group">
+                  <label for="teamDescription">وصف الفريق</label>
+                  <textarea
+                    id="teamDescription"
+                    class="wd-form-textarea"
+                  ></textarea>
+                </div>
+                <div class="wd-form-group">
+                  <label for="teamManager"
+                    >مدير الفريق <span class="wd-required">*</span></label
+                  >
+                  <select id="teamManager" class="wd-form-control" required>
+                    <option value="">اختر مدير الفريق</option>
+                    <option value="1">أحمد محمد</option>
+                    <option value="2">سارة أحمد</option>
+                    <option value="3">محمد علي</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- أعضاء الفريق -->
+              <div class="wd-form-section">
+                <h3 class="wd-section-title">
+                  <i class="fas fa-user-friends"></i>
+                  أعضاء الفريق
+                </h3>
+                <div class="wd-members-grid">
+                  <div class="wd-member-card" onclick="toggleMember(this)">
+                    <div class="wd-member-avatar">
+                      <img
+                        src="../imgs/avatar-placeholder.png"
+                        alt="صورة العضو"
+                      />
+                    </div>
+                    <div class="wd-member-info">
+                      <div class="wd-member-name">أحمد محمد</div>
+                      <div class="wd-member-role">مدير فريق</div>
+                    </div>
+                  </div>
+                  <div class="wd-member-card" onclick="toggleMember(this)">
+                    <div class="wd-member-avatar">
+                      <img
+                        src="../imgs/avatar-placeholder.png"
+                        alt="صورة العضو"
+                      />
+                    </div>
+                    <div class="wd-member-info">
+                      <div class="wd-member-name">سارة أحمد</div>
+                      <div class="wd-member-role">وكيل</div>
+                    </div>
+                  </div>
+                  <div class="wd-member-card" onclick="toggleMember(this)">
+                    <div class="wd-member-avatar">
+                      <img
+                        src="../imgs/avatar-placeholder.png"
+                        alt="صورة العضو"
+                      />
+                    </div>
+                    <div class="wd-member-info">
+                      <div class="wd-member-name">محمد علي</div>
+                      <div class="wd-member-role">وكيل</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wd-form-actions">
+                <button
+                  class="wd-btn wd-btn-secondary"
+                  onclick="window.location.href='../settings/teams.html'"
+                >
+                  إلغاء
+                </button>
+                <button class="wd-btn wd-btn-primary" onclick="createTeam()">
+                  إضافة الفريق
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+      // تحديث المعاينة عند تغيير القيم
+      document
+        .getElementById("teamName")
+        .addEventListener("input", updatePreview);
+      document
+        .getElementById("teamDescription")
+        .addEventListener("input", updatePreview);
+      document
+        .getElementById("teamManager")
+        .addEventListener("change", updatePreview);
+
+      function updatePreview() {
+        const teamName = document.getElementById("teamName").value;
+        const teamDescription =
+          document.getElementById("teamDescription").value;
+        const teamManager =
+          document.getElementById("teamManager").options[
+            document.getElementById("teamManager").selectedIndex
+          ].text;
+
+        document.getElementById("previewName").textContent = teamName;
+        document.getElementById("previewManager").textContent = teamManager;
+        document.getElementById("previewDescription").textContent =
+          teamDescription || "لا يوجد وصف";
+      }
+
+      function toggleMember(card) {
+        card.classList.toggle("selected");
+        updatePreviewMembers();
+      }
+
+      function updatePreviewMembers() {
+        const selectedMembers = document.querySelectorAll(
+          ".wd-member-card.selected"
+        );
+        const previewMembers = document.getElementById("previewMembers");
+        previewMembers.innerHTML = "";
+
+        selectedMembers.forEach((member) => {
+          const memberName =
+            member.querySelector(".wd-member-name").textContent;
+          const memberRole =
+            member.querySelector(".wd-member-role").textContent;
+          const memberAvatar = member.querySelector(
+            ".wd-member-avatar img"
+          ).src;
+
+          const memberElement = document.createElement("div");
+          memberElement.className = "wd-preview-member";
+          memberElement.innerHTML = `
+            <div class="wd-preview-member-avatar">
+              <img src="${memberAvatar}" alt="صورة العضو" />
+            </div>
+            <div class="wd-preview-member-name">${memberName}</div>
+          `;
+          previewMembers.appendChild(memberElement);
+        });
+      }
+
+      function createTeam() {
+        // هنا يمكنك إضافة منطق إنشاء الفريق
+        alert("تم إضافة الفريق بنجاح");
+        window.location.href = "../settings/teams.html";
+      }
+    </script>
+  </body>
+</html>

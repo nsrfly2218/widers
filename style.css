@@ -1188,10 +1188,6 @@ select {
   width: 100%;
 }
 
-.wd-nav-link:hover {
-  color: #00bc60;
-}
-
 .wd-quick-actions {
   display: flex;
   gap: 12px;
@@ -1364,6 +1360,7 @@ select {
   width: 100%;
   transition: all 0.3s ease;
   font-size: 14px;
+  text-decoration: none;
 }
 
 .wd-add-team-btn:hover {
@@ -1761,11 +1758,11 @@ select {
 
 .wd-contact-info-toggle {
   position: fixed;
-  top: 170px;
-  left: 20px;
+  top: 190px;
+  left: 0;
   background: white;
   border: 1px solid #ddd;
-  border-radius: 50%;
+  border-radius: 0 50% 50% 0;
   width: 32px;
   height: 32px;
   display: flex;
@@ -1794,6 +1791,12 @@ select {
   overflow-y: auto;
   margin-top: 60px;
   border-right: 1px solid #eee;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+}
+
+.wd-contact-info-sidebar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari and Opera */
 }
 
 .wd-contact-info-sidebar.active {
@@ -1805,19 +1808,22 @@ select {
 }
 
 .wd-contact-info-header {
-  height: 58px;
+  position: sticky;
+  top: 58px;
+  z-index: 1;
+  height: 40px;
   padding: 20px;
   border-bottom: 1px solid #eee;
+  background: white;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: row-reverse;
-  gap: 30px;
+  flex-direction: row;
 }
 
 .wd-contact-info-header h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 14px;
   color: #333;
 }
 
@@ -1828,6 +1834,64 @@ select {
   color: #666;
   font-size: 16px;
   transform: rotate(180deg);
+}
+
+.wd-contact-info-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  gap: 5px;
+  border-bottom: 1px solid #eee;
+  background: white;
+  height: 58px;
+}
+
+.wd-contact-info-nav::-webkit-scrollbar {
+  height: 4px;
+}
+
+.wd-contact-info-nav::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.wd-contact-info-nav::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 2px;
+}
+
+.wd-contact-info-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: none;
+  background: none;
+  color: #666;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.wd-contact-info-nav-item:hover {
+  background: #e9ecef;
+  color: #333;
+}
+
+.wd-contact-info-nav-item.active {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.wd-contact-info-nav-item i {
+  font-size: 14px;
+}
+
+.wd-contact-info-nav-item span {
+  font-size: 13px;
 }
 
 .wd-contact-info-content {
@@ -2486,7 +2550,7 @@ select {
 }
 
 .wd-chat-duration {
-  height: 32px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2518,7 +2582,6 @@ select {
 }
 
 .wd-chat-info-bar {
-  height: 90px;
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid var(--border-color);
@@ -2874,8 +2937,7 @@ select {
 
 .wd-actions {
   display: flex;
-  gap: 8px;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .wd-action-btn {
@@ -3263,11 +3325,6 @@ select {
   color: #495057;
 }
 
-.wd-actions {
-  display: flex;
-  gap: 8px;
-}
-
 .wd-action-btn {
   background: none;
   border: none;
@@ -3603,21 +3660,6 @@ select {
   color: #1565c0;
 }
 
-.wd-btn-icon {
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  background: none;
-  border: 1px solid #e9ecef;
-  color: #666;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
 .wd-btn-icon:hover {
   background-color: #f8f9fa;
   color: #333;
@@ -3660,8 +3702,7 @@ select {
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  margin-bottom: 2rem;
-  margin-top: 60px;
+  margin-bottom: 1rem;
 }
 
 .wd-webhook-intro {
@@ -3947,11 +3988,9 @@ select {
 /* تنسيقات صفحة API */
 .wd-api-section {
   background: #fff;
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 8px;
+  padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  margin-bottom: 2rem;
-  margin-top: 60px;
 }
 
 .wd-api-intro {
@@ -5028,7 +5067,6 @@ select {
 
 .wd-tags-container {
   position: relative;
-  margin-top: 10px;
   max-height: 200px;
   overflow-y: auto;
   padding-right: 5px;
@@ -5061,11 +5099,11 @@ select {
 }
 
 .wd-tag {
+  color: #000;
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 4px 8px;
-  background-color: #f8f9fa;
   border-radius: 4px;
   font-size: 14px;
 }
@@ -5085,8 +5123,8 @@ select {
 .wd-tags-dropdown {
   position: absolute;
   top: 100%;
-  left: 0;
-  width: 250px;
+  right: 0;
+  width: 200px;
   background-color: #fff;
   border: 1px solid #dee2e6;
   border-radius: 4px;
@@ -5154,4 +5192,733 @@ select {
 
 .wd-add-tag-btn i {
   font-size: 12px;
+}
+
+/* Variable Type Dropdown Styles */
+.wd-variable-type-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.wd-variable-type-dropdown .wd-dropdown-btn {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  text-align: right;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wd-variable-type-dropdown .wd-dropdown-btn:hover {
+  border-color: #999;
+}
+
+.wd-variable-type-dropdown .wd-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1000;
+}
+
+.wd-variable-type-dropdown .wd-dropdown-menu.show {
+  display: block;
+}
+
+.wd-variable-type-dropdown .wd-dropdown-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wd-variable-type-dropdown .wd-dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.wd-variable-type-dropdown .wd-dropdown-item i {
+  width: 20px;
+  text-align: center;
+}
+
+/* Dark Mode Styles for Variable Type Dropdown */
+body.dark-mode .wd-variable-type-dropdown .wd-dropdown-btn {
+  background-color: #2d2d2d;
+  border-color: #404040;
+  color: #fff;
+}
+
+body.dark-mode .wd-variable-type-dropdown .wd-dropdown-menu {
+  background-color: #2d2d2d;
+  border-color: #404040;
+}
+
+body.dark-mode .wd-variable-type-dropdown .wd-dropdown-item {
+  color: #fff;
+}
+
+body.dark-mode .wd-variable-type-dropdown .wd-dropdown-item:hover {
+  background-color: #404040;
+}
+
+/* أنماط قسم التحديثات القادمة */
+.wd-updates-section {
+  margin-bottom: 20px;
+}
+
+.wd-updates-card {
+  background: #fff8f0;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  border: 1px solid #ffe0b2;
+}
+
+.wd-updates-header {
+  background: #fff3e0;
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #ffe0b2;
+}
+
+.wd-updates-header i {
+  color: #ff9800;
+  font-size: 18px;
+}
+
+.wd-updates-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #e65100;
+}
+
+.wd-updates-content {
+  padding: 12px 15px;
+}
+
+.wd-updates-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+}
+
+.wd-updates-info {
+  flex: 1;
+}
+
+.wd-updates-text {
+  display: inline-block;
+  font-size: 14px;
+  color: #5d4037;
+  line-height: 1.5;
+}
+
+/* AI Message Style Section */
+.wd-ai-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.wd-ai-language,
+.wd-ai-style {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wd-ai-select,
+.wd-ai-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.wd-ai-textarea {
+  min-height: 120px;
+  font-size: 12px;
+}
+
+.wd-ai-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.wd-ai-option {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+}
+
+.wd-ai-option.professional {
+  background-color: #e3f2fd;
+  border-color: #90caf9;
+}
+
+.wd-ai-option.relaxed {
+  background-color: #f3e5f5;
+  border-color: #ce93d8;
+}
+
+.wd-ai-option.friendly {
+  background-color: #e8f5e9;
+  border-color: #a5d6a7;
+}
+
+.wd-ai-option.formal {
+  background-color: #fff3e0;
+  border-color: #ffcc80;
+}
+
+.wd-ai-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.wd-ai-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.wd-ai-btn:hover {
+  background-color: #45a049;
+}
+
+.wd-ai-question {
+  margin-top: 1rem;
+}
+
+.wd-ai-question textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 14px;
+  resize: vertical;
+  margin-bottom: 1rem;
+}
+
+/* Journeys Section */
+.wd-journeys-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.wd-journey-item {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wd-journey-info h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.wd-journey-info p {
+  margin: 5px 0 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.wd-journey-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.wd-journey-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.wd-journey-btn.edit {
+  background: #4a90e2;
+  color: white;
+}
+
+.wd-journey-btn.manage {
+  background: #50c878;
+  color: white;
+}
+
+/* Email Section */
+.wd-email-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wd-email-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.wd-email-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.wd-email-input,
+.wd-email-select,
+.wd-email-textarea {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.wd-email-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.wd-email-send {
+  padding: 10px 20px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.wd-email-warning {
+  padding: 10px;
+  background: #fff3cd;
+  color: #856404;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.wd-email-warning.hidden {
+  display: none;
+}
+
+/* Notes Section */
+.wd-notes-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wd-notes-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wd-notes-textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  min-height: 100px;
+  resize: vertical;
+  font-size: 14px;
+}
+
+.wd-notes-add {
+  padding: 8px 16px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.wd-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wd-note-item {
+  background: #fffbd1;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.wd-note-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.wd-note-time {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Reservations Section */
+.wd-reservations-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 1rem;
+}
+
+.wd-reservation-item {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.wd-reservation-item:hover {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.wd-reservation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.wd-reservation-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.wd-reservation-status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.wd-reservation-status.confirmed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.wd-reservation-status.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.wd-reservation-status.cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.wd-reservation-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.wd-reservation-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wd-reservation-label {
+  font-size: 12px;
+  color: #666;
+}
+
+.wd-reservation-value {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.wd-reservation-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e9ecef;
+}
+
+.wd-reservation-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wd-reservation-btn.edit {
+  background: #4a90e2;
+  color: white;
+}
+
+.wd-reservation-btn.cancel {
+  background: #dc3545;
+  color: white;
+}
+
+.wd-reservation-btn:hover {
+  opacity: 0.9;
+}
+
+.wd-reservation-btn i {
+  font-size: 14px;
+}
+
+/* Authentication Pages Styles */
+.auth-page {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.auth-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  text-align: center;
+}
+
+.auth-header {
+  margin-bottom: 32px;
+}
+
+.auth-logo {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+}
+
+.auth-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.auth-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.auth-header p {
+  font-size: 16px;
+  color: #666;
+}
+
+.auth-form {
+  margin-bottom: 32px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-group i {
+  position: absolute;
+  right: 16px;
+  color: #666;
+  font-size: 18px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 48px 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+  outline: none;
+}
+
+.toggle-password {
+  position: absolute;
+  left: 16px;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.remember-me,
+.terms-agreement {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.remember-me input,
+.terms-agreement input {
+  width: 16px;
+  height: 16px;
+  accent-color: #4a90e2;
+}
+
+.forgot-password {
+  color: #4a90e2;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #357abd;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.auth-btn:hover {
+  background-color: #357abd;
+}
+
+.auth-btn i {
+  font-size: 14px;
+}
+
+.auth-footer {
+  font-size: 14px;
+  color: #666;
+}
+
+.auth-footer a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.auth-footer a:hover {
+  color: #357abd;
+}
+
+/* Responsive Styles */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 24px;
+  }
+
+  .auth-header h1 {
+    font-size: 20px;
+  }
+
+  .auth-header p {
+    font-size: 14px;
+  }
+
+  .form-group input {
+    font-size: 14px;
+  }
+
+  .auth-btn {
+    font-size: 14px;
+  }
 }

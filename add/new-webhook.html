@@ -4,12 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>إضافة ويب هوك جديد</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="../style.css" />
     <link
       rel="stylesheet"
@@ -224,8 +218,8 @@
       </aside>
 
       <!-- القسم الثاني: المحتوى الرئيسي -->
-      <main class="wd-main-content">
-        <div class="wd-content-header">
+      <main class="wd-main-content" style="right: 65px">
+        <div class="wd-content-header" style="right: 65px">
           <div class="wd-header-left">
             <button
               class="wd-back-btn"
@@ -237,7 +231,7 @@
           </div>
         </div>
 
-        <div class="wd-content-body">
+        <div class="wd-content-body" style="right: 65px">
           <div class="wd-webhook-form">
             <div class="wd-form-group">
               <label for="webhookName"
@@ -252,122 +246,6 @@
               <div class="wd-error-message" id="webhookNameError"></div>
             </div>
 
-            <div class="wd-form-group">
-              <label for="webhookUrl"
-                >رابط الويب هوك <span class="wd-required">*</span></label
-              >
-              <input
-                type="url"
-                id="webhookUrl"
-                class="wd-form-control"
-                placeholder="https://example.com/webhook"
-              />
-              <div class="wd-error-message" id="webhookUrlError"></div>
-            </div>
-
-            <div class="wd-events-section">
-              <h4>
-                الأحداث المراد الاشتراك بها <span class="wd-required">*</span>
-              </h4>
-              <div class="wd-events-list">
-                <div class="wd-event-item" onclick="toggleEvent(this)">
-                  <h5>رسالة جديدة</h5>
-                  <p>عند استلام رسالة جديدة</p>
-                </div>
-                <div class="wd-event-item" onclick="toggleEvent(this)">
-                  <h5>جهة اتصال جديدة</h5>
-                  <p>عند إضافة جهة اتصال جديدة</p>
-                </div>
-                <div class="wd-event-item" onclick="toggleEvent(this)">
-                  <h5>تحديث جهة اتصال</h5>
-                  <p>عند تحديث بيانات جهة اتصال</p>
-                </div>
-                <div class="wd-event-item" onclick="toggleEvent(this)">
-                  <h5>حملة جديدة</h5>
-                  <p>عند إنشاء حملة جديدة</p>
-                </div>
-                <div class="wd-event-item" onclick="toggleEvent(this)">
-                  <h5>تحديث حملة</h5>
-                  <p>عند تحديث بيانات حملة</p>
-                </div>
-                <div class="wd-event-item" onclick="toggleEvent(this)">
-                  <h5>حذف حملة</h5>
-                  <p>عند حذف حملة</p>
-                </div>
-              </div>
-              <div class="wd-error-message" id="webhookEventsError"></div>
-            </div>
-
-            <div class="wd-auth-section">
-              <h4>طريقة المصادقة</h4>
-              <div class="wd-auth-type">
-                <div
-                  class="wd-auth-option"
-                  onclick="selectAuthType(this, 'none')"
-                >
-                  <h5>بدون مصادقة</h5>
-                  <p>لا تتطلب مصادقة</p>
-                </div>
-                <div
-                  class="wd-auth-option"
-                  onclick="selectAuthType(this, 'basic')"
-                >
-                  <h5>مصادقة أساسية</h5>
-                  <p>اسم مستخدم وكلمة مرور</p>
-                </div>
-                <div
-                  class="wd-auth-option"
-                  onclick="selectAuthType(this, 'token')"
-                >
-                  <h5>رمز مصادقة</h5>
-                  <p>رمز مصادقة في الرأس</p>
-                </div>
-              </div>
-
-              <div id="basicAuthFields" style="display: none; margin-top: 16px">
-                <div class="wd-form-group">
-                  <label for="basicUsername"
-                    >اسم المستخدم <span class="wd-required">*</span></label
-                  >
-                  <input
-                    type="text"
-                    id="basicUsername"
-                    class="wd-form-control"
-                    placeholder="أدخل اسم المستخدم"
-                  />
-                  <div class="wd-error-message" id="basicUsernameError"></div>
-                </div>
-
-                <div class="wd-form-group">
-                  <label for="basicPassword"
-                    >كلمة المرور <span class="wd-required">*</span></label
-                  >
-                  <input
-                    type="password"
-                    id="basicPassword"
-                    class="wd-form-control"
-                    placeholder="أدخل كلمة المرور"
-                  />
-                  <div class="wd-error-message" id="basicPasswordError"></div>
-                </div>
-              </div>
-
-              <div id="tokenAuthFields" style="display: none; margin-top: 16px">
-                <div class="wd-form-group">
-                  <label for="tokenValue"
-                    >رمز المصادقة <span class="wd-required">*</span></label
-                  >
-                  <input
-                    type="text"
-                    id="tokenValue"
-                    class="wd-form-control"
-                    placeholder="أدخل رمز المصادقة"
-                  />
-                  <div class="wd-error-message" id="tokenValueError"></div>
-                </div>
-              </div>
-            </div>
-
             <div class="wd-form-actions">
               <button
                 class="wd-btn wd-btn-secondary"
@@ -375,7 +253,7 @@
               >
                 إلغاء
               </button>
-              <button class="wd-btn wd-btn-primary" onclick="createWebhook()">
+              <button class="wd-btn" onclick="createWebhook()">
                 إنشاء الويب هوك
               </button>
             </div>

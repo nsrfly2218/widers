@@ -14,6 +14,34 @@
         padding: 20px;
       }
 
+      .wd-coming-soon {
+        background-color: #f0f0f0;
+        color: #666;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        margin-right: 8px;
+      }
+
+      .wd-coming-soon-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        text-align: center;
+        color: #666;
+      }
+
+      .wd-coming-soon-container i {
+        font-size: 48px;
+        margin-bottom: 16px;
+      }
+
+      .wd-coming-soon-container h1 {
+        margin-bottom: 8px;
+      }
+
       .wd-sms-campaigns-header {
         display: flex;
         justify-content: space-between;
@@ -307,19 +335,28 @@
               <a href="../campaigns/whatsapp.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fab fa-whatsapp"></i>
-                  <span>حملات واتساب</span>
+                  <span
+                    >حملات واتساب
+                    <span class="wd-coming-soon">قريباً</span></span
+                  >
                 </li>
               </a>
               <a href="../campaigns/email.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-envelope"></i>
-                  <span>حملات البريد</span>
+                  <span
+                    >حملات البريد
+                    <span class="wd-coming-soon">قريباً</span></span
+                  >
                 </li>
               </a>
-              <a href="../campaigns/sms.html" class="wd-nav-link">
+              <a href="sms.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item active">
                   <i class="fas fa-sms"></i>
-                  <span>حملات الرسائل</span>
+                  <span
+                    >حملات الرسائل
+                    <span class="wd-coming-soon">قريباً</span></span
+                  >
                 </li>
               </a>
             </ul>
@@ -339,15 +376,18 @@
             </button>
             <h1>حملات الرسائل</h1>
           </div>
+          <!--
           <div class="wd-header-actions">
             <button class="wd-btn wd-btn-primary">
               <i class="fas fa-sms"></i>
               حملة رسائل جديدة
             </button>
           </div>
+          -->
         </div>
 
         <div class="wd-content-body">
+          <!--
           <div class="wd-sms-campaigns-header">
             <div class="wd-sms-campaigns-search">
               <input
@@ -478,6 +518,15 @@
                   </button>
                 </div>
               </div>
+            </div>
+          </div>
+          -->
+
+          <div class="wd-content-body">
+            <div class="wd-coming-soon-container">
+              <i class="fas fa-sms"></i>
+              <h1>حملات الرسائل</h1>
+              <p>قريباً سيتم إضافة حملات الرسائل</p>
             </div>
           </div>
         </div>

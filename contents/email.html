@@ -163,6 +163,26 @@
         margin-top: 5px;
         z-index: 1;
       }
+      .wd-coming-soon-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+
+      .wd-coming-soon-container i {
+        font-size: 48px;
+        margin-bottom: 10px;
+      }
+
+      .wd-coming-soon-container h1 {
+        margin-bottom: 8px;
+      }
+
+      .wd-coming-soon-container p {
+        color: #666;
+      }
     </style>
   </head>
 
@@ -178,12 +198,16 @@
             <li class="wd-nav-item">
               <i class="fa-solid fa-gauge"></i>
               <span
-                ><a href="../index.html" class="wd-nav-link">لوحة التحكم</a></span
+                ><a href="../index.html" class="wd-nav-link"
+                  >لوحة التحكم</a
+                ></span
               >
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-comments"></i>
-              <span><a href="../chat.html" class="wd-nav-link">المحادثات</a></span>
+              <span
+                ><a href="../chat.html" class="wd-nav-link">المحادثات</a></span
+              >
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-users"></i>
@@ -195,24 +219,32 @@
             </li>
             <li class="wd-nav-item">
               <i class="fa-solid fa-diagram-project"></i>
-              <span><a href="../flows.html" class="wd-nav-link">التدفقات</a></span>
+              <span
+                ><a href="../flows.html" class="wd-nav-link">التدفقات</a></span
+              >
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-bullhorn"></i>
               <span
-                ><a href="../campaigns.html" class="wd-nav-link">الحملات</a></span
+                ><a href="../campaigns.html" class="wd-nav-link"
+                  >الحملات</a
+                ></span
               >
             </li>
             <li class="wd-nav-item">
               <i class="fas fa-calendar"></i>
               <span
-                ><a href="../calendar.html" class="wd-nav-link">التقويم</a></span
+                ><a href="../calendar.html" class="wd-nav-link"
+                  >التقويم</a
+                ></span
               >
             </li>
             <li class="wd-nav-item active">
               <i class="fas fa-file-alt"></i>
               <span
-                ><a href="../contents.html" class="wd-nav-link">المحتويات</a></span
+                ><a href="../contents.html" class="wd-nav-link"
+                  >المحتويات</a
+                ></span
               >
             </li>
             <li class="wd-nav-item">
@@ -226,7 +258,9 @@
             <li class="wd-nav-item">
               <i class="fas fa-cog"></i>
               <span
-                ><a href="../settings.html" class="wd-nav-link">الإعدادات</a></span
+                ><a href="../settings.html" class="wd-nav-link"
+                  >الإعدادات</a
+                ></span
               >
             </li>
           </ul>
@@ -287,13 +321,19 @@
               <a href="../contents/email.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item active">
                   <i class="fas fa-envelope"></i>
-                  <span>قوالب البريد الالكتروني</span>
+                  <span
+                    >البريد الكتروني
+                    <span class="wd-coming-soon">قريباً</span></span
+                  >
                 </li>
               </a>
               <a href="../contents/sms.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-comment-dots"></i>
-                  <span>قوالب الرسائل النصية</span>
+                  <span
+                    >الرسائل النصية
+                    <span class="wd-coming-soon">قريباً</span></span
+                  >
                 </li>
               </a>
             </ul>
@@ -313,15 +353,18 @@
             </button>
             <h1>قوالب البريد الإلكتروني</h1>
           </div>
+          <!--
           <div class="wd-header-actions">
             <button class="wd-btn wd-btn-primary">
               <i class="fas fa-plus"></i>
               إضافة قالب
             </button>
           </div>
+          -->
         </div>
 
         <div class="wd-content-body">
+          <!--
           <div class="wd-search-container">
             <div class="wd-search-input">
               <i class="fas fa-search"></i>
@@ -451,6 +494,12 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+          -->
+          <div class="wd-coming-soon-container">
+            <i class="fas fa-envelope"></i>
+            <h1>قوالب البريد الإلكتروني</h1>
+            <p>قريباً سيتم إضافة قوالب البريد الإلكتروني</p>
           </div>
         </div>
       </div>

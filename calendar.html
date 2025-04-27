@@ -14,6 +14,59 @@
         padding: 20px;
       }
 
+      .wd-search-container {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .wd-search-input {
+        position: relative;
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .wd-search-input i {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+      }
+
+      .wd-search-input input {
+        width: 100%;
+        padding: 12px 40px 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .wd-search-input input:focus {
+        outline: none;
+        border-color: #25d366;
+        box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.1);
+      }
+
+      .wd-filter-options {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .wd-filter-select {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: white;
+        color: #333;
+        font-size: 14px;
+        min-width: 150px;
+      }
+
       .wd-calendar-header {
         display: flex;
         justify-content: space-between;
@@ -191,6 +244,95 @@
           grid-template-columns: repeat(1, 1fr);
         }
       }
+
+      .wd-table-container {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        margin-top: 20px;
+      }
+
+      .wd-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .wd-table th {
+        background: #f8f9fa;
+        padding: 15px;
+        text-align: right;
+        font-weight: 600;
+        color: #333;
+        border-bottom: 2px solid #eee;
+      }
+
+      .wd-table td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        color: #555;
+      }
+
+      .wd-table tr:hover {
+        background-color: #f8f9fa;
+      }
+
+      .wd-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .wd-status.active {
+        background: #e6f4ea;
+        color: #1e7e34;
+      }
+
+      .wd-actions {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .wd-btn-icon {
+        padding: 8px;
+        margin: 0 5px;
+        border-radius: 6px;
+        color: #666;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .wd-btn-icon:hover {
+        background: #f0f0f0;
+        color: #333;
+      }
+
+      .wd-btn-icon i {
+        font-size: 16px;
+      }
+
+      .wd-btn-icon[title]:hover:after {
+        content: attr(title);
+        position: absolute;
+        background: #333;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        margin-top: 5px;
+        z-index: 1;
+      }
     </style>
   </head>
   <body>
@@ -317,14 +459,32 @@
             <h1>التقويم</h1>
           </div>
           <div class="wd-header-actions">
-            <button class="wd-btn wd-btn-primary">
+            <a href="add/new-reminder.html" class="wd-btn">
               <i class="fas fa-plus"></i>
               إضافة حدث
-            </button>
+            </a>
           </div>
         </div>
 
         <div class="wd-content-body">
+          <div class="wd-search-container">
+            <div class="wd-search-input">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="ابحث عن حدث..."
+                id="userVariableSearch"
+              />
+            </div>
+            <div class="wd-filter-options">
+              <select class="wd-filter-select">
+                <option value="">الكل</option>
+                <option value="active">نشط</option>
+                <option value="finished">منتهي</option>
+              </select>
+            </div>
+          </div>
+          <!--
           <div class="wd-calendar-header">
             <div class="wd-calendar-nav">
               <button class="wd-calendar-nav-btn">
@@ -490,7 +650,44 @@
               <div class="wd-calendar-day-number">5</div>
             </div>
           </div>
+          -->
+          <div class="wd-table-container">
+            <table class="wd-table">
+              <thead>
+                <tr>
+                  <th>الاسم</th>
+                  <th>المصدر</th>
+                  <th>النوع</th>
+                  <th>الوقت</th>
+                  <th>الحالة</th>
+                  <th>الإجراءات</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>محمد أحمد</td>
+                  <td>الكل</td>
+                  <td>قبل الحدث</td>
+                  <td>دقائق 20</td>
+                  <td>
+                    <span class="wd-status active">نشط</span>
+                  </td>
+                  <td>
+                    <div class="wd-actions">
+                      <button class="wd-btn-icon" title="إحصائيات">
+                        <i class="fas fa-chart-bar"></i>
+                      </button>
+                      <button class="wd-btn-icon" title="حذف">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
+          <!--
           <div class="wd-calendar-sidebar">
             <div class="wd-calendar-sidebar-title">الأحداث القادمة</div>
             <div class="wd-calendar-event-details">
@@ -508,6 +705,7 @@
               </div>
             </div>
           </div>
+          -->
         </div>
       </div>
     </div>

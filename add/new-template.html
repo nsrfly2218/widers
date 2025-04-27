@@ -210,7 +210,7 @@
         background: #f8f9fa;
         border-radius: 12px;
         padding: 20px;
-        margin-bottom: 20px;
+        margin-top: 20px;
       }
 
       .wd-variables-section h4 {
@@ -218,30 +218,23 @@
         color: #333;
       }
 
-      .wd-variables-list {
+      .wd-variable-input-group {
         display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      .wd-variable-item {
-        background: #e9ecef;
-        padding: 6px 12px;
-        border-radius: 16px;
-        font-size: 14px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .wd-variable-item:hover {
-        background: #dee2e6;
-      }
-
-      .wd-form-actions {
-        display: flex;
-        justify-content: flex-end;
+        align-items: center;
         gap: 10px;
-        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+
+      .wd-variable-label {
+        min-width: 80px;
+        font-weight: 500;
+      }
+
+      .wd-variable-input {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
       }
 
       /* إضافة أنماط جديدة */
@@ -462,6 +455,86 @@
       .wd-preview-type.carousel {
         background: #ffc107;
         color: #333;
+      }
+
+      /* إضافة أنماط جديدة للنافذة المنبثقة للمتغيرات */
+      .wd-variables-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        width: 400px;
+        max-width: 90%;
+      }
+
+      .wd-variables-popup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .wd-variables-popup-title {
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+      }
+
+      .wd-variables-popup-close {
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        color: #666;
+      }
+
+      .wd-variables-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .wd-variable-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .wd-variable-item:hover {
+        background: #e9ecef;
+      }
+
+      .wd-variable-text {
+        flex: 1;
+      }
+
+      .wd-variable-input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-top: 5px;
+      }
+
+      .wd-variables-popup-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
       }
     </style>
   </head>
@@ -924,14 +997,11 @@
               <div class="wd-form-actions">
                 <button
                   class="wd-btn wd-btn-secondary"
-                  onclick="window.location.href='../contents.html'"
+                  onclick="window.location.href='../contents/whatsapp.html'"
                 >
                   إلغاء
                 </button>
-                <button
-                  class="wd-btn wd-btn-primary"
-                  onclick="createTemplate()"
-                >
+                <button class="wd-btn" onclick="createTemplate()">
                   إنشاء القالب
                 </button>
               </div>
@@ -998,7 +1068,112 @@
         updateTemplatePreview();
       }
 
+      let variableCount = 0;
+      const variableTexts = {};
+      const variableInputs = new Set();
+      const deletedVariables = new Set();
+
+      function showVariables() {
+        let variable;
+
+        if (deletedVariables.size > 0) {
+          const firstDeleted = Math.min(...Array.from(deletedVariables));
+          deletedVariables.delete(firstDeleted);
+          variable = `{{${firstDeleted}}}`;
+        } else {
+          variableCount++;
+          variable = `{{${variableCount}}}`;
+        }
+
+        const content = document.getElementById("templateContent");
+        const start = content.selectionStart;
+        const end = content.selectionEnd;
+        const text = content.value;
+
+        content.value =
+          text.substring(0, start) + variable + text.substring(end);
+        content.selectionStart = content.selectionEnd = start + variable.length;
+
+        variableInputs.add(variable);
+        addVariableInput(variable);
+        updateTemplatePreview();
+      }
+
+      function addVariableInput(variable) {
+        const variablesSection = document.getElementById("variablesSection");
+        if (!variablesSection) {
+          const section = document.createElement("div");
+          section.className = "wd-variables-section";
+          section.id = "variablesSection";
+          section.innerHTML = `
+            <h4>نصوص المتغيرات</h4>
+          `;
+          document
+            .querySelector(".wd-form-section:nth-child(2)")
+            .appendChild(section);
+        }
+
+        const inputGroup = document.createElement("div");
+        inputGroup.className = "wd-variable-input-group";
+        inputGroup.id = `variable-input-${variable}`;
+        inputGroup.innerHTML = `
+          <span class="wd-variable-label">${variable}</span>
+          <input type="text" class="wd-variable-input" 
+            placeholder="أدخل نص المتغير" 
+            oninput="handleVariableTextInput('${variable}', this.value)"
+            value="${variableTexts[variable] || ""}">
+        `;
+
+        document.getElementById("variablesSection").appendChild(inputGroup);
+      }
+
+      function handleVariableTextInput(variable, text) {
+        variableTexts[variable] = text;
+        updateTemplatePreview();
+      }
+
+      function checkVariablesInContent() {
+        const content = document.getElementById("templateContent").value;
+        const currentVariables = new Set();
+
+        const matches = content.match(/{{(\d+)}}/g) || [];
+        matches.forEach((match) => currentVariables.add(match));
+
+        variableInputs.forEach((variable) => {
+          if (!currentVariables.has(variable)) {
+            variableInputs.delete(variable);
+            delete variableTexts[variable];
+
+            const number = parseInt(variable.match(/\d+/)[0]);
+            deletedVariables.add(number);
+
+            const inputElement = document.getElementById(
+              `variable-input-${variable}`
+            );
+            if (inputElement) {
+              inputElement.remove();
+            }
+          }
+        });
+
+        matches.forEach((match) => {
+          if (!variableInputs.has(match)) {
+            variableInputs.add(match);
+            addVariableInput(match);
+            const number = parseInt(match.match(/\d+/)[0]);
+            deletedVariables.delete(number);
+          }
+        });
+
+        const variablesSection = document.getElementById("variablesSection");
+        if (variablesSection && variableInputs.size === 0) {
+          variablesSection.remove();
+        }
+      }
+
       function updateTemplatePreview() {
+        checkVariablesInContent();
+
         const headerType = document.getElementById("templateHeader").value;
         const content = document.getElementById("templateContent");
         const footer = document.getElementById("templateFooter");
@@ -1007,11 +1182,9 @@
         const templateLanguage =
           document.getElementById("templateLanguage").value;
 
-        // تحديث عدادات الأحرف
         updateCharCounter(content, "templateContentCounter", 1024);
         updateCharCounter(footer, "templateFooterCounter", 60);
 
-        // تحديث معلومات القالب في المعاينة
         const previewHeader = document.querySelector(".wd-preview-header");
         previewHeader.innerHTML = `
           <div class="wd-preview-info">
@@ -1027,7 +1200,6 @@
 
         let previewHTML = "";
 
-        // إضافة الرأس
         if (headerType !== "none") {
           let headerContent = "";
           switch (headerType) {
@@ -1096,19 +1268,46 @@
           headerPreview.style.display = "none";
         }
 
-        // إضافة المحتوى مع الحفاظ على المسافات بين الأسطر
         if (content.value) {
-          let formattedContent = content.value.replace(/\n/g, "<br>");
+          let formattedContent = content.value;
+
+          Object.keys(variableTexts).forEach((variable) => {
+            const text = variableTexts[variable] || variable;
+            formattedContent = formattedContent.replace(
+              new RegExp(variable.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g"),
+              text
+            );
+          });
+
+          formattedContent = formattedContent
+            .replace(/\*([^*]+)\*/g, "<strong>$1</strong>")
+            .replace(/_([^_]+)_/g, "<em>$1</em>")
+            .replace(/~([^~]+)~/g, "<del>$1</del>")
+            .replace(/\n/g, "<br>");
+
           previewHTML += `<div class="wd-preview-body">${formattedContent}</div>`;
         }
 
-        // إضافة التذييل
         if (footer.value) {
-          let formattedFooter = footer.value.replace(/\n/g, "<br>");
+          let formattedFooter = footer.value;
+
+          Object.keys(variableTexts).forEach((variable) => {
+            const text = variableTexts[variable] || variable;
+            formattedFooter = formattedFooter.replace(
+              new RegExp(variable.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g"),
+              text
+            );
+          });
+
+          formattedFooter = formattedFooter
+            .replace(/\*([^*]+)\*/g, "<strong>$1</strong>")
+            .replace(/_([^_]+)_/g, "<em>$1</em>")
+            .replace(/~([^~]+)~/g, "<del>$1</del>")
+            .replace(/\n/g, "<br>");
+
           previewHTML += `<div class="wd-preview-footer">${formattedFooter}</div>`;
         }
 
-        // إضافة الأزرار
         const buttonFields = document.getElementById("buttonFields");
         if (buttonFields && buttonFields.children.length > 0) {
           let buttonsHTML = '<div class="wd-preview-buttons">';
@@ -1248,388 +1447,12 @@
         updateTemplatePreview();
       }
 
-      function showVariables() {
-        // يمكن إضافة نافذة منبثقة لعرض المتغيرات المتاحة
-        const variables = ["{{name}}", "{{company}}", "{{date}}", "{{time}}"];
-        let html = '<div class="wd-variables-popup">';
-        variables.forEach((variable) => {
-          html += `<div class="wd-variable-item" onclick="insertVariable('${variable}')">${variable}</div>`;
-        });
-        html += "</div>";
-        // يمكن إضافة كود لعرض النافذة المنبثقة
-      }
-
-      let buttonCounts = {
-        phone: 0,
-        link: 0,
-        copy: 0,
-        quickReply: 0,
-        total: 0,
-      };
-
-      function createButtonGroup(type, id) {
-        const buttonGroup = document.createElement("div");
-        buttonGroup.className = "wd-button-group";
-        buttonGroup.id = id;
-        buttonGroup.draggable = true;
-
-        let headerContent = "";
-        let fieldsContent = "";
-
-        switch (type) {
-          case "phone":
-            headerContent = `
-              <div class="wd-button-title">
-                <i class="fas fa-phone"></i>
-                زر الهاتف
-              </div>
-            `;
-            fieldsContent = `
-              <div class="wd-form-row">
-                <div class="wd-form-col button-text">
-                  <label for="phoneButtonText_${id}">نص زر الهاتف</label>
-                  <input
-                    type="text"
-                    id="phoneButtonText_${id}"
-                    class="wd-form-control"
-                    placeholder="أدخل نص الزر"
-                    oninput="updateTemplatePreview()"
-                    maxlength="25"
-                  />
-                  <div class="wd-char-counter" id="phoneButtonTextCounter_${id}">0/25</div>
-                </div>
-                <div class="wd-form-col button-value">
-                  <label for="phoneNumber_${id}">رقم الهاتف</label>
-                  <input
-                    type="tel"
-                    id="phoneNumber_${id}"
-                    class="wd-form-control"
-                    placeholder="أدخل رقم الهاتف"
-                    oninput="updateTemplatePreview()"
-                    maxlength="20"
-                  />
-                  <div class="wd-char-counter" id="phoneNumberCounter_${id}">0/20</div>
-                </div>
-              </div>
-            `;
-            break;
-          case "link":
-            headerContent = `
-              <div class="wd-button-title">
-                <i class="fas fa-link"></i>
-                زر الرابط
-              </div>
-            `;
-            fieldsContent = `
-              <div class="wd-form-row">
-                <div class="wd-form-col button-text">
-                  <label for="linkButtonText_${id}">نص زر الرابط</label>
-                  <input
-                    type="text"
-                    id="linkButtonText_${id}"
-                    class="wd-form-control"
-                    placeholder="أدخل نص الزر"
-                    oninput="updateTemplatePreview()"
-                    maxlength="25"
-                  />
-                  <div class="wd-char-counter" id="linkButtonTextCounter_${id}">0/25</div>
-                </div>
-                <div class="wd-form-col button-value">
-                  <label for="linkUrl_${id}">الرابط</label>
-                  <input
-                    type="url"
-                    id="linkUrl_${id}"
-                    class="wd-form-control"
-                    placeholder="أدخل الرابط"
-                    oninput="updateTemplatePreview()"
-                    maxlength="2000"
-                  />
-                  <div class="wd-char-counter" id="linkUrlCounter_${id}">0/2000</div>
-                </div>
-              </div>
-            `;
-            break;
-          case "copy":
-            headerContent = `
-              <div class="wd-button-title">
-                <i class="fas fa-copy"></i>
-                زر نسخ الرمز
-              </div>
-            `;
-            fieldsContent = `
-              <div class="wd-form-row">
-                <div class="wd-form-col button-text">
-                  <label for="copyButtonText_${id}">نص زر نسخ الرمز</label>
-                  <input
-                    type="text"
-                    id="copyButtonText_${id}"
-                    class="wd-form-control"
-                    placeholder="أدخل نص الزر"
-                    oninput="updateTemplatePreview()"
-                  />
-                </div>
-                <div class="wd-form-col button-value">
-                  <label for="copyCode_${id}">رمز العرض</label>
-                  <input
-                    type="text"
-                    id="copyCode_${id}"
-                    class="wd-form-control"
-                    placeholder="أدخل رمز العرض"
-                    oninput="updateTemplatePreview()"
-                  />
-                </div>
-              </div>
-            `;
-            break;
-          case "quickReply":
-            headerContent = `
-              <div class="wd-button-title">
-                <i class="fas fa-reply"></i>
-                زر الرد السريع
-              </div>
-            `;
-            fieldsContent = `
-              <div class="wd-form-row">
-                <div class="wd-form-col button-text">
-                  <label for="quickReplyButtonText_${id}">نص زر الرد السريع</label>
-                  <input
-                    type="text"
-                    id="quickReplyButtonText_${id}"
-                    class="wd-form-control"
-                    placeholder="أدخل نص الزر"
-                    oninput="updateTemplatePreview()"
-                  />
-                </div>
-                <div class="wd-form-col button-value">
-                  <label for="quickReplyText_${id}">نص الرد</label>
-                  <input
-                    type="text"
-                    id="quickReplyText_${id}"
-                    class="wd-form-control"
-                    placeholder="أدخل نص الرد"
-                    oninput="updateTemplatePreview()"
-                  />
-                </div>
-              </div>
-            `;
-            break;
-        }
-
-        buttonGroup.innerHTML = `
-          <div class="wd-button-header">
-            ${headerContent}
-            <div class="wd-button-actions">
-              <button class="wd-button-action delete" onclick="removeButton('${id}')">
-                <i class="fas fa-trash"></i>
-              </button>
-            </div>
-          </div>
-          ${fieldsContent}
-        `;
-
-        // إضافة أحداث السحب والإفلات
-        buttonGroup.addEventListener("dragstart", handleDragStart);
-        buttonGroup.addEventListener("dragend", handleDragEnd);
-        buttonGroup.addEventListener("dragover", handleDragOver);
-        buttonGroup.addEventListener("drop", handleDrop);
-
-        return buttonGroup;
-      }
-
-      function handleDragStart(e) {
-        e.target.classList.add("dragging");
-        e.dataTransfer.setData("text/plain", e.target.id);
-      }
-
-      function handleDragEnd(e) {
-        e.target.classList.remove("dragging");
-      }
-
-      function handleDragOver(e) {
-        e.preventDefault();
-        const draggingElement = document.querySelector(".dragging");
-        const container = document.getElementById("buttonFields");
-        const elements = [
-          ...container.querySelectorAll(".wd-button-group:not(.dragging)"),
-        ];
-
-        const closestElement = elements.reduce(
-          (closest, child) => {
-            const box = child.getBoundingClientRect();
-            const offset = e.clientY - box.top - box.height / 2;
-
-            if (offset < 0 && offset > closest.offset) {
-              return { offset: offset, element: child };
-            } else {
-              return closest;
-            }
-          },
-          { offset: Number.NEGATIVE_INFINITY }
-        ).element;
-
-        if (closestElement) {
-          container.insertBefore(draggingElement, closestElement);
-        } else {
-          container.appendChild(draggingElement);
-        }
-      }
-
-      function handleDrop(e) {
-        e.preventDefault();
-      }
-
-      function removeButton(id) {
-        const buttonGroup = document.getElementById(id);
-        const type = id.split("_")[0];
-        buttonCounts[type]--;
-        buttonCounts.total--;
-        buttonGroup.remove();
-
-        // إعادة تفعيل زر الإضافة إذا كان هذا آخر زر من نوعه
-        if (buttonCounts[type] === 0) {
-          document.getElementById(
-            `add${type.charAt(0).toUpperCase() + type.slice(1)}Btn`
-          ).disabled = false;
-        }
-
-        // إعادة تفعيل جميع أزرار الإضافة إذا كان العدد أقل من 10
-        if (buttonCounts.total < 10) {
-          if (buttonCounts.phone === 0)
-            document.getElementById("addPhoneBtn").disabled = false;
-          if (buttonCounts.link < 2)
-            document.getElementById("addLinkBtn").disabled = false;
-          if (buttonCounts.copy === 0)
-            document.getElementById("addCopyBtn").disabled = false;
-          document.getElementById("addQuickReplyBtn").disabled = false;
-        }
-
-        updateTemplatePreview();
-      }
-
-      function addPhoneButton() {
-        if (buttonCounts.phone >= 1) {
-          alert("يمكنك إضافة زر هاتف واحد فقط");
-          return;
-        }
-        if (buttonCounts.total >= 10) {
-          alert("لقد وصلت إلى الحد الأقصى من الأزرار (10 أزرار)");
-          disableAllAddButtons();
-          return;
-        }
-
-        const buttonFields = document.getElementById("buttonFields");
-        const id = `phone_${Date.now()}`;
-        const buttonGroup = createButtonGroup("phone", id);
-
-        buttonFields.style.display = "block";
-        buttonFields.appendChild(buttonGroup);
-        buttonCounts.phone++;
-        buttonCounts.total++;
-        document.getElementById("addPhoneBtn").disabled = true;
-
-        if (buttonCounts.total >= 10) {
-          disableAllAddButtons();
-        }
-
-        updateTemplatePreview();
-      }
-
-      function addLinkButton() {
-        if (buttonCounts.link >= 2) {
-          alert("يمكنك إضافة زرين رابط فقط");
-          return;
-        }
-        if (buttonCounts.total >= 10) {
-          alert("لقد وصلت إلى الحد الأقصى من الأزرار (10 أزرار)");
-          disableAllAddButtons();
-          return;
-        }
-
-        const buttonFields = document.getElementById("buttonFields");
-        const id = `link_${Date.now()}`;
-        const buttonGroup = createButtonGroup("link", id);
-
-        buttonFields.style.display = "block";
-        buttonFields.appendChild(buttonGroup);
-        buttonCounts.link++;
-        buttonCounts.total++;
-
-        if (buttonCounts.link >= 2) {
-          document.getElementById("addLinkBtn").disabled = true;
-        }
-
-        if (buttonCounts.total >= 10) {
-          disableAllAddButtons();
-        }
-
-        updateTemplatePreview();
-      }
-
-      function addCopyButton() {
-        if (buttonCounts.copy >= 1) {
-          alert("يمكنك إضافة زر نسخ رمز واحد فقط");
-          return;
-        }
-        if (buttonCounts.total >= 10) {
-          alert("لقد وصلت إلى الحد الأقصى من الأزرار (10 أزرار)");
-          disableAllAddButtons();
-          return;
-        }
-
-        const buttonFields = document.getElementById("buttonFields");
-        const id = `copy_${Date.now()}`;
-        const buttonGroup = createButtonGroup("copy", id);
-
-        buttonFields.style.display = "block";
-        buttonFields.appendChild(buttonGroup);
-        buttonCounts.copy++;
-        buttonCounts.total++;
-        document.getElementById("addCopyBtn").disabled = true;
-
-        if (buttonCounts.total >= 10) {
-          disableAllAddButtons();
-        }
-
-        updateTemplatePreview();
-      }
-
-      function addQuickReplyButton() {
-        if (buttonCounts.total >= 10) {
-          alert("لقد وصلت إلى الحد الأقصى من الأزرار (10 أزرار)");
-          disableAllAddButtons();
-          return;
-        }
-
-        const buttonFields = document.getElementById("buttonFields");
-        const id = `quickReply_${Date.now()}`;
-        const buttonGroup = createButtonGroup("quickReply", id);
-
-        buttonFields.style.display = "block";
-        buttonFields.appendChild(buttonGroup);
-        buttonCounts.quickReply++;
-        buttonCounts.total++;
-
-        if (buttonCounts.total >= 10) {
-          disableAllAddButtons();
-        }
-
-        updateTemplatePreview();
-      }
-
-      function disableAllAddButtons() {
-        document.getElementById("addPhoneBtn").disabled = true;
-        document.getElementById("addLinkBtn").disabled = true;
-        document.getElementById("addCopyBtn").disabled = true;
-        document.getElementById("addQuickReplyBtn").disabled = true;
-      }
-
       function createTemplate() {
         const name = document.getElementById("templateName").value;
         const type = document.getElementById("templateType").value;
         const language = document.getElementById("templateLanguage").value;
         const content = document.getElementById("templateContent").value;
 
-        // إخفاء جميع رسائل الخطأ
         document
           .querySelectorAll(".wd-error-message")
           .forEach((el) => (el.style.display = "none"));
@@ -1667,23 +1490,9 @@
         }
 
         if (isValid) {
-          // هنا يمكنك إضافة الكود لإنشاء القالب
           alert("تم إنشاء القالب بنجاح");
           window.location.href = "../contents.html";
         }
-      }
-
-      function insertVariable(variable) {
-        const content = document.getElementById("templateContent");
-        const start = content.selectionStart;
-        const end = content.selectionEnd;
-        const text = content.value;
-
-        content.value =
-          text.substring(0, start) + variable + text.substring(end);
-        content.selectionStart = content.selectionEnd = start + variable.length;
-
-        updateTemplatePreview();
       }
 
       function validateTemplateName(input) {
@@ -1703,7 +1512,6 @@
         updateTemplatePreview();
       }
 
-      // إضافة دوال جديدة لتحديث العدادات
       function updateCharCounter(input, counterId, maxLength) {
         const count = input.value.length;
         const counter = document.getElementById(counterId);
@@ -1715,7 +1523,6 @@
         }
       }
 
-      // إضافة مستمعي الأحداث للعدادات
       document.addEventListener("DOMContentLoaded", function () {
         const content = document.getElementById("templateContent");
         const footer = document.getElementById("templateFooter");
@@ -1731,14 +1538,12 @@
         updateTemplatePreview();
       });
 
-      // دالة للحصول على اسم اللغة
       function getLanguageName(code) {
         const languageSelect = document.getElementById("templateLanguage");
         const option = languageSelect.querySelector(`option[value="${code}"]`);
         return option ? option.textContent : "";
       }
 
-      // دالة للحصول على اسم نوع القالب
       function getTemplateTypeName(type) {
         const types = {
           marketing: "MARKETING",
@@ -1749,25 +1554,28 @@
         return types[type] || "فئة القالب";
       }
 
-      // تحديث المعاينة عند تغيير نوع القالب
       document
         .getElementById("templateType")
         .addEventListener("change", function () {
           updateTemplatePreview();
         });
 
-      // تحديث المعاينة عند تغيير اللغة
       document
         .getElementById("templateLanguage")
         .addEventListener("change", function () {
           updateTemplatePreview();
         });
 
-      // تحديث المعاينة عند تغيير اسم القالب
       document
         .getElementById("templateName")
         .addEventListener("input", function () {
           updateTemplatePreview();
+        });
+
+      document
+        .getElementById("templateContent")
+        .addEventListener("input", function () {
+          checkVariablesInContent();
         });
     </script>
   </body>

@@ -14,6 +14,59 @@
         padding: 20px;
       }
 
+      .wd-search-container {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .wd-search-input {
+        position: relative;
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .wd-search-input i {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+      }
+
+      .wd-search-input input {
+        width: 100%;
+        padding: 12px 40px 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .wd-search-input input:focus {
+        outline: none;
+        border-color: #00bc60;
+        box-shadow: 0 0 0 2px rgba(0, 188, 96, 0.1);
+      }
+
+      .wd-filter-options {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .wd-filter-select {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: white;
+        color: #333;
+        font-size: 14px;
+        min-width: 150px;
+      }
+
       .wd-flows-header {
         display: flex;
         justify-content: space-between;
@@ -126,7 +179,7 @@
       }
 
       .wd-flow-info-item i {
-        color: #6610f2;
+        color: #00bc60;
       }
 
       .wd-flow-status {
@@ -140,13 +193,13 @@
       }
 
       .wd-flow-status.active {
-        background: #e8f5e9;
-        color: #2e7d32;
+        background: rgba(0, 188, 96, 0.1);
+        color: #00bc60;
       }
 
       .wd-flow-status.inactive {
-        background: #ffebee;
-        color: #c62828;
+        background: rgba(220, 53, 69, 0.1);
+        color: #dc3545;
       }
 
       .wd-flow-actions {
@@ -168,23 +221,23 @@
       }
 
       .wd-flow-btn.primary {
-        background: #6610f2;
+        background: #00bc60;
         color: white;
         border: none;
       }
 
       .wd-flow-btn.primary:hover {
-        background: #5a0dd8;
+        background: #00a854;
       }
 
       .wd-flow-btn.secondary {
         background: white;
-        color: #6610f2;
-        border: 1px solid #6610f2;
+        color: #00bc60;
+        border: 1px solid #00bc60;
       }
 
       .wd-flow-btn.secondary:hover {
-        background: #f8f9fa;
+        background: rgba(0, 188, 96, 0.05);
       }
 
       .wd-flow-btn.danger {
@@ -194,7 +247,7 @@
       }
 
       .wd-flow-btn.danger:hover {
-        background: #fff5f5;
+        background: rgba(220, 53, 69, 0.05);
       }
 
       @media (max-width: 768px) {
@@ -316,12 +369,14 @@
                   <span>التدفقات</span>
                 </li>
               </a>
+              <!-- 
               <a href="flows/builder.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-pencil-ruler"></i>
                   <span>منشئ التدفقات</span>
                 </li>
               </a>
+              -->
               <a href="flows/templates.html" class="wd-nav-link">
                 <li class="wd-secondary-nav-item">
                   <i class="fas fa-layer-group"></i>
@@ -348,7 +403,7 @@
           <div class="wd-header-right">
             <button
               class="wd-btn primary"
-              onclick="window.location.href='/flows/builder.html'"
+              onclick="window.location.href='/add/new-flow.html'"
             >
               <i class="fas fa-plus"></i>
               <span>تدفق جديد</span>
@@ -357,18 +412,22 @@
         </div>
 
         <div class="wd-content-body">
-          <div class="wd-flows-header">
-            <div class="wd-flows-actions">
-              <div class="wd-flows-search">
-                <input type="text" placeholder="ابحث عن تدفق..." />
-                <i class="fas fa-search"></i>
-              </div>
+          <div class="wd-search-container">
+            <div class="wd-search-input">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="ابحث عن تدفق..."
+                id="userVariableSearch"
+              />
             </div>
-            <div class="wd-flows-filters">
-              <button class="wd-flows-filter active">الكل</button>
-              <button class="wd-flows-filter">نشط</button>
-              <button class="wd-flows-filter">غير نشط</button>
-              <button class="wd-flows-filter">مسودة</button>
+            <div class="wd-filter-options">
+              <select class="wd-filter-select">
+                <option value="">الكل</option>
+                <option value="active">نشط</option>
+                <option value="inactive">غير نشط</option>
+                <option value="draft">مسودة</option>
+              </select>
             </div>
           </div>
 
@@ -390,10 +449,6 @@
                     <i class="fas fa-sync"></i>
                     <span>تم التحديث: 20 مارس 2024</span>
                   </div>
-                  <div class="wd-flow-info-item">
-                    <i class="fas fa-users"></i>
-                    <span>تم استخدامه: 1,234 مرة</span>
-                  </div>
                 </div>
                 <div class="wd-flow-status active">
                   <i class="fas fa-circle"></i>
@@ -405,12 +460,12 @@
                   class="wd-flow-btn primary"
                   onclick="window.location.href='/flows/builder.html?id=1'"
                 >
-                  <i class="fas fa-edit"></i>
-                  <span>تعديل</span>
+                  <i class="fas fa-pencil-ruler"></i>
+                  <span>بناء</span>
                 </button>
                 <button class="wd-flow-btn secondary">
-                  <i class="fas fa-copy"></i>
-                  <span>نسخ</span>
+                  <i class="fas fa-edit"></i>
+                  <span>تعديل</span>
                 </button>
                 <button class="wd-flow-btn danger">
                   <i class="fas fa-trash"></i>
@@ -436,10 +491,6 @@
                     <i class="fas fa-sync"></i>
                     <span>تم التحديث: 18 مارس 2024</span>
                   </div>
-                  <div class="wd-flow-info-item">
-                    <i class="fas fa-users"></i>
-                    <span>تم استخدامه: 856 مرة</span>
-                  </div>
                 </div>
                 <div class="wd-flow-status active">
                   <i class="fas fa-circle"></i>
@@ -451,12 +502,12 @@
                   class="wd-flow-btn primary"
                   onclick="window.location.href='/flows/builder.html?id=2'"
                 >
-                  <i class="fas fa-edit"></i>
-                  <span>تعديل</span>
+                  <i class="fas fa-pencil-ruler"></i>
+                  <span>بناء</span>
                 </button>
                 <button class="wd-flow-btn secondary">
-                  <i class="fas fa-copy"></i>
-                  <span>نسخ</span>
+                  <i class="fas fa-edit"></i>
+                  <span>تعديل</span>
                 </button>
                 <button class="wd-flow-btn danger">
                   <i class="fas fa-trash"></i>
@@ -482,10 +533,6 @@
                     <i class="fas fa-sync"></i>
                     <span>تم التحديث: 12 مارس 2024</span>
                   </div>
-                  <div class="wd-flow-info-item">
-                    <i class="fas fa-users"></i>
-                    <span>تم استخدامه: 432 مرة</span>
-                  </div>
                 </div>
                 <div class="wd-flow-status inactive">
                   <i class="fas fa-circle"></i>
@@ -497,12 +544,12 @@
                   class="wd-flow-btn primary"
                   onclick="window.location.href='/flows/builder.html?id=3'"
                 >
-                  <i class="fas fa-edit"></i>
-                  <span>تعديل</span>
+                  <i class="fas fa-pencil-ruler"></i>
+                  <span>بناء</span>
                 </button>
                 <button class="wd-flow-btn secondary">
-                  <i class="fas fa-copy"></i>
-                  <span>نسخ</span>
+                  <i class="fas fa-edit"></i>
+                  <span>تعديل</span>
                 </button>
                 <button class="wd-flow-btn danger">
                   <i class="fas fa-trash"></i>

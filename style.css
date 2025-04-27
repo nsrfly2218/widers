@@ -5862,7 +5862,7 @@ body.dark-mode .wd-variable-type-dropdown .wd-dropdown-item:hover {
 .auth-btn {
   width: 100%;
   padding: 14px;
-  background-color: #4a90e2;
+  background-color: #00bc60;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -5877,7 +5877,7 @@ body.dark-mode .wd-variable-type-dropdown .wd-dropdown-item:hover {
 }
 
 .auth-btn:hover {
-  background-color: #357abd;
+  background-color: #00a854;
 }
 
 .auth-btn i {

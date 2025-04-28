@@ -3,104 +3,145 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>الرحلات</title>
+    <title>لوحة كانبان - رحلة العميل</title>
     <link rel="stylesheet" href="../style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <style>
-      .wd-content-body {
-        padding: 20px;
-      }
-
-      .wd-search-container {
+      .wd-kanban-container {
         display: flex;
-        gap: 15px;
-        margin-bottom: 20px;
-        align-items: center;
-        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+        overflow-x: auto;
+        height: fit-content;
       }
 
-      .wd-search-input {
-        position: relative;
-        flex: 1;
-        min-width: 250px;
-      }
-
-      .wd-search-input i {
-        position: absolute;
-        right: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #666;
-      }
-
-      .wd-search-input input {
-        width: 100%;
-        padding: 12px 40px 12px 15px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 14px;
-        transition: all 0.3s ease;
-      }
-
-      .wd-search-input input:focus {
-        outline: none;
-        border-color: #25d366;
-        box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.1);
-      }
-
-      .wd-table-container {
+      .wd-kanban-column {
         background: white;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        overflow: hidden;
+        min-width: 300px;
+        max-width: 300px;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
       }
 
-      .wd-table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      .wd-table th {
-        background: #f8f9fa;
-        padding: 15px;
-        text-align: right;
-        font-weight: 600;
-        color: #333;
-        border-bottom: 2px solid #eee;
-      }
-
-      .wd-table td {
+      .wd-kanban-header {
         padding: 15px;
         border-bottom: 1px solid #eee;
-        color: #555;
-      }
-
-      .wd-table tr:hover {
-        background-color: #f8f9fa;
-      }
-
-      .wd-actions {
         display: flex;
-        gap: 5px;
+        justify-content: space-between;
         align-items: center;
-        justify-content: flex-start;
       }
 
-      .wd-btn-icon {
-        padding: 8px;
-        margin: 0 5px;
+      .wd-kanban-title {
+        font-weight: 600;
+        color: #333;
+      }
+
+      .wd-edit-column {
+        padding: 6px;
         border-radius: 6px;
         color: #666;
         background: transparent;
         border: none;
         cursor: pointer;
         transition: all 0.3s ease;
-        display: inline-flex;
+      }
+
+      .wd-edit-column:hover {
+        background: #f0f0f0;
+        color: #333;
+      }
+
+      .wd-kanban-count {
+        background: #f0f0f0;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+        color: #666;
+      }
+
+      .wd-kanban-content {
+        padding: 15px;
+        flex: 1;
+        overflow-y: auto;
+      }
+
+      .wd-kanban-card {
+        background: white;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        cursor: grab;
+        transition: all 0.3s ease;
+        user-select: none;
+      }
+
+      .wd-kanban-card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .wd-kanban-card.dragging {
+        opacity: 0.5;
+        transform: scale(1.02);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .wd-kanban-column.drag-over {
+        background: #f8f9fa;
+        border: 2px dashed #25d366;
+      }
+
+      .wd-contact-info {
+        display: flex;
         align-items: center;
-        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .wd-contact-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .wd-contact-details {
+        flex: 1;
+      }
+
+      .wd-contact-name {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 2px;
+      }
+
+      .wd-contact-phone {
+        font-size: 12px;
+        color: #666;
+      }
+
+      .wd-card-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 5px;
+        margin-top: 10px;
+      }
+
+      .wd-btn-icon {
+        padding: 6px;
+        border-radius: 6px;
+        color: #666;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
       }
 
       .wd-btn-icon:hover {
@@ -108,20 +149,29 @@
         color: #333;
       }
 
-      .wd-btn-icon i {
-        font-size: 16px;
+      .wd-add-card {
+        padding: 10px;
+        text-align: center;
+        color: #666;
+        cursor: pointer;
+        border: 1px dashed #ddd;
+        border-radius: 8px;
+        margin-top: 10px;
       }
 
-      .wd-btn-icon[title]:hover:after {
-        content: attr(title);
-        position: absolute;
-        background: #333;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 4px;
-        font-size: 12px;
-        margin-top: 5px;
-        z-index: 1;
+      .wd-add-card:hover {
+        background: #f8f9fa;
+        color: #333;
+      }
+
+      .wd-btn-secondary {
+        background: #f8f9fa;
+        color: #333;
+        border: 1px solid #ddd;
+      }
+
+      .wd-btn-secondary:hover {
+        background: #e9ecef;
       }
     </style>
   </head>
@@ -292,7 +342,7 @@
         </div>
       </div>
 
-      <!-- القسم الثاني: المحتوى الرئيسي -->
+      <!-- القسم الثالث: المحتوى الرئيسي -->
       <div class="wd-main-content">
         <div class="wd-content-header">
           <div class="wd-header-left">
@@ -302,59 +352,111 @@
             >
               <i class="fas fa-bars"></i>
             </button>
-            <h1>رحلة العميل</h1>
+            <h1>لوحة كانبان - رحلة العميل</h1>
           </div>
           <div class="wd-header-actions">
-            <a href="../add/new-journie.html" class="wd-btn">
+            <button class="wd-btn">
               <i class="fas fa-plus"></i>
-              رحلة جديدة
-            </a>
+              جهة اتصال
+            </button>
+            <button
+              class="wd-btn"
+              onclick="window.location.href='../add/new-stage.html'"
+            >
+              <i class="fas fa-plus"></i>
+              مرحلة جديدة
+            </button>
           </div>
         </div>
 
         <div class="wd-content-body">
-          <div class="wd-search-container">
-            <div class="wd-search-input">
-              <i class="fas fa-search"></i>
-              <input
-                type="text"
-                placeholder="ابحث عن رحلة..."
-                id="journeySearch"
-              />
-            </div>
-          </div>
-
-          <div class="wd-table-container">
-            <table class="wd-table">
-              <thead>
-                <tr>
-                  <th>الاسم</th>
-                  <th>الإجراءات</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>رحلة جديدة</td>
-                  <td>
-                    <div class="wd-actions">
-                      <button
-                        class="wd-btn-icon"
-                        title="المرحلة"
-                        onclick="window.location.href='../journies/kanban.html'"
-                      >
-                        <i class="fas fa-folder-open"></i>
-                      </button>
-                      <button class="wd-btn-icon" title="تعديل">
-                        <i class="fas fa-edit"></i>
-                      </button>
-                      <button class="wd-btn-icon" title="حذف">
-                        <i class="fas fa-trash"></i>
-                      </button>
+          <div class="wd-kanban-container">
+            <!-- عمود Feedback -->
+            <div class="wd-kanban-column">
+              <div class="wd-kanban-header">
+                <span class="wd-kanban-title">Feedback</span>
+                <button class="wd-edit-column" title="تعديل العمود">
+                  <i class="fas fa-edit"></i>
+                </button>
+              </div>
+              <div class="wd-kanban-content" data-column="feedback">
+                <div
+                  class="wd-kanban-card"
+                  draggable="true"
+                  data-contact-id="1"
+                >
+                  <div class="wd-contact-info">
+                    <img
+                      src="../imgs/logo.png"
+                      alt="صورة جهة الاتصال"
+                      class="wd-contact-avatar"
+                    />
+                    <div class="wd-contact-details">
+                      <div class="wd-contact-name">أحمد محمد</div>
+                      <div class="wd-contact-phone">+966 50 123 4567</div>
                     </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- عمود Closing -->
+            <div class="wd-kanban-column">
+              <div class="wd-kanban-header">
+                <span class="wd-kanban-title">Closing</span>
+                <button class="wd-edit-column" title="تعديل العمود">
+                  <i class="fas fa-edit"></i>
+                </button>
+              </div>
+              <div class="wd-kanban-content" data-column="closing">
+                <div
+                  class="wd-kanban-card"
+                  draggable="true"
+                  data-contact-id="2"
+                >
+                  <div class="wd-contact-info">
+                    <img
+                      src="../imgs/logo.png"
+                      alt="صورة جهة الاتصال"
+                      class="wd-contact-avatar"
+                    />
+                    <div class="wd-contact-details">
+                      <div class="wd-contact-name">سارة أحمد</div>
+                      <div class="wd-contact-phone">+966 50 765 4321</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- عمود S -->
+            <div class="wd-kanban-column">
+              <div class="wd-kanban-header">
+                <span class="wd-kanban-title">S</span>
+                <button class="wd-edit-column" title="تعديل العمود">
+                  <i class="fas fa-edit"></i>
+                </button>
+              </div>
+              <div class="wd-kanban-content" data-column="s">
+                <div
+                  class="wd-kanban-card"
+                  draggable="true"
+                  data-contact-id="3"
+                >
+                  <div class="wd-contact-info">
+                    <img
+                      src="../imgs/logo.png"
+                      alt="صورة جهة الاتصال"
+                      class="wd-contact-avatar"
+                    />
+                    <div class="wd-contact-details">
+                      <div class="wd-contact-name">محمد علي</div>
+                      <div class="wd-contact-phone">+966 50 987 6543</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -420,5 +522,66 @@
     </div>
 
     <script src="../script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".wd-kanban-card");
+        const columns = document.querySelectorAll(".wd-kanban-content");
+
+        cards.forEach((card) => {
+          card.addEventListener("dragstart", dragStart);
+          card.addEventListener("dragend", dragEnd);
+        });
+
+        columns.forEach((column) => {
+          column.addEventListener("dragover", dragOver);
+          column.addEventListener("dragenter", dragEnter);
+          column.addEventListener("dragleave", dragLeave);
+          column.addEventListener("drop", drop);
+        });
+
+        let draggedCard = null;
+
+        function dragStart(e) {
+          draggedCard = this;
+          this.classList.add("dragging");
+          e.dataTransfer.effectAllowed = "move";
+          e.dataTransfer.setData("text/plain", this.dataset.contactId);
+        }
+
+        function dragEnd() {
+          this.classList.remove("dragging");
+          columns.forEach((column) => column.classList.remove("drag-over"));
+        }
+
+        function dragOver(e) {
+          e.preventDefault();
+          e.dataTransfer.dropEffect = "move";
+        }
+
+        function dragEnter(e) {
+          e.preventDefault();
+          this.classList.add("drag-over");
+        }
+
+        function dragLeave() {
+          this.classList.remove("drag-over");
+        }
+
+        function drop(e) {
+          e.preventDefault();
+          this.classList.remove("drag-over");
+
+          if (draggedCard && draggedCard !== this) {
+            const contactId = e.dataTransfer.getData("text/plain");
+            const targetColumn = this.dataset.column;
+
+            // هنا يمكنك إضافة كود لتحديث قاعدة البيانات أو إجراء أي عمليات أخرى
+            console.log(`Contact ${contactId} moved to ${targetColumn} column`);
+
+            this.appendChild(draggedCard);
+          }
+        }
+      });
+    </script>
   </body>
 </html>

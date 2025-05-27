@@ -365,18 +365,15 @@
             </button>
             <h1>قوالب البريد الإلكتروني</h1>
           </div>
-          <!--
           <div class="wd-header-actions">
             <button class="wd-btn wd-btn-primary">
               <i class="fas fa-plus"></i>
               إضافة قالب
             </button>
           </div>
-          -->
         </div>
 
         <div class="wd-content-body">
-          <!--
           <div class="wd-search-container">
             <div class="wd-search-input">
               <i class="fas fa-search"></i>
@@ -386,132 +383,354 @@
                 id="emailTemplateSearch"
               />
             </div>
-            <div class="wd-filter-options">
-              <select class="wd-filter-select">
-                <option value="">جميع الفئات</option>
-                <option value="marketing">التسويق</option>
-                <option value="transactional">المعاملات</option>
-                <option value="notification">الإشعارات</option>
-              </select>
-              <select class="wd-filter-select">
-                <option value="">جميع اللغات</option>
-                <option value="ar">العربية</option>
-                <option value="en">الإنجليزية</option>
-              </select>
-            </div>
           </div>
 
-          <div class="wd-table-container">
-            <table class="wd-table">
-              <thead>
-                <tr>
-                  <th>اسم القالب</th>
-                  <th>الفئة</th>
-                  <th>الحالة</th>
-                  <th>اللغة</th>
-                  <th>تاريخ التعديل</th>
-                  <th>الإجراءات</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="wd-template-info">
-                      <div class="wd-template-name">ترحيب العملاء الجدد</div>
-                      <div class="wd-template-preview">
-                        مرحباً بك في منصتنا! نحن سعداء بانضمامك إلينا...
-                      </div>
-                    </div>
-                  </td>
-                  <td>التسويق</td>
-                  <td>
-                    <span class="wd-status wd-status-active">نشط</span>
-                  </td>
-                  <td>العربية</td>
-                  <td>2024-03-15</td>
-                  <td>
-                    <button class="wd-btn wd-btn-icon" title="معاينة">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="تعديل">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="نسخ">
-                      <i class="fas fa-copy"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="حذف">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="wd-template-info">
-                      <div class="wd-template-name">تأكيد الطلب</div>
-                      <div class="wd-template-preview">
-                        شكراً لطلبك! تم استلام طلبك بنجاح وسيتم معالجته...
-                      </div>
-                    </div>
-                  </td>
-                  <td>المعاملات</td>
-                  <td>
-                    <span class="wd-status wd-status-active">نشط</span>
-                  </td>
-                  <td>العربية</td>
-                  <td>2024-03-14</td>
-                  <td>
-                    <button class="wd-btn wd-btn-icon" title="معاينة">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="تعديل">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="نسخ">
-                      <i class="fas fa-copy"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="حذف">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="wd-template-info">
-                      <div class="wd-template-name">تذكير بكلمة المرور</div>
-                      <div class="wd-template-preview">
-                        لقد طلبت إعادة تعيين كلمة المرور الخاصة بحسابك...
-                      </div>
-                    </div>
-                  </td>
-                  <td>الإشعارات</td>
-                  <td>
-                    <span class="wd-status wd-status-draft">مسودة</span>
-                  </td>
-                  <td>العربية</td>
-                  <td>2024-03-13</td>
-                  <td>
-                    <button class="wd-btn wd-btn-icon" title="معاينة">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="تعديل">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="نسخ">
-                      <i class="fas fa-copy"></i>
-                    </button>
-                    <button class="wd-btn wd-btn-icon" title="حذف">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          -->
-          <div class="wd-coming-soon-container">
-            <i class="fas fa-envelope"></i>
-            <h1>قوالب البريد الإلكتروني</h1>
-            <p>قريباً سيتم إضافة قوالب البريد الإلكتروني</p>
+          <style>
+            .email-templates-container {
+              display: flex;
+              flex-direction: column;
+              gap: 25px;
+              margin-top: 20px;
+            }
+
+            .email-template {
+              background-color: white;
+              border-radius: 8px;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+              padding: 20px;
+            }
+
+            .template-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 15px;
+            }
+
+            .template-title {
+              font-weight: 600;
+              font-size: 18px;
+              color: #333;
+            }
+
+            .template-category {
+              padding: 5px 12px;
+              border-radius: 20px;
+              font-size: 12px;
+              background-color: #f0f0f0;
+              color: #555;
+            }
+
+            .template-form {
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+            }
+
+            .form-group {
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+            }
+
+            .form-group label {
+              font-weight: 500;
+              color: #444;
+            }
+
+            .form-group input,
+            .form-group textarea {
+              padding: 12px;
+              border: 1px solid #ddd;
+              border-radius: 6px;
+              font-size: 14px;
+              width: 100%;
+            }
+
+            .form-group textarea {
+              min-height: 150px;
+              resize: vertical;
+            }
+
+            .template-actions {
+              display: flex;
+              justify-content: flex-end;
+              margin-top: 20px;
+            }
+
+            .wd-btn-save {
+              padding: 10px 24px;
+              background-color: #4a90e2;
+              color: white;
+              border: none;
+              border-radius: 6px;
+              font-weight: 500;
+              cursor: pointer;
+              transition: all 0.3s ease;
+            }
+
+            .wd-btn-save:hover {
+              background-color: #3a7bc8;
+            }
+
+            .variables-list {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 10px;
+              margin-top: 10px;
+            }
+
+            .variable-tag {
+              padding: 5px 12px;
+              background-color: #f0f8ff;
+              border-radius: 20px;
+              font-size: 12px;
+              cursor: pointer;
+              border: 1px solid #d0e3ff;
+            }
+
+            .variable-tag:hover {
+              background-color: #e0f0ff;
+            }
+          </style>
+
+          <div class="email-templates-container">
+            <!-- Template 1 -->
+            <div class="email-template">
+              <div class="template-header">
+                <div class="template-title">القالب 1</div>
+              </div>
+              <div class="template-form">
+                <div class="form-group">
+                  <label for="subject1">عنوان البريد الإلكتروني:</label>
+                  <input
+                    type="text"
+                    id="subject1"
+                    value="مرحباً بك في منصتنا {{first_name}}!"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="body1">محتوى البريد الإلكتروني:</label>
+                  <textarea id="body1">
+مرحباً {{first_name}}،
+
+نحن سعداء جداً بانضمامك إلينا! نرحب بك كعميل جديد في منصتنا ونتطلع إلى خدمتك.
+
+هنا بعض المعلومات التي قد تفيدك:
+- يمكنك استخدام لوحة التحكم للوصول إلى جميع الخدمات
+- استكشف قسم الدعم للحصول على إجابات لأسئلتك الشائعة
+- تواصل معنا عبر الدردشة المباشرة إذا احتجت لمساعدة
+
+مع خالص التحيات،
+فريق خدمة العملاء</textarea
+                  >
+                </div>
+                <div class="form-group">
+                  <label>المتغيرات المتاحة:</label>
+                  <div class="variables-list">
+                    <span class="variable-tag">{{first_name}}</span>
+                    <span class="variable-tag">{{last_name}}</span>
+                    <span class="variable-tag">{{email}}</span>
+                    <span class="variable-tag">{{company}}</span>
+                  </div>
+                </div>
+                <div class="template-actions">
+                  <button class="wd-btn-save">حفظ القالب</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Template 2 -->
+            <div class="email-template">
+              <div class="template-header">
+                <div class="template-title">القالب 2</div>
+              </div>
+              <div class="template-form">
+                <div class="form-group">
+                  <label for="subject2">عنوان البريد الإلكتروني:</label>
+                  <input
+                    type="text"
+                    id="subject2"
+                    value="تأكيد طلبك رقم #{{order_number}}"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="body2">محتوى البريد الإلكتروني:</label>
+                  <textarea id="body2">
+مرحباً {{first_name}}،
+
+شكراً لطلبك! نؤكد استلامنا لطلبك رقم #{{order_number}} بتاريخ {{order_date}}.
+
+تفاصيل الطلب:
+{{order_details}}
+
+الإجمالي: {{total_amount}} {{currency}}
+
+سنقوم بإرسال إشعار آخر عند شحن طلبك.
+
+مع خالص التحيات،
+فريق خدمة العملاء</textarea
+                  >
+                </div>
+                <div class="form-group">
+                  <label>المتغيرات المتاحة:</label>
+                  <div class="variables-list">
+                    <span class="variable-tag">{{first_name}}</span>
+                    <span class="variable-tag">{{last_name}}</span>
+                    <span class="variable-tag">{{order_number}}</span>
+                    <span class="variable-tag">{{order_date}}</span>
+                    <span class="variable-tag">{{order_details}}</span>
+                    <span class="variable-tag">{{total_amount}}</span>
+                    <span class="variable-tag">{{currency}}</span>
+                  </div>
+                </div>
+                <div class="template-actions">
+                  <button class="wd-btn-save">حفظ القالب</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Template 3 -->
+            <div class="email-template">
+              <div class="template-header">
+                <div class="template-title">القالب 3</div>
+              </div>
+              <div class="template-form">
+                <div class="form-group">
+                  <label for="subject3">عنوان البريد الإلكتروني:</label>
+                  <input
+                    type="text"
+                    id="subject3"
+                    value="إعادة تعيين كلمة المرور لحسابك"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="body3">محتوى البريد الإلكتروني:</label>
+                  <textarea id="body3">
+مرحباً {{first_name}}،
+
+لقد تلقينا طلباً لإعادة تعيين كلمة المرور لحسابك.
+
+إذا كنت قد طلبت إعادة تعيين كلمة المرور، يرجى النقر على الرابط أدناه:
+
+{{reset_link}}
+
+ينتهي هذا الرابط خلال 24 ساعة من وقت الإرسال.
+
+إذا لم تطلب إعادة تعيين كلمة المرور، يرجى تجاهل هذا البريد الإلكتروني.
+
+مع خالص التحيات،
+فريق الدعم</textarea
+                  >
+                </div>
+                <div class="form-group">
+                  <label>المتغيرات المتاحة:</label>
+                  <div class="variables-list">
+                    <span class="variable-tag">{{first_name}}</span>
+                    <span class="variable-tag">{{last_name}}</span>
+                    <span class="variable-tag">{{email}}</span>
+                    <span class="variable-tag">{{reset_link}}</span>
+                  </div>
+                </div>
+                <div class="template-actions">
+                  <button class="wd-btn-save">حفظ القالب</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Template 4 -->
+            <div class="email-template">
+              <div class="template-header">
+                <div class="template-title">القالب 4</div>
+              </div>
+              <div class="template-form">
+                <div class="form-group">
+                  <label for="subject4">عنوان البريد الإلكتروني:</label>
+                  <input
+                    type="text"
+                    id="subject4"
+                    value="عرض حصري لك {{first_name}} - خصم {{discount_percentage}}٪"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="body4">محتوى البريد الإلكتروني:</label>
+                  <textarea id="body4">
+مرحباً {{first_name}}،
+
+لأننا نقدر ولائك، نود أن نقدم لك عرضاً خاصاً بخصم {{discount_percentage}}٪ على جميع منتجاتنا.
+
+استخدم الرمز الترويجي: {{promo_code}}
+تاريخ انتهاء العرض: {{expiry_date}}
+
+لا تفوت هذه الفرصة المميزة، تفضل بزيارة متجرنا الآن:
+{{store_link}}
+
+مع خالص التحيات،
+فريق المبيعات والتسويق</textarea
+                  >
+                </div>
+                <div class="form-group">
+                  <label>المتغيرات المتاحة:</label>
+                  <div class="variables-list">
+                    <span class="variable-tag">{{first_name}}</span>
+                    <span class="variable-tag">{{last_name}}</span>
+                    <span class="variable-tag">{{discount_percentage}}</span>
+                    <span class="variable-tag">{{promo_code}}</span>
+                    <span class="variable-tag">{{expiry_date}}</span>
+                    <span class="variable-tag">{{store_link}}</span>
+                  </div>
+                </div>
+                <div class="template-actions">
+                  <button class="wd-btn-save">حفظ القالب</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Template 5 -->
+            <div class="email-template">
+              <div class="template-header">
+                <div class="template-title">القالب 5</div>
+              </div>
+              <div class="template-form">
+                <div class="form-group">
+                  <label for="subject5">عنوان البريد الإلكتروني:</label>
+                  <input
+                    type="text"
+                    id="subject5"
+                    value="كيف كانت تجربتك معنا، {{first_name}}؟"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="body5">محتوى البريد الإلكتروني:</label>
+                  <textarea id="body5">
+مرحباً {{first_name}}،
+
+نأمل أن تكون قد استمتعت بتجربتك مع منتجاتنا وخدماتنا.
+
+نحن نهتم بآرائك ونسعى دائماً للتحسين. هل يمكنك مساعدتنا من خلال إكمال استبيان قصير؟ لن يستغرق الأمر أكثر من دقيقتين:
+
+{{survey_link}}
+
+شكراً لوقتك وملاحظاتك القيمة.
+
+مع خالص التحيات،
+فريق خدمة العملاء</textarea
+                  >
+                </div>
+                <div class="form-group">
+                  <label>المتغيرات المتاحة:</label>
+                  <div class="variables-list">
+                    <span class="variable-tag">{{first_name}}</span>
+                    <span class="variable-tag">{{last_name}}</span>
+                    <span class="variable-tag">{{email}}</span>
+                    <span class="variable-tag">{{survey_link}}</span>
+                  </div>
+                </div>
+                <div class="template-actions">
+                  <button class="wd-btn-save">حفظ القالب</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

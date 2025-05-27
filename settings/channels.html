@@ -243,6 +243,37 @@
           grid-template-columns: 1fr;
         }
       }
+
+      .wd-chat-search {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        padding: 5px 12px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        width: 100%;
+      }
+
+      .wd-chat-search input {
+        flex: 1;
+        border: none;
+        outline: none;
+        height: 36px;
+        font-size: 14px;
+        color: #333;
+        background: transparent;
+      }
+
+      .wd-chat-search i {
+        color: #999;
+        margin-right: 8px;
+      }
+
+      @media (max-width: 768px) {
+        .wd-chat-search {
+          width: 100%;
+        }
+      }
     </style>
   </head>
   <body>
@@ -421,36 +452,13 @@
             </button>
             <h1>قنوات التواصل</h1>
           </div>
-          <!--
-          <div class="wd-header-actions">
-            <button class="wd-btn wd-btn-primary">
-              <i class="fas fa-plus"></i>
-              قناة جديدة
-            </button>
-          </div>
-          -->
         </div>
 
         <div class="wd-content-body">
-          <div class="wd-coming-soon-container">
-            <i class="fas fa-comments"></i>
-            <h1>قنوات التواصل</h1>
-            <p>قريباً سيتم إضافة قنوات التواصل</p>
-          </div>
-          <!--
           <div class="wd-channels-header">
-            <div class="wd-channels-search">
-              <input
-                type="text"
-                class="wd-channels-search-input"
-                placeholder="بحث في القنوات..."
-              />
+            <div class="wd-chat-search">
+              <input type="text" placeholder="بحث في القنوات..." />
               <i class="fas fa-search"></i>
-            </div>
-            <div class="wd-channels-filters">
-              <button class="wd-channels-filter active">الكل</button>
-              <button class="wd-channels-filter">نشط</button>
-              <button class="wd-channels-filter">غير نشط</button>
             </div>
           </div>
 
@@ -464,11 +472,12 @@
                   <span>واتساب</span>
                 </div>
                 <div class="wd-channel-actions">
-                  <button class="wd-channel-action" title="تعديل">
+                  <button
+                    class="wd-channel-action"
+                    title="تعديل"
+                    onclick="window.location.href='../settings/setup/whatsapp-setup.html'"
+                  >
                     <i class="fas fa-edit"></i>
-                  </button>
-                  <button class="wd-channel-action" title="حذف">
-                    <i class="fas fa-trash"></i>
                   </button>
                 </div>
               </div>
@@ -480,67 +489,12 @@
                   </div>
                   <div class="wd-channel-info-item">
                     <i class="fas fa-user"></i>
-                    <span>حساب تجاري</span>
+                    <span>حساب رسمي</span>
                   </div>
                 </div>
                 <div class="wd-channel-status active">
                   <i class="fas fa-circle"></i>
                   <span>نشط</span>
-                </div>
-                <div class="wd-channel-stats">
-                  <div class="wd-channel-stat">
-                    <i class="fas fa-comments"></i>
-                    <span>24 محادثة نشطة</span>
-                  </div>
-                  <div class="wd-channel-stat">
-                    <i class="fas fa-users"></i>
-                    <span>150 جهة اتصال</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="wd-channel-card">
-              <div class="wd-channel-header">
-                <div class="wd-channel-title">
-                  <div class="wd-channel-icon telegram">
-                    <i class="fab fa-telegram"></i>
-                  </div>
-                  <span>تيليجرام</span>
-                </div>
-                <div class="wd-channel-actions">
-                  <button class="wd-channel-action" title="تعديل">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <button class="wd-channel-action" title="حذف">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="wd-channel-content">
-                <div class="wd-channel-info">
-                  <div class="wd-channel-info-item">
-                    <i class="fas fa-at"></i>
-                    <span>@company_bot</span>
-                  </div>
-                  <div class="wd-channel-info-item">
-                    <i class="fas fa-user"></i>
-                    <span>بوت</span>
-                  </div>
-                </div>
-                <div class="wd-channel-status active">
-                  <i class="fas fa-circle"></i>
-                  <span>نشط</span>
-                </div>
-                <div class="wd-channel-stats">
-                  <div class="wd-channel-stat">
-                    <i class="fas fa-comments"></i>
-                    <span>12 محادثة نشطة</span>
-                  </div>
-                  <div class="wd-channel-stat">
-                    <i class="fas fa-users"></i>
-                    <span>75 جهة اتصال</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -554,11 +508,12 @@
                   <span>البريد الإلكتروني</span>
                 </div>
                 <div class="wd-channel-actions">
-                  <button class="wd-channel-action" title="تعديل">
+                  <button
+                    class="wd-channel-action"
+                    title="تعديل"
+                    onclick="window.location.href='../settings/setup/email-setup.html'"
+                  >
                     <i class="fas fa-edit"></i>
-                  </button>
-                  <button class="wd-channel-action" title="حذف">
-                    <i class="fas fa-trash"></i>
                   </button>
                 </div>
               </div>
@@ -577,65 +532,9 @@
                   <i class="fas fa-circle"></i>
                   <span>غير نشط</span>
                 </div>
-                <div class="wd-channel-stats">
-                  <div class="wd-channel-stat">
-                    <i class="fas fa-envelope"></i>
-                    <span>0 رسالة نشطة</span>
-                  </div>
-                  <div class="wd-channel-stat">
-                    <i class="fas fa-users"></i>
-                    <span>50 جهة اتصال</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="wd-channel-card">
-              <div class="wd-channel-header">
-                <div class="wd-channel-title">
-                  <div class="wd-channel-icon sms">
-                    <i class="fas fa-sms"></i>
-                  </div>
-                  <span>رسائل SMS</span>
-                </div>
-                <div class="wd-channel-actions">
-                  <button class="wd-channel-action" title="تعديل">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <button class="wd-channel-action" title="حذف">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="wd-channel-content">
-                <div class="wd-channel-info">
-                  <div class="wd-channel-info-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+966 50 123 4567</span>
-                  </div>
-                  <div class="wd-channel-info-item">
-                    <i class="fas fa-server"></i>
-                    <span>API</span>
-                  </div>
-                </div>
-                <div class="wd-channel-status active">
-                  <i class="fas fa-circle"></i>
-                  <span>نشط</span>
-                </div>
-                <div class="wd-channel-stats">
-                  <div class="wd-channel-stat">
-                    <i class="fas fa-sms"></i>
-                    <span>5 رسائل نشطة</span>
-                  </div>
-                  <div class="wd-channel-stat">
-                    <i class="fas fa-users"></i>
-                    <span>100 جهة اتصال</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
-          -->
         </div>
       </div>
     </div>

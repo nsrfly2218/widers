@@ -178,12 +178,6 @@
         text-align: center;
       }
 
-      .wd-preview-button:hover {
-        background-color: #357abd;
-        transform: translateY(-1px);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
       .wd-form-group {
         margin-bottom: 24px;
       }
@@ -239,6 +233,154 @@
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       }
 
+      /* أنماط واتساب */
+      .wd-template-preview {
+        width: 100%;
+        height: 100%;
+        background: #e5ddd5
+          url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20h20v20H0V20zm20 0h20v20H20V20zm20 0h20v20H40V20zm20-20h20v20H60V0zm0 20h20v20H60V20zm20-20h20v20H80V0zm0 20h20v20H80V20zm0 20h20v20H80V40zm20-20h20v20h-20V20zM0 40h20v20H0V40zm20 0h20v20H20V40zm20 0h20v20H40V40zm20-20h20v20H60V20zm0 20h20v20H60V40zm20-20h20v20H80V20zm0 20h20v20H80V40zm0 20h20v20H80V60zm20-20h20v20h-20V40zM0 60h20v20H0V60zm20 0h20v20H20V60zm20 0h20v20H40V60zm20-20h20v20H60V40zm0 20h20v20H60V60z' fill='%23cccccc' fill-opacity='0.12' fill-rule='evenodd'/%3E%3C/svg%3E");
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .wd-whatsapp-header {
+        display: none;
+      }
+
+      .wd-preview-content {
+        flex: 1;
+        background: transparent;
+        padding: 20px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .wd-preview-date {
+        text-align: center;
+        margin: 10px 0;
+        font-size: 12.5px;
+        color: #54656f;
+        background: rgba(225, 245, 254, 0.92);
+        border-radius: 7.5px;
+        padding: 5px 12px;
+        display: inline-block;
+        align-self: center;
+        box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+      }
+
+      .wd-preview-message {
+        background: #fff;
+        border-radius: 7.5px 7.5px 7.5px 0;
+        padding: 10px 12px;
+        margin-bottom: 15px;
+        box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 85%;
+        width: 280px;
+        min-height: 45px;
+        align-self: flex-start;
+        position: relative;
+      }
+
+      .wd-preview-message::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -8px;
+        width: 0;
+        height: 0;
+        border-top: 8px solid #fff;
+        border-left: 8px solid transparent;
+      }
+
+      .wd-preview-body {
+        font-size: 14px;
+        color: #303030;
+        margin: 0;
+        line-height: 19px;
+      }
+
+      .wd-preview-timestamp {
+        text-align: left;
+        font-size: 11px;
+        color: #8c8c8c;
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 4px;
+      }
+
+      .wd-preview-buttons {
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        background: white;
+        padding: 0;
+        margin-right: 0;
+        max-width: 85%;
+        width: 280px;
+        align-self: flex-start;
+        box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+        border-radius: 0 0 7.5px 7.5px;
+        overflow: hidden;
+        margin-bottom: 15px;
+      }
+
+      .wd-preview-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 10px 12px;
+        background: white;
+        color: #128c7e;
+        border: none;
+        border-top: 1px solid #f0f0f0;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: 500;
+        text-align: center;
+        outline: none;
+        transition: background-color 0.2s;
+      }
+
+      .wd-preview-button i {
+        font-size: 16px;
+        color: #128c7e;
+      }
+
+      .wd-whatsapp-footer {
+        display: none;
+      }
+
+      .wd-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #777;
+        font-size: 20px;
+      }
+
+      .wd-whatsapp-input {
+        flex: 1;
+        background: white;
+        border-radius: 20px;
+        padding: 9px 12px;
+        margin: 0 8px;
+        color: #999;
+      }
+
       .wd-preview-header {
         padding: 16px;
         background-color: #f8f9fa;
@@ -250,11 +392,6 @@
         font-size: 1.1em;
         color: #333;
         font-weight: 600;
-      }
-
-      .wd-preview-content {
-        padding: 20px;
-        min-height: 200px;
       }
 
       .wd-preview-placeholder {
@@ -700,13 +837,17 @@
             </div>
 
             <div class="wd-message-preview">
-              <div class="wd-preview-header">
-                <h3>معاينة الرسالة</h3>
-              </div>
-              <div class="wd-preview-content" id="messagePreview">
-                <div class="wd-preview-placeholder">
-                  <i class="fas fa-comment-alt"></i>
-                  <p>سيتم عرض معاينة الرسالة هنا</p>
+              <div class="wd-template-preview">
+                <div class="wd-preview-content" id="messagePreview">
+                  <div class="wd-preview-message">
+                    <div class="wd-preview-body">
+                      سيتم عرض معاينة الرسالة هنا
+                    </div>
+                    <div class="wd-preview-timestamp">
+                      00:00
+                      <i class="fas fa-check-double" style="color: #34b7f1"></i>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -883,72 +1024,104 @@
         function updateMessagePreview() {
           const preview = document.getElementById("messagePreview");
           const channel = document.getElementById("channel").value;
-          let message = "";
+
+          // إزالة أي أزرار سابقة
+          const oldButtons = preview.querySelector(".wd-preview-buttons");
+          if (oldButtons) {
+            oldButtons.remove();
+          }
+
+          // إعادة الحالة الطبيعية للرسالة
+          const messageElement = preview.querySelector(".wd-preview-message");
+          if (messageElement) {
+            messageElement.style.borderBottomLeftRadius = "7.5px";
+            messageElement.style.borderBottomRightRadius = "7.5px";
+            messageElement.style.marginBottom = "15px";
+          }
 
           if (channel === "whatsapp") {
             const template = document.getElementById("template").value;
-            if (template === "welcome") {
-              const var1 =
-                document.getElementById("variable1").value || "{{1}}";
-              const var2 =
-                document.getElementById("variable2").value || "{{2}}";
-              const image = document.getElementById("templateImage").files[0];
-
-              message = `
-                <div class="wd-preview-message">
-                  <div class="wd-preview-image">
-                    ${
-                      image
-                        ? `<img src="${URL.createObjectURL(
-                            image
-                          )}" alt="صورة الترحيب">`
-                        : '<div class="wd-preview-image-placeholder"><i class="fas fa-image"></i><p>صورة الترحيب</p></div>'
-                    }
-                  </div>
-                  <div class="wd-preview-text">
-                    <p>${templates.welcome.text
+            if (template && templates[template]) {
+              // تحديث نص الرسالة
+              if (messageElement) {
+                const messageBody =
+                  messageElement.querySelector(".wd-preview-body");
+                if (messageBody) {
+                  if (template === "welcome") {
+                    const var1 =
+                      document.getElementById("variable1").value || "{{1}}";
+                    const var2 =
+                      document.getElementById("variable2").value || "{{2}}";
+                    messageBody.textContent = templates.welcome.text
                       .replace("{{1}}", var1)
-                      .replace("{{2}}", var2)}</p>
-                  </div>
-                  <div class="wd-preview-footer">
-                    <p>${var2}</p>
-                  </div>
-                  <div class="wd-preview-buttons">
-                    ${templates.welcome.buttons
-                      .map(
-                        (button) => `
-                      <button class="wd-preview-button">${button.text}</button>
-                    `
-                      )
-                      .join("")}
-                  </div>
-                </div>
-              `;
+                      .replace("{{2}}", var2);
+                  } else {
+                    messageBody.textContent = templates[template];
+                  }
+                }
+              }
+
+              // إضافة الأزرار إذا كانت موجودة
+              if (
+                template === "welcome" &&
+                templates.welcome.buttons &&
+                templates.welcome.buttons.length > 0
+              ) {
+                const buttonsContainer = document.createElement("div");
+                buttonsContainer.className = "wd-preview-buttons";
+
+                templates.welcome.buttons.forEach((button) => {
+                  let iconClass = "fa-reply";
+
+                  if (button.value === "prices") {
+                    iconClass = "fa-tag";
+                  } else if (button.value === "services") {
+                    iconClass = "fa-cogs";
+                  } else if (button.value === "support") {
+                    iconClass = "fa-headset";
+                  }
+
+                  const buttonHTML = `
+                    <button class="wd-preview-button">
+                      <i class="fas ${iconClass}"></i>
+                      ${button.text}
+                    </button>
+                  `;
+
+                  buttonsContainer.innerHTML += buttonHTML;
+                });
+
+                // إضافة الأزرار بعد الرسالة
+                if (messageElement) {
+                  messageElement.after(buttonsContainer);
+
+                  // تعديل شكل الرسالة عند وجود أزرار
+                  messageElement.style.borderBottomLeftRadius = "0";
+                  messageElement.style.borderBottomRightRadius = "0";
+                  messageElement.style.marginBottom = "0";
+                }
+              }
             } else {
-              message = templates[template] || "";
-              message = `                <div class="wd-preview-message">
-                  <p>${message}</p>
-                </div>
-              `;
+              // إذا لم يتم اختيار قالب
+              if (messageElement) {
+                const messageBody =
+                  messageElement.querySelector(".wd-preview-body");
+                if (messageBody) {
+                  messageBody.textContent = "اختر قالب لعرض المعاينة";
+                }
+              }
             }
           } else {
-            message = document.getElementById("initialMessage").value;
-            message = `
-              <div class="wd-preview-message">
-                <p>${message}</p>
-              </div>
-            `;
-          }
-
-          if (message) {
-            preview.innerHTML = message;
-          } else {
-            preview.innerHTML = `
-              <div class="wd-preview-placeholder">
-                <i class="fas fa-comment-alt"></i>
-                <p>سيتم عرض معاينة الرسالة هنا</p>
-              </div>
-            `;
+            // إذا لم تكن واتساب
+            const message = document.getElementById("initialMessage").value;
+            if (messageElement) {
+              const messageBody =
+                messageElement.querySelector(".wd-preview-body");
+              if (messageBody) {
+                messageBody.textContent =
+                  message || "سيتم عرض معاينة الرسالة هنا";
+              }
+            }
           }
         }
 
@@ -1059,9 +1232,15 @@
           if (this.value === "whatsapp") {
             messageGroup.style.display = "none";
             templateGroup.style.display = "block";
+
+            // تحديث المعاينة عند اختيار واتساب
+            updateMessagePreview();
           } else {
             messageGroup.style.display = "block";
             templateGroup.style.display = "none";
+
+            // تحديث المعاينة للرسالة العادية
+            updateMessagePreview();
           }
         });
 

@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <div class="wd-overlay" id="accountOverlay"></div>
     <div class="wd-container">
       <!-- القسم الأول: القائمة الجانبية -->
       <aside class="wd-sidebar">
@@ -20,63 +21,176 @@
         </div>
         <nav class="wd-nav">
           <ul>
-            <li class="wd-nav-item active">
-              <i class="fa-solid fa-gauge"></i>
-              <span
-                ><a href="index.html" class="wd-nav-link">لوحة التحكم</a></span
+            <a href="index.html" class="wd-nav-link">
+              <li class="wd-nav-item active">
+                <i class="fa-solid fa-gauge"></i>
+                <span>لوحة التحكم</span>
+              </li>
+            </a>
+            <a href="chat.html" class="wd-nav-link">
+              <li class="wd-nav-item">
+                <i class="fa-solid fa-comments"></i>
+                <span>المحادثات</span>
+              </li>
+            </a>
+            <a href="contacts.html" class="wd-nav-link">
+              <li class="wd-nav-item">
+                <i class="fa-solid fa-users"></i>
+                <span>جهات الاتصال</span>
+              </li>
+            </a>
+            <a href="flows.html" class="wd-nav-link">
+              <li class="wd-nav-item">
+                <i class="fa-solid fa-diagram-project"></i>
+                <span>التدفقات</span>
+              </li>
+            </a>
+            <a href="campaigns.html" class="wd-nav-link">
+              <li class="wd-nav-item">
+                <i class="fas fa-bullhorn"></i>
+                <span>الحملات</span>
+              </li>
+            </a>
+            <a href="calendar.html" class="wd-nav-link">
+              <li class="wd-nav-item">
+                <i class="fas fa-calendar"></i>
+                <span>التقويم</span>
+              </li>
+            </a>
+            <a href="contents.html" class="wd-nav-link">
+              <li class="wd-nav-item">
+                <i class="fas fa-file-alt"></i>
+                <span>المحتويات</span>
+              </li>
+            </a>
+            <a href="developers.html" class="wd-nav-link">
+              <li class="wd-nav-item">
+                <i class="fas fa-code"></i>
+                <span>المطورين</span>
+              </li>
+            </a>
+            <a href="settings.html" class="wd-nav-link">
+              <li class="wd-nav-item">
+                <i class="fas fa-cog"></i>
+                <span>الإعدادات</span>
+              </li>
+            </a>
+            <div class="wd-profile-section">
+              <a
+                href="notifications.html"
+                class="wd-nav-link"
+                id="notificationsLink"
               >
-            </li>
-            <li class="wd-nav-item">
-              <i class="fa-solid fa-comments"></i>
-              <span><a href="chat.html" class="wd-nav-link">المحادثات</a></span>
-            </li>
-            <li class="wd-nav-item">
-              <i class="fa-solid fa-users"></i>
-              <span
-                ><a href="contacts.html" class="wd-nav-link"
-                  >جهات الاتصال</a
-                ></span
-              >
-            </li>
-            <li class="wd-nav-item">
-              <i class="fa-solid fa-diagram-project"></i>
-              <span><a href="flows.html" class="wd-nav-link">التدفقات</a></span>
-            </li>
-            <li class="wd-nav-item">
-              <i class="fas fa-bullhorn"></i>
-              <span
-                ><a href="campaigns.html" class="wd-nav-link">الحملات</a></span
-              >
-            </li>
-            <li class="wd-nav-item">
-              <i class="fas fa-calendar"></i>
-              <span
-                ><a href="calendar.html" class="wd-nav-link">التقويم</a></span
-              >
-            </li>
-            <li class="wd-nav-item">
-              <i class="fas fa-file-alt"></i>
-              <span
-                ><a href="contents.html" class="wd-nav-link">المحتويات</a></span
-              >
-            </li>
-            <li class="wd-nav-item">
-              <i class="fas fa-code"></i>
-              <span
-                ><a href="developers.html" class="wd-nav-link"
-                  >المطورين</a
-                ></span
-              >
-            </li>
-            <li class="wd-nav-item">
-              <i class="fas fa-cog"></i>
-              <span
-                ><a href="settings.html" class="wd-nav-link">الإعدادات</a></span
-              >
-            </li>
+                <li class="wd-nav-item">
+                  <i class="fas fa-bell"></i>
+                  <span class="wd-notifications-badge">3</span>
+                  <span>الإشعارات</span>
+                </li>
+              </a>
+              <a href="account.html" class="wd-nav-link" id="accountMenuLink">
+                <li class="wd-nav-item">
+                  <i class="fas fa-user-circle"></i>
+                  <span>حسابي</span>
+                </li>
+              </a>
+            </div>
           </ul>
         </nav>
       </aside>
+
+      <!-- قائمة الإشعارات المنبثقة -->
+      <div class="wd-notifications-menu" id="notificationsMenu">
+        <div class="wd-notifications-menu-header">
+          <h3>الإشعارات</h3>
+          <button
+            class="wd-notifications-menu-close"
+            id="closeNotificationsMenu"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="wd-notifications-menu-body">
+          <div class="wd-notifications-list">
+            <div class="wd-notification-item unread">
+              <div class="wd-notification-icon">
+                <i class="fas fa-comment-dots"></i>
+              </div>
+              <div class="wd-notification-content">
+                <div class="wd-notification-text">رسالة جديدة من أحمد محمد</div>
+                <div class="wd-notification-time">منذ 5 دقائق</div>
+              </div>
+            </div>
+            <div class="wd-notification-item unread">
+              <div class="wd-notification-icon">
+                <i class="fas fa-user-plus"></i>
+              </div>
+              <div class="wd-notification-content">
+                <div class="wd-notification-text">تم إضافة جهة اتصال جديدة</div>
+                <div class="wd-notification-time">منذ 30 دقيقة</div>
+              </div>
+            </div>
+            <div class="wd-notification-item">
+              <div class="wd-notification-icon">
+                <i class="fas fa-bell"></i>
+              </div>
+              <div class="wd-notification-content">
+                <div class="wd-notification-text">تحديث جديد للنظام متاح</div>
+                <div class="wd-notification-time">منذ ساعتين</div>
+              </div>
+            </div>
+          </div>
+          <div class="wd-notifications-actions">
+            <a href="#" class="wd-mark-all-read">تحديد الكل كمقروء</a>
+            <a href="notifications.html" class="wd-all-notifications"
+              >عرض كافة الإشعارات</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- قائمة الحساب المنبثقة -->
+      <div class="wd-account-menu" id="accountMenu">
+        <div class="wd-account-menu-header">
+          <h3>إدارة الحساب</h3>
+          <button class="wd-account-menu-close" id="closeAccountMenu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="wd-account-menu-body">
+          <div class="wd-account-menu-info">
+            <img
+              src="imgs/logo.png"
+              alt="صورة المستخدم"
+              class="wd-account-menu-avatar"
+            />
+            <div class="wd-account-menu-details">
+              <span class="wd-account-menu-name">محمد أحمد</span>
+              <span class="wd-account-menu-email">mohammed@example.com</span>
+            </div>
+          </div>
+          <div class="wd-account-menu-options">
+            <a href="settings.html" class="wd-account-menu-option">
+              <i class="fas fa-user-edit"></i>
+              <span>تعديل الملف الشخصي</span>
+            </a>
+            <a href="settings/security.html" class="wd-account-menu-option">
+              <i class="fas fa-shield-alt"></i>
+              <span>الأمان والخصوصية</span>
+            </a>
+            <a
+              href="settings/notifications.html"
+              class="wd-account-menu-option"
+            >
+              <i class="fas fa-bell"></i>
+              <span>إعدادات الإشعارات</span>
+            </a>
+            <a href="logout.html" class="wd-account-menu-option logout">
+              <i class="fas fa-sign-out-alt"></i>
+              <span>تسجيل الخروج</span>
+            </a>
+          </div>
+        </div>
+      </div>
 
       <!-- القسم الثاني: القائمة الجانبية الثانية -->
       <div class="wd-secondary-sidebar">
@@ -140,6 +254,93 @@
               </a>
             </ul>
           </nav>
+          <div class="wd-help-center">
+            <a href="#" class="wd-nav-link" id="helpCenterBtn">
+              <li class="wd-secondary-nav-item">
+                <i class="fas fa-question-circle"></i>
+                <span>مركز المساعدة</span>
+              </li>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- نافذة مركز المساعدة -->
+      <div class="wd-help-window" id="helpWindow">
+        <div class="wd-help-window-header" id="helpWindowHeader">
+          <h3>مركز المساعدة</h3>
+          <button class="wd-help-window-close" id="closeHelpWindow">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="wd-help-window-content">
+          <div class="wd-help-section">
+            <h4>كيف يمكننا مساعدتك؟</h4>
+            <div class="wd-help-search">
+              <input type="text" placeholder="ابحث عن المساعدة..." />
+              <button><i class="fas fa-search"></i></button>
+            </div>
+          </div>
+          <div class="wd-help-section" id="helpCategoriesSection">
+            <h4>أقسام المساعدة</h4>
+            <ul class="wd-help-categories">
+              <li><i class="fas fa-book"></i> دليل المستخدم</li>
+              <li id="videoTutorialsItem">
+                <i class="fas fa-video"></i> فيديوهات تعليمية
+              </li>
+              <li><i class="fas fa-question-circle"></i> الأسئلة الشائعة</li>
+              <li><i class="fas fa-headset"></i> التواصل مع الدعم</li>
+            </ul>
+          </div>
+          <div
+            class="wd-help-tutorials-content"
+            id="videoTutorialsContent"
+            style="display: none"
+          >
+            <div class="wd-help-section">
+              <div class="wd-help-section-header">
+                <button class="wd-back-to-help" id="backToHelpBtn">
+                  <i class="fas fa-arrow-right"></i>
+                  <span>العودة إلى أقسام المساعدة</span>
+                </button>
+                <h4>فيديوهات تعليمية</h4>
+              </div>
+              <p>
+                استكشف كيفية استخدام المنصة بشكل فعال من خلال الفيديوهات
+                التعليمية أدناه.
+              </p>
+              <div class="wd-tutorials-list">
+                <div class="wd-tutorial-item">
+                  <i class="fas fa-play-circle"></i>
+                  <div class="wd-tutorial-info">
+                    <span class="wd-tutorial-title">مقدمة إلى المنصة</span>
+                    <span class="wd-tutorial-duration">3:45 دقيقة</span>
+                  </div>
+                </div>
+                <div class="wd-tutorial-item">
+                  <i class="fas fa-play-circle"></i>
+                  <div class="wd-tutorial-info">
+                    <span class="wd-tutorial-title">إدارة المحادثات</span>
+                    <span class="wd-tutorial-duration">5:20 دقيقة</span>
+                  </div>
+                </div>
+                <div class="wd-tutorial-item">
+                  <i class="fas fa-play-circle"></i>
+                  <div class="wd-tutorial-info">
+                    <span class="wd-tutorial-title">إنشاء حملات تسويقية</span>
+                    <span class="wd-tutorial-duration">4:15 دقيقة</span>
+                  </div>
+                </div>
+                <div class="wd-tutorial-item">
+                  <i class="fas fa-play-circle"></i>
+                  <div class="wd-tutorial-info">
+                    <span class="wd-tutorial-title">إعداد الردود الآلية</span>
+                    <span class="wd-tutorial-duration">6:30 دقيقة</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -158,6 +359,21 @@
         </div>
 
         <div class="wd-content-body">
+          <!-- قسم الترحيب المختصر -->
+          <div class="wd-mini-welcome">
+            <span class="wd-mini-welcome-icon"
+              ><i class="fas fa-crown"></i
+            ></span>
+            <span class="wd-mini-welcome-text"
+              >أهلاً بك <b>محمد</b> في باقتنا الاحترافية! استمتع بكافة المميزات
+              المتاحة لك.</span
+            >
+            <div class="wd-mini-welcome-links">
+              <a href="settings/plan.html">استكشف المميزات</a> |
+              <a href="settings/channels.html">إعداد القنوات</a>
+            </div>
+          </div>
+
           <!-- قسم التحديثات القادمة -->
           <div class="wd-updates-section">
             <div class="wd-updates-card">
@@ -209,7 +425,7 @@
             <div class="wd-cards-container">
               <div class="wd-card">
                 <div class="wd-card-header">
-                  <h3>المحادثات</h3>
+                  <h3>المحادثات المفتوحة</h3>
                 </div>
                 <div class="wd-card-body">
                   <div class="wd-stat-item">
@@ -220,10 +436,10 @@
                     </div>
                   </div>
                   <div class="wd-stat-item">
-                    <i class="fas fa-chart-line"></i>
+                    <i class="fas fa-check-circle"></i>
                     <div class="wd-stat-info">
-                      <span class="wd-stat-value">+12%</span>
-                      <span class="wd-stat-label">نسبة النمو</span>
+                      <span class="wd-stat-value">0</span>
+                      <span class="wd-stat-label">محادثات محلولة</span>
                     </div>
                   </div>
                 </div>
@@ -267,7 +483,7 @@
                     <i class="fas fa-check-circle"></i>
                     <div class="wd-stat-info">
                       <span class="wd-stat-value">75%</span>
-                      <span class="wd-stat-label">معدل النجاح</span>
+                      <span class="wd-stat-label">معدل القراءة</span>
                     </div>
                   </div>
                 </div>
@@ -288,8 +504,77 @@
                   <div class="wd-stat-item">
                     <i class="fas fa-check-circle"></i>
                     <div class="wd-stat-info">
-                      <span class="wd-stat-value">1,234</span>
-                      <span class="wd-stat-label">مرات الاستخدام</span>
+                      <span class="wd-stat-value">34</span>
+                      <span class="wd-stat-label">تمت الموافقة</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- بطاقة آخر حملة -->
+              <div class="wd-card">
+                <div class="wd-card-header">
+                  <h3>آخر حملة</h3>
+                </div>
+                <div class="wd-card-body">
+                  <div class="wd-stat-item">
+                    <i class="fas fa-users"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">3</span>
+                      <span class="wd-stat-label">المستلمين</span>
+                    </div>
+                  </div>
+                  <div class="wd-stat-item">
+                    <i class="fas fa-book-reader"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">100%</span>
+                      <span class="wd-stat-label">معدل القراءة</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- بطاقة قوالب الإرسال الفردي -->
+              <div class="wd-card">
+                <div class="wd-card-header">
+                  <h3>قوالب الإرسال الفردي</h3>
+                </div>
+                <div class="wd-card-body">
+                  <div class="wd-stat-item">
+                    <i class="fas fa-paper-plane"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">107</span>
+                      <span class="wd-stat-label">إجمالي القوالب</span>
+                    </div>
+                  </div>
+                  <div class="wd-stat-item">
+                    <i class="fas fa-envelope-open"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">96.15%</span>
+                      <span class="wd-stat-label">معدل الفتح</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- بطاقة الردود الآلية -->
+              <div class="wd-card">
+                <div class="wd-card-header">
+                  <h3>الردود الآلية</h3>
+                </div>
+                <div class="wd-card-body">
+                  <div class="wd-stat-item">
+                    <i class="fas fa-robot"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">3</span>
+                      <span class="wd-stat-label">إجمالي الردود الآلية</span>
+                    </div>
+                  </div>
+                  <div class="wd-stat-item">
+                    <i class="fas fa-comment-dots"></i>
+                    <div class="wd-stat-info">
+                      <span class="wd-stat-value">0</span>
+                      <span class="wd-stat-label">الرسائل المرسلة</span>
                     </div>
                   </div>
                 </div>
@@ -680,65 +965,692 @@
       </main>
     </div>
 
-    <div class="wd-profile-floating">
-      <button class="wd-profile-floating-btn" id="profileFloatingBtn">
-        <i class="fas fa-user"></i>
+    <!-- زر الدعم الفني المباشر -->
+    <div class="wd-support-floating">
+      <button
+        type="button"
+        class="wd-support-floating-btn"
+        id="supportFloatingBtn"
+        onclick="console.log('زر الدعم: نقرة مباشرة');"
+      >
+        <i class="fas fa-headset"></i>
       </button>
-      <div class="wd-profile-floating-menu" id="profileFloatingMenu">
-        <div class="wd-profile-floating-header">
-          <img
-            src="imgs/logo.png"
-            alt="صورة المستخدم"
-            class="wd-profile-floating-avatar"
-          />
-          <div class="wd-profile-floating-info">
-            <span class="wd-profile-floating-name">اسم المستخدم</span>
-            <span class="wd-profile-floating-email">user@example.com</span>
+      <div class="wd-support-tooltip">الدعم الفني المباشر</div>
+      <div class="wd-support-floating-menu" id="supportFloatingMenu">
+        <div class="wd-support-floating-header">
+          <div class="wd-support-header-content">
+            <div class="wd-support-avatar">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="wd-support-header-text">
+              <h3>مساعد الدعم الفني</h3>
+              <span class="wd-support-status">متصل الآن</span>
+            </div>
           </div>
-        </div>
-        <div class="wd-profile-floating-status">
-          <span class="wd-profile-floating-status-title">تعيين نفسك ك:</span>
-          <div class="wd-profile-floating-status-options">
+          <div class="wd-support-header-actions">
             <button
-              class="wd-profile-floating-status-option active"
-              data-status="available"
+              type="button"
+              class="wd-support-expand-btn"
+              id="expandSupportMenu"
+              title="تكبير النافذة"
             >
-              <i class="fas fa-circle"></i>
-              <span>متصل</span>
+              <i class="fas fa-expand"></i>
             </button>
             <button
-              class="wd-profile-floating-status-option"
-              data-status="busy"
+              type="button"
+              class="wd-support-floating-close"
+              id="closeSupportMenu"
             >
-              <i class="fas fa-circle"></i>
-              <span>مشغول</span>
-            </button>
-            <button
-              class="wd-profile-floating-status-option"
-              data-status="offline"
-            >
-              <i class="fas fa-circle"></i>
-              <span>غير متصل</span>
+              <i class="fas fa-times"></i>
             </button>
           </div>
         </div>
-        <div class="wd-profile-floating-actions">
-          <a href="#" class="wd-profile-floating-action">
-            <i class="fas fa-user-cog"></i>
-            <span>إعدادات الحساب</span>
-          </a>
-          <a href="#" class="wd-profile-floating-action">
-            <i class="fas fa-palette"></i>
-            <span>تغيير المظهر</span>
-          </a>
-          <a href="#" class="wd-profile-floating-action">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>تسجيل الخروج</span>
-          </a>
+
+        <div class="wd-support-floating-body">
+          <!-- رسالة الترحيب -->
+          <div class="wd-support-welcome">
+            <div class="wd-support-welcome-text">
+              <span class="wd-support-emoji">👋🏼</span>
+              <h4>هلا والله</h4>
+              <p>كيف يمكننا مساعدتك؟</p>
+            </div>
+          </div>
+
+          <!-- محتوى التبويبات -->
+          <div class="wd-support-content">
+            <!-- تبويب الرئيسية -->
+            <div class="wd-support-tab-content active" id="supportTabHome">
+              <!-- قسم آخر محادثة -->
+              <div class="wd-support-section">
+                <h5>آخر محادثة</h5>
+                <div class="wd-support-last-chat">
+                  <div class="wd-support-last-chat-item">
+                    <div class="wd-support-last-chat-avatar">
+                      <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="wd-support-last-chat-content">
+                      <div class="wd-support-last-chat-header">
+                        <span class="wd-support-last-chat-name"
+                          >أحمد محمد - دعم فني</span
+                        >
+                        <span class="wd-support-last-chat-time"
+                          >منذ ساعتين</span
+                        >
+                      </div>
+                      <p class="wd-support-last-chat-message">
+                        تم حل مشكلة إعداد واتساب بنجاح
+                      </p>
+                      <span class="wd-support-last-chat-status resolved"
+                        >تم الحل</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- قسم بدء محادثة جديدة -->
+              <div class="wd-support-section">
+                <h5>الاتصال بفريق الدعم</h5>
+                <div class="wd-support-options">
+                  <a
+                    href="javascript:void(0);"
+                    class="wd-support-option primary"
+                    id="startNewChatBtn"
+                  >
+                    <div class="wd-support-option-icon">
+                      <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <div class="wd-support-option-content">
+                      <span class="wd-support-option-title"
+                        >بدء محادثة جديدة</span
+                      >
+                      <span class="wd-support-option-desc"
+                        >تحدث مع أحد ممثلي الدعم</span
+                      >
+                    </div>
+                    <i class="fas fa-chevron-left wd-support-option-arrow"></i>
+                  </a>
+
+                  <a href="javascript:void(0);" class="wd-support-option">
+                    <div class="wd-support-option-icon">
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="wd-support-option-content">
+                      <span class="wd-support-option-title">راسلنا</span>
+                      <span class="wd-support-option-desc"
+                        >support@example.com</span
+                      >
+                    </div>
+                    <i class="fas fa-chevron-left wd-support-option-arrow"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- تبويب المحادثات السابقة -->
+            <div class="wd-support-tab-content" id="supportTabHistory">
+              <div class="wd-support-section">
+                <h5>المحادثات الأخيرة</h5>
+                <div class="wd-support-history">
+                  <div class="wd-support-history-item">
+                    <div class="wd-support-history-avatar">
+                      <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="wd-support-history-content">
+                      <div class="wd-support-history-header">
+                        <span class="wd-support-history-name"
+                          >أحمد محمد - دعم فني</span
+                        >
+                        <span class="wd-support-history-time">منذ ساعتين</span>
+                      </div>
+                      <p class="wd-support-history-message">
+                        تم حل مشكلة إعداد واتساب بنجاح
+                      </p>
+                      <span class="wd-support-history-status resolved"
+                        >تم الحل</span
+                      >
+                    </div>
+                  </div>
+
+                  <div class="wd-support-history-item">
+                    <div class="wd-support-history-avatar">
+                      <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="wd-support-history-content">
+                      <div class="wd-support-history-header">
+                        <span class="wd-support-history-name"
+                          >سارة أحمد - دعم فني</span
+                        >
+                        <span class="wd-support-history-time">أمس</span>
+                      </div>
+                      <p class="wd-support-history-message">
+                        استفسار حول الحملات التسويقية
+                      </p>
+                      <span class="wd-support-history-status resolved"
+                        >تم الحل</span
+                      >
+                    </div>
+                  </div>
+
+                  <div class="wd-support-history-item">
+                    <div class="wd-support-history-avatar">
+                      <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="wd-support-history-content">
+                      <div class="wd-support-history-header">
+                        <span class="wd-support-history-name"
+                          >محمد علي - دعم فني</span
+                        >
+                        <span class="wd-support-history-time">منذ 3 أيام</span>
+                      </div>
+                      <p class="wd-support-history-message">
+                        مساعدة في إعداد الردود الآلية
+                      </p>
+                      <span class="wd-support-history-status resolved"
+                        >تم الحل</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="wd-support-history-empty" style="display: none">
+                  <i class="fas fa-comments"></i>
+                  <p>لا توجد محادثات سابقة</p>
+                  <span>ابدأ محادثة جديدة للحصول على المساعدة</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- نظام المراسلة الويب -->
+          <div class="wd-support-chat-view" id="supportChatView">
+            <!-- رأس المحادثة -->
+            <div class="wd-support-chat-header">
+              <button class="wd-support-chat-back" id="backToSupportBtn">
+                <i class="fas fa-arrow-right"></i>
+              </button>
+              <div class="wd-support-chat-info">
+                <h4 class="wd-support-chat-title">الدعم الفني</h4>
+                <p class="wd-support-chat-status">متصل الآن</p>
+              </div>
+            </div>
+
+            <!-- منطقة الرسائل -->
+            <div class="wd-support-chat-messages" id="supportChatMessages">
+              <!-- رسالة ترحيبية من الدعم -->
+              <div class="wd-support-message received">
+                <div class="wd-support-message-avatar">
+                  <i class="fas fa-robot"></i>
+                </div>
+                <div class="wd-support-message-content">
+                  <p class="wd-support-message-text">
+                    مرحباً بك! أنا مساعد الدعم الفني. كيف يمكنني مساعدتك اليوم؟
+                  </p>
+                  <div class="wd-support-message-time">الآن</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- منطقة إدخال الرسائل -->
+            <div class="wd-support-chat-input">
+              <div class="wd-support-input-container">
+                <textarea
+                  class="wd-support-message-input"
+                  id="supportMessageInput"
+                  placeholder="اكتب رسالتك هنا..."
+                  rows="1"
+                ></textarea>
+                <button
+                  class="wd-support-send-btn"
+                  id="supportSendBtn"
+                  disabled
+                >
+                  <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- التبويبات السفلية -->
+          <div class="wd-support-tabs">
+            <button class="wd-support-tab active" data-tab="supportTabHome">
+              <i class="fas fa-home"></i>
+              <span>الرئيسية</span>
+            </button>
+            <button class="wd-support-tab" data-tab="supportTabHistory">
+              <i class="fas fa-history"></i>
+              <span>المحادثات السابقة</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
     <script src="script.js"></script>
+    <script>
+      // كود مباشر لتفعيل زر الدعم الفني
+      document.addEventListener("DOMContentLoaded", function () {
+        // تعريف العناصر المشتركة
+        const accountOverlay = document.getElementById("accountOverlay");
+
+        // دالة لتفعيل زر الدعم الفني
+        function initializeSupportButton() {
+          const supportBtn = document.getElementById("supportFloatingBtn");
+          const supportMenu = document.getElementById("supportFloatingMenu");
+
+          if (supportBtn && supportMenu) {
+            console.log("تم العثور على زر الدعم الفني بنجاح!");
+
+            // إزالة أي مستمعين سابقين
+            const newSupportBtn = supportBtn.cloneNode(true);
+            supportBtn.parentNode.replaceChild(newSupportBtn, supportBtn);
+
+            // إضافة مستمع جديد
+            newSupportBtn.addEventListener("click", function (e) {
+              console.log("تم الضغط على زر الدعم الفني");
+              e.preventDefault();
+              e.stopPropagation();
+              supportMenu.classList.toggle("show");
+            });
+
+            return true;
+          } else {
+            console.error("فشل العثور على زر الدعم الفني أو القائمة!");
+            return false;
+          }
+        }
+
+        // محاولة تفعيل الزر مباشرة
+        if (!initializeSupportButton()) {
+          // إعادة المحاولة بعد تأخير قصير
+          setTimeout(initializeSupportButton, 500);
+        }
+
+        // إزالة setTimeout وتفعيل زر الدعم مباشرة
+        const supportBtn = document.getElementById("supportFloatingBtn");
+        const supportMenu = document.getElementById("supportFloatingMenu");
+
+        if (supportBtn && supportMenu) {
+          console.log("تم العثور على زر الدعم الفني بنجاح!");
+
+          // إزالة أي مستمعين سابقين
+          supportBtn.removeEventListener("click", handleSupportClick);
+
+          // إضافة مستمع جديد
+          supportBtn.addEventListener("click", handleSupportClick);
+
+          function handleSupportClick(e) {
+            console.log("تم الضغط على زر الدعم الفني");
+            e.preventDefault();
+            e.stopPropagation();
+            supportMenu.classList.toggle("show");
+          }
+        } else {
+          console.error("فشل العثور على زر الدعم الفني أو القائمة!");
+        }
+
+        // تفعيل خيارات الدعم
+        const supportOptions = document.querySelectorAll(".wd-support-option");
+        supportOptions.forEach((option) => {
+          option.addEventListener("click", function (e) {
+            e.preventDefault();
+            const optionTitle = this.querySelector(
+              ".wd-support-option-title"
+            ).textContent;
+            console.log("تم النقر على خيار الدعم:", optionTitle);
+
+            // يمكن إضافة وظائف مختلفة حسب نوع الخيار
+            if (optionTitle.includes("محادثة جديدة")) {
+              // فتح نافذة محادثة جديدة
+              startNewChat();
+            } else if (optionTitle.includes("راسلنا")) {
+              // فتح تطبيق البريد الإلكتروني
+              window.location.href = "mailto:support@example.com";
+            }
+          });
+        });
+
+        // نظام المراسلة الويب
+        const supportChatView = document.getElementById("supportChatView");
+        const supportContent = document.querySelector(".wd-support-content");
+        const supportTabs = document.querySelector(".wd-support-tabs");
+        const supportWelcome = document.querySelector(".wd-support-welcome");
+        const startNewChatBtn = document.getElementById("startNewChatBtn");
+        const backToSupportBtn = document.getElementById("backToSupportBtn");
+        const supportMessageInput = document.getElementById(
+          "supportMessageInput"
+        );
+        const supportSendBtn = document.getElementById("supportSendBtn");
+        const supportChatMessages = document.getElementById(
+          "supportChatMessages"
+        );
+
+        // بدء محادثة جديدة
+        function startNewChat() {
+          supportContent.style.display = "none";
+          supportTabs.style.display = "none";
+          supportWelcome.style.display = "none";
+          supportChatView.classList.add("active");
+        }
+
+        // العودة إلى القائمة الرئيسية
+        function backToSupport() {
+          supportContent.style.display = "block";
+          supportTabs.style.display = "flex";
+          supportWelcome.style.display = "block";
+          supportChatView.classList.remove("active");
+        }
+
+        // تفعيل أزرار المحادثة
+        if (startNewChatBtn) {
+          startNewChatBtn.addEventListener("click", startNewChat);
+        }
+
+        if (backToSupportBtn) {
+          backToSupportBtn.addEventListener("click", backToSupport);
+        }
+
+        // تفعيل إرسال الرسائل
+        if (supportMessageInput && supportSendBtn) {
+          // تفعيل/إلغاء تفعيل زر الإرسال
+          supportMessageInput.addEventListener("input", function () {
+            const message = this.value.trim();
+            supportSendBtn.disabled = message.length === 0;
+          });
+
+          // إرسال الرسالة عند الضغط على زر الإرسال
+          supportSendBtn.addEventListener("click", function () {
+            sendMessage();
+          });
+
+          // إرسال الرسالة عند الضغط على Enter
+          supportMessageInput.addEventListener("keypress", function (e) {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              sendMessage();
+            }
+          });
+
+          // تغيير حجم textarea تلقائياً
+          supportMessageInput.addEventListener("input", function () {
+            this.style.height = "auto";
+            this.style.height = Math.min(this.scrollHeight, 80) + "px";
+          });
+        }
+
+        // إرسال رسالة
+        function sendMessage() {
+          const message = supportMessageInput.value.trim();
+          if (message.length === 0) return;
+
+          // إضافة رسالة المستخدم
+          addMessage(message, "sent", "أنت");
+
+          // مسح حقل الإدخال
+          supportMessageInput.value = "";
+          supportMessageInput.style.height = "auto";
+          supportSendBtn.disabled = true;
+
+          // إظهار مؤشر الكتابة
+          showTypingIndicator();
+
+          // محاكاة رد الدعم الفني بعد تأخير
+          setTimeout(() => {
+            hideTypingIndicator();
+            const responses = [
+              "شكراً لتواصلك معنا. سأقوم بمراجعة استفسارك والرد عليك قريباً.",
+              "تم استلام رسالتك. فريق الدعم الفني سيتواصل معك خلال دقائق.",
+              "أفهم مشكلتك. دعني أتحقق من الأمر وأعود إليك بالحل.",
+              "تم تسجيل طلبك. سنقوم بمعالجته في أقرب وقت ممكن.",
+              "شكراً لصبرك. نحن نعمل على حل مشكلتك الآن.",
+            ];
+            const randomResponse =
+              responses[Math.floor(Math.random() * responses.length)];
+            addMessage(randomResponse, "received", "مساعد الدعم");
+          }, 1500 + Math.random() * 2000);
+        }
+
+        // إضافة رسالة إلى المحادثة
+        function addMessage(text, type, sender) {
+          const messageDiv = document.createElement("div");
+          messageDiv.className = `wd-support-message ${type}`;
+
+          const now = new Date();
+          const timeString = now.toLocaleTimeString("ar-SA", {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+
+          messageDiv.innerHTML = `
+            <div class="wd-support-message-avatar">
+              <i class="fas ${type === "sent" ? "fa-user" : "fa-robot"}"></i>
+            </div>
+            <div class="wd-support-message-content">
+              <p class="wd-support-message-text">${text}</p>
+              <div class="wd-support-message-time">${timeString}</div>
+            </div>
+          `;
+
+          supportChatMessages.appendChild(messageDiv);
+          supportChatMessages.scrollTop = supportChatMessages.scrollHeight;
+        }
+
+        // إظهار مؤشر الكتابة
+        function showTypingIndicator() {
+          const typingDiv = document.createElement("div");
+          typingDiv.className = "wd-support-message received";
+          typingDiv.id = "typingIndicator";
+          typingDiv.innerHTML = `
+            <div class="wd-support-message-avatar">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="wd-support-typing">
+              <div class="wd-support-typing-dots">
+                <div class="wd-support-typing-dot"></div>
+                <div class="wd-support-typing-dot"></div>
+                <div class="wd-support-typing-dot"></div>
+              </div>
+            </div>
+          `;
+
+          supportChatMessages.appendChild(typingDiv);
+          supportChatMessages.scrollTop = supportChatMessages.scrollHeight;
+        }
+
+        // إخفاء مؤشر الكتابة
+        function hideTypingIndicator() {
+          const typingIndicator = document.getElementById("typingIndicator");
+          if (typingIndicator) {
+            typingIndicator.remove();
+          }
+        }
+
+        // تفعيل التبويبات في قسم الدعم
+        const supportTabsElements =
+          document.querySelectorAll(".wd-support-tab");
+        const supportTabContents = document.querySelectorAll(
+          ".wd-support-tab-content"
+        );
+
+        if (supportTabsElements.length > 0 && supportTabContents.length > 0) {
+          supportTabsElements.forEach((tab) => {
+            tab.addEventListener("click", function () {
+              const targetTab = this.getAttribute("data-tab");
+
+              // إزالة الفئة النشطة من جميع التبويبات
+              supportTabsElements.forEach((t) => t.classList.remove("active"));
+              supportTabContents.forEach((content) =>
+                content.classList.remove("active")
+              );
+
+              // إضافة الفئة النشطة للتبويب المحدد
+              this.classList.add("active");
+              const targetContent = document.getElementById(targetTab);
+              if (targetContent) {
+                targetContent.classList.add("active");
+              }
+            });
+          });
+        }
+
+        // تفعيل زر إغلاق قائمة الدعم
+        const closeSupportMenu = document.getElementById("closeSupportMenu");
+        const supportMenuForClose = document.getElementById(
+          "supportFloatingMenu"
+        );
+        if (closeSupportMenu && supportMenuForClose) {
+          closeSupportMenu.addEventListener("click", function () {
+            supportMenuForClose.classList.remove("show");
+          });
+        }
+
+        // تفعيل زر تكبير/تصغير نافذة الدعم
+        const expandSupportMenu = document.getElementById("expandSupportMenu");
+        if (expandSupportMenu && supportMenuForClose) {
+          expandSupportMenu.addEventListener("click", function () {
+            const isFullscreen =
+              supportMenuForClose.classList.contains("fullscreen");
+
+            if (isFullscreen) {
+              // تصغير النافذة
+              supportMenuForClose.classList.remove("fullscreen");
+              expandSupportMenu.innerHTML = '<i class="fas fa-expand"></i>';
+              expandSupportMenu.title = "تكبير النافذة";
+            } else {
+              // تكبير النافذة
+              supportMenuForClose.classList.add("fullscreen");
+              expandSupportMenu.innerHTML = '<i class="fas fa-compress"></i>';
+              expandSupportMenu.title = "تصغير النافذة";
+            }
+          });
+        }
+
+        // إغلاق القائمة عند النقر خارجها
+        const supportBtnForClose =
+          document.getElementById("supportFloatingBtn");
+        if (supportMenuForClose && supportBtnForClose) {
+          document.addEventListener("click", function (e) {
+            if (
+              supportMenuForClose.classList.contains("show") &&
+              !supportMenuForClose.contains(e.target) &&
+              !supportBtnForClose.contains(e.target)
+            ) {
+              supportMenuForClose.classList.remove("show");
+            }
+          });
+        }
+
+        // تفعيل قائمة الإشعارات
+        const notificationsLink = document.getElementById("notificationsLink");
+        const notificationsMenu = document.getElementById("notificationsMenu");
+        const closeNotificationsMenu = document.getElementById(
+          "closeNotificationsMenu"
+        );
+
+        if (
+          notificationsLink &&
+          notificationsMenu &&
+          closeNotificationsMenu &&
+          accountOverlay
+        ) {
+          notificationsLink.addEventListener("click", function (e) {
+            // فحص ما إذا كنا على صفحة الإشعارات
+            if (window.location.pathname.includes("notifications.html")) {
+              // إذا كنا بالفعل على صفحة الإشعارات، لا نفعل شيئًا
+              return;
+            }
+
+            // إن لم نكن على صفحة الإشعارات، نظهر النافذة المنبثقة
+            e.preventDefault();
+            // إغلاق قائمة الحساب إذا كانت مفتوحة
+            if (accountMenu) {
+              accountMenu.classList.remove("show");
+            }
+            notificationsMenu.classList.add("show");
+            accountOverlay.classList.add("show");
+          });
+
+          closeNotificationsMenu.addEventListener("click", function () {
+            notificationsMenu.classList.remove("show");
+            accountOverlay.classList.remove("show");
+          });
+
+          // وظيفة الطبقة الخلفية لإغلاق قائمة الإشعارات
+          accountOverlay.addEventListener("click", function () {
+            notificationsMenu.classList.remove("show");
+            accountOverlay.classList.remove("show");
+          });
+        }
+
+        // تفعيل قائمة الحساب
+        const accountMenuLink = document.getElementById("accountMenuLink");
+        const accountMenu = document.getElementById("accountMenu");
+        const closeAccountMenu = document.getElementById("closeAccountMenu");
+
+        if (accountMenuLink && accountMenu && closeAccountMenu) {
+          // عند النقر على رابط الحساب في الشريط الجانبي
+          accountMenuLink.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation(); // منع انتشار الحدث
+            // إغلاق قائمة الإشعارات إذا كانت مفتوحة
+            if (notificationsMenu) {
+              notificationsMenu.classList.remove("show");
+              if (accountOverlay) accountOverlay.classList.remove("show");
+            }
+            console.log("Toggling account menu");
+            accountMenu.classList.toggle("show");
+          });
+
+          // عند النقر على زر الإغلاق
+          closeAccountMenu.addEventListener("click", function () {
+            accountMenu.classList.remove("show");
+          });
+
+          // إغلاق القائمة عند النقر خارجها
+          document.addEventListener("click", function (e) {
+            if (
+              accountMenu.classList.contains("show") &&
+              !accountMenu.contains(e.target) &&
+              !accountMenuLink.contains(e.target)
+            ) {
+              console.log("Closing account menu from outside click");
+              accountMenu.classList.remove("show");
+            }
+          });
+        }
+      });
+    </script>
+
+    <!-- كود إضافي لضمان عمل زر الدعم الفني -->
+    <script>
+      // كود احتياطي لضمان عمل زر الدعم الفني
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          const supportBtn = document.getElementById("supportFloatingBtn");
+          const supportMenu = document.getElementById("supportFloatingMenu");
+
+          if (supportBtn && supportMenu) {
+            // إضافة مستمع إضافي كاحتياط
+            supportBtn.addEventListener(
+              "click",
+              function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log("زر الدعم الفني يعمل - كود احتياطي");
+                supportMenu.classList.toggle("show");
+              },
+              true
+            );
+
+            // إضافة أنماط CSS مباشرة لضمان الرؤية
+            supportBtn.style.pointerEvents = "auto";
+            supportBtn.style.cursor = "pointer";
+            supportBtn.style.zIndex = "10001";
+
+            console.log("تم تفعيل الكود الاحتياطي لزر الدعم الفني");
+          }
+        }, 1000);
+      });
+    </script>
   </body>
 </html>

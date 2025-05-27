@@ -265,9 +265,87 @@
                     </div>
                   </button>
                   <div class="wd-filter-actions">
-                    <button class="wd-filter-action-btn">
-                      <i class="fas fa-sort-amount-down"></i>
-                    </button>
+                    <div class="wd-filter-dropdown-container">
+                      <button
+                        class="wd-filter-action-btn"
+                        onclick="toggleFilterMenu()"
+                      >
+                        <i class="fas fa-sort-amount-down"></i>
+                      </button>
+                      <div class="wd-filter-menu" id="filterMenu">
+                        <div class="wd-filter-group">
+                          <label class="wd-filter-label">الحالة:</label>
+                          <div class="wd-filter-select">
+                            <button
+                              class="wd-filter-select-btn"
+                              onclick="toggleFilterOptions('statusOptions')"
+                            >
+                              <span>جميع الحالات</span>
+                              <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="wd-filter-options" id="statusOptions">
+                              <div
+                                class="wd-filter-option"
+                                onclick="selectFilterOption('statusOptions', 'جميع الحالات')"
+                              >
+                                جميع الحالات
+                              </div>
+                              <div
+                                class="wd-filter-option"
+                                onclick="selectFilterOption('statusOptions', 'فتح')"
+                              >
+                                فتح
+                              </div>
+                              <div
+                                class="wd-filter-option"
+                                onclick="selectFilterOption('statusOptions', 'مغلق')"
+                              >
+                                مغلق
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="wd-filter-group">
+                          <label class="wd-filter-label">ترتيب:</label>
+                          <div class="wd-filter-select">
+                            <button
+                              class="wd-filter-select-btn"
+                              onclick="toggleFilterOptions('sortOptions')"
+                            >
+                              <span>الأحدث</span>
+                              <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="wd-filter-options" id="sortOptions">
+                              <div
+                                class="wd-filter-option"
+                                onclick="selectFilterOption('sortOptions', 'الأحدث')"
+                              >
+                                الأحدث
+                              </div>
+                              <div
+                                class="wd-filter-option"
+                                onclick="selectFilterOption('sortOptions', 'الأقدم')"
+                              >
+                                الأقدم
+                              </div>
+                              <div
+                                class="wd-filter-option"
+                                onclick="selectFilterOption('sortOptions', 'الاسم: أ-ي')"
+                              >
+                                الاسم: أ-ي
+                              </div>
+                              <div
+                                class="wd-filter-option"
+                                onclick="selectFilterOption('sortOptions', 'الاسم: ي-أ')"
+                              >
+                                الاسم: ي-أ
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1252,6 +1330,9 @@
                     </div>
                   </div>
                   <div class="wd-message received">
+                    <div class="wd-sender-avatar" title="نورة أحمد">
+                      <span>ن</span>
+                    </div>
                     <div class="wd-message-content">
                       مرحباً، كيف يمكنني مساعدتك اليوم؟
                       <div class="wd-message-time">10:30 ص - 2024-03-20</div>
@@ -1301,6 +1382,9 @@
                     </div>
                   </div>
                   <div class="wd-message sent">
+                    <div class="wd-sender-avatar" title="أحمد محمد">
+                      <span>أ</span>
+                    </div>
                     <div class="wd-message-content">
                       أريد معرفة المزيد عن خدماتكم
                       <div class="wd-message-time">10:32 ص - 2024-03-20</div>
@@ -1330,6 +1414,9 @@
                     </div>
                   </div>
                   <div class="wd-message received">
+                    <div class="wd-sender-avatar" title="نورة أحمد">
+                      <span>ن</span>
+                    </div>
                     <div class="wd-message-content">
                       بالتأكيد، نحن نقدم مجموعة متنوعة من الخدمات. هل هناك خدمة
                       معينة تهمك؟
@@ -1337,12 +1424,18 @@
                     </div>
                   </div>
                   <div class="wd-message sent">
+                    <div class="wd-sender-avatar" title="أحمد محمد">
+                      <span>أ</span>
+                    </div>
                     <div class="wd-message-content">
                       نعم، أريد معرفة المزيد عن خدمة الدعم الفني
                       <div class="wd-message-time">10:34 ص - 2024-03-20</div>
                     </div>
                   </div>
                   <div class="wd-message received">
+                    <div class="wd-sender-avatar" title="أحمد سالم">
+                      <span>أ</span>
+                    </div>
                     <div class="wd-message-content">
                       خدمة الدعم الفني متاحة 24/7 وتشمل المساعدة في حل المشكلات
                       التقنية
@@ -1350,30 +1443,45 @@
                     </div>
                   </div>
                   <div class="wd-message sent">
+                    <div class="wd-sender-avatar" title="أحمد محمد">
+                      <span>أ</span>
+                    </div>
                     <div class="wd-message-content">
                       كم تكلفة الاشتراك في هذه الخدمة؟
                       <div class="wd-message-time">10:36 ص - 2024-03-20</div>
                     </div>
                   </div>
                   <div class="wd-message received">
+                    <div class="wd-sender-avatar" title="نورة أحمد">
+                      <span>ن</span>
+                    </div>
                     <div class="wd-message-content">
                       تبدأ الأسعار من 199 ريال شهرياً مع خطة أساسية
                       <div class="wd-message-time">10:37 ص - 2024-03-20</div>
                     </div>
                   </div>
                   <div class="wd-message sent">
+                    <div class="wd-sender-avatar" title="أحمد محمد">
+                      <span>أ</span>
+                    </div>
                     <div class="wd-message-content">
                       هل هناك فترة تجريبية مجانية؟
                       <div class="wd-message-time">10:38 ص - 2024-03-20</div>
                     </div>
                   </div>
                   <div class="wd-message received">
+                    <div class="wd-sender-avatar" title="سارة محمد">
+                      <span>س</span>
+                    </div>
                     <div class="wd-message-content">
                       نعم، نقدم 14 يوم تجربة مجانية لجميع خدماتنا
                       <div class="wd-message-time">10:39 ص - 2024-03-20</div>
                     </div>
                   </div>
                   <div class="wd-message sent">
+                    <div class="wd-sender-avatar" title="أحمد محمد">
+                      <span>أ</span>
+                    </div>
                     <div class="wd-message-content">
                       ممتاز، كيف يمكنني بدء الفترة التجريبية؟
                       <div class="wd-message-time">10:40 ص - 2024-03-20</div>

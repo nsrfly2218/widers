@@ -445,6 +445,50 @@
                 <input type="hidden" id="selectedGroup" />
               </div>
 
+              <div class="wd-form-group">
+                <label for="planName">اسم الخطة</label>
+                <input
+                  type="text"
+                  id="planName"
+                  class="wd-form-control"
+                  placeholder="أدخل اسم الخطة"
+                />
+                <div class="wd-error-message" id="planNameError"></div>
+              </div>
+
+              <div class="wd-form-group">
+                <label for="fullName">الاسم الكامل</label>
+                <input
+                  type="text"
+                  id="fullName"
+                  class="wd-form-control"
+                  placeholder="أدخل الاسم الكامل"
+                />
+                <div class="wd-error-message" id="fullNameError"></div>
+              </div>
+
+              <div class="wd-form-group">
+                <label for="idNumber">رقم الهوية</label>
+                <input
+                  type="text"
+                  id="idNumber"
+                  class="wd-form-control"
+                  placeholder="أدخل رقم الهوية"
+                />
+                <div class="wd-error-message" id="idNumberError"></div>
+              </div>
+
+              <div class="wd-form-group">
+                <label for="reservationNumber">رقم الحجز</label>
+                <input
+                  type="text"
+                  id="reservationNumber"
+                  class="wd-form-control"
+                  placeholder="أدخل رقم الحجز"
+                />
+                <div class="wd-error-message" id="reservationNumberError"></div>
+              </div>
+
               <div class="wd-form-actions">
                 <button
                   class="wd-btn wd-btn-secondary"
@@ -523,6 +567,11 @@
         window.saveContact = function () {
           let isValid = true;
           const contactName = document.getElementById("contactName").value;
+          const planName = document.getElementById("planName").value;
+          const fullName = document.getElementById("fullName").value;
+          const idNumber = document.getElementById("idNumber").value;
+          const reservationNumber =
+            document.getElementById("reservationNumber").value;
           const countryCode = document.getElementById("countryCode").value;
           const phoneNumber = document.getElementById("phoneNumber").value;
           const email = document.getElementById("email").value;
@@ -535,6 +584,30 @@
           // التحقق من اسم جهة الاتصال
           if (!contactName) {
             showError("contactName", "الرجاء إدخال اسم جهة الاتصال");
+            isValid = false;
+          }
+
+          // التحقق من اسم الخطة
+          if (!planName) {
+            showError("planName", "الرجاء إدخال اسم الخطة");
+            isValid = false;
+          }
+
+          // التحقق من الاسم الكامل
+          if (!fullName) {
+            showError("fullName", "الرجاء إدخال الاسم الكامل");
+            isValid = false;
+          }
+
+          // التحقق من رقم الهوية
+          if (!idNumber) {
+            showError("idNumber", "الرجاء إدخال رقم الهوية");
+            isValid = false;
+          }
+
+          // التحقق من رقم الحجز
+          if (!reservationNumber) {
+            showError("reservationNumber", "الرجاء إدخال رقم الحجز");
             isValid = false;
           }
 

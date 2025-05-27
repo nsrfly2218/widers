@@ -99,14 +99,18 @@
         <div class="wd-secondary-content">
           <nav class="wd-secondary-nav">
             <ul>
-              <li class="wd-secondary-nav-item active">
-                <i class="fas fa-users"></i>
-                <span>جميع جهات الاتصال</span>
-              </li>
-              <li class="wd-secondary-nav-item">
-                <i class="fas fa-layer-group"></i>
-                <span>المجموعات</span>
-              </li>
+              <a href="contacts.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item active">
+                  <i class="fas fa-users"></i>
+                  <span>جميع جهات الاتصال</span>
+                </li>
+              </a>
+              <a href="contacts/groups.html" class="wd-nav-link">
+                <li class="wd-secondary-nav-item">
+                  <i class="fas fa-layer-group"></i>
+                  <span>المجموعات</span>
+                </li>
+              </a>
             </ul>
 
             <div class="wd-nav-section">
@@ -156,18 +160,44 @@
             <h1>جهات الاتصال</h1>
           </div>
           <div class="wd-header-actions">
+            <!-- صندوق البحث المباشر -->
+            <div class="wd-search-box-inline">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="البحث بالاسم، رقم الهاتف أو البريد الإلكتروني..."
+                oninput="performSearch()"
+              />
+              <button
+                class="wd-clear-search"
+                id="clearSearchBtn"
+                onclick="clearSearch()"
+                style="display: none"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
             <button
-              class="wd-btn wd-btn-primary"
+              class="wd-btn"
               onclick="window.location.href='add/new-contact.html'"
             >
               <i class="fas fa-plus"></i>
               جهة اتصال جديدة
             </button>
-            <button class="wd-btn">
+            <button class="wd-btn wd-btn-secondary" onclick="openFilterModal()">
+              <i class="fas fa-filter"></i>
+              فلترة
+            </button>
+            <button class="wd-btn wd-btn-secondary">
               <i class="fas fa-file-export"></i>
               تصدير
             </button>
-            <button class="wd-btn">
+            <button
+              class="wd-btn"
+              onclick="window.location.href='import/contacts-import.html'"
+            >
               <i class="fas fa-file-import"></i>
               استيراد
             </button>
@@ -889,6 +919,85 @@
       </main>
     </div>
 
+    <!-- نافذة الفلترة المنبثقة -->
+    <div class="wd-filter-modal" id="filterModal">
+      <div class="wd-modal-content">
+        <div class="wd-modal-header">
+          <h3>فلترة جهات الاتصال</h3>
+          <button class="wd-modal-close" onclick="closeFilterModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="wd-modal-body">
+          <div class="wd-filter-rules" id="filterRules">
+            <div class="wd-filter-rule-container">
+              <div class="wd-filter-rule">
+                <div class="wd-filter-field">
+                  <label>الحقل</label>
+                  <select>
+                    <option value="name">الاسم</option>
+                    <option value="phone">رقم الهاتف</option>
+                    <option value="email">البريد الإلكتروني</option>
+                    <option value="group">المجموعة</option>
+                    <option value="status">حالة الاشتراك</option>
+                  </select>
+                </div>
+                <div class="wd-filter-operator">
+                  <label>المشغل</label>
+                  <select>
+                    <option value="equals">يساوي</option>
+                    <option value="not_equals">لا يساوي</option>
+                    <option value="contains">يحتوي على</option>
+                    <option value="not_contains">لا يحتوي على</option>
+                    <option value="starts_with">يبدأ بـ</option>
+                    <option value="ends_with">ينتهي بـ</option>
+                  </select>
+                </div>
+                <div class="wd-filter-value">
+                  <label>القيمة</label>
+                  <input type="text" placeholder="أدخل القيمة..." />
+                </div>
+                <div class="wd-filter-actions">
+                  <button
+                    class="wd-btn-icon"
+                    onclick="removeFilterRule(this)"
+                    title="حذف القاعدة"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="wd-btn wd-add-rule-btn" onclick="addFilterRule()">
+            <i class="fas fa-plus"></i>
+            إضافة قاعدة جديدة
+          </button>
+        </div>
+        <div class="wd-modal-footer">
+          <button class="wd-btn" onclick="closeFilterModal()">إلغاء</button>
+          <button class="wd-btn wd-btn-primary" onclick="applyFilter()">
+            تطبيق الفلتر
+          </button>
+          <button class="wd-btn" onclick="clearFilter()">مسح الفلتر</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- عرض النتائج المفلترة -->
+    <div class="wd-filter-status" id="filterStatus" style="display: none">
+      <div class="wd-filter-status-content">
+        <span id="filterResultsText">عرض جميع النتائج</span>
+        <button
+          class="wd-btn-icon"
+          onclick="clearAllFilters()"
+          title="مسح جميع الفلاتر"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+
     <div class="wd-profile-floating">
       <button class="wd-profile-floating-btn" id="profileFloatingBtn">
         <i class="fas fa-user"></i>
@@ -949,5 +1058,384 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+      // متغيرات عامة
+      let currentFilters = [];
+      let currentSearch = null;
+      let allContacts = [];
+      let searchTimeout = null;
+
+      // تهيئة البيانات عند تحميل الصفحة
+      document.addEventListener("DOMContentLoaded", function () {
+        loadContacts();
+        initializeSearch();
+      });
+
+      // تحميل بيانات جهات الاتصال
+      function loadContacts() {
+        const tableRows = document.querySelectorAll(
+          ".wd-table-body .wd-table-row"
+        );
+        allContacts = Array.from(tableRows).map((row) => {
+          const cells = row.querySelectorAll(".wd-table-cell");
+          return {
+            element: row,
+            name: cells[1].querySelector("span").textContent.trim(),
+            phone: cells[2].textContent.trim(),
+            email: cells[3].textContent.trim(),
+            group: cells[4].querySelector(".wd-tag").textContent.trim(),
+            status: cells[5].querySelector(".wd-status").textContent.trim(),
+          };
+        });
+      }
+
+      // تهيئة البحث المباشر
+      function initializeSearch() {
+        const searchInput = document.getElementById("searchInput");
+        const clearBtn = document.getElementById("clearSearchBtn");
+
+        searchInput.addEventListener("input", function () {
+          const value = this.value.trim();
+          if (value) {
+            clearBtn.style.display = "block";
+          } else {
+            clearBtn.style.display = "none";
+          }
+        });
+      }
+
+      // البحث المباشر
+      function performSearch() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+          const keywords = document.getElementById("searchInput").value.trim();
+
+          if (keywords) {
+            currentSearch = {
+              keywords: keywords.toLowerCase(),
+              searchName: true,
+              searchPhone: true,
+              searchEmail: true,
+            };
+          } else {
+            currentSearch = null;
+          }
+
+          filterContacts();
+          updateFilterStatus();
+        }, 300); // تأخير 300ms لتحسين الأداء
+      }
+
+      // فتح نافذة الفلترة
+      function openFilterModal() {
+        document.getElementById("filterModal").style.display = "flex";
+      }
+
+      // إغلاق نافذة الفلترة
+      function closeFilterModal() {
+        document.getElementById("filterModal").style.display = "none";
+      }
+
+      // مسح البحث
+      function clearSearch() {
+        document.getElementById("searchInput").value = "";
+        document.getElementById("clearSearchBtn").style.display = "none";
+        currentSearch = null;
+        filterContacts();
+        updateFilterStatus();
+      }
+
+      // إضافة قاعدة فلترة جديدة
+      function addFilterRule() {
+        const rulesContainer = document.getElementById("filterRules");
+        const ruleContainers = rulesContainer.querySelectorAll(
+          ".wd-filter-rule-container"
+        );
+
+        // إضافة فاصل منطق الربط إذا كان هناك قواعد موجودة
+        if (ruleContainers.length > 0) {
+          const logicSeparator = document.createElement("div");
+          logicSeparator.className = "wd-logic-separator";
+          logicSeparator.innerHTML = `
+            <div class="wd-logic-options">
+              <label class="wd-logic-option">
+                <input type="radio" name="filterLogic_${ruleContainers.length}" value="and" checked />
+                <span class="wd-logic-label">AND</span>
+                <span class="wd-logic-desc">و</span>
+              </label>
+              <label class="wd-logic-option">
+                <input type="radio" name="filterLogic_${ruleContainers.length}" value="or" />
+                <span class="wd-logic-label">OR</span>
+                <span class="wd-logic-desc">أو</span>
+              </label>
+            </div>
+          `;
+          rulesContainer.appendChild(logicSeparator);
+        }
+
+        // إضافة القاعدة الجديدة
+        const newRuleContainer = document.createElement("div");
+        newRuleContainer.className = "wd-filter-rule-container";
+        newRuleContainer.innerHTML = `
+          <div class="wd-filter-rule">
+            <div class="wd-filter-field">
+              <label>الحقل</label>
+              <select>
+                <option value="name">الاسم</option>
+                <option value="phone">رقم الهاتف</option>
+                <option value="email">البريد الإلكتروني</option>
+                <option value="group">المجموعة</option>
+                <option value="status">حالة الاشتراك</option>
+              </select>
+            </div>
+            <div class="wd-filter-operator">
+              <label>المشغل</label>
+              <select>
+                <option value="equals">يساوي</option>
+                <option value="not_equals">لا يساوي</option>
+                <option value="contains">يحتوي على</option>
+                <option value="not_contains">لا يحتوي على</option>
+                <option value="starts_with">يبدأ بـ</option>
+                <option value="ends_with">ينتهي بـ</option>
+              </select>
+            </div>
+            <div class="wd-filter-value">
+              <label>القيمة</label>
+              <input type="text" placeholder="أدخل القيمة..." />
+            </div>
+            <div class="wd-filter-actions">
+              <button class="wd-btn-icon" onclick="removeFilterRule(this)" title="حذف القاعدة">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        `;
+        rulesContainer.appendChild(newRuleContainer);
+      }
+
+      // حذف قاعدة فلترة
+      function removeFilterRule(button) {
+        const rulesContainer = document.getElementById("filterRules");
+        const ruleContainer = button.closest(".wd-filter-rule-container");
+        const ruleContainers = rulesContainer.querySelectorAll(
+          ".wd-filter-rule-container"
+        );
+
+        if (ruleContainers.length > 1) {
+          // العثور على الفاصل السابق أو التالي وحذفه
+          const previousElement = ruleContainer.previousElementSibling;
+          const nextElement = ruleContainer.nextElementSibling;
+
+          // حذف القاعدة
+          ruleContainer.remove();
+
+          // حذف الفاصل المرتبط
+          if (
+            previousElement &&
+            previousElement.classList.contains("wd-logic-separator")
+          ) {
+            previousElement.remove();
+          } else if (
+            nextElement &&
+            nextElement.classList.contains("wd-logic-separator")
+          ) {
+            nextElement.remove();
+          }
+        } else {
+          alert("يجب أن تبقى قاعدة واحدة على الأقل");
+        }
+      }
+
+      // تطبيق الفلتر
+      function applyFilter() {
+        const rules = document.querySelectorAll(".wd-filter-rule");
+        const logicSeparators = document.querySelectorAll(
+          ".wd-logic-separator"
+        );
+
+        currentFilters = [];
+        let logicOperators = [];
+
+        // جمع العوامل المنطقية
+        logicSeparators.forEach((separator) => {
+          const checkedInput = separator.querySelector(
+            'input[type="radio"]:checked'
+          );
+          if (checkedInput) {
+            logicOperators.push(checkedInput.value);
+          }
+        });
+
+        // جمع القواعد
+        Array.from(rules).forEach((rule, index) => {
+          const field = rule.querySelector(".wd-filter-field select").value;
+          const operator = rule.querySelector(
+            ".wd-filter-operator select"
+          ).value;
+          const value = rule
+            .querySelector(".wd-filter-value input")
+            .value.trim();
+
+          if (!value) {
+            throw new Error("يرجى إدخال قيمة لجميع القواعد");
+          }
+
+          const logic = index > 0 ? logicOperators[index - 1] : "and";
+          currentFilters.push({
+            field,
+            operator,
+            value: value.toLowerCase(),
+            logic,
+          });
+        });
+
+        try {
+          filterContacts();
+          closeFilterModal();
+          updateFilterStatus();
+        } catch (error) {
+          alert(error.message);
+        }
+      }
+
+      // مسح الفلتر
+      function clearFilter() {
+        currentFilters = [];
+        filterContacts();
+        closeFilterModal();
+        updateFilterStatus();
+      }
+
+      // مسح جميع الفلاتر والبحث
+      function clearAllFilters() {
+        currentFilters = [];
+        currentSearch = null;
+        document.getElementById("searchInput").value = "";
+        document.getElementById("clearSearchBtn").style.display = "none";
+        filterContacts();
+        updateFilterStatus();
+      }
+
+      // تطبيق الفلترة والبحث
+      function filterContacts() {
+        let filteredContacts = [...allContacts];
+
+        // تطبيق البحث
+        if (currentSearch) {
+          filteredContacts = filteredContacts.filter((contact) => {
+            const keywords = currentSearch.keywords;
+            let match = false;
+
+            if (
+              currentSearch.searchName &&
+              contact.name.toLowerCase().includes(keywords)
+            ) {
+              match = true;
+            }
+            if (
+              currentSearch.searchPhone &&
+              contact.phone.toLowerCase().includes(keywords)
+            ) {
+              match = true;
+            }
+            if (
+              currentSearch.searchEmail &&
+              contact.email.toLowerCase().includes(keywords)
+            ) {
+              match = true;
+            }
+
+            return match;
+          });
+        }
+
+        // تطبيق الفلاتر
+        if (currentFilters.length > 0) {
+          filteredContacts = filteredContacts.filter((contact) => {
+            let finalResult = true;
+
+            currentFilters.forEach((filter, index) => {
+              const fieldValue = contact[filter.field].toLowerCase();
+              const filterValue = filter.value;
+              let result = false;
+
+              switch (filter.operator) {
+                case "equals":
+                  result = fieldValue === filterValue;
+                  break;
+                case "not_equals":
+                  result = fieldValue !== filterValue;
+                  break;
+                case "contains":
+                  result = fieldValue.includes(filterValue);
+                  break;
+                case "not_contains":
+                  result = !fieldValue.includes(filterValue);
+                  break;
+                case "starts_with":
+                  result = fieldValue.startsWith(filterValue);
+                  break;
+                case "ends_with":
+                  result = fieldValue.endsWith(filterValue);
+                  break;
+              }
+
+              // تطبيق المنطق بين القواعد
+              if (index === 0) {
+                finalResult = result;
+              } else {
+                if (filter.logic === "and") {
+                  finalResult = finalResult && result;
+                } else {
+                  finalResult = finalResult || result;
+                }
+              }
+            });
+
+            return finalResult;
+          });
+        }
+
+        // إخفاء/إظهار الصفوف
+        allContacts.forEach((contact) => {
+          const isVisible = filteredContacts.includes(contact);
+          contact.element.style.display = isVisible ? "" : "none";
+        });
+
+        // تحديث النتائج
+        updateResultsCount(filteredContacts.length);
+      }
+
+      // تحديث حالة الفلتر
+      function updateFilterStatus() {
+        const statusDiv = document.getElementById("filterStatus");
+        const hasActiveFilters = currentFilters.length > 0 || currentSearch;
+
+        if (hasActiveFilters) {
+          statusDiv.style.display = "block";
+        } else {
+          statusDiv.style.display = "none";
+        }
+      }
+
+      // تحديث عدد النتائج
+      function updateResultsCount(count) {
+        const statusText = document.getElementById("filterResultsText");
+        if (currentFilters.length > 0 || currentSearch) {
+          statusText.textContent = `عرض ${count} من ${allContacts.length} نتيجة`;
+        } else {
+          statusText.textContent = `عرض جميع النتائج (${allContacts.length})`;
+        }
+      }
+
+      // إغلاق النوافذ المنبثقة عند النقر خارجها
+      window.addEventListener("click", function (event) {
+        const filterModal = document.getElementById("filterModal");
+
+        if (event.target === filterModal) {
+          closeFilterModal();
+        }
+      });
+    </script>
   </body>
 </html>

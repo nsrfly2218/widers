@@ -174,6 +174,7 @@
         width: 100%;
         height: 6px;
         -webkit-appearance: none;
+        appearance: none;
         background: #ddd;
         border-radius: 3px;
         outline: none;
@@ -189,7 +190,7 @@
         transition: all 0.3s ease;
       }
 
-      .wd-slider::-webkit-slider-thumb:hover {
+      .wd-slider::-webkit-s lider-thumb:hover {
         background: #357abd;
         transform: scale(1.1);
       }
@@ -205,6 +206,219 @@
       .wd-slider-value span:first-child {
         font-weight: 600;
         color: #4a90e2;
+      }
+
+      /* WhatsApp Template Preview Styles */
+      .wd-template-preview {
+        width: 350px;
+        margin: 0 auto;
+        background: #e5ddd5
+          url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20h20v20H0V20zm20 0h20v20H20V20zm20 0h20v20H40V20zm20-20h20v20H60V0zm0 20h20v20H60V20zm20-20h20v20H80V0zm0 20h20v20H80V20zm0 20h20v20H80V40zm20-20h20v20h-20V20zM0 40h20v20H0V40zm20 0h20v20H20V40zm20 0h20v20H40V40zm20-20h20v20H60V20zm0 20h20v20H60V40zm20-20h20v20H80V20zm0 20h20v20H80V40zm0 20h20v20H80V60zm20-20h20v20h-20V40zM0 60h20v20H0V60zm20 0h20v20H20V60zm20 0h20v20H40V60zm20-20h20v20H60V40zm0 20h20v20H60V60z' fill='%23cccccc' fill-opacity='0.12' fill-rule='evenodd'/%3E%3C/svg%3E");
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        height: 400px;
+      }
+
+      .wd-whatsapp-header {
+        display: none;
+      }
+
+      .wd-preview-content {
+        flex: 1;
+        background: transparent;
+        padding: 20px;
+        border-radius: 0;
+        overflow-y: auto;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .wd-preview-date {
+        text-align: center;
+        margin: 10px 0;
+        font-size: 12.5px;
+        color: #54656f;
+        background: rgba(225, 245, 254, 0.92);
+        border-radius: 7.5px;
+        padding: 5px 12px;
+        display: inline-block;
+        align-self: center;
+        box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+      }
+
+      .wd-preview-message {
+        background: #fff;
+        border-radius: 7.5px 7.5px 7.5px 0;
+        padding: 10px 12px;
+        margin-bottom: 15px;
+        box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 85%;
+        width: 280px;
+        min-height: 45px;
+        align-self: flex-start;
+        position: relative;
+      }
+
+      .wd-preview-message::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -8px;
+        width: 0;
+        height: 0;
+        border-top: 8px solid #fff;
+        border-left: 8px solid transparent;
+      }
+
+      .wd-preview-body {
+        font-size: 14px;
+        color: #303030;
+        margin: 0;
+        line-height: 19px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+
+      .wd-preview-timestamp {
+        text-align: left;
+        font-size: 11px;
+        color: #8c8c8c;
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 4px;
+      }
+
+      .wd-whatsapp-footer {
+        display: none;
+      }
+
+      .wd-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #777;
+        font-size: 20px;
+      }
+
+      .wd-whatsapp-input {
+        flex: 1;
+        background: white;
+        border-radius: 20px;
+        padding: 9px 12px;
+        margin: 0 8px;
+        color: #999;
+      }
+
+      .wd-preview-buttons {
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        background: white;
+        padding: 0;
+        margin-right: 0;
+        max-width: 85%;
+        width: 280px;
+        align-self: flex-start;
+        box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+        border-radius: 0 0 7.5px 7.5px;
+        overflow: hidden;
+        margin-bottom: 15px;
+      }
+
+      .wd-preview-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 10px 12px;
+        background: white;
+        color: #128c7e;
+        border: none;
+        border-top: 1px solid #f0f0f0;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: 500;
+        text-align: center;
+        outline: none;
+        transition: background-color 0.2s;
+      }
+
+      .wd-preview-button i {
+        font-size: 16px;
+        color: #128c7e;
+      }
+
+      /* Side-by-side layout styles */
+      .wd-message-container {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .wd-message-form {
+        flex: 1;
+      }
+
+      .wd-message-preview {
+        width: 350px;
+      }
+
+      .wd-preview-title {
+        font-weight: 500;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      /* Make template preview more visible */
+      .wd-template-preview {
+        margin-top: 0;
+        border: 1px solid #e0e0e0;
+      }
+
+      /* Side-by-side layout for template section */
+      .wd-message-container {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .wd-message-form {
+        flex: 1;
+      }
+
+      /* Clear floats after displaying the side-by-side layout */
+      .wd-form-group-container {
+        clear: both;
+      }
+
+      /* Responsive layout for smaller screens */
+      @media (max-width: 992px) {
+        .wd-message-container {
+          flex-direction: column;
+        }
+
+        .wd-template-preview {
+          width: 100%;
+          max-width: 350px;
+          margin: 0 auto;
+        }
       }
     </style>
   </head>
@@ -391,35 +605,71 @@
               </div>
             </div>
 
+            <!-- قسم محتوى الرسالة - يظهر بتخطيط جنباً إلى جنب -->
             <div
-              class="wd-form-group"
-              id="templateSection"
+              class="wd-message-container"
+              id="messageContainer"
               style="display: none"
             >
-              <label for="template"
-                >قالب الرسالة <span class="wd-required">*</span></label
-              >
-              <select id="template" class="wd-form-control">
-                <option value="">اختر قالب الرسالة</option>
-                <option value="welcome">ترحيب بالعميل</option>
-                <option value="support">دعم فني</option>
-                <option value="sales">عرض مبيعات</option>
-                <option value="followup">متابعة</option>
-              </select>
-              <div class="wd-error-message" id="templateError"></div>
-            </div>
+              <!-- قسم القالب -->
+              <div class="wd-message-form">
+                <div id="templateSection" style="display: none">
+                  <div class="wd-form-section">
+                    <h3 class="wd-section-title">قالب الرسالة</h3>
+                    <div class="wd-form-group">
+                      <label for="template"
+                        >اختر القالب <span class="wd-required">*</span></label
+                      >
+                      <select id="template" class="wd-form-control">
+                        <option value="">اختر قالب الرسالة</option>
+                        <option value="welcome">ترحيب بالعميل</option>
+                        <option value="support">دعم فني</option>
+                        <option value="sales">عرض مبيعات</option>
+                        <option value="followup">متابعة</option>
+                      </select>
+                      <div class="wd-error-message" id="templateError"></div>
+                    </div>
+                  </div>
+                </div>
 
-            <div class="wd-form-group" id="flowSection" style="display: none">
-              <label for="flow"
-                >التدفق <span class="wd-required">*</span></label
+                <!-- قسم التدفق -->
+                <div id="flowSection" style="display: none">
+                  <div class="wd-form-section">
+                    <h3 class="wd-section-title">تدفق</h3>
+                    <div class="wd-form-group">
+                      <label for="flow"
+                        >اختر التدفق <span class="wd-required">*</span></label
+                      >
+                      <select id="flow" class="wd-form-control">
+                        <option value="">اختر التدفق</option>
+                        <option value="flow1">تدفق التسويق</option>
+                        <option value="flow2">تدفق الدعم الفني</option>
+                        <option value="flow3">تدفق المبيعات</option>
+                      </select>
+                      <div class="wd-error-message" id="flowError"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- قسم معاينة القالب - يظهر فقط عند اختيار قالب -->
+              <div
+                class="wd-template-preview"
+                id="templatePreviewSection"
+                style="display: none"
               >
-              <select id="flow" class="wd-form-control">
-                <option value="">اختر التدفق</option>
-                <option value="flow1">تدفق التسويق</option>
-                <option value="flow2">تدفق الدعم الفني</option>
-                <option value="flow3">تدفق المبيعات</option>
-              </select>
-              <div class="wd-error-message" id="flowError"></div>
+                <div class="wd-preview-content" id="previewContent">
+                  <div class="wd-preview-message">
+                    <div class="wd-preview-body" id="templatePreviewBody">
+                      اختر قالب لعرض المعاينة
+                    </div>
+                    <div class="wd-preview-timestamp">
+                      00:00
+                      <i class="fas fa-check-double" style="color: #34b7f1"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="wd-form-group">
@@ -497,10 +747,18 @@
           });
         event.currentTarget.classList.add("selected");
 
+        // Show the message container
+        document.getElementById("messageContainer").style.display = "flex";
+
+        // Show the appropriate section
         document.getElementById("templateSection").style.display =
           type === "template" ? "block" : "none";
         document.getElementById("flowSection").style.display =
           type === "flow" ? "block" : "none";
+
+        // Show/hide the template preview section based on message type
+        document.getElementById("templatePreviewSection").style.display =
+          type === "template" ? "block" : "none";
       }
 
       function selectSchedule(type) {
@@ -636,6 +894,131 @@
 
       function updateSliderValue(value) {
         document.getElementById("sliderValue").textContent = value;
+      }
+
+      // قاموس بنماذج الرسائل
+      const templateMessages = {
+        welcome: {
+          content: "مرحباً بك {{1}} في خدمة العملاء! كيف يمكننا مساعدتك اليوم؟",
+          buttons: [
+            { type: "reply", text: "استفسار" },
+            { type: "reply", text: "طلب مساعدة" },
+            { type: "phone", text: "اتصل بنا" },
+          ],
+        },
+        support: {
+          content:
+            "نشكرك على تواصلك معنا. هل يمكنك تزويدنا بمزيد من المعلومات حول المشكلة التي تواجهها؟",
+          buttons: [{ type: "reply", text: "إرسال تفاصيل" }],
+        },
+        sales: {
+          content:
+            "نقدم لك عرضاً خاصاً على منتجنا {{1}}. هل ترغب في معرفة المزيد؟",
+          buttons: [
+            { type: "reply", text: "نعم، أود المزيد من المعلومات" },
+            { type: "link", text: "زيارة موقعنا" },
+          ],
+        },
+        followup: {
+          content:
+            "مرحباً {{1}}، هل كان كل شيء على ما يرام مع طلبك الأخير؟ نحن هنا للمساعدة إذا كنت بحاجة إلى أي شيء.",
+          buttons: [
+            { type: "reply", text: "نعم، شكراً لكم" },
+            { type: "reply", text: "لدي استفسار" },
+            { type: "phone", text: "اتصل بخدمة العملاء" },
+          ],
+        },
+      };
+
+      // تحديث معاينة القالب عند اختيار قالب
+      document.addEventListener("DOMContentLoaded", function () {
+        const templateSelect = document.getElementById("template");
+        if (templateSelect) {
+          templateSelect.addEventListener("change", updateTemplatePreview);
+        }
+      });
+
+      // وظيفة تحديث معاينة القالب
+      function updateTemplatePreview() {
+        const templateId = document.getElementById("template").value;
+        const previewBody = document.getElementById("templatePreviewBody");
+        const previewContent = document.getElementById("previewContent");
+
+        // إزالة أي أزرار سابقة
+        const oldButtons = previewContent.querySelector(".wd-preview-buttons");
+        if (oldButtons) {
+          oldButtons.remove();
+        }
+
+        if (templateId && templateMessages[templateId]) {
+          const template = templateMessages[templateId];
+
+          // تحديث محتوى الرسالة
+          previewBody.textContent = template.content;
+
+          // إضافة الأزرار إذا وجدت
+          if (template.buttons && template.buttons.length > 0) {
+            const messageElement = previewContent.querySelector(
+              ".wd-preview-message"
+            );
+
+            const buttonsContainer = document.createElement("div");
+            buttonsContainer.className = "wd-preview-buttons";
+
+            // تعيين عرض ثابت يطابق عرض الرسالة
+            buttonsContainer.style.width = "280px";
+            buttonsContainer.style.maxWidth = "85%";
+
+            // إضافة الأزرار
+            template.buttons.forEach((button) => {
+              let iconClass = "fa-reply";
+
+              if (button.type === "link") {
+                iconClass = "fa-link";
+              } else if (button.type === "phone") {
+                iconClass = "fa-phone";
+              } else if (button.type === "copy") {
+                iconClass = "fa-copy";
+              }
+
+              const buttonHTML = `
+                <button class="wd-preview-button">
+                  <i class="fas ${iconClass}"></i>
+                  ${button.text}
+                </button>
+              `;
+
+              buttonsContainer.innerHTML += buttonHTML;
+            });
+
+            // إضافة الأزرار بعد الرسالة
+            messageElement.after(buttonsContainer);
+
+            // تعديل شكل الرسالة عند وجود أزرار
+            messageElement.style.borderBottomLeftRadius = "0";
+            messageElement.style.borderBottomRightRadius = "0";
+            messageElement.style.marginBottom = "0";
+          } else {
+            // إعادة شكل الرسالة إلى الحالة الطبيعية إذا لم تكن هناك أزرار
+            const messageElement = previewContent.querySelector(
+              ".wd-preview-message"
+            );
+            messageElement.style.borderBottomLeftRadius = "7.5px";
+            messageElement.style.borderBottomRightRadius = "7.5px";
+            messageElement.style.marginBottom = "15px";
+          }
+        } else {
+          // إذا لم يتم اختيار قالب، أو القالب غير معروف
+          previewBody.textContent = "اختر قالب لعرض المعاينة";
+
+          // إعادة شكل الرسالة إلى الحالة الطبيعية
+          const messageElement = previewContent.querySelector(
+            ".wd-preview-message"
+          );
+          messageElement.style.borderBottomLeftRadius = "7.5px";
+          messageElement.style.borderBottomRightRadius = "7.5px";
+          messageElement.style.marginBottom = "15px";
+        }
       }
     </script>
   </body>

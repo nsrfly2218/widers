@@ -4,6 +4,203 @@ const itemsPerPage = 5;
 const totalItems = 20;
 const totalPages = Math.ceil(totalItems / itemsPerPage);
 
+// Help Center functionality
+document.addEventListener("DOMContentLoaded", function () {
+  // تأكد من الانتظار حتى يتم تحميل جميع العناصر
+  setTimeout(function () {
+    const helpCenterBtn = document.getElementById("helpCenterBtn");
+    const helpWindow = document.getElementById("helpWindow");
+    const closeHelpWindow = document.getElementById("closeHelpWindow");
+    const helpWindowHeader = document.getElementById("helpWindowHeader");
+
+    // إضافة العناصر الجديدة للفيديوهات التعليمية
+    const videoTutorialsItem = document.getElementById("videoTutorialsItem");
+    const videoTutorialsContent = document.getElementById(
+      "videoTutorialsContent"
+    );
+
+    // طباعة العناصر في وحدة التحكم للتأكد
+    console.log("Help Button:", helpCenterBtn);
+    console.log("Help Window:", helpWindow);
+    console.log("Close Button:", closeHelpWindow);
+
+    if (helpCenterBtn && helpWindow && closeHelpWindow) {
+      console.log("Help center elements found");
+
+      // تعيين موقع افتراضي للنافذة (استخدام left/top بدلاً من right/bottom للتناسق مع السحب)
+      helpWindow.style.opacity = "1";
+      helpWindow.style.right = "70px";
+      helpWindow.style.bottom = "70px";
+      helpWindow.style.display = "none"; // إخفاء النافذة افتراضياً
+
+      // إضافة حدث النقر الصريح
+      helpCenterBtn.onclick = function (e) {
+        e.preventDefault();
+        e.stopPropagation(); // منع انتشار الحدث
+
+        console.log("Help center button clicked");
+
+        // تبديل حالة العرض بشكل صريح
+        if (
+          helpWindow.style.display === "none" ||
+          helpWindow.style.display === ""
+        ) {
+          helpWindow.style.display = "block";
+          console.log("Window should show now");
+        } else {
+          helpWindow.style.display = "none";
+          console.log("Window should hide now");
+
+          // Reset window to default state when closing
+          helpWindow.classList.remove("expanded", "animating");
+          if (videoTutorialsContent) {
+            videoTutorialsContent.style.display = "none";
+          }
+        }
+
+        return false; // منع أي سلوك افتراضي
+      };
+
+      // إضافة حدث إغلاق النافذة
+      closeHelpWindow.onclick = function () {
+        helpWindow.style.display = "none";
+        console.log("Window closed by button");
+
+        // إعادة تعيين حالة النافذة عند الإغلاق
+        helpWindow.classList.remove("expanded", "animating");
+
+        // إخفاء محتوى الفيديوهات التعليمية
+        if (videoTutorialsContent) {
+          videoTutorialsContent.style.display = "none";
+        }
+
+        // إعادة إظهار أقسام المساعدة
+        const helpCategoriesSection = document.getElementById(
+          "helpCategoriesSection"
+        );
+        if (helpCategoriesSection) {
+          helpCategoriesSection.style.display = "block";
+        }
+
+        return false;
+      };
+
+      // إضافة التفاعل مع فيديوهات تعليمية
+      if (videoTutorialsItem && videoTutorialsContent) {
+        videoTutorialsItem.addEventListener("click", function () {
+          console.log("Video tutorials clicked");
+
+          // إضافة تأثير الحركة لتوسيع النافذة
+          helpWindow.classList.add("animating");
+
+          // إظهار محتوى الفيديوهات بعد انتهاء الحركة
+          setTimeout(function () {
+            helpWindow.classList.remove("animating");
+            helpWindow.classList.add("expanded");
+
+            // إخفاء أقسام المساعدة
+            const helpCategoriesSection = document.getElementById(
+              "helpCategoriesSection"
+            );
+            if (helpCategoriesSection) {
+              helpCategoriesSection.style.display = "none";
+            }
+
+            // إظهار قسم الفيديوهات التعليمية
+            videoTutorialsContent.style.display = "block";
+            console.log("Video tutorials content should be visible now");
+          }, 400);
+        });
+
+        // زر العودة إلى أقسام المساعدة
+        const backToHelpBtn = document.getElementById("backToHelpBtn");
+        if (backToHelpBtn) {
+          backToHelpBtn.addEventListener("click", function () {
+            console.log("Back to help categories clicked");
+
+            // إخفاء قسم الفيديوهات التعليمية
+            videoTutorialsContent.style.display = "none";
+
+            // إظهار أقسام المساعدة
+            const helpCategoriesSection = document.getElementById(
+              "helpCategoriesSection"
+            );
+            if (helpCategoriesSection) {
+              helpCategoriesSection.style.display = "block";
+            }
+
+            // إعادة النافذة إلى الحجم الأصلي
+            helpWindow.classList.remove("expanded");
+          });
+        }
+
+        // إضافة تفاعل عند النقر على عناصر الفيديو
+        const tutorialItems = document.querySelectorAll(".wd-tutorial-item");
+        tutorialItems.forEach(function (item) {
+          item.addEventListener("click", function () {
+            const title = this.querySelector(".wd-tutorial-title").textContent;
+            console.log("Tutorial clicked:", title);
+            // هنا يمكن إضافة المزيد من التفاعل مثل تشغيل الفيديو
+            alert("سيتم تشغيل الفيديو: " + title);
+          });
+        });
+      }
+
+      // جعل النافذة قابلة للتحريك في جميع الاتجاهات
+      let isDragging = false;
+      let offsetX, offsetY;
+
+      helpWindowHeader.onmousedown = function (e) {
+        isDragging = true;
+        offsetX = e.clientX - helpWindow.getBoundingClientRect().left;
+        offsetY = e.clientY - helpWindow.getBoundingClientRect().top;
+        helpWindowHeader.style.cursor = "grabbing";
+        e.preventDefault();
+
+        // إضافة فئة تشير إلى حالة السحب
+        helpWindow.classList.add("dragging");
+      };
+
+      document.onmousemove = function (e) {
+        if (isDragging) {
+          const newLeft = e.clientX - offsetX;
+          const newTop = e.clientY - offsetY;
+
+          // التأكد من عدم تجاوز حدود النافذة
+          const windowWidth = window.innerWidth;
+          const windowHeight = window.innerHeight;
+          const helpWindowWidth = helpWindow.offsetWidth;
+          const helpWindowHeight = helpWindow.offsetHeight;
+
+          // التأكد من بقاء النافذة ضمن حدود الصفحة بحد أدنى
+          const boundedLeft = Math.max(0, Math.min(windowWidth - 50, newLeft));
+          const boundedTop = Math.max(0, Math.min(windowHeight - 50, newTop));
+
+          // تحديث الموقع
+          helpWindow.style.left = boundedLeft + "px";
+          helpWindow.style.top = boundedTop + "px";
+
+          // إزالة right و bottom للتأكد من عدم تعارضها مع left و top
+          helpWindow.style.right = "auto";
+          helpWindow.style.bottom = "auto";
+        }
+      };
+
+      document.onmouseup = function () {
+        if (isDragging) {
+          isDragging = false;
+          helpWindowHeader.style.cursor = "move";
+
+          // إزالة فئة السحب
+          helpWindow.classList.remove("dragging");
+        }
+      };
+    } else {
+      console.error("One or more help center elements not found");
+    }
+  }, 500); // انتظر 500 مللي ثانية بعد تحميل الصفحة
+});
+
 function updatePagination() {
   document.getElementById("currentPage").textContent = currentPage;
   document.getElementById("totalPages").textContent = totalPages;
@@ -36,6 +233,9 @@ document.addEventListener("DOMContentLoaded", function () {
   if (document.querySelector(".wd-error-item")) {
     updatePagination();
   }
+
+  // Initialize notifications page functionality if we're on that page
+  initNotificationsPage();
 });
 
 // Secondary sidebar toggle
@@ -356,10 +556,12 @@ document.addEventListener("DOMContentLoaded", function () {
 function toggleContactInfo() {
   const sidebar = document.querySelector(".wd-contact-info-sidebar");
   const chatContent = document.querySelector(".wd-chat-content");
+  const chatWindow = document.querySelector(".wd-chat-window");
   const toggleButton = document.querySelector(".wd-contact-info-toggle i");
 
   sidebar.classList.toggle("active");
   chatContent.classList.toggle("sidebar-active");
+  chatWindow.classList.toggle("sidebar-active");
 
   if (sidebar.classList.contains("active")) {
     toggleButton.classList.remove("fa-chevron-right");
@@ -1324,6 +1526,9 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelectorAll(".wd-dropdown-menu").forEach((menu) => {
         menu.classList.remove("show");
       });
+      document.querySelectorAll(".wd-dropdown-submenu").forEach((submenu) => {
+        submenu.style.display = "none";
+      });
     }
   });
 
@@ -1908,3 +2113,239 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// وظائف قائمة الفلتر الجديدة
+function toggleFilterMenu() {
+  const filterMenu = document.getElementById("filterMenu");
+  filterMenu.classList.toggle("show");
+  event.stopPropagation(); // منع انتشار الحدث
+}
+
+function toggleFilterOptions(optionsId) {
+  const options = document.getElementById(optionsId);
+  const allOptions = document.querySelectorAll(".wd-filter-options");
+  const button = event.currentTarget;
+
+  // إغلاق جميع القوائم المفتوحة الأخرى
+  allOptions.forEach((item) => {
+    if (item.id !== optionsId && item.classList.contains("show")) {
+      item.classList.remove("show");
+      item.previousElementSibling.classList.remove("expanded");
+    }
+  });
+
+  // تبديل حالة القائمة الحالية
+  options.classList.toggle("show");
+  button.classList.toggle("expanded");
+
+  event.stopPropagation(); // منع انتشار الحدث
+}
+
+function selectFilterOption(optionsId, value) {
+  const options = document.getElementById(optionsId);
+  const button = options.previousElementSibling;
+  const span = button.querySelector("span");
+
+  // تعيين القيمة المحددة
+  span.textContent = value;
+
+  // إغلاق القائمة
+  options.classList.remove("show");
+  button.classList.remove("expanded");
+
+  // تطبيق الفلتر (هنا يمكن إضافة منطق الفلترة الفعلي)
+  applyFilters();
+
+  event.stopPropagation(); // منع انتشار الحدث
+}
+
+function applyFilters() {
+  // هنا يمكن إضافة منطق تطبيق الفلاتر على قائمة المحادثات
+  console.log("تطبيق الفلاتر");
+}
+
+// إغلاق القوائم عند النقر في أي مكان آخر
+document.addEventListener("click", function (event) {
+  // إغلاق قائمة الفلتر الرئيسية
+  const filterMenu = document.getElementById("filterMenu");
+  if (filterMenu && !event.target.closest(".wd-filter-dropdown-container")) {
+    filterMenu.classList.remove("show");
+  }
+
+  // إغلاق قوائم الخيارات
+  const allOptions = document.querySelectorAll(".wd-filter-options");
+  allOptions.forEach((options) => {
+    if (
+      options.classList.contains("show") &&
+      !event.target.closest(".wd-filter-select")
+    ) {
+      options.classList.remove("show");
+      options.previousElementSibling.classList.remove("expanded");
+    }
+  });
+});
+
+// التحكم في زر الدعم الفني المباشر - تنفيذ فوري
+(function () {
+  console.log("تهيئة زر الدعم الفني");
+
+  // طريقة 1: إضافة الكود مباشرة بعد تحميل الصفحة
+  if (
+    document.readyState === "complete" ||
+    document.readyState === "interactive"
+  ) {
+    initSupportButton();
+  } else {
+    document.addEventListener("DOMContentLoaded", initSupportButton);
+  }
+
+  // طريقة 2: تنفيذ بعد تأخير قصير للتأكد من تحميل جميع العناصر
+  setTimeout(initSupportButton, 1000);
+
+  // طريقة 3: محاولة التنفيذ مرة أخرى بعد تحميل الصفحة بالكامل
+  window.addEventListener("load", initSupportButton);
+
+  function initSupportButton() {
+    try {
+      const supportBtn = document.getElementById("supportFloatingBtn");
+      const supportMenu = document.getElementById("supportFloatingMenu");
+      const closeSupportMenu = document.getElementById("closeSupportMenu");
+
+      // فحص وجود العناصر قبل الاستمرار
+      if (!supportBtn) {
+        console.error(
+          "لم يتم العثور على زر الدعم!",
+          document.querySelector(".wd-support-floating-btn")
+        );
+        return;
+      }
+
+      if (!supportMenu) {
+        console.error(
+          "لم يتم العثور على قائمة الدعم!",
+          document.querySelector(".wd-support-floating-menu")
+        );
+        return;
+      }
+
+      if (!closeSupportMenu) {
+        console.error(
+          "لم يتم العثور على زر الإغلاق!",
+          document.querySelector(".wd-support-floating-close")
+        );
+        return;
+      }
+
+      console.log("تم العثور على جميع عناصر الدعم الفني:", {
+        supportBtn,
+        supportMenu,
+        closeSupportMenu,
+      });
+
+      // إضافة وظيفة النقر على الزر
+      const clickHandler = function (e) {
+        console.log("تم النقر على زر الدعم الفني!", e);
+        e.preventDefault();
+        e.stopPropagation();
+        supportMenu.classList.toggle("show");
+        return false;
+      };
+
+      // إضافة عدة أنواع من أحداث النقر لضمان العمل
+      supportBtn.onclick = clickHandler;
+      supportBtn.addEventListener("click", clickHandler);
+      supportBtn.addEventListener("mousedown", function (e) {
+        console.log("تم الضغط على زر الدعم الفني!", e);
+      });
+
+      // إضافة نمط مباشر لتأكيد فابلية النقر
+      supportBtn.style.pointerEvents = "auto";
+      supportBtn.style.cursor = "pointer";
+      supportBtn.style.zIndex = "10001";
+
+      // إغلاق القائمة عند النقر على زر الإغلاق
+      closeSupportMenu.onclick = function (e) {
+        console.log("تم النقر على زر الإغلاق");
+        e.preventDefault();
+        supportMenu.classList.remove("show");
+        return false;
+      };
+
+      // إغلاق القائمة عند النقر خارجها
+      document.addEventListener("click", function (e) {
+        if (!supportBtn.contains(e.target) && !supportMenu.contains(e.target)) {
+          supportMenu.classList.remove("show");
+        }
+      });
+
+      console.log("تمت تهيئة الدعم الفني بنجاح!");
+    } catch (error) {
+      console.error("خطأ في تهيئة زر الدعم الفني:", error);
+    }
+  }
+})();
+
+function initNotificationsPage() {
+  // Check if we're on the notifications page
+  if (!window.location.pathname.includes("notifications.html")) {
+    return;
+  }
+
+  console.log("Initializing notifications page functionality");
+
+  // Mark all notifications as read
+  const markAllReadBtn = document.querySelector(".wd-btn-mark-read");
+  if (markAllReadBtn) {
+    markAllReadBtn.addEventListener("click", function () {
+      const unreadItems = document.querySelectorAll(
+        ".wd-notification-item.unread"
+      );
+      unreadItems.forEach((item) => {
+        item.classList.remove("unread");
+      });
+
+      // Update the badge count
+      const badge = document.querySelector(".wd-notifications-badge");
+      if (badge) {
+        badge.textContent = "0";
+      }
+    });
+  }
+
+  // Mark individual notifications as read
+  const markReadBtns = document.querySelectorAll(".wd-notification-action");
+  markReadBtns.forEach((btn) => {
+    if (btn.textContent.trim() === "تحديد كمقروء") {
+      btn.addEventListener("click", function (e) {
+        const notificationItem = this.closest(".wd-notification-item");
+        if (notificationItem.classList.contains("unread")) {
+          notificationItem.classList.remove("unread");
+
+          // Update the badge count
+          const badge = document.querySelector(".wd-notifications-badge");
+          if (badge && parseInt(badge.textContent) > 0) {
+            badge.textContent = parseInt(badge.textContent) - 1;
+          }
+        }
+        e.stopPropagation();
+      });
+    }
+  });
+
+  // Update notification count to reflect all notifications
+  const notificationItems = document.querySelectorAll(".wd-notification-item");
+  const notificationsTitle = document.querySelector(".wd-notifications-title");
+  if (notificationsTitle && notificationItems) {
+    notificationsTitle.textContent = `جميع الإشعارات (${notificationItems.length})`;
+  }
+
+  // Settings button
+  const settingsBtn = document.querySelector(".wd-btn-settings");
+  if (settingsBtn) {
+    settingsBtn.addEventListener("click", function () {
+      window.location.href = "settings/notifications.html";
+    });
+  }
+}
+
+// The function for dynamically adding notifications has been removed as all notifications now display at once

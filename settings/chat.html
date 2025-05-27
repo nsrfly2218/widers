@@ -130,6 +130,583 @@
           width: 100%;
         }
       }
+
+      /* تنسيقات قسم التقييم */
+      .wd-rating-buttons {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .wd-rating-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 15px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        background: #f8f9fa;
+        color: #666;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: not-allowed;
+        transition: all 0.3s ease;
+      }
+
+      .wd-rating-btn.satisfied {
+        border-color: #28a745;
+        background: rgba(40, 167, 69, 0.1);
+        color: #28a745;
+      }
+
+      .wd-rating-btn.neutral {
+        border-color: #ffc107;
+        background: rgba(255, 193, 7, 0.1);
+        color: #ffc107;
+      }
+
+      .wd-rating-btn.unsatisfied {
+        border-color: #dc3545;
+        background: rgba(220, 53, 69, 0.1);
+        color: #dc3545;
+      }
+
+      .wd-rating-btn i {
+        font-size: 16px;
+      }
+
+      /* تنسيقات معاينة الواتساب */
+      .wd-whatsapp-preview {
+        max-width: 350px;
+        background: #e5ddd5;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+      }
+
+      .wd-whatsapp-header {
+        background: #075e54;
+        color: white;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 500;
+      }
+
+      .wd-whatsapp-header i {
+        font-size: 18px;
+      }
+
+      .wd-whatsapp-message {
+        padding: 16px;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="chat-bg" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="2" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23chat-bg)"/></svg>');
+      }
+
+      .wd-message-bubble {
+        background: #dcf8c6;
+        padding: 8px 12px;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        max-width: 280px;
+        margin-left: auto;
+        position: relative;
+      }
+
+      .wd-message-bubble::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: -8px;
+        width: 0;
+        height: 0;
+        border: 8px solid transparent;
+        border-left-color: #dcf8c6;
+        border-bottom: 0;
+        border-right: 0;
+      }
+
+      .wd-message-text {
+        color: #303030;
+        font-size: 14px;
+        line-height: 1.4;
+        margin-bottom: 4px;
+      }
+
+      .wd-message-time {
+        font-size: 11px;
+        color: #667781;
+        text-align: left;
+        direction: ltr;
+      }
+
+      .wd-rating-buttons-preview {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .wd-rating-btn-preview {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        background: white;
+        color: #666;
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .wd-rating-btn-preview:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      }
+
+      .wd-rating-btn-preview.satisfied {
+        border-color: #28a745;
+        color: #28a745;
+      }
+
+      .wd-rating-btn-preview.satisfied:hover {
+        background: rgba(40, 167, 69, 0.1);
+      }
+
+      .wd-rating-btn-preview.neutral {
+        border-color: #ffc107;
+        color: #ffc107;
+      }
+
+      .wd-rating-btn-preview.neutral:hover {
+        background: rgba(255, 193, 7, 0.1);
+      }
+
+      .wd-rating-btn-preview.unsatisfied {
+        border-color: #dc3545;
+        color: #dc3545;
+      }
+
+      .wd-rating-btn-preview.unsatisfied:hover {
+        background: rgba(220, 53, 69, 0.1);
+      }
+
+      .wd-rating-btn-preview i {
+        font-size: 14px;
+      }
+
+      /* تنسيقات معاينة القالب الجديدة */
+      .wd-template-preview {
+        width: 350px;
+        background: #e5ddd5
+          url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20h20v20H0V20zm20 0h20v20H20V20zm20 0h20v20H40V20zm20-20h20v20H60V0zm0 20h20v20H60V20zm20-20h20v20H80V0zm0 20h20v20H80V20zm0 20h20v20H80V40zm20-20h20v20h-20V20zM0 40h20v20H0V40zm20 0h20v20H20V40zm20 0h20v20H40V40zm20-20h20v20H60V20zm0 20h20v20H60V40zm20-20h20v20H80V20zm0 20h20v20H80V40zm0 20h20v20H80V60zm20-20h20v20h-20V40zM0 60h20v20H0V60zm20 0h20v20H20V60zm20 0h20v20H40V60zm20-20h20v20H60V40zm0 20h20v20H60V60z' fill='%23cccccc' fill-opacity='0.12' fill-rule='evenodd'/%3E%3C/svg%3E");
+        padding: 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .wd-preview-content {
+        flex: 1;
+        background: transparent;
+        padding: 20px;
+        border-radius: 0;
+        overflow-y: auto;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .wd-preview-date {
+        text-align: center;
+        margin: 10px 0;
+        font-size: 12.5px;
+        color: #54656f;
+        background: rgba(225, 245, 254, 0.92);
+        border-radius: 7.5px;
+        padding: 5px 12px;
+        display: inline-block;
+        align-self: center;
+        box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+      }
+
+      .wd-preview-message {
+        background: #fff;
+        border-radius: 7.5px 7.5px 7.5px 0;
+        padding: 10px 12px;
+        margin-bottom: 0;
+        box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 85%;
+        width: 280px;
+        min-height: 45px;
+        align-self: flex-start;
+        position: relative;
+      }
+
+      .wd-preview-message::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -8px;
+        width: 0;
+        height: 0;
+        border-top: 8px solid #fff;
+        border-left: 8px solid transparent;
+      }
+
+      .wd-preview-body {
+        font-size: 14px;
+        color: #303030;
+        margin: 0;
+        line-height: 19px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+
+      .wd-preview-timestamp {
+        text-align: left;
+        font-size: 11px;
+        color: #8c8c8c;
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 4px;
+      }
+
+      .wd-preview-buttons {
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        background: white;
+        padding: 0;
+        margin-right: 0;
+        max-width: 85%;
+        width: 280px;
+        align-self: flex-start;
+        box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+        border-radius: 0 0 7.5px 7.5px;
+        overflow: hidden;
+        margin-bottom: 15px;
+      }
+
+      .wd-preview-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 10px 12px;
+        background: white;
+        color: #039be5;
+        border: none;
+        border-top: 1px solid #f0f0f0;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: 500;
+        text-align: center;
+        outline: none;
+        transition: background-color 0.2s;
+      }
+
+      .wd-preview-button:hover {
+        background: #f5f6f6;
+      }
+
+      .wd-preview-button i {
+        font-size: 16px;
+      }
+
+      .wd-preview-button.satisfied {
+        color: #28a745;
+      }
+
+      .wd-preview-button.satisfied i {
+        color: #28a745;
+      }
+
+      .wd-preview-button.neutral {
+        color: #28a745;
+      }
+
+      .wd-preview-button.neutral i {
+        color: #28a745;
+      }
+
+      .wd-preview-button.unsatisfied {
+        color: #28a745;
+      }
+
+      .wd-preview-button.unsatisfied i {
+        color: #28a745;
+      }
+
+      /* تخطيط جانبي للنموذج والمعاينة */
+      .wd-rating-layout {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+      }
+
+      .wd-rating-form {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .wd-rating-preview {
+        flex: 0 0 auto;
+        min-width: 0;
+        width: auto;
+      }
+
+      .wd-preview-title {
+        margin-bottom: 15px;
+      }
+
+      .wd-preview-title h4 {
+        margin: 0 0 5px 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .wd-preview-title span {
+        font-size: 14px;
+        color: #666;
+      }
+
+      /* تعديل عرض معاينة القالب للتخطيط الجانبي */
+      .wd-rating-preview .wd-template-preview {
+        width: 350px;
+        max-width: 350px;
+        height: auto;
+        min-height: 350px;
+        flex-shrink: 0;
+      }
+
+      /* تحسين تنسيقات المعاينة للتخطيط الجانبي */
+      .wd-rating-preview .wd-preview-content {
+        padding: 15px;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      .wd-rating-preview .wd-preview-message {
+        margin-top: 20px;
+        margin-bottom: 0;
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .wd-rating-preview .wd-preview-body {
+        font-size: 14px;
+        line-height: 1.5;
+        padding: 0;
+        min-height: 40px;
+      }
+
+      .wd-rating-preview .wd-preview-buttons {
+        margin-top: 0;
+        width: 100%;
+        max-width: 280px;
+        margin-bottom: 20px;
+      }
+
+      .wd-rating-preview .wd-preview-button {
+        padding: 12px 15px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .wd-rating-preview .wd-preview-timestamp {
+        margin-top: 8px;
+        font-size: 11px;
+      }
+
+      /* تحسين تنسيقات النموذج */
+      .wd-rating-form .wd-settings-item {
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+      }
+
+      .wd-rating-form .wd-input {
+        font-size: 14px;
+        line-height: 1.5;
+        resize: vertical;
+        min-height: 80px;
+      }
+
+      .wd-rating-form .wd-rating-buttons {
+        gap: 12px;
+        margin-top: 10px;
+      }
+
+      .wd-rating-form .wd-rating-btn {
+        padding: 12px 18px;
+        font-size: 14px;
+        border-radius: 8px;
+        min-width: 100px;
+      }
+
+      /* تحسين عنوان المعاينة */
+      .wd-preview-title {
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+      }
+
+      .wd-preview-title h4 {
+        margin: 0 0 8px 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #2c3e50;
+      }
+
+      .wd-preview-title span {
+        font-size: 13px;
+        color: #6c757d;
+        line-height: 1.4;
+      }
+
+      @media (max-width: 768px) {
+        .wd-rating-buttons {
+          flex-direction: column;
+        }
+
+        .wd-rating-btn {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .wd-template-preview {
+          width: 100%;
+          max-width: 100%;
+        }
+
+        .wd-preview-message {
+          width: 100%;
+          max-width: 100%;
+        }
+
+        .wd-preview-buttons {
+          width: 100%;
+          max-width: 100%;
+        }
+
+        /* تخطيط عمودي للشاشات الصغيرة */
+        .wd-rating-layout {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .wd-rating-preview .wd-template-preview {
+          max-width: 100%;
+        }
+      }
+
+      /* تنسيقات للشاشات المتوسطة */
+      @media (max-width: 1024px) {
+        .wd-rating-layout {
+          gap: 20px;
+        }
+
+        .wd-rating-preview .wd-template-preview {
+          width: 320px;
+          max-width: 320px;
+        }
+
+        .wd-rating-preview .wd-preview-message {
+          max-width: 260px;
+        }
+
+        .wd-rating-preview .wd-preview-buttons {
+          max-width: 260px;
+        }
+
+        .wd-rating-form .wd-rating-buttons {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .wd-rating-form .wd-rating-btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      /* تنسيقات للشاشات الصغيرة جداً */
+      @media (max-width: 480px) {
+        .wd-content-body {
+          padding: 15px;
+        }
+
+        .wd-settings-section-content {
+          padding: 15px;
+        }
+
+        .wd-rating-layout {
+          gap: 15px;
+        }
+
+        .wd-preview-title {
+          padding: 12px;
+          margin-bottom: 15px;
+        }
+
+        .wd-preview-title h4 {
+          font-size: 15px;
+        }
+
+        .wd-preview-title span {
+          font-size: 12px;
+        }
+
+        .wd-rating-preview .wd-preview-content {
+          padding: 12px;
+          min-height: 250px;
+        }
+
+        .wd-rating-preview .wd-preview-message {
+          max-width: 100%;
+        }
+
+        .wd-rating-preview .wd-preview-buttons {
+          max-width: 100%;
+        }
+
+        .wd-rating-form .wd-settings-item {
+          margin-bottom: 20px;
+          padding-bottom: 15px;
+        }
+
+        .wd-rating-form .wd-input {
+          min-height: 70px;
+          font-size: 13px;
+        }
+
+        .wd-rating-form .wd-rating-btn {
+          padding: 10px 15px;
+          font-size: 13px;
+          min-width: auto;
+        }
+      }
     </style>
   </head>
   <body>
@@ -399,6 +976,120 @@
               </div>
             </div>
           </div>
+
+          <!-- قسم تقييم المحادثات -->
+          <div class="wd-settings-section">
+            <div class="wd-settings-section-header">
+              <i class="fas fa-star"></i>
+              <h3>تقييم محادثات الواتساب</h3>
+            </div>
+            <div class="wd-settings-section-content">
+              <!-- تخطيط جانبي للنموذج والمعاينة -->
+              <div class="wd-rating-layout">
+                <!-- الجانب الأيسر: النموذج والإعدادات -->
+                <div class="wd-rating-form">
+                  <div class="wd-settings-item">
+                    <div class="wd-settings-item-label">
+                      <label>نص رسالة التقييم</label>
+                      <span class="wd-settings-item-description"
+                        >الرسالة التي سيتم إرسالها للعملاء لطلب تقييم
+                        الخدمة</span
+                      >
+                    </div>
+                    <div class="wd-settings-item-control">
+                      <div class="wd-input-group">
+                        <textarea
+                          class="wd-input"
+                          rows="3"
+                          id="ratingMessage"
+                          placeholder="مثال: نشكرك لاستخدام خدماتنا. نرجو تقييم تجربتك معنا"
+                        >
+نشكرك لاستخدام خدماتنا. نرجو تقييم تجربتك معنا</textarea
+                        >
+                        <button class="wd-input-group-btn">
+                          <i class="fas fa-info-circle"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- أزرار التقييم -->
+                  <div class="wd-settings-item">
+                    <div class="wd-settings-item-label">
+                      <label>أزرار التقييم</label>
+                      <span class="wd-settings-item-description"
+                        >الأزرار التي سيراها العملاء للتقييم (غير قابلة
+                        للتعديل)</span
+                      >
+                    </div>
+                    <div class="wd-settings-item-control">
+                      <div class="wd-rating-buttons">
+                        <button class="wd-rating-btn satisfied" disabled>
+                          <i class="fas fa-smile"></i>
+                          راض
+                        </button>
+                        <button class="wd-rating-btn neutral" disabled>
+                          <i class="fas fa-meh"></i>
+                          محايد
+                        </button>
+                        <button class="wd-rating-btn unsatisfied" disabled>
+                          <i class="fas fa-frown"></i>
+                          غير راض
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="wd-settings-item">
+                    <div class="wd-settings-item-control">
+                      <button class="wd-btn">
+                        <i class="fas fa-save"></i>
+                        حفظ إعدادات التقييم
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- الجانب الأيمن: معاينة الرسالة -->
+                <div class="wd-rating-preview">
+                  <div class="wd-preview-title">
+                    <h4>معاينة الرسالة</h4>
+                    <span>كيف ستبدو رسالة التقييم للعملاء</span>
+                  </div>
+                  <div class="wd-template-preview">
+                    <div class="wd-preview-content" id="previewContent">
+                      <div class="wd-preview-message">
+                        <div class="wd-preview-body" id="previewText">
+                          نشكرك لاستخدام خدماتنا. نرجو تقييم تجربتك معنا
+                        </div>
+                        <div class="wd-preview-timestamp">
+                          00:00
+                          <i
+                            class="fas fa-check-double"
+                            style="color: #34b7f1"
+                          ></i>
+                        </div>
+                      </div>
+                      <div class="wd-preview-buttons">
+                        <button class="wd-preview-button satisfied">
+                          <i class="fas fa-smile"></i>
+                          راض
+                        </button>
+                        <button class="wd-preview-button neutral">
+                          <i class="fas fa-meh"></i>
+                          محايد
+                        </button>
+                        <button class="wd-preview-button unsatisfied">
+                          <i class="fas fa-frown"></i>
+                          غير راض
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -463,5 +1154,40 @@
     </div>
 
     <script src="../script.js"></script>
+    <script>
+      // تحديث معاينة رسالة التقييم
+      document.addEventListener("DOMContentLoaded", function () {
+        const ratingMessageInput = document.getElementById("ratingMessage");
+        const previewText = document.getElementById("previewText");
+
+        // تحديث الوقت في المعاينة
+        function updatePreviewTime() {
+          const now = new Date();
+          const hours = now.getHours().toString().padStart(2, "0");
+          const minutes = now.getMinutes().toString().padStart(2, "0");
+          const timestampElement = document.querySelector(
+            ".wd-preview-timestamp"
+          );
+          if (timestampElement) {
+            timestampElement.innerHTML = `${hours}:${minutes} <i class="fas fa-check-double" style="color: #34b7f1;"></i>`;
+          }
+        }
+
+        // تحديث الوقت عند تحميل الصفحة
+        updatePreviewTime();
+
+        // تحديث الوقت كل دقيقة
+        setInterval(updatePreviewTime, 60000);
+
+        if (ratingMessageInput && previewText) {
+          // تحديث المعاينة عند تغيير النص
+          ratingMessageInput.addEventListener("input", function () {
+            const newText = this.value.trim();
+            previewText.textContent =
+              newText || "نشكرك لاستخدام خدماتنا. نرجو تقييم تجربتك معنا";
+          });
+        }
+      });
+    </script>
   </body>
 </html>

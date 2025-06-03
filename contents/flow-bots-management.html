@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>الرد الآلي</title>
+    <title>رد آلي تدفق</title>
     <link rel="stylesheet" href="../style.css" />
     <link
       rel="stylesheet"
@@ -108,7 +108,10 @@
         color: #333;
       }
 
-      /* تحسين ألوان أزرار الإجراءات */
+      .wd-btn-icon i {
+        font-size: 16px;
+      }
+
       .wd-btn-icon[title]:hover:after {
         content: attr(title);
         position: absolute;
@@ -142,15 +145,9 @@
       }
 
       /* ألوان ثابتة للأزرار */
-      .wd-btn-icon[title*="إحصائيات"] {
-        background: #e3f2fd;
-        color: #1976d2;
-      }
-
-      .wd-btn-icon[title*="إلغاء التنشيط"],
-      .wd-btn-icon[title*="تنشيط"] {
-        background: #fff3e0;
-        color: #f57c00;
+      .wd-btn-icon[title*="تعديل"] {
+        background: #e8f5e8;
+        color: #2e7d32;
       }
 
       .wd-btn-icon[title*="حذف"] {
@@ -158,31 +155,15 @@
         color: #d32f2f;
       }
 
-      .wd-btn-icon[title*="تعديل"] {
-        background: #e8f5e8;
-        color: #2e7d32;
-      }
-
       /* تأثيرات التمرير */
-      .wd-btn-icon[title*="إحصائيات"]:hover {
-        background: #bbdefb;
-        color: #0d47a1;
-      }
-
-      .wd-btn-icon[title*="إلغاء التنشيط"]:hover,
-      .wd-btn-icon[title*="تنشيط"]:hover {
-        background: #ffe0b2;
-        color: #e65100;
+      .wd-btn-icon[title*="تعديل"]:hover {
+        background: #c8e6c9;
+        color: #1b5e20;
       }
 
       .wd-btn-icon[title*="حذف"]:hover {
         background: #ffcdd2;
         color: #b71c1c;
-      }
-
-      .wd-btn-icon[title*="تعديل"]:hover {
-        background: #c8e6c9;
-        color: #1b5e20;
       }
 
       .wd-btn-primary {
@@ -211,50 +192,35 @@
         box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.1);
       }
 
-      /* Toggle Switch Styles */
-      #statusToggle:checked + label {
-        background-color: #00bc60 !important;
+      /* ألوان الحالات */
+      .status-active {
+        background: #d4edda;
+        color: #155724;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        display: inline-block;
       }
 
-      #statusToggle:checked + label span {
-        transform: translateX(25px) !important;
+      .status-inactive {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        display: inline-block;
       }
 
-      #statusToggle + label:hover {
-        background-color: #bbb;
-      }
-
-      #statusToggle:checked + label:hover {
-        background-color: #00a555 !important;
-      }
-
-      /* Modal centering and sizing improvements */
-      .wd-groups-modal {
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 20px !important;
-      }
-
-      .wd-groups-modal[style*="display: flex"] {
-        display: flex !important;
-      }
-
-      .wd-groups-modal[style*="display: none"] {
-        display: none !important;
-      }
-
-      .wd-groups-modal-content {
-        margin: 0 !important;
-        transform: none !important;
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-      }
-
-      .wd-groups-modal-header {
-        border-bottom: 1px solid #eee;
+      .status-paused {
+        background: #fff3cd;
+        color: #856404;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        display: inline-block;
       }
     </style>
   </head>
@@ -373,7 +339,7 @@
                 </li>
               </a>
               <a href="../contents/automation.html" class="wd-nav-link">
-                <li class="wd-secondary-nav-item active">
+                <li class="wd-secondary-nav-item">
                   <i class="fas fa-robot"></i>
                   <span>الرد الآلي</span>
                 </li>
@@ -435,25 +401,16 @@
             >
               <i class="fas fa-bars"></i>
             </button>
-            <h1>الرد الآلي</h1>
+            <h1>رد آلي تدفق</h1>
           </div>
           <div class="wd-header-actions">
-            <button class="wd-btn" onclick="openDefaultReplyPopup()">
-              <i class="fas fa-cog"></i>
-              افتراضي
-            </button>
-            <button class="wd-btn" onclick="openFlowBotsPage()">
-              <i class="fas fa-robot"></i>
-              رد آلي تدفق
-            </button>
-            <a href="../add/new-auto-reply.html" class="wd-btn">
+            <button
+              class="wd-btn"
+              onclick="window.location.href='../add/new-flow-reply.html'"
+            >
               <i class="fas fa-plus"></i>
               رد آلي جديد
-            </a>
-            <a href="../add/new-template-reply.html" class="wd-btn">
-              <i class="fas fa-plus"></i>
-              رد آلي قائم على قالب
-            </a>
+            </button>
           </div>
         </div>
 
@@ -463,15 +420,10 @@
               <i class="fas fa-search"></i>
               <input
                 type="text"
-                placeholder="ابحث عن رد آلي..."
+                placeholder="ابحث عن flow bot..."
                 id="searchInput"
               />
             </div>
-            <select class="wd-filter-select" id="typeFilter">
-              <option value="">اختر نوع الرد الآلي</option>
-              <option value="basic">رد آلي أساسي</option>
-              <option value="template">رد آلي قائم على قالب</option>
-            </select>
             <select class="wd-filter-select" id="statusFilter">
               <option value="">اختر الحالة</option>
               <option value="active">نشط</option>
@@ -484,21 +436,24 @@
               <thead>
                 <tr>
                   <th>الاسم</th>
-                  <th>النوع</th>
+                  <th>الوصف</th>
+                  <th>المشغل</th>
+                  <th>التدفق</th>
+                  <th>الحالة</th>
                   <th>الإجراءات</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>الرد الافتراضي</td>
-                  <td>رد آلي الافتراضي</td>
+                  <td>بوت دعم العملاء</td>
+                  <td>بوت للرد على استفسارات العملاء وتوجيههم</td>
+                  <td>دعم</td>
+                  <td>تدفق دعم العملاء</td>
+                  <td><span class="status-active">نشط</span></td>
                   <td>
                     <div class="wd-actions">
-                      <button class="wd-btn-icon" title="إحصائيات">
-                        <i class="fas fa-chart-bar"></i>
-                      </button>
-                      <button class="wd-btn-icon" title="إلغاء التنشيط">
-                        <i class="fas fa-power-off"></i>
+                      <button class="wd-btn-icon" title="تعديل">
+                        <i class="fas fa-edit"></i>
                       </button>
                       <button class="wd-btn-icon" title="حذف">
                         <i class="fas fa-trash"></i>
@@ -507,15 +462,15 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>ترحيب العملاء</td>
-                  <td>رد آلي أساسي</td>
+                  <td>بوت المبيعات</td>
+                  <td>بوت لعرض المنتجات ومساعدة العملاء في الشراء</td>
+                  <td>منتجات</td>
+                  <td>تدفق المبيعات</td>
+                  <td><span class="status-inactive">غير نشط</span></td>
                   <td>
                     <div class="wd-actions">
-                      <button class="wd-btn-icon" title="إحصائيات">
-                        <i class="fas fa-chart-bar"></i>
-                      </button>
-                      <button class="wd-btn-icon" title="إلغاء التنشيط">
-                        <i class="fas fa-power-off"></i>
+                      <button class="wd-btn-icon" title="تعديل">
+                        <i class="fas fa-edit"></i>
                       </button>
                       <button class="wd-btn-icon" title="حذف">
                         <i class="fas fa-trash"></i>
@@ -524,15 +479,32 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>دعم العملاء</td>
-                  <td>رد آلي قائم على قالب</td>
+                  <td>بوت الترحيب</td>
+                  <td>بوت للترحيب بالعملاء الجدد وتعريفهم بالخدمات</td>
+                  <td>رسالة جديدة</td>
+                  <td>تدفق الترحيب</td>
+                  <td><span class="status-paused">متوقف</span></td>
                   <td>
                     <div class="wd-actions">
-                      <button class="wd-btn-icon" title="إحصائيات">
-                        <i class="fas fa-chart-bar"></i>
+                      <button class="wd-btn-icon" title="تعديل">
+                        <i class="fas fa-edit"></i>
                       </button>
-                      <button class="wd-btn-icon" title="إلغاء التنشيط">
-                        <i class="fas fa-power-off"></i>
+                      <button class="wd-btn-icon" title="حذف">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>بوت الشكاوى</td>
+                  <td>بوت لاستقبال شكاوى العملاء وتوجيهها للقسم المناسب</td>
+                  <td>شكوى</td>
+                  <td>تدفق الشكاوى</td>
+                  <td><span class="status-active">نشط</span></td>
+                  <td>
+                    <div class="wd-actions">
+                      <button class="wd-btn-icon" title="تعديل">
+                        <i class="fas fa-edit"></i>
                       </button>
                       <button class="wd-btn-icon" title="حذف">
                         <i class="fas fa-trash"></i>
@@ -547,162 +519,6 @@
       </main>
     </div>
 
-    <!-- Default Reply Popup -->
-    <div class="wd-groups-modal" id="defaultReplyModal" style="display: none">
-      <div
-        class="wd-groups-modal-content"
-        style="
-          max-width: 350px;
-          width: 90%;
-          max-height: fit-content;
-          padding: 0;
-        "
-      >
-        <div class="wd-groups-modal-header" style="padding: 15px 20px">
-          <h3 style="margin: 0; font-size: 16px">Default Replay</h3>
-          <button class="wd-modal-close" onclick="closeDefaultReplyPopup()">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-
-        <div
-          class="wd-groups-modal-body"
-          style="padding: 15px 20px 20px 20px; max-height: none"
-        >
-          <!-- حالة التنشيط -->
-          <div style="margin-bottom: 15px">
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-              "
-            >
-              <label style="font-weight: 600; color: #495057; font-size: 14px"
-                >الحالة:</label
-              >
-              <div
-                style="
-                  position: relative;
-                  display: inline-block;
-                  width: 50px;
-                  height: 25px;
-                "
-              >
-                <input
-                  type="checkbox"
-                  id="statusToggle"
-                  style="opacity: 0; width: 0; height: 0"
-                  checked
-                />
-                <label
-                  for="statusToggle"
-                  style="
-                    position: absolute;
-                    cursor: pointer;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background-color: #ccc;
-                    transition: 0.4s;
-                    border-radius: 12px;
-                    margin: 0;
-                  "
-                >
-                  <span
-                    style="
-                      position: absolute;
-                      content: '';
-                      height: 19px;
-                      width: 19px;
-                      left: 3px;
-                      bottom: 3px;
-                      background-color: white;
-                      transition: 0.4s;
-                      border-radius: 50%;
-                      transform: translateX(0);
-                    "
-                  ></span>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <!-- تحديد المدة -->
-          <div style="margin-bottom: 15px">
-            <label
-              style="
-                font-weight: 600;
-                color: #495057;
-                display: block;
-                margin-bottom: 6px;
-                font-size: 14px;
-              "
-              >تحديد المدة:</label
-            >
-            <select
-              class="wd-group-input"
-              style="width: 100%; padding: 8px 12px; font-size: 14px"
-            >
-              <option value="everytime">في كل مرة</option>
-              <option value="1hour">1 ساعة</option>
-              <option value="2hour">2 ساعة</option>
-              <option value="4hour">4 ساعة</option>
-              <option value="12hour">12 ساعة</option>
-              <option value="24hour">24 ساعة</option>
-            </select>
-          </div>
-
-          <!-- اختيار التدفقات -->
-          <div style="margin-bottom: 20px">
-            <label
-              style="
-                font-weight: 600;
-                color: #495057;
-                display: block;
-                margin-bottom: 6px;
-                font-size: 14px;
-              "
-              >اختيار من التدفقات:</label
-            >
-            <select
-              class="wd-group-input"
-              style="width: 100%; padding: 8px 12px; font-size: 14px"
-            >
-              <option value="">اختر تدفق</option>
-              <option value="flow1">تدفق الترحيب</option>
-              <option value="flow2">تدفق دعم العملاء</option>
-              <option value="flow3">تدفق المبيعات</option>
-            </select>
-          </div>
-
-          <!-- أزرار الحفظ والإلغاء -->
-          <div style="display: flex; gap: 8px; justify-content: flex-end">
-            <button
-              class="wd-add-group-btn-modal"
-              onclick="saveDefaultReply()"
-              style="padding: 6px 16px; font-size: 14px"
-            >
-              حفظ
-            </button>
-            <button
-              class="wd-suggested-group"
-              onclick="closeDefaultReplyPopup()"
-              style="
-                background: #6c757d;
-                color: white;
-                padding: 6px 16px;
-                font-size: 14px;
-              "
-            >
-              إلغاء
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <script src="../script.js"></script>
     <script>
       // Add search and filter functionality here
@@ -713,63 +529,10 @@
         });
 
       document
-        .getElementById("typeFilter")
-        .addEventListener("change", function (e) {
-          // Implement type filter logic
-        });
-
-      document
         .getElementById("statusFilter")
         .addEventListener("change", function (e) {
           // Implement status filter logic
         });
-
-      // Default Reply Popup Functions
-      function openDefaultReplyPopup() {
-        document.getElementById("defaultReplyModal").style.display = "flex";
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeDefaultReplyPopup() {
-        document.getElementById("defaultReplyModal").style.display = "none";
-        document.body.style.overflow = "auto";
-      }
-
-      function saveDefaultReply() {
-        // الحصول على حالة التنشيط
-        const isActive = document.getElementById("statusToggle").checked;
-        const duration = document.querySelector("select").value;
-        const flow = document.querySelectorAll("select")[1].value;
-
-        console.log("Status:", isActive ? "نشط" : "غير نشط");
-        console.log("Duration:", duration);
-        console.log("Flow:", flow);
-
-        // إضافة منطق الحفظ هنا
-        alert("تم حفظ الإعدادات بنجاح");
-        closeDefaultReplyPopup();
-      }
-
-      // Flow Bots Page Function
-      function openFlowBotsPage() {
-        window.location.href = "flow-bots-management.html";
-      }
-
-      // إغلاق الـ Modal عند النقر خارجه
-      document
-        .getElementById("defaultReplyModal")
-        .addEventListener("click", function (e) {
-          if (e.target === this) {
-            closeDefaultReplyPopup();
-          }
-        });
-
-      // التعامل مع مفتاح ESC
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
-          closeDefaultReplyPopup();
-        }
-      });
     </script>
   </body>
 </html>

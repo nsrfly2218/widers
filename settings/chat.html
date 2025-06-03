@@ -707,6 +707,119 @@
           min-width: auto;
         }
       }
+
+      /* تنسيقات مفتاح التبديل */
+      .wd-toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .wd-toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .wd-toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 34px;
+      }
+
+      .wd-toggle-slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      input:checked + .wd-toggle-slider {
+        background-color: #00bc60;
+      }
+
+      input:focus + .wd-toggle-slider {
+        box-shadow: 0 0 1px #00bc60;
+      }
+
+      input:checked + .wd-toggle-slider:before {
+        transform: translateX(26px);
+      }
+
+      .wd-toggle-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+      }
+
+      .wd-toggle-info {
+        flex: 1;
+      }
+
+      .wd-toggle-info h4 {
+        margin: 0 0 5px 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .wd-toggle-info span {
+        font-size: 14px;
+        color: #666;
+      }
+
+      .wd-rating-content {
+        transition: all 0.3s ease;
+      }
+
+      .wd-rating-content.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      .wd-status-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+        margin-top: 8px;
+      }
+
+      .wd-status-indicator.active {
+        background: rgba(0, 188, 96, 0.1);
+        color: #00bc60;
+        border: 1px solid rgba(0, 188, 96, 0.2);
+      }
+
+      .wd-status-indicator.inactive {
+        background: rgba(108, 117, 125, 0.1);
+        color: #6c757d;
+        border: 1px solid rgba(108, 117, 125, 0.2);
+      }
+
+      .wd-status-indicator i {
+        font-size: 10px;
+      }
     </style>
   </head>
   <body>
@@ -984,105 +1097,127 @@
               <h3>تقييم محادثات الواتساب</h3>
             </div>
             <div class="wd-settings-section-content">
-              <!-- تخطيط جانبي للنموذج والمعاينة -->
-              <div class="wd-rating-layout">
-                <!-- الجانب الأيسر: النموذج والإعدادات -->
-                <div class="wd-rating-form">
-                  <div class="wd-settings-item">
-                    <div class="wd-settings-item-label">
-                      <label>نص رسالة التقييم</label>
-                      <span class="wd-settings-item-description"
-                        >الرسالة التي سيتم إرسالها للعملاء لطلب تقييم
-                        الخدمة</span
-                      >
-                    </div>
-                    <div class="wd-settings-item-control">
-                      <div class="wd-input-group">
-                        <textarea
-                          class="wd-input"
-                          rows="3"
-                          id="ratingMessage"
-                          placeholder="مثال: نشكرك لاستخدام خدماتنا. نرجو تقييم تجربتك معنا"
-                        >
-نشكرك لاستخدام خدماتنا. نرجو تقييم تجربتك معنا</textarea
-                        >
-                        <button class="wd-input-group-btn">
-                          <i class="fas fa-info-circle"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- أزرار التقييم -->
-                  <div class="wd-settings-item">
-                    <div class="wd-settings-item-label">
-                      <label>أزرار التقييم</label>
-                      <span class="wd-settings-item-description"
-                        >الأزرار التي سيراها العملاء للتقييم (غير قابلة
-                        للتعديل)</span
-                      >
-                    </div>
-                    <div class="wd-settings-item-control">
-                      <div class="wd-rating-buttons">
-                        <button class="wd-rating-btn satisfied" disabled>
-                          <i class="fas fa-smile"></i>
-                          راض
-                        </button>
-                        <button class="wd-rating-btn neutral" disabled>
-                          <i class="fas fa-meh"></i>
-                          محايد
-                        </button>
-                        <button class="wd-rating-btn unsatisfied" disabled>
-                          <i class="fas fa-frown"></i>
-                          غير راض
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="wd-settings-item">
-                    <div class="wd-settings-item-control">
-                      <button class="wd-btn">
-                        <i class="fas fa-save"></i>
-                        حفظ إعدادات التقييم
-                      </button>
-                    </div>
+              <!-- مفتاح تنشيط/إلغاء تنشيط التقييم -->
+              <div class="wd-toggle-container">
+                <div class="wd-toggle-info">
+                  <h4>تفعيل نظام التقييم</h4>
+                  <span
+                    >تمكين أو تعطيل إرسال رسائل التقييم للعملاء بعد اغلاق
+                    المحادثات</span
+                  >
+                  <div class="wd-status-indicator active" id="ratingStatus">
+                    <i class="fas fa-circle"></i>
+                    <span>مفعل</span>
                   </div>
                 </div>
+                <label class="wd-toggle-switch">
+                  <input type="checkbox" id="ratingToggle" checked />
+                  <span class="wd-toggle-slider"></span>
+                </label>
+              </div>
 
-                <!-- الجانب الأيمن: معاينة الرسالة -->
-                <div class="wd-rating-preview">
-                  <div class="wd-preview-title">
-                    <h4>معاينة الرسالة</h4>
-                    <span>كيف ستبدو رسالة التقييم للعملاء</span>
-                  </div>
-                  <div class="wd-template-preview">
-                    <div class="wd-preview-content" id="previewContent">
-                      <div class="wd-preview-message">
-                        <div class="wd-preview-body" id="previewText">
-                          نشكرك لاستخدام خدماتنا. نرجو تقييم تجربتك معنا
-                        </div>
-                        <div class="wd-preview-timestamp">
-                          00:00
-                          <i
-                            class="fas fa-check-double"
-                            style="color: #34b7f1"
-                          ></i>
+              <!-- محتوى إعدادات التقييم -->
+              <div class="wd-rating-content" id="ratingContent">
+                <!-- تخطيط جانبي للنموذج والمعاينة -->
+                <div class="wd-rating-layout">
+                  <!-- الجانب الأيسر: النموذج والإعدادات -->
+                  <div class="wd-rating-form">
+                    <div class="wd-settings-item">
+                      <div class="wd-settings-item-label">
+                        <label>نص رسالة التقييم</label>
+                        <span class="wd-settings-item-description"
+                          >الرسالة التي سيتم إرسالها للعملاء لطلب تقييم
+                          الخدمة</span
+                        >
+                      </div>
+                      <div class="wd-settings-item-control">
+                        <div class="wd-input-group">
+                          <textarea
+                            class="wd-input"
+                            rows="3"
+                            id="ratingMessage"
+                            placeholder="مثال: نشكرك لاستخدام خدماتنا. نرجو تقييم تجربتك معنا"
+                          >
+نشكرك لاستخدام خدماتنا. نرجو تقييم تجربتك معنا</textarea
+                          >
+                          <button class="wd-input-group-btn">
+                            <i class="fas fa-info-circle"></i>
+                          </button>
                         </div>
                       </div>
-                      <div class="wd-preview-buttons">
-                        <button class="wd-preview-button satisfied">
-                          <i class="fas fa-smile"></i>
-                          راض
+                    </div>
+
+                    <!-- أزرار التقييم -->
+                    <div class="wd-settings-item">
+                      <div class="wd-settings-item-label">
+                        <label>أزرار التقييم</label>
+                        <span class="wd-settings-item-description"
+                          >الأزرار التي سيراها العملاء للتقييم (غير قابلة
+                          للتعديل)</span
+                        >
+                      </div>
+                      <div class="wd-settings-item-control">
+                        <div class="wd-rating-buttons">
+                          <button class="wd-rating-btn satisfied" disabled>
+                            <i class="fas fa-smile"></i>
+                            راض
+                          </button>
+                          <button class="wd-rating-btn neutral" disabled>
+                            <i class="fas fa-meh"></i>
+                            محايد
+                          </button>
+                          <button class="wd-rating-btn unsatisfied" disabled>
+                            <i class="fas fa-frown"></i>
+                            غير راض
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="wd-settings-item">
+                      <div class="wd-settings-item-control">
+                        <button class="wd-btn">
+                          <i class="fas fa-save"></i>
+                          حفظ إعدادات التقييم
                         </button>
-                        <button class="wd-preview-button neutral">
-                          <i class="fas fa-meh"></i>
-                          محايد
-                        </button>
-                        <button class="wd-preview-button unsatisfied">
-                          <i class="fas fa-frown"></i>
-                          غير راض
-                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- الجانب الأيمن: معاينة الرسالة -->
+                  <div class="wd-rating-preview">
+                    <div class="wd-preview-title">
+                      <h4>معاينة الرسالة</h4>
+                      <span>كيف ستبدو رسالة التقييم للعملاء</span>
+                    </div>
+                    <div class="wd-template-preview">
+                      <div class="wd-preview-content" id="previewContent">
+                        <div class="wd-preview-message">
+                          <div class="wd-preview-body" id="previewText">
+                            نشكرك لاستخدام خدماتنا. نرجو تقييم تجربتك معنا
+                          </div>
+                          <div class="wd-preview-timestamp">
+                            00:00
+                            <i
+                              class="fas fa-check-double"
+                              style="color: #34b7f1"
+                            ></i>
+                          </div>
+                        </div>
+                        <div class="wd-preview-buttons">
+                          <button class="wd-preview-button satisfied">
+                            <i class="fas fa-smile"></i>
+                            راض
+                          </button>
+                          <button class="wd-preview-button neutral">
+                            <i class="fas fa-meh"></i>
+                            محايد
+                          </button>
+                          <button class="wd-preview-button unsatisfied">
+                            <i class="fas fa-frown"></i>
+                            غير راض
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1159,6 +1294,9 @@
       document.addEventListener("DOMContentLoaded", function () {
         const ratingMessageInput = document.getElementById("ratingMessage");
         const previewText = document.getElementById("previewText");
+        const ratingToggle = document.getElementById("ratingToggle");
+        const ratingContent = document.getElementById("ratingContent");
+        const ratingStatus = document.getElementById("ratingStatus");
 
         // تحديث الوقت في المعاينة
         function updatePreviewTime() {
@@ -1170,6 +1308,45 @@
           );
           if (timestampElement) {
             timestampElement.innerHTML = `${hours}:${minutes} <i class="fas fa-check-double" style="color: #34b7f1;"></i>`;
+          }
+        }
+
+        // تحديث حالة نظام التقييم
+        function updateRatingStatus(isEnabled) {
+          if (isEnabled) {
+            ratingContent.classList.remove("disabled");
+            ratingStatus.className = "wd-status-indicator active";
+            ratingStatus.innerHTML =
+              '<i class="fas fa-circle"></i><span>مفعل</span>';
+          } else {
+            ratingContent.classList.add("disabled");
+            ratingStatus.className = "wd-status-indicator inactive";
+            ratingStatus.innerHTML =
+              '<i class="fas fa-circle"></i><span>معطل</span>';
+          }
+        }
+
+        // معالج تغيير مفتاح التبديل
+        if (ratingToggle) {
+          ratingToggle.addEventListener("change", function () {
+            updateRatingStatus(this.checked);
+
+            // حفظ الحالة في localStorage
+            localStorage.setItem("ratingSystemEnabled", this.checked);
+
+            // إظهار رسالة تأكيد
+            const message = this.checked
+              ? "تم تفعيل نظام التقييم"
+              : "تم تعطيل نظام التقييم";
+            showNotification(message, this.checked ? "success" : "info");
+          });
+
+          // استرجاع الحالة المحفوظة
+          const savedState = localStorage.getItem("ratingSystemEnabled");
+          if (savedState !== null) {
+            const isEnabled = savedState === "true";
+            ratingToggle.checked = isEnabled;
+            updateRatingStatus(isEnabled);
           }
         }
 
@@ -1186,6 +1363,138 @@
             previewText.textContent =
               newText || "نشكرك لاستخدام خدماتنا. نرجو تقييم تجربتك معنا";
           });
+        }
+
+        // دالة إظهار الإشعارات
+        function showNotification(message, type = "info") {
+          // إنشاء عنصر الإشعار
+          const notification = document.createElement("div");
+          notification.className = `wd-notification wd-notification-${type}`;
+          notification.innerHTML = `
+            <div class="wd-notification-content">
+              <i class="fas ${
+                type === "success" ? "fa-check-circle" : "fa-info-circle"
+              }"></i>
+              <span>${message}</span>
+            </div>
+            <button class="wd-notification-close">
+              <i class="fas fa-times"></i>
+            </button>
+          `;
+
+          // إضافة أنماط الإشعار إذا لم تكن موجودة
+          if (!document.querySelector("#notification-styles")) {
+            const styles = document.createElement("style");
+            styles.id = "notification-styles";
+            styles.textContent = `
+              .wd-notification {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                padding: 16px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                z-index: 1000;
+                min-width: 300px;
+                animation: slideInRight 0.3s ease;
+                border-left: 4px solid #00bc60;
+              }
+              
+              .wd-notification-info {
+                border-left-color: #17a2b8;
+              }
+              
+              .wd-notification-content {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                flex: 1;
+              }
+              
+              .wd-notification-content i {
+                color: #00bc60;
+                font-size: 16px;
+              }
+              
+              .wd-notification-info .wd-notification-content i {
+                color: #17a2b8;
+              }
+              
+              .wd-notification-content span {
+                color: #333;
+                font-size: 14px;
+                font-weight: 500;
+              }
+              
+              .wd-notification-close {
+                background: none;
+                border: none;
+                color: #999;
+                cursor: pointer;
+                padding: 4px;
+                border-radius: 4px;
+                transition: all 0.2s ease;
+              }
+              
+              .wd-notification-close:hover {
+                background: #f5f5f5;
+                color: #666;
+              }
+              
+              @keyframes slideInRight {
+                from {
+                  transform: translateX(100%);
+                  opacity: 0;
+                }
+                to {
+                  transform: translateX(0);
+                  opacity: 1;
+                }
+              }
+              
+              @keyframes slideOutRight {
+                from {
+                  transform: translateX(0);
+                  opacity: 1;
+                }
+                to {
+                  transform: translateX(100%);
+                  opacity: 0;
+                }
+              }
+            `;
+            document.head.appendChild(styles);
+          }
+
+          // إضافة الإشعار إلى الصفحة
+          document.body.appendChild(notification);
+
+          // معالج إغلاق الإشعار
+          const closeBtn = notification.querySelector(".wd-notification-close");
+          closeBtn.addEventListener("click", function () {
+            notification.style.animation = "slideOutRight 0.3s ease";
+            setTimeout(() => {
+              if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+              }
+            }, 300);
+          });
+
+          // إزالة الإشعار تلقائياً بعد 5 ثوان
+          setTimeout(() => {
+            if (notification.parentNode) {
+              notification.style.animation = "slideOutRight 0.3s ease";
+              setTimeout(() => {
+                if (notification.parentNode) {
+                  notification.parentNode.removeChild(notification);
+                }
+              }, 300);
+            }
+          }, 5000);
         }
       });
     </script>

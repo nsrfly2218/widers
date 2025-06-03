@@ -233,9 +233,17 @@
                 <div class="wd-table-cell">+966501234567</div>
                 <div class="wd-table-cell">ahmed@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #ff6b6b"
-                    >العملاء</span
-                  >
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #00bc60"
+                      >العملاء</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('أحمد محمد', ['العملاء', 'VIP'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status active">مشترك</span>
@@ -267,9 +275,14 @@
                 <div class="wd-table-cell">+966502345678</div>
                 <div class="wd-table-cell">sara@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #4ecdc4"
-                    >الموردون</span
-                  >
+                  <div class="wd-contact-groups">
+                    <span class="wd-tag" style="background-color: #4ecdc4"
+                      >الموردون</span
+                    >
+                    <button class="wd-add-group-btn" title="إضافة مجموعة">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status inactive">مشترك</span>
@@ -294,32 +307,40 @@
                 </div>
                 <div class="wd-table-cell">
                   <div class="wd-contact-info">
-                    <div class="wd-contact-avatar">م ع</div>
+                    <div class="wd-contact-avatar" style="background: #00bc60">
+                      م ع
+                    </div>
                     <span>محمد علي</span>
                   </div>
                 </div>
                 <div class="wd-table-cell">+966503456789</div>
                 <div class="wd-table-cell">mohamed@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #45b7d1"
-                    >الموظفون</span
-                  >
-                </div>
-                <div class="wd-table-cell">
-                  <span class="wd-status active">مشترك</span>
-                </div>
-                <div class="wd-table-cell">
-                  <div class="wd-actions">
-                    <button class="wd-action-btn start-conversation">
-                      <i class="fas fa-comments"></i>
-                    </button>
-                    <button class="wd-action-btn">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="wd-action-btn">
-                      <i class="fas fa-trash"></i>
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #17a2b8"
+                      >الموظفون</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('محمد علي', ['الموظفون', 'إدارة', 'فريق التطوير', 'قيادة'])"
+                    >
+                      +3 <i class="fas fa-chevron-right"></i>
                     </button>
                   </div>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status active">نشط</span>
+                </div>
+                <div class="wd-table-cell">
+                  <button class="wd-action-btn" title="مراسلة">
+                    <i class="fas fa-comment"></i>
+                  </button>
+                  <button class="wd-action-btn" title="تعديل">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="wd-action-btn" title="حذف">
+                    <i class="fas fa-trash"></i>
+                  </button>
                 </div>
               </div>
               <div class="wd-table-row">
@@ -328,32 +349,40 @@
                 </div>
                 <div class="wd-table-cell">
                   <div class="wd-contact-info">
-                    <div class="wd-contact-avatar">ف خ</div>
+                    <div class="wd-contact-avatar" style="background: #00bc60">
+                      ف خ
+                    </div>
                     <span>فاطمة خالد</span>
                   </div>
                 </div>
                 <div class="wd-table-cell">+966504567890</div>
                 <div class="wd-table-cell">fatima@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #ff6b6b"
-                    >العملاء</span
-                  >
-                </div>
-                <div class="wd-table-cell">
-                  <span class="wd-status active">مشترك</span>
-                </div>
-                <div class="wd-table-cell">
-                  <div class="wd-actions">
-                    <button class="wd-action-btn start-conversation">
-                      <i class="fas fa-comments"></i>
-                    </button>
-                    <button class="wd-action-btn">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="wd-action-btn">
-                      <i class="fas fa-trash"></i>
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #00bc60"
+                      >العملاء</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('فاطمة خالد', ['العملاء', 'جديد'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
                     </button>
                   </div>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status active">نشط</span>
+                </div>
+                <div class="wd-table-cell">
+                  <button class="wd-action-btn" title="مراسلة">
+                    <i class="fas fa-comment"></i>
+                  </button>
+                  <button class="wd-action-btn" title="تعديل">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="wd-action-btn" title="حذف">
+                    <i class="fas fa-trash"></i>
+                  </button>
                 </div>
               </div>
               <div class="wd-table-row">
@@ -362,32 +391,34 @@
                 </div>
                 <div class="wd-table-cell">
                   <div class="wd-contact-info">
-                    <div class="wd-contact-avatar">خ س</div>
+                    <div class="wd-contact-avatar" style="background: #00bc60">
+                      خ س
+                    </div>
                     <span>خالد سعيد</span>
                   </div>
                 </div>
                 <div class="wd-table-cell">+966505678901</div>
                 <div class="wd-table-cell">khaled@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #4ecdc4"
-                    >الموردون</span
-                  >
-                </div>
-                <div class="wd-table-cell">
-                  <span class="wd-status inactive"> مشترك</span>
-                </div>
-                <div class="wd-table-cell">
-                  <div class="wd-actions">
-                    <button class="wd-action-btn start-conversation">
-                      <i class="fas fa-comments"></i>
-                    </button>
-                    <button class="wd-action-btn">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="wd-action-btn">
-                      <i class="fas fa-trash"></i>
-                    </button>
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #4ecdc4"
+                      >الموردون</span
+                    >
                   </div>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status inactive">غير نشط</span>
+                </div>
+                <div class="wd-table-cell">
+                  <button class="wd-action-btn" title="مراسلة">
+                    <i class="fas fa-comment"></i>
+                  </button>
+                  <button class="wd-action-btn" title="تعديل">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="wd-action-btn" title="حذف">
+                    <i class="fas fa-trash"></i>
+                  </button>
                 </div>
               </div>
               <div class="wd-table-row">
@@ -396,32 +427,34 @@
                 </div>
                 <div class="wd-table-cell">
                   <div class="wd-contact-info">
-                    <div class="wd-contact-avatar">ن ع</div>
+                    <div class="wd-contact-avatar" style="background: #00bc60">
+                      ن ع
+                    </div>
                     <span>نورا عبدالله</span>
                   </div>
                 </div>
                 <div class="wd-table-cell">+966506789012</div>
                 <div class="wd-table-cell">nora@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #45b7d1"
-                    >الموظفون</span
-                  >
-                </div>
-                <div class="wd-table-cell">
-                  <span class="wd-status active">مشترك</span>
-                </div>
-                <div class="wd-table-cell">
-                  <div class="wd-actions">
-                    <button class="wd-action-btn start-conversation">
-                      <i class="fas fa-comments"></i>
-                    </button>
-                    <button class="wd-action-btn">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="wd-action-btn">
-                      <i class="fas fa-trash"></i>
-                    </button>
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #17a2b8"
+                      >الموظفون</span
+                    >
                   </div>
+                </div>
+                <div class="wd-table-cell">
+                  <span class="wd-status active">نشط</span>
+                </div>
+                <div class="wd-table-cell">
+                  <button class="wd-action-btn" title="مراسلة">
+                    <i class="fas fa-comment"></i>
+                  </button>
+                  <button class="wd-action-btn" title="تعديل">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="wd-action-btn" title="حذف">
+                    <i class="fas fa-trash"></i>
+                  </button>
                 </div>
               </div>
               <div class="wd-table-row">
@@ -1057,6 +1090,79 @@
       </div>
     </div>
 
+    <!-- Modal إدارة المجموعات -->
+    <div class="wd-groups-modal" id="groupsModal">
+      <div class="wd-groups-modal-content">
+        <div class="wd-groups-modal-header">
+          <div class="wd-contact-info-modal">
+            <div
+              class="wd-contact-avatar"
+              style="background: #00bc60"
+              id="modalContactAvatar"
+            >
+              أ
+            </div>
+            <span id="modalContactName">أحمد محمد</span>
+          </div>
+          <h3>إدارة المجموعات</h3>
+          <button class="wd-modal-close" onclick="closeGroupsModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="wd-groups-modal-body">
+          <!-- المجموعات الحالية -->
+          <div class="wd-groups-list" id="currentGroups">
+            <!-- سيتم إضافة المجموعات ديناميكياً -->
+          </div>
+
+          <!-- إضافة مجموعة جديدة -->
+          <div class="wd-add-group-section">
+            <h4>إضافة مجموعة جديدة</h4>
+            <div class="wd-add-group-form">
+              <input
+                type="text"
+                class="wd-group-input"
+                placeholder="اسم المجموعة..."
+                id="newGroupInput"
+              />
+              <button class="wd-add-group-btn-modal" onclick="addNewGroup()">
+                إضافة
+              </button>
+            </div>
+
+            <!-- المجموعات المقترحة -->
+            <div class="wd-suggested-groups">
+              <button
+                class="wd-suggested-group"
+                onclick="addSuggestedGroup('VIP')"
+              >
+                VIP
+              </button>
+              <button
+                class="wd-suggested-group"
+                onclick="addSuggestedGroup('متميز')"
+              >
+                متميز
+              </button>
+              <button
+                class="wd-suggested-group"
+                onclick="addSuggestedGroup('جديد')"
+              >
+                جديد
+              </button>
+              <button
+                class="wd-suggested-group"
+                onclick="addSuggestedGroup('محتمل')"
+              >
+                محتمل
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
     <script>
       // متغيرات عامة
@@ -1064,6 +1170,8 @@
       let currentSearch = null;
       let allContacts = [];
       let searchTimeout = null;
+      let currentContact = "";
+      let currentGroups = [];
 
       // تهيئة البيانات عند تحميل الصفحة
       document.addEventListener("DOMContentLoaded", function () {
@@ -1436,6 +1544,114 @@
           closeFilterModal();
         }
       });
+
+      // فتح الـ Modal
+      function openGroupsModal(contactName, groups) {
+        currentContact = contactName;
+        currentGroups = [...groups];
+
+        // تحديث معلومات جهة الاتصال
+        document.getElementById("modalContactName").textContent = contactName;
+        document.getElementById("modalContactAvatar").textContent =
+          contactName.charAt(0);
+
+        // عرض المجموعات الحالية
+        displayCurrentGroups();
+
+        // إظهار الـ Modal
+        document.getElementById("groupsModal").classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
+
+      // إغلاق الـ Modal
+      function closeGroupsModal() {
+        document.getElementById("groupsModal").classList.remove("show");
+        document.body.style.overflow = "auto";
+        document.getElementById("newGroupInput").value = "";
+      }
+
+      // عرض المجموعات الحالية
+      function displayCurrentGroups() {
+        const container = document.getElementById("currentGroups");
+        container.innerHTML = "";
+
+        const groupColors = {
+          العملاء: "#00bc60",
+          الموظفون: "#17a2b8",
+          VIP: "#f39c12",
+          إدارة: "#e74c3c",
+          "فريق التطوير": "#9b59b6",
+          قيادة: "#6c757d",
+          جديد: "#2ecc71",
+          الموردون: "#4ecdc4",
+          متميز: "#fd7e14",
+          محتمل: "#6f42c1",
+        };
+
+        currentGroups.forEach((group, index) => {
+          const groupElement = document.createElement("span");
+          groupElement.className = "wd-tag";
+          groupElement.style.background = groupColors[group] || "#6c757d";
+          groupElement.innerHTML = `
+            ${group}
+            <button class="wd-tag-remove" onclick="removeGroup(${index})" title="إزالة">
+              <i class="fas fa-times"></i>
+            </button>
+          `;
+          container.appendChild(groupElement);
+        });
+      }
+
+      // إضافة مجموعة جديدة
+      function addNewGroup() {
+        const input = document.getElementById("newGroupInput");
+        const groupName = input.value.trim();
+
+        if (groupName && !currentGroups.includes(groupName)) {
+          currentGroups.push(groupName);
+          displayCurrentGroups();
+          input.value = "";
+        }
+      }
+
+      // إضافة مجموعة مقترحة
+      function addSuggestedGroup(groupName) {
+        if (!currentGroups.includes(groupName)) {
+          currentGroups.push(groupName);
+          displayCurrentGroups();
+        }
+      }
+
+      // إزالة مجموعة
+      function removeGroup(index) {
+        currentGroups.splice(index, 1);
+        displayCurrentGroups();
+      }
+
+      // إغلاق الـ Modal عند النقر خارجه
+      document
+        .getElementById("groupsModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeGroupsModal();
+          }
+        });
+
+      // التعامل مع مفتاح ESC
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeGroupsModal();
+        }
+      });
+
+      // إضافة مجموعة بمفتاح Enter
+      document
+        .getElementById("newGroupInput")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            addNewGroup();
+          }
+        });
     </script>
   </body>
 </html>

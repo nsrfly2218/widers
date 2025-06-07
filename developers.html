@@ -18,8 +18,7 @@
         display: flex;
         gap: 15px;
         margin-bottom: 20px;
-        align-items: center;
-        flex-wrap: wrap;
+        align-items: stretch;
       }
 
       .wd-search-input {
@@ -38,7 +37,8 @@
 
       .wd-search-input input {
         width: 100%;
-        padding: 12px 40px 12px 15px;
+        height: 44px;
+        padding: 0 40px 0 15px;
         border: 1px solid #ddd;
         border-radius: 8px;
         font-size: 14px;
@@ -47,24 +47,32 @@
 
       .wd-search-input input:focus {
         outline: none;
-        border-color: #25d366;
-        box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.1);
+        border-color: #00bc60;
+        box-shadow: 0 0 0 2px rgba(0, 188, 96, 0.1);
       }
 
       .wd-filter-options {
         display: flex;
         gap: 10px;
-        flex-wrap: wrap;
+        align-items: stretch;
       }
 
       .wd-filter-select {
-        padding: 10px;
+        height: 44px;
+        padding: 0 15px;
         border: 1px solid #ddd;
         border-radius: 8px;
         background-color: white;
         color: #333;
         font-size: 14px;
         min-width: 150px;
+        cursor: pointer;
+      }
+
+      .wd-filter-select:focus {
+        outline: none;
+        border-color: #00bc60;
+        box-shadow: 0 0 0 2px rgba(0, 188, 96, 0.1);
       }
 
       .wd-table-container {
@@ -315,6 +323,96 @@
       .wd-copy-btn i {
         font-size: 14px;
       }
+
+      .wd-log-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .wd-log-status.success {
+        background: #d4edda;
+        color: #155724;
+      }
+
+      .wd-log-status.success i {
+        color: #28a745;
+      }
+
+      .wd-log-status.error {
+        background: #f8d7da;
+        color: #721c24;
+      }
+
+      .wd-log-status.error i {
+        color: #dc3545;
+      }
+
+      .wd-details-btn:hover {
+        color: #00bc60;
+      }
+
+      .wd-details-btn i {
+        margin-left: 5px;
+        transition: transform 0.3s ease;
+      }
+
+      .wd-details-btn.expanded i {
+        transform: rotate(180deg);
+      }
+
+      .wd-log-details {
+        display: none;
+        background: #f8f9fa;
+        padding: 15px;
+        direction: ltr;
+        text-align: left !important;
+      }
+
+      .wd-log-details pre {
+        margin: 0;
+        white-space: pre-wrap;
+        font-family: monospace;
+        font-size: 13px;
+      }
+
+      .wd-log-details pre {
+        color: #333;
+      }
+
+      .wd-log-details pre span.key {
+        color: #881391;
+        font-weight: bold;
+      }
+
+      .wd-log-details pre span.value {
+        color: #1a1aa6;
+      }
+
+      .wd-log-details pre span.string {
+        color: #0b750b;
+      }
+
+      .wd-log-details pre span.number {
+        color: #1a1aa6;
+      }
+
+      .wd-expand-btn {
+        background: none;
+        border: none;
+        color: #666;
+        cursor: pointer;
+        padding: 5px;
+        transition: color 0.3s ease;
+      }
+
+      .wd-expand-btn:hover {
+        color: #333;
+      }
     </style>
   </head>
   <body>
@@ -464,27 +562,31 @@
                 id="logsSearch"
               />
             </div>
-            <div class="wd-filter-options">
-              <select class="wd-filter-select">
-                <option value="">كل السجلات</option>
-                <option value="success">نجاح</option>
-                <option value="error">فشل</option>
-              </select>
-            </div>
+            <select class="wd-filter-select" id="typeFilter">
+              <option value="">كل السجلات</option>
+              <option value="success">نجاح</option>
+              <option value="error">فشل</option>
+            </select>
           </div>
 
           <table class="wd-logs-table">
             <thead>
               <tr>
+                <th style="width: 80px">التفاصيل</th>
                 <th>الوقت والتاريخ</th>
                 <th>جهة الاتصال</th>
                 <th>التدفق</th>
                 <th>الخطوة</th>
-                <th>الوصف</th>
+                <th>الحالة</th>
               </tr>
             </thead>
             <tbody>
               <tr>
+                <td>
+                  <button class="wd-expand-btn" onclick="toggleDetails(this)">
+                    <i class="fas fa-chevron-down"></i>
+                  </button>
+                </td>
                 <td class="wd-log-time">2024-03-20 14:30:45</td>
                 <td class="wd-log-contact">
                   <div class="wd-contact-tooltip">
@@ -519,29 +621,98 @@
                 </td>
                 <td class="wd-log-flow">تدفق التسجيل</td>
                 <td class="wd-log-step">ارسال رسالة 1</td>
-                <td class="wd-log-description">
-                  (#200) You do not have the necessary permissions required to
-                  send messages on behalf of this WhatsApp Business Account
+                <td>
+                  <span class="wd-log-status error">
+                    <i class="fas fa-times-circle"></i>
+                    فشل
+                  </span>
                 </td>
               </tr>
               <tr>
+                <td colspan="6" class="wd-log-details">
+                  <pre>
+{
+  <span class="key">"error"</span>: {
+    <span class="key">"code"</span>: <span class="number">200</span>,
+    <span class="key">"message"</span>: <span class="string">"You do not have the necessary permissions required to send messages on behalf of this WhatsApp Business Account"</span>,
+    <span class="key">"type"</span>: <span class="string">"OAuthException"</span>,
+    <span class="key">"error_subcode"</span>: <span class="number">2018145</span>,
+    <span class="key">"fbtrace_id"</span>: <span class="string">"AXvL7VTHvYvEQo8f2L8GvR3"</span>
+  },
+  <span class="key">"timestamp"</span>: <span class="string">"2024-03-20T14:30:45Z"</span>,
+  <span class="key">"attempts"</span>: <span class="number">3</span>,
+  <span class="key">"last_attempt"</span>: <span class="string">"2024-03-20T14:30:45Z"</span>
+}</pre>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <button class="wd-expand-btn" onclick="toggleDetails(this)">
+                    <i class="fas fa-chevron-down"></i>
+                  </button>
+                </td>
                 <td class="wd-log-time">2024-03-20 14:25:12</td>
                 <td class="wd-log-contact">سارة أحمد</td>
                 <td class="wd-log-flow">تدفق الدعم الفني</td>
                 <td class="wd-log-step">ارسال رسالة 2</td>
-                <td class="wd-log-description">
-                  (#200) You do not have the necessary permissions required to
-                  send messages on behalf of this WhatsApp Business Account
+                <td>
+                  <span class="wd-log-status success">
+                    <i class="fas fa-check-circle"></i>
+                    نجاح
+                  </span>
                 </td>
               </tr>
               <tr>
+                <td colspan="6" class="wd-log-details">
+                  <pre>
+{
+  <span class="key">"messaging_product"</span>: <span class="string">"whatsapp"</span>,
+  <span class="key">"contacts"</span>: [
+    {
+      <span class="key">"input"</span>: <span class="string">"966599995945"</span>,
+      <span class="key">"wa_id"</span>: <span class="string">"966599995945"</span>
+    }
+  ],
+  <span class="key">"messages"</span>: [
+    {
+      <span class="key">"id"</span>: <span class="string">"wamid.HBgMOTY2NTk5OTk1OTQ1FQIAERgSNDBGNzkxRjkxMDYxOEY1MTIwAA=="</span>
+    }
+  ]
+}</pre>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <button class="wd-expand-btn" onclick="toggleDetails(this)">
+                    <i class="fas fa-chevron-down"></i>
+                  </button>
+                </td>
                 <td class="wd-log-time">2024-03-20 14:20:30</td>
                 <td class="wd-log-contact">محمد علي</td>
                 <td class="wd-log-flow">تدفق المبيعات</td>
                 <td class="wd-log-step">ارسال رسالة 3</td>
-                <td class="wd-log-description">
-                  (#200) You do not have the necessary permissions required to
-                  send messages on behalf of this WhatsApp Business Account
+                <td>
+                  <span class="wd-log-status error">
+                    <i class="fas fa-times-circle"></i>
+                    فشل
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="wd-log-details">
+                  <pre>
+{
+  <span class="key">"error"</span>: {
+    <span class="key">"code"</span>: <span class="number">400</span>,
+    <span class="key">"message"</span>: <span class="string">"Message template format is invalid"</span>,
+    <span class="key">"type"</span>: <span class="string">"BadRequest"</span>,
+    <span class="key">"error_subcode"</span>: <span class="number">132000</span>,
+    <span class="key">"details"</span>: <span class="string">"Template validation failed"</span>
+  },
+  <span class="key">"timestamp"</span>: <span class="string">"2024-03-20T14:20:30Z"</span>,
+  <span class="key">"attempts"</span>: <span class="number">2</span>,
+  <span class="key">"last_attempt"</span>: <span class="string">"2024-03-20T14:20:30Z"</span>
+}</pre>
                 </td>
               </tr>
             </tbody>
@@ -620,6 +791,23 @@
           .catch((err) => {
             console.error("فشل نسخ النص:", err);
           });
+      }
+
+      function toggleDetails(button) {
+        const row = button.closest("tr");
+        const detailsRow = row.nextElementSibling;
+        const details = detailsRow.querySelector(".wd-log-details");
+        const icon = button.querySelector("i");
+
+        if (details.style.display === "none" || details.style.display === "") {
+          details.style.display = "table-cell";
+          icon.classList.remove("fa-chevron-down");
+          icon.classList.add("fa-chevron-up");
+        } else {
+          details.style.display = "none";
+          icon.classList.remove("fa-chevron-up");
+          icon.classList.add("fa-chevron-down");
+        }
       }
     </script>
   </body>

@@ -1310,6 +1310,56 @@
           });
         });
 
+        // تفعيل النقر على المحادثات السابقة
+        const supportHistoryItems = document.querySelectorAll(
+          ".wd-support-history-item"
+        );
+        supportHistoryItems.forEach((item) => {
+          item.addEventListener("click", function (e) {
+            e.preventDefault();
+            console.log("تم فتح محادثة سابقة");
+
+            // الحصول على اسم المحادثة والوقت
+            const chatName = this.querySelector(
+              ".wd-support-history-name"
+            ).textContent;
+            const chatTime = this.querySelector(
+              ".wd-support-history-time"
+            ).textContent;
+            const chatMessage = this.querySelector(
+              ".wd-support-history-message"
+            ).textContent;
+
+            // فتح المحادثة مع تحميل الرسائل السابقة
+            startExistingChat(chatName, chatTime, chatMessage);
+          });
+        });
+
+        // تفعيل النقر على آخر محادثة
+        const lastChatItems = document.querySelectorAll(
+          ".wd-support-last-chat-item"
+        );
+        lastChatItems.forEach((item) => {
+          item.addEventListener("click", function (e) {
+            e.preventDefault();
+            console.log("تم فتح آخر محادثة");
+
+            // الحصول على بيانات المحادثة
+            const chatName = this.querySelector(
+              ".wd-support-last-chat-name"
+            ).textContent;
+            const chatTime = this.querySelector(
+              ".wd-support-last-chat-time"
+            ).textContent;
+            const chatMessage = this.querySelector(
+              ".wd-support-last-chat-message"
+            ).textContent;
+
+            // فتح المحادثة
+            startExistingChat(chatName, chatTime, chatMessage);
+          });
+        });
+
         // نظام المراسلة الويب
         const supportChatView = document.getElementById("supportChatView");
         const supportContent = document.querySelector(".wd-support-content");
@@ -1331,6 +1381,52 @@
           supportTabs.style.display = "none";
           supportWelcome.style.display = "none";
           supportChatView.classList.add("active");
+
+          // تحديث عنوان المحادثة
+          const chatTitle = document.querySelector(".wd-support-chat-title");
+          if (chatTitle) {
+            chatTitle.textContent = "محادثة جديدة";
+          }
+        }
+
+        // فتح محادثة موجودة
+        function startExistingChat(chatName, chatTime, lastMessage) {
+          supportContent.style.display = "none";
+          supportTabs.style.display = "none";
+          supportWelcome.style.display = "none";
+          supportChatView.classList.add("active");
+
+          // تحديث عنوان المحادثة
+          const chatTitle = document.querySelector(".wd-support-chat-title");
+          if (chatTitle) {
+            chatTitle.textContent = chatName;
+          }
+
+          // مسح الرسائل الحالية
+          if (supportChatMessages) {
+            supportChatMessages.innerHTML = "";
+
+            // إضافة رسالة ترحيبية
+            addMessage(
+              `مرحباً بعودتك! هذه محادثتك مع ${chatName}`,
+              "received",
+              "مساعد الدعم"
+            );
+
+            // إضافة آخر رسالة من المحادثة السابقة
+            setTimeout(() => {
+              addMessage(lastMessage, "received", chatName.split(" - ")[0]);
+
+              // إضافة رسالة استفهام
+              setTimeout(() => {
+                addMessage(
+                  "هل تحتاج إلى مساعدة إضافية في هذا الموضوع؟",
+                  "received",
+                  "مساعد الدعم"
+                );
+              }, 1000);
+            }, 500);
+          }
         }
 
         // العودة إلى القائمة الرئيسية
@@ -1339,6 +1435,12 @@
           supportTabs.style.display = "flex";
           supportWelcome.style.display = "block";
           supportChatView.classList.remove("active");
+
+          // إعادة تعيين عنوان المحادثة
+          const chatTitle = document.querySelector(".wd-support-chat-title");
+          if (chatTitle) {
+            chatTitle.textContent = "الدعم الفني";
+          }
         }
 
         // تفعيل أزرار المحادثة

@@ -9,6 +9,39 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <style>
+      .wd-table-row {
+        padding: 0 20px;
+      }
+
+      /* التأكد من توحيد الإجراءات */
+      .wd-action-btn:not([title]) {
+        position: relative;
+      }
+
+      .wd-action-btn.start-conversation:not([title])::after {
+        content: "بدء محادثة";
+        position: absolute;
+        background: #333;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 11px;
+        white-space: nowrap;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 5px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+        z-index: 1000;
+      }
+
+      .wd-action-btn.start-conversation:not([title]):hover::after {
+        opacity: 1;
+      }
+    </style>
   </head>
 
   <body>
@@ -204,7 +237,7 @@
           </div>
         </div>
 
-        <div class="wd-content-body" style="margin: 0">
+        <div class="wd-content-body" style="margin: 0; padding: 0">
           <div class="wd-contacts-table">
             <div class="wd-table-header">
               <div class="wd-table-row">
@@ -275,12 +308,15 @@
                 <div class="wd-table-cell">+966502345678</div>
                 <div class="wd-table-cell">sara@example.com</div>
                 <div class="wd-table-cell">
-                  <div class="wd-contact-groups">
-                    <span class="wd-tag" style="background-color: #4ecdc4"
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #4ecdc4"
                       >الموردون</span
                     >
-                    <button class="wd-add-group-btn" title="إضافة مجموعة">
-                      <i class="fas fa-plus"></i>
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('سارة أحمد', ['الموردون', 'شريك تجاري'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
                     </button>
                   </div>
                 </div>
@@ -332,15 +368,20 @@
                   <span class="wd-status active">نشط</span>
                 </div>
                 <div class="wd-table-cell">
-                  <button class="wd-action-btn" title="مراسلة">
-                    <i class="fas fa-comment"></i>
-                  </button>
-                  <button class="wd-action-btn" title="تعديل">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <button class="wd-action-btn" title="حذف">
-                    <i class="fas fa-trash"></i>
-                  </button>
+                  <div class="wd-actions">
+                    <button
+                      class="wd-action-btn start-conversation"
+                      title="بدء محادثة"
+                    >
+                      <i class="fas fa-comments"></i>
+                    </button>
+                    <button class="wd-action-btn" title="تعديل">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn" title="حذف">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
               <div class="wd-table-row">
@@ -374,15 +415,20 @@
                   <span class="wd-status active">نشط</span>
                 </div>
                 <div class="wd-table-cell">
-                  <button class="wd-action-btn" title="مراسلة">
-                    <i class="fas fa-comment"></i>
-                  </button>
-                  <button class="wd-action-btn" title="تعديل">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <button class="wd-action-btn" title="حذف">
-                    <i class="fas fa-trash"></i>
-                  </button>
+                  <div class="wd-actions">
+                    <button
+                      class="wd-action-btn start-conversation"
+                      title="بدء محادثة"
+                    >
+                      <i class="fas fa-comments"></i>
+                    </button>
+                    <button class="wd-action-btn" title="تعديل">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn" title="حذف">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
               <div class="wd-table-row">
@@ -404,21 +450,32 @@
                     <span class="wd-tag" style="background: #4ecdc4"
                       >الموردون</span
                     >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('خالد سعيد', ['الموردون', 'معتمد'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
                   </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status inactive">غير نشط</span>
                 </div>
                 <div class="wd-table-cell">
-                  <button class="wd-action-btn" title="مراسلة">
-                    <i class="fas fa-comment"></i>
-                  </button>
-                  <button class="wd-action-btn" title="تعديل">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <button class="wd-action-btn" title="حذف">
-                    <i class="fas fa-trash"></i>
-                  </button>
+                  <div class="wd-actions">
+                    <button
+                      class="wd-action-btn start-conversation"
+                      title="بدء محادثة"
+                    >
+                      <i class="fas fa-comments"></i>
+                    </button>
+                    <button class="wd-action-btn" title="تعديل">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn" title="حذف">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
               <div class="wd-table-row">
@@ -440,21 +497,32 @@
                     <span class="wd-tag" style="background: #17a2b8"
                       >الموظفون</span
                     >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('نورا عبدالله', ['الموظفون', 'مالية'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
                   </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status active">نشط</span>
                 </div>
                 <div class="wd-table-cell">
-                  <button class="wd-action-btn" title="مراسلة">
-                    <i class="fas fa-comment"></i>
-                  </button>
-                  <button class="wd-action-btn" title="تعديل">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <button class="wd-action-btn" title="حذف">
-                    <i class="fas fa-trash"></i>
-                  </button>
+                  <div class="wd-actions">
+                    <button
+                      class="wd-action-btn start-conversation"
+                      title="بدء محادثة"
+                    >
+                      <i class="fas fa-comments"></i>
+                    </button>
+                    <button class="wd-action-btn" title="تعديل">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="wd-action-btn" title="حذف">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
               <div class="wd-table-row">
@@ -470,9 +538,17 @@
                 <div class="wd-table-cell">+966507890123</div>
                 <div class="wd-table-cell">abdulrahman@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #ff6b6b"
-                    >العملاء</span
-                  >
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #ff6b6b"
+                      >العملاء</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('عبدالرحمن سعود', ['العملاء', 'مهم'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status inactive"> مشترك</span>
@@ -504,9 +580,17 @@
                 <div class="wd-table-cell">+966508901234</div>
                 <div class="wd-table-cell">lama@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #4ecdc4"
-                    >الموردون</span
-                  >
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #4ecdc4"
+                      >الموردون</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('لمى فيصل', ['الموردون', 'دولي'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status active">مشترك</span>
@@ -538,9 +622,17 @@
                 <div class="wd-table-cell">+966509012345</div>
                 <div class="wd-table-cell">faisal@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #45b7d1"
-                    >الموظفون</span
-                  >
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #45b7d1"
+                      >الموظفون</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('فيصل ناصر', ['الموظفون', 'تسويق'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status inactive"> مشترك</span>
@@ -572,9 +664,17 @@
                 <div class="wd-table-cell">+966510123456</div>
                 <div class="wd-table-cell">hind@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #ff6b6b"
-                    >العملاء</span
-                  >
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #ff6b6b"
+                      >العملاء</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('هند محمد', ['العملاء', 'نشط'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status active">مشترك</span>
@@ -606,9 +706,17 @@
                 <div class="wd-table-cell">+966511234567</div>
                 <div class="wd-table-cell">saud@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #4ecdc4"
-                    >الموردون</span
-                  >
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #4ecdc4"
+                      >الموردون</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('سعود عبدالعزيز', ['الموردون', 'أولوية'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status inactive"> مشترك</span>
@@ -640,9 +748,17 @@
                 <div class="wd-table-cell">+966512345678</div>
                 <div class="wd-table-cell">noura@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #45b7d1"
-                    >الموظفون</span
-                  >
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #45b7d1"
+                      >الموظفون</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('نورة سعد', ['الموظفون', 'مبيعات'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status active">مشترك</span>
@@ -674,9 +790,17 @@
                 <div class="wd-table-cell">+966513456789</div>
                 <div class="wd-table-cell">turki@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #ff6b6b"
-                    >العملاء</span
-                  >
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #ff6b6b"
+                      >العملاء</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('تركي أحمد', ['العملاء', 'مؤسسي'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status inactive"> مشترك</span>
@@ -708,9 +832,17 @@
                 <div class="wd-table-cell">+966514567890</div>
                 <div class="wd-table-cell">reem@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #4ecdc4"
-                    >الموردون</span
-                  >
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #4ecdc4"
+                      >الموردون</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('ريم عبدالله', ['الموردون', 'ذهبي'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status active">مشترك</span>
@@ -742,9 +874,17 @@
                 <div class="wd-table-cell">+966515678901</div>
                 <div class="wd-table-cell">badr@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #45b7d1"
-                    >الموظفون</span
-                  >
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #45b7d1"
+                      >الموظفون</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('بدر محمد', ['الموظفون', 'تقني'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status inactive"> مشترك</span>
@@ -776,9 +916,17 @@
                 <div class="wd-table-cell">+966516789012</div>
                 <div class="wd-table-cell">jawaher@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #ff6b6b"
-                    >العملاء</span
-                  >
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #ff6b6b"
+                      >العملاء</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('جواهر خالد', ['العملاء', 'مميز'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status active">مشترك</span>
@@ -810,9 +958,17 @@
                 <div class="wd-table-cell">+966517890123</div>
                 <div class="wd-table-cell">saad@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #4ecdc4"
-                    >الموردون</span
-                  >
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #4ecdc4"
+                      >الموردون</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('سعد عبدالرحمن', ['الموردون', 'محلي'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status inactive"> مشترك</span>
@@ -844,9 +1000,17 @@
                 <div class="wd-table-cell">+966518901234</div>
                 <div class="wd-table-cell">mona@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #45b7d1"
-                    >الموظفون</span
-                  >
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #45b7d1"
+                      >الموظفون</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('منى فيصل', ['الموظفون', 'إداري'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status active">مشترك</span>
@@ -878,9 +1042,17 @@
                 <div class="wd-table-cell">+966519012345</div>
                 <div class="wd-table-cell">abdullah@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #ff6b6b"
-                    >العملاء</span
-                  >
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #ff6b6b"
+                      >العملاء</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('عبدالله سعود', ['العملاء', 'جديد'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status inactive"> مشترك</span>
@@ -912,9 +1084,17 @@
                 <div class="wd-table-cell">+966520123456</div>
                 <div class="wd-table-cell">hana@example.com</div>
                 <div class="wd-table-cell">
-                  <span class="wd-tag" style="background-color: #4ecdc4"
-                    >الموردون</span
-                  >
+                  <div class="wd-primary-group">
+                    <span class="wd-tag" style="background: #4ecdc4"
+                      >الموردون</span
+                    >
+                    <button
+                      class="wd-groups-toggle"
+                      onclick="openGroupsModal('هناء محمد', ['الموردون', 'موثق'])"
+                    >
+                      +1 <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
                 <div class="wd-table-cell">
                   <span class="wd-status active">مشترك</span>

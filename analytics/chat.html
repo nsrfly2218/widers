@@ -10,6 +10,226 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      /* تحسين تصميم بطاقات الإحصائيات */
+      .wd-analytics-card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f1f5f9;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .wd-analytics-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      }
+
+      .wd-analytics-card:focus,
+      .wd-analytics-card:focus-visible,
+      .wd-analytics-card *:focus,
+      .wd-analytics-card *:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+
+      /* إزالة جميع الخطوط البنفسجية من المتصفح */
+      .wd-analytics-card,
+      .wd-analytics-card *,
+      .wd-analytics-card:hover,
+      .wd-analytics-card:active,
+      .wd-analytics-card:visited {
+        outline: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-focus-ring-color: transparent !important;
+      }
+
+      .wd-card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #00bc60;
+        color: white;
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+
+      .wd-card-icon.assigned {
+        background: #3b82f6;
+      }
+
+      .wd-card-icon.unassigned {
+        background: #ef4444;
+      }
+
+      .wd-card-icon.contacts {
+        background: #8b5cf6;
+      }
+
+      .wd-card-icon.new-contacts {
+        background: #f59e0b;
+      }
+
+      .wd-card-icon.messages {
+        background: #06b6d4;
+      }
+
+      .wd-card-icon.received {
+        background: #10b981;
+      }
+
+      .wd-card-icon.sent {
+        background: #f97316;
+      }
+
+      .wd-card-icon.response-rate {
+        background: #84cc16;
+      }
+
+      .wd-card-icon.close-time {
+        background: #6366f1;
+      }
+
+      .wd-card-icon.satisfaction-rate {
+        background: #ec4899;
+      }
+
+      .wd-card-content {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .wd-card-content h3 {
+        margin: 0 0 8px 0;
+        font-size: 14px;
+        font-weight: 500;
+        color: #64748b;
+        line-height: 1.4;
+      }
+
+      .wd-card-value-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 6px 0;
+      }
+
+      .wd-card-value {
+        font-size: 24px;
+        font-weight: 700;
+        color: #1e293b;
+        line-height: 1.2;
+      }
+
+      .wd-card-change {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      .wd-card-change.positive {
+        color: #059669;
+      }
+
+      .wd-card-change.negative {
+        color: #dc2626;
+      }
+
+      .wd-card-change i {
+        font-size: 9px;
+      }
+
+      /* تحسين شبكة البطاقات */
+      .wd-analytics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+
+      /* تحسين بطاقات الرسوم البيانية */
+      .wd-chart-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f1f5f9;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .wd-chart-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      }
+
+      .wd-chart-header {
+        padding: 20px 20px 0 20px;
+        border-bottom: none;
+      }
+
+      .wd-chart-header h3 {
+        margin: 0 0 4px 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #1e293b;
+      }
+
+      .wd-chart-period {
+        font-size: 12px;
+        color: #64748b;
+        font-weight: 500;
+      }
+
+      .wd-chart-body {
+        padding: 20px;
+        height: 300px;
+      }
+
+      .wd-charts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 24px;
+      }
+
+      @media (max-width: 768px) {
+        .wd-analytics-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+
+        .wd-charts-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .wd-analytics-card {
+          padding: 16px;
+          gap: 12px;
+        }
+
+        .wd-card-icon {
+          width: 40px;
+          height: 40px;
+          font-size: 18px;
+        }
+
+        .wd-card-value {
+          font-size: 20px;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -241,10 +461,12 @@
                 </div>
                 <div class="wd-card-content">
                   <h3>إجمالي المحادثات</h3>
-                  <div class="wd-card-value">2,847</div>
-                  <div class="wd-card-change positive">
-                    <i class="fas fa-arrow-up"></i>
-                    <span>+12.5%</span>
+                  <div class="wd-card-value-container">
+                    <div class="wd-card-value">2,847</div>
+                    <div class="wd-card-change positive">
+                      <i class="fas fa-arrow-up"></i>
+                      <span>+12.5%</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -256,10 +478,12 @@
                 </div>
                 <div class="wd-card-content">
                   <h3>المحادثات المعينة</h3>
-                  <div class="wd-card-value">2,156</div>
-                  <div class="wd-card-change positive">
-                    <i class="fas fa-arrow-up"></i>
-                    <span>+8.3%</span>
+                  <div class="wd-card-value-container">
+                    <div class="wd-card-value">2,156</div>
+                    <div class="wd-card-change positive">
+                      <i class="fas fa-arrow-up"></i>
+                      <span>+8.3%</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -271,10 +495,12 @@
                 </div>
                 <div class="wd-card-content">
                   <h3>المحادثات غير المعينة</h3>
-                  <div class="wd-card-value">691</div>
-                  <div class="wd-card-change negative">
-                    <i class="fas fa-arrow-down"></i>
-                    <span>-5.2%</span>
+                  <div class="wd-card-value-container">
+                    <div class="wd-card-value">691</div>
+                    <div class="wd-card-change negative">
+                      <i class="fas fa-arrow-down"></i>
+                      <span>-5.2%</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -286,10 +512,12 @@
                 </div>
                 <div class="wd-card-content">
                   <h3>إجمالي جهات الاتصال</h3>
-                  <div class="wd-card-value">5,432</div>
-                  <div class="wd-card-change positive">
-                    <i class="fas fa-arrow-up"></i>
-                    <span>+15.7%</span>
+                  <div class="wd-card-value-container">
+                    <div class="wd-card-value">5,432</div>
+                    <div class="wd-card-change positive">
+                      <i class="fas fa-arrow-up"></i>
+                      <span>+15.7%</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -301,10 +529,12 @@
                 </div>
                 <div class="wd-card-content">
                   <h3>جهات الاتصال الجديدة</h3>
-                  <div class="wd-card-value">234</div>
-                  <div class="wd-card-change positive">
-                    <i class="fas fa-arrow-up"></i>
-                    <span>+22.1%</span>
+                  <div class="wd-card-value-container">
+                    <div class="wd-card-value">234</div>
+                    <div class="wd-card-change positive">
+                      <i class="fas fa-arrow-up"></i>
+                      <span>+22.1%</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -316,10 +546,12 @@
                 </div>
                 <div class="wd-card-content">
                   <h3>إجمالي الرسائل</h3>
-                  <div class="wd-card-value">18,945</div>
-                  <div class="wd-card-change positive">
-                    <i class="fas fa-arrow-up"></i>
-                    <span>+18.9%</span>
+                  <div class="wd-card-value-container">
+                    <div class="wd-card-value">18,945</div>
+                    <div class="wd-card-change positive">
+                      <i class="fas fa-arrow-up"></i>
+                      <span>+18.9%</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -331,10 +563,12 @@
                 </div>
                 <div class="wd-card-content">
                   <h3>الرسائل المستلمة</h3>
-                  <div class="wd-card-value">9,876</div>
-                  <div class="wd-card-change positive">
-                    <i class="fas fa-arrow-up"></i>
-                    <span>+16.4%</span>
+                  <div class="wd-card-value-container">
+                    <div class="wd-card-value">9,876</div>
+                    <div class="wd-card-change positive">
+                      <i class="fas fa-arrow-up"></i>
+                      <span>+16.4%</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -346,10 +580,12 @@
                 </div>
                 <div class="wd-card-content">
                   <h3>الرسائل المرسلة</h3>
-                  <div class="wd-card-value">9,069</div>
-                  <div class="wd-card-change positive">
-                    <i class="fas fa-arrow-up"></i>
-                    <span>+21.7%</span>
+                  <div class="wd-card-value-container">
+                    <div class="wd-card-value">9,069</div>
+                    <div class="wd-card-change positive">
+                      <i class="fas fa-arrow-up"></i>
+                      <span>+21.7%</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -361,10 +597,12 @@
                 </div>
                 <div class="wd-card-content">
                   <h3>معدل الاستجابة الأولى</h3>
-                  <div class="wd-card-value">94.2%</div>
-                  <div class="wd-card-change positive">
-                    <i class="fas fa-arrow-up"></i>
-                    <span>+3.1%</span>
+                  <div class="wd-card-value-container">
+                    <div class="wd-card-value">94.2%</div>
+                    <div class="wd-card-change positive">
+                      <i class="fas fa-arrow-up"></i>
+                      <span>+3.1%</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -376,10 +614,12 @@
                 </div>
                 <div class="wd-card-content">
                   <h3>متوسط وقت إغلاق المحادثة</h3>
-                  <div class="wd-card-value">12.5 دقيقة</div>
-                  <div class="wd-card-change negative">
-                    <i class="fas fa-arrow-down"></i>
-                    <span>-8.3%</span>
+                  <div class="wd-card-value-container">
+                    <div class="wd-card-value">12.5 دقيقة</div>
+                    <div class="wd-card-change negative">
+                      <i class="fas fa-arrow-down"></i>
+                      <span>-8.3%</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -391,10 +631,12 @@
                 </div>
                 <div class="wd-card-content">
                   <h3>معدل الرضا</h3>
-                  <div class="wd-card-value">96.7%</div>
-                  <div class="wd-card-change positive">
-                    <i class="fas fa-arrow-up"></i>
-                    <span>+2.4%</span>
+                  <div class="wd-card-value-container">
+                    <div class="wd-card-value">96.7%</div>
+                    <div class="wd-card-change positive">
+                      <i class="fas fa-arrow-up"></i>
+                      <span>+2.4%</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -486,6 +728,7 @@
       </main>
     </div>
 
+    <script src="../script.js"></script>
     <script>
       // New Chats Gradient Area Chart
       const newChatsCtx = document

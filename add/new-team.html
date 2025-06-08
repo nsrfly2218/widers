@@ -229,6 +229,176 @@
         outline: none;
       }
 
+      /* تنسيقات البحث والموظفين */
+      .wd-search-employees {
+        margin-bottom: 20px;
+      }
+
+      .wd-search-input-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .wd-search-input-container i {
+        position: absolute;
+        right: 15px;
+        color: #666;
+        z-index: 2;
+      }
+
+      .wd-search-input-container input {
+        width: 100%;
+        padding: 12px 45px 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        background: #f8f9fa;
+        transition: all 0.3s ease;
+      }
+
+      .wd-search-input-container input:focus {
+        outline: none;
+        border-color: #00bc60;
+        background: white;
+        box-shadow: 0 0 0 3px rgba(0, 188, 96, 0.1);
+      }
+
+      .wd-employees-list {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        max-height: 400px;
+        overflow-y: auto;
+        margin-bottom: 15px;
+      }
+
+      .wd-employee-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        border-bottom: 1px solid #f0f0f0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-employee-item:last-child {
+        border-bottom: none;
+      }
+
+      .wd-employee-item:hover {
+        background: #f8f9fa;
+      }
+
+      .wd-employee-item.selected {
+        background: #e8f5e8;
+        border-left: 4px solid #00bc60;
+      }
+
+      .wd-employee-checkbox {
+        position: relative;
+      }
+
+      .wd-employee-checkbox input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .wd-employee-checkbox label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        background: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .wd-employee-checkbox label:after {
+        content: "✓";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 12px;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .wd-employee-checkbox input[type="checkbox"]:checked + label {
+        background: #00bc60;
+        border-color: #00bc60;
+      }
+
+      .wd-employee-checkbox input[type="checkbox"]:checked + label:after {
+        opacity: 1;
+      }
+
+      .wd-employee-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid #f0f0f0;
+      }
+
+      .wd-employee-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .wd-employee-info {
+        flex: 1;
+      }
+
+      .wd-employee-name {
+        font-size: 16px;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 4px;
+      }
+
+      .wd-employee-email {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 4px;
+        direction: ltr;
+        text-align: left;
+      }
+
+      .wd-employee-role {
+        font-size: 12px;
+        color: #4a90e2;
+        background: #e8f3ff;
+        padding: 2px 8px;
+        border-radius: 12px;
+        display: inline-block;
+      }
+
+      .wd-selected-count {
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 6px;
+        border: 1px solid #e0e0e0;
+      }
+
+      .wd-selected-count span {
+        font-weight: 600;
+        color: #00bc60;
+      }
+
       .wd-form-actions {
         display: flex;
         justify-content: flex-end;
@@ -473,17 +643,6 @@
                     class="wd-form-textarea"
                   ></textarea>
                 </div>
-                <div class="wd-form-group">
-                  <label for="teamManager"
-                    >مدير الفريق <span class="wd-required">*</span></label
-                  >
-                  <select id="teamManager" class="wd-form-control" required>
-                    <option value="">اختر مدير الفريق</option>
-                    <option value="1">أحمد محمد</option>
-                    <option value="2">سارة أحمد</option>
-                    <option value="3">محمد علي</option>
-                  </select>
-                </div>
               </div>
 
               <!-- أعضاء الفريق -->
@@ -492,43 +651,146 @@
                   <i class="fas fa-user-friends"></i>
                   أعضاء الفريق
                 </h3>
-                <div class="wd-members-grid">
-                  <div class="wd-member-card" onclick="toggleMember(this)">
-                    <div class="wd-member-avatar">
-                      <img
-                        src="../imgs/avatar-placeholder.png"
-                        alt="صورة العضو"
-                      />
+
+                <!-- صندوق البحث للموظفين -->
+                <div class="wd-search-employees">
+                  <div class="wd-search-input-container">
+                    <i class="fas fa-search"></i>
+                    <input
+                      type="text"
+                      id="employeeSearch"
+                      placeholder="ابحث عن موظف بالاسم أو الإيميل..."
+                      oninput="searchEmployees()"
+                    />
+                  </div>
+                </div>
+
+                <!-- قائمة الموظفين -->
+                <div class="wd-employees-list">
+                  <div
+                    class="wd-employee-item"
+                    onclick="toggleEmployee(this)"
+                    data-employee-id="1"
+                  >
+                    <div class="wd-employee-checkbox">
+                      <input type="checkbox" id="emp1" />
+                      <label for="emp1"></label>
                     </div>
-                    <div class="wd-member-info">
-                      <div class="wd-member-name">أحمد محمد</div>
-                      <div class="wd-member-role">مدير فريق</div>
+                    <div class="wd-employee-avatar">
+                      <img src="../imgs/avatar.jpg" alt="صورة الموظف" />
+                    </div>
+                    <div class="wd-employee-info">
+                      <div class="wd-employee-name">أحمد محمد عبدالله</div>
+                      <div class="wd-employee-email">
+                        ahmed.mohammed@company.com
+                      </div>
                     </div>
                   </div>
-                  <div class="wd-member-card" onclick="toggleMember(this)">
-                    <div class="wd-member-avatar">
-                      <img
-                        src="../imgs/avatar-placeholder.png"
-                        alt="صورة العضو"
-                      />
+
+                  <div
+                    class="wd-employee-item"
+                    onclick="toggleEmployee(this)"
+                    data-employee-id="2"
+                  >
+                    <div class="wd-employee-checkbox">
+                      <input type="checkbox" id="emp2" />
+                      <label for="emp2"></label>
                     </div>
-                    <div class="wd-member-info">
-                      <div class="wd-member-name">سارة أحمد</div>
-                      <div class="wd-member-role">وكيل</div>
+                    <div class="wd-employee-avatar">
+                      <img src="../imgs/avatar.jpg" alt="صورة الموظف" />
                     </div>
-                  </div>
-                  <div class="wd-member-card" onclick="toggleMember(this)">
-                    <div class="wd-member-avatar">
-                      <img
-                        src="../imgs/avatar-placeholder.png"
-                        alt="صورة العضو"
-                      />
-                    </div>
-                    <div class="wd-member-info">
-                      <div class="wd-member-name">محمد علي</div>
-                      <div class="wd-member-role">وكيل</div>
+                    <div class="wd-employee-info">
+                      <div class="wd-employee-name">سارة أحمد علي</div>
+                      <div class="wd-employee-email">
+                        sara.ahmed@company.com
+                      </div>
                     </div>
                   </div>
+
+                  <div
+                    class="wd-employee-item"
+                    onclick="toggleEmployee(this)"
+                    data-employee-id="3"
+                  >
+                    <div class="wd-employee-checkbox">
+                      <input type="checkbox" id="emp3" />
+                      <label for="emp3"></label>
+                    </div>
+                    <div class="wd-employee-avatar">
+                      <img src="../imgs/avatar.jpg" alt="صورة الموظف" />
+                    </div>
+                    <div class="wd-employee-info">
+                      <div class="wd-employee-name">محمد علي حسن</div>
+                      <div class="wd-employee-email">
+                        mohammed.ali@company.com
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="wd-employee-item"
+                    onclick="toggleEmployee(this)"
+                    data-employee-id="4"
+                  >
+                    <div class="wd-employee-checkbox">
+                      <input type="checkbox" id="emp4" />
+                      <label for="emp4"></label>
+                    </div>
+                    <div class="wd-employee-avatar">
+                      <img src="../imgs/avatar.jpg" alt="صورة الموظف" />
+                    </div>
+                    <div class="wd-employee-info">
+                      <div class="wd-employee-name">فاطمة خالد محمد</div>
+                      <div class="wd-employee-email">
+                        fatima.khaled@company.com
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="wd-employee-item"
+                    onclick="toggleEmployee(this)"
+                    data-employee-id="5"
+                  >
+                    <div class="wd-employee-checkbox">
+                      <input type="checkbox" id="emp5" />
+                      <label for="emp5"></label>
+                    </div>
+                    <div class="wd-employee-avatar">
+                      <img src="../imgs/avatar.jpg" alt="صورة الموظف" />
+                    </div>
+                    <div class="wd-employee-info">
+                      <div class="wd-employee-name">خالد سعيد أحمد</div>
+                      <div class="wd-employee-email">
+                        khaled.saeed@company.com
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="wd-employee-item"
+                    onclick="toggleEmployee(this)"
+                    data-employee-id="6"
+                  >
+                    <div class="wd-employee-checkbox">
+                      <input type="checkbox" id="emp6" />
+                      <label for="emp6"></label>
+                    </div>
+                    <div class="wd-employee-avatar">
+                      <img src="../imgs/avatar.jpg" alt="صورة الموظف" />
+                    </div>
+                    <div class="wd-employee-info">
+                      <div class="wd-employee-name">نورا عبدالله يوسف</div>
+                      <div class="wd-employee-email">
+                        nora.abdullah@company.com
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- إحصائيات الموظفين المختارين -->
+                <div class="wd-selected-count">
+                  <span id="selectedCount">0</span> موظف محدد
                 </div>
               </div>
 
@@ -539,7 +801,7 @@
                 >
                   إلغاء
                 </button>
-                <button class="wd-btn wd-btn-primary" onclick="createTeam()">
+                <button class="wd-btn" onclick="createTeam()">
                   إضافة الفريق
                 </button>
               </div>
@@ -566,55 +828,138 @@
         const teamName = document.getElementById("teamName").value;
         const teamDescription =
           document.getElementById("teamDescription").value;
+        const teamManagerSelect = document.getElementById("teamManager");
         const teamManager =
-          document.getElementById("teamManager").options[
-            document.getElementById("teamManager").selectedIndex
-          ].text;
+          teamManagerSelect.options[teamManagerSelect.selectedIndex].text;
 
-        document.getElementById("previewName").textContent = teamName;
-        document.getElementById("previewManager").textContent = teamManager;
-        document.getElementById("previewDescription").textContent =
-          teamDescription || "لا يوجد وصف";
+        // تحديث المعاينة إذا كانت موجودة
+        const previewName = document.getElementById("previewName");
+        const previewManager = document.getElementById("previewManager");
+        const previewDescription =
+          document.getElementById("previewDescription");
+
+        if (previewName) previewName.textContent = teamName || "اسم الفريق";
+        if (previewManager) previewManager.textContent = teamManager;
+        if (previewDescription)
+          previewDescription.textContent = teamDescription || "لا يوجد وصف";
+
+        updateSelectedCount();
       }
 
-      function toggleMember(card) {
-        card.classList.toggle("selected");
-        updatePreviewMembers();
+      function toggleEmployee(item) {
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        checkbox.checked = !checkbox.checked;
+
+        if (checkbox.checked) {
+          item.classList.add("selected");
+        } else {
+          item.classList.remove("selected");
+        }
+
+        updateSelectedCount();
       }
 
-      function updatePreviewMembers() {
-        const selectedMembers = document.querySelectorAll(
-          ".wd-member-card.selected"
+      function updateSelectedCount() {
+        const selectedEmployees = document.querySelectorAll(
+          '.wd-employee-item input[type="checkbox"]:checked'
         );
-        const previewMembers = document.getElementById("previewMembers");
-        previewMembers.innerHTML = "";
+        const countSpan = document.getElementById("selectedCount");
+        countSpan.textContent = selectedEmployees.length;
+      }
 
-        selectedMembers.forEach((member) => {
-          const memberName =
-            member.querySelector(".wd-member-name").textContent;
-          const memberRole =
-            member.querySelector(".wd-member-role").textContent;
-          const memberAvatar = member.querySelector(
-            ".wd-member-avatar img"
-          ).src;
+      function searchEmployees() {
+        const searchTerm = document
+          .getElementById("employeeSearch")
+          .value.toLowerCase();
+        const employeeItems = document.querySelectorAll(".wd-employee-item");
 
-          const memberElement = document.createElement("div");
-          memberElement.className = "wd-preview-member";
-          memberElement.innerHTML = `
-            <div class="wd-preview-member-avatar">
-              <img src="${memberAvatar}" alt="صورة العضو" />
-            </div>
-            <div class="wd-preview-member-name">${memberName}</div>
-          `;
-          previewMembers.appendChild(memberElement);
+        employeeItems.forEach((item) => {
+          const name = item
+            .querySelector(".wd-employee-name")
+            .textContent.toLowerCase();
+          const email = item
+            .querySelector(".wd-employee-email")
+            .textContent.toLowerCase();
+          const role = item
+            .querySelector(".wd-employee-role")
+            .textContent.toLowerCase();
+
+          if (
+            name.includes(searchTerm) ||
+            email.includes(searchTerm) ||
+            role.includes(searchTerm)
+          ) {
+            item.style.display = "flex";
+          } else {
+            item.style.display = "none";
+          }
         });
       }
 
       function createTeam() {
-        // هنا يمكنك إضافة منطق إنشاء الفريق
-        alert("تم إضافة الفريق بنجاح");
+        const teamName = document.getElementById("teamName").value;
+        const teamDescription =
+          document.getElementById("teamDescription").value;
+        const teamManager = document.getElementById("teamManager").value;
+        const selectedEmployees = document.querySelectorAll(
+          '.wd-employee-item input[type="checkbox"]:checked'
+        );
+
+        if (!teamName.trim()) {
+          alert("يرجى إدخال اسم الفريق");
+          return;
+        }
+
+        if (!teamManager) {
+          alert("يرجى اختيار مدير الفريق");
+          return;
+        }
+
+        if (selectedEmployees.length === 0) {
+          alert("يرجى اختيار موظف واحد على الأقل");
+          return;
+        }
+
+        // جمع بيانات الموظفين المختارين
+        const selectedEmployeesData = [];
+        selectedEmployees.forEach((checkbox) => {
+          const item = checkbox.closest(".wd-employee-item");
+          const employeeData = {
+            id: item.dataset.employeeId,
+            name: item.querySelector(".wd-employee-name").textContent,
+            email: item.querySelector(".wd-employee-email").textContent,
+            role: item.querySelector(".wd-employee-role").textContent,
+          };
+          selectedEmployeesData.push(employeeData);
+        });
+
+        // عرض ملخص الفريق الجديد
+        const summary = `تم إنشاء الفريق بنجاح!\n\nاسم الفريق: ${teamName}\nالوصف: ${
+          teamDescription || "لا يوجد"
+        }\nعدد الأعضاء: ${selectedEmployeesData.length}`;
+        alert(summary);
+
+        // إعادة التوجه لصفحة الفرق
         window.location.href = "../settings/teams.html";
       }
+
+      // إضافة أحداث النقر على checkbox
+      document.addEventListener("DOMContentLoaded", function () {
+        const checkboxes = document.querySelectorAll(
+          '.wd-employee-item input[type="checkbox"]'
+        );
+        checkboxes.forEach((checkbox) => {
+          checkbox.addEventListener("change", function () {
+            const item = this.closest(".wd-employee-item");
+            if (this.checked) {
+              item.classList.add("selected");
+            } else {
+              item.classList.remove("selected");
+            }
+            updateSelectedCount();
+          });
+        });
+      });
     </script>
   </body>
 </html>

@@ -14,6 +14,43 @@
         padding: 20px;
       }
 
+      .wd-search-container {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .wd-search-input {
+        position: relative;
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .wd-search-input i {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+      }
+
+      .wd-search-input input {
+        width: 100%;
+        padding: 12px 40px 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .wd-search-input input:focus {
+        outline: none;
+        border-color: #25d366;
+        box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.1);
+      }
+
       .wd-coming-soon-container {
         display: flex;
         flex-direction: column;
@@ -379,37 +416,35 @@
             </button>
             <h1>الفرق</h1>
           </div>
-          <!--
           <div class="wd-header-actions">
-            <button class="wd-btn wd-btn-primary">
+            <button
+              class="wd-btn"
+              onclick="window.location.href='../add/new-team.html'"
+            >
               <i class="fas fa-plus"></i>
               فريق جديد
             </button>
           </div>
-          -->
         </div>
 
         <div class="wd-content-body">
-          <div class="wd-coming-soon-container">
-            <i class="fas fa-users"></i>
-            <h1>الفرق</h1>
-            <p>قريباً سيتم إضافة الفرق</p>
-          </div>
-          <!--
-          <div class="wd-teams-header">
-            <div class="wd-teams-search">
+          <div class="wd-search-container">
+            <div class="wd-search-input">
+              <i class="fas fa-search"></i>
               <input
                 type="text"
-                class="wd-teams-search-input"
-                placeholder="بحث في الفرق..."
+                placeholder="ابحث عن فريق..."
+                id="userVariableSearch"
               />
-              <i class="fas fa-search"></i>
             </div>
-            <div class="wd-teams-filters">
-              <button class="wd-teams-filter active">الكل</button>
-              <button class="wd-teams-filter">دعم فني</button>
-              <button class="wd-teams-filter">مبيعات</button>
-              <button class="wd-teams-filter">تسويق</button>
+            <div class="wd-filter-options">
+              <select class="wd-filter-select">
+                <option value="">جميع الأنواع</option>
+                <option value="string">نص</option>
+                <option value="number">رقم</option>
+                <option value="boolean">منطقي</option>
+                <option value="date">تاريخ</option>
+              </select>
             </div>
           </div>
 
@@ -430,7 +465,7 @@
                 <div class="wd-team-members">
                   <div class="wd-team-member">
                     <img
-                      src="../imgs/avatar1.jpg"
+                      src="../imgs/avatar.jpg"
                       alt="صورة الموظف"
                       class="wd-team-member-avatar"
                     />
@@ -438,7 +473,7 @@
                   </div>
                   <div class="wd-team-member">
                     <img
-                      src="../imgs/avatar2.jpg"
+                      src="../imgs/avatar.jpg"
                       alt="صورة الموظف"
                       class="wd-team-member-avatar"
                     />
@@ -446,7 +481,7 @@
                   </div>
                   <div class="wd-team-member">
                     <img
-                      src="../imgs/avatar3.jpg"
+                      src="../imgs/avatar.jpg"
                       alt="صورة الموظف"
                       class="wd-team-member-avatar"
                     />
@@ -482,7 +517,7 @@
                 <div class="wd-team-members">
                   <div class="wd-team-member">
                     <img
-                      src="../imgs/avatar4.jpg"
+                      src="../imgs/avatar.jpg"
                       alt="صورة الموظف"
                       class="wd-team-member-avatar"
                     />
@@ -490,7 +525,7 @@
                   </div>
                   <div class="wd-team-member">
                     <img
-                      src="../imgs/avatar5.jpg"
+                      src="../imgs/avatar.jpg"
                       alt="صورة الموظف"
                       class="wd-team-member-avatar"
                     />
@@ -526,7 +561,7 @@
                 <div class="wd-team-members">
                   <div class="wd-team-member">
                     <img
-                      src="../imgs/avatar6.jpg"
+                      src="../imgs/avatar.jpg"
                       alt="صورة الموظف"
                       class="wd-team-member-avatar"
                     />
@@ -534,7 +569,7 @@
                   </div>
                   <div class="wd-team-member">
                     <img
-                      src="../imgs/avatar7.jpg"
+                      src="../imgs/avatar.jpg"
                       alt="صورة الموظف"
                       class="wd-team-member-avatar"
                     />
@@ -542,7 +577,7 @@
                   </div>
                   <div class="wd-team-member">
                     <img
-                      src="../imgs/avatar8.jpg"
+                      src="../imgs/avatar.jpg"
                       alt="صورة الموظف"
                       class="wd-team-member-avatar"
                     />
@@ -562,7 +597,6 @@
               </div>
             </div>
           </div>
-          -->
         </div>
       </div>
     </div>

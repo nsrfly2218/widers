@@ -135,6 +135,13 @@
         color: #856404;
       }
 
+      .wd-actions {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
       .wd-btn-icon {
         padding: 8px;
         margin: 0 5px;
@@ -144,6 +151,9 @@
         border: none;
         cursor: pointer;
         transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .wd-btn-icon:hover {
@@ -151,20 +161,84 @@
         color: #333;
       }
 
-      .wd-btn-icon i {
-        font-size: 16px;
-      }
-
+      /* تحسين ألوان أزرار الإجراءات */
       .wd-btn-icon[title]:hover:after {
         content: attr(title);
         position: absolute;
         background: #333;
         color: white;
-        padding: 5px 10px;
+        padding: 4px 8px;
         border-radius: 4px;
-        font-size: 12px;
-        margin-top: 5px;
-        z-index: 1;
+        font-size: 11px;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 2px;
+        z-index: 1000;
+        white-space: nowrap;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .wd-btn-icon[title]:hover:before {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 4px solid #333;
+        margin-bottom: -2px;
+        z-index: 1001;
+      }
+
+      /* ألوان ثابتة للأزرار */
+      .wd-btn-icon[title*="إعداد"] {
+        background: #e8f5e8;
+        color: #00bc60;
+      }
+
+      .wd-btn-icon[title*="معاينة"] {
+        background: #e3f2fd;
+        color: #1976d2;
+      }
+
+      .wd-btn-icon[title*="تعديل"] {
+        background: #fff3e0;
+        color: #f57c00;
+      }
+
+      .wd-btn-icon[title*="حذف"] {
+        background: #ffebee;
+        color: #d32f2f;
+      }
+
+      /* تأثيرات التمرير */
+      .wd-btn-icon[title*="إعداد"]:hover {
+        background: #d4f0d4;
+        color: #009a4d;
+      }
+
+      .wd-btn-icon[title*="معاينة"]:hover {
+        background: #bbdefb;
+        color: #0d47a1;
+      }
+
+      .wd-btn-icon[title*="تعديل"]:hover {
+        background: #ffe0b2;
+        color: #e65100;
+      }
+
+      .wd-btn-icon[title*="حذف"]:hover {
+        background: #ffcdd2;
+        color: #b71c1c;
+      }
+
+      .wd-table td:last-child {
+        width: 140px;
+        padding: 10px;
       }
 
       .wd-template-type {
@@ -466,13 +540,20 @@
                   </td>
                   <td>
                     <div class="wd-actions">
-                      <button class="wd-btn wd-btn-icon" title="معاينة">
+                      <button
+                        class="wd-btn-icon"
+                        title="إعداد القالب"
+                        onclick="window.location.href='template-setup.html?template=welcome_new_subscriber'"
+                      >
+                        <i class="fas fa-cog"></i>
+                      </button>
+                      <button class="wd-btn-icon" title="معاينة">
                         <i class="fas fa-eye"></i>
                       </button>
-                      <button class="wd-btn wd-btn-icon" title="تعديل">
+                      <button class="wd-btn-icon" title="تعديل">
                         <i class="fas fa-edit"></i>
                       </button>
-                      <button class="wd-btn wd-btn-icon" title="حذف">
+                      <button class="wd-btn-icon" title="حذف">
                         <i class="fas fa-trash"></i>
                       </button>
                     </div>
@@ -495,13 +576,20 @@
                   </td>
                   <td>
                     <div class="wd-actions">
-                      <button class="wd-btn wd-btn-icon" title="معاينة">
+                      <button
+                        class="wd-btn-icon"
+                        title="إعداد القالب"
+                        onclick="window.location.href='template-setup.html?template=salaam_alaikum'"
+                      >
+                        <i class="fas fa-cog"></i>
+                      </button>
+                      <button class="wd-btn-icon" title="معاينة">
                         <i class="fas fa-eye"></i>
                       </button>
-                      <button class="wd-btn wd-btn-icon" title="تعديل">
+                      <button class="wd-btn-icon" title="تعديل">
                         <i class="fas fa-edit"></i>
                       </button>
-                      <button class="wd-btn wd-btn-icon" title="حذف">
+                      <button class="wd-btn-icon" title="حذف">
                         <i class="fas fa-trash"></i>
                       </button>
                     </div>
@@ -524,13 +612,20 @@
                   </td>
                   <td>
                     <div class="wd-actions">
-                      <button class="wd-btn wd-btn-icon" title="معاينة">
+                      <button
+                        class="wd-btn-icon"
+                        title="إعداد القالب"
+                        onclick="window.location.href='template-setup.html?template=subscription_renewal'"
+                      >
+                        <i class="fas fa-cog"></i>
+                      </button>
+                      <button class="wd-btn-icon" title="معاينة">
                         <i class="fas fa-eye"></i>
                       </button>
-                      <button class="wd-btn wd-btn-icon" title="تعديل">
+                      <button class="wd-btn-icon" title="تعديل">
                         <i class="fas fa-edit"></i>
                       </button>
-                      <button class="wd-btn wd-btn-icon" title="حذف">
+                      <button class="wd-btn-icon" title="حذف">
                         <i class="fas fa-trash"></i>
                       </button>
                     </div>

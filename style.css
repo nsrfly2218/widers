@@ -2082,12 +2082,12 @@ select {
 
 .wd-contact-info-nav-item:hover {
   background: #e9ecef;
-  color: #333;
+  color: #00bc60;
 }
 
 .wd-contact-info-nav-item.active {
-  background: #e3f2fd;
-  color: #1976d2;
+  background: #e8f5e8;
+  color: #00bc60;
 }
 
 .wd-contact-info-nav-item i {
@@ -2195,11 +2195,11 @@ select {
 }
 
 .wd-action-btn:hover {
-  color: #007bff;
+  color: #00bc60;
 }
 
 .wd-action-btn i.fa-toggle-on {
-  color: #28a745;
+  color: #00bc60;
 }
 
 .wd-action-btn i.fa-toggle-off {
@@ -2384,7 +2384,7 @@ select {
 .wd-contact-info-content .wd-contact-avatar {
   width: 56px;
   height: 56px;
-  background: #4a90e2;
+  background: #00bc60;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2418,7 +2418,7 @@ select {
 .wd-contact-detail .wd-copy-btn {
   background: none;
   border: none;
-  color: #4a90e2;
+  color: #00bc60;
   cursor: pointer;
   padding: 4px;
   display: flex;
@@ -2427,12 +2427,12 @@ select {
 }
 
 .wd-contact-detail .wd-copy-btn:hover {
-  color: #357abd;
+  color: #00a651;
 }
 
 .wd-contact-detail i {
   margin-left: 10px;
-  color: #4a90e2;
+  color: #00bc60;
 }
 
 .wd-contact-history {
@@ -2551,6 +2551,51 @@ select {
 .wd-action-btn:hover {
   background: #f5f5f5;
   color: #00bc60;
+}
+
+/* Tooltip للعناصر في wd-action-icons */
+.wd-action-icons .wd-action-btn {
+  position: relative;
+}
+
+.wd-action-icons .wd-action-btn::before {
+  content: attr(title);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.wd-action-icons .wd-action-btn::after {
+  content: "";
+  position: absolute;
+  bottom: 112%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.wd-action-icons .wd-action-btn:hover::before,
+.wd-action-icons .wd-action-btn:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 .wd-send-btn {
@@ -5719,7 +5764,7 @@ body.dark-mode .wd-variable-type-dropdown .wd-dropdown-item:hover {
 
 .wd-ai-btn {
   padding: 0.75rem 1.5rem;
-  background-color: #4caf50;
+  background-color: #00bc60;
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -5731,7 +5776,7 @@ body.dark-mode .wd-variable-type-dropdown .wd-dropdown-item:hover {
 }
 
 .wd-ai-btn:hover {
-  background-color: #45a049;
+  background-color: #00a651;
 }
 
 .wd-ai-question {
@@ -5792,13 +5837,21 @@ body.dark-mode .wd-variable-type-dropdown .wd-dropdown-item:hover {
 }
 
 .wd-journey-btn.edit {
-  background: #4a90e2;
+  background: #00bc60;
   color: white;
 }
 
+.wd-journey-btn.edit:hover {
+  background: #00a651;
+}
+
 .wd-journey-btn.manage {
-  background: #50c878;
+  background: #00bc60;
   color: white;
+}
+
+.wd-journey-btn.manage:hover {
+  background: #00a651;
 }
 
 /* Email Section */
@@ -5836,13 +5889,17 @@ body.dark-mode .wd-variable-type-dropdown .wd-dropdown-item:hover {
 
 .wd-email-send {
   padding: 10px 20px;
-  background: #4a90e2;
+  background: #00bc60;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
   transition: all 0.2s ease;
+}
+
+.wd-email-send:hover {
+  background: #00a651;
 }
 
 .wd-email-warning {
@@ -5882,13 +5939,17 @@ body.dark-mode .wd-variable-type-dropdown .wd-dropdown-item:hover {
 
 .wd-notes-add {
   padding: 8px 16px;
-  background: #4a90e2;
+  background: #00bc60;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
   transition: all 0.2s ease;
+}
+
+.wd-notes-add:hover {
+  background: #00a651;
 }
 
 .wd-notes-list {
@@ -8143,24 +8204,63 @@ body.dark-mode .wd-variable-type-dropdown .wd-dropdown-item:hover {
   cursor: pointer;
 }
 
-/* أنماط قواعد الفلترة */
-.wd-filter-rules {
+/* أنماط نموذج الفلترة الجديد */
+.wd-filter-form {
   margin-bottom: 20px;
 }
 
-.wd-filter-rule-container {
-  margin-bottom: 10px;
+.wd-filter-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
-.wd-filter-rule {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr auto;
-  gap: 15px;
-  align-items: end;
-  padding: 15px;
-  border: 1px solid var(--wd-border-color-light);
+.wd-filter-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.wd-filter-field label {
+  margin-bottom: 8px;
+  color: var(--wd-text-color);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.wd-filter-field input,
+.wd-filter-field select {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid #d1d5db;
   border-radius: 8px;
-  background-color: var(--wd-bg-light);
+  font-size: 14px;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.wd-filter-field input:focus,
+.wd-filter-field select:focus {
+  outline: none;
+  border-color: #00bc60;
+  box-shadow: 0 0 0 3px rgba(0, 188, 96, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.wd-filter-field input:hover,
+.wd-filter-field select:hover {
+  border-color: #9ca3af;
+}
+
+.wd-filter-field select {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .wd-filter-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
 }
 
 /* فواصل منطق الربط */

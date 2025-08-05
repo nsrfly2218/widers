@@ -93,7 +93,7 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         overflow: hidden;
         position: sticky;
-        top: 20px;
+        top: 0px;
         height: calc(100vh - 40px);
         max-height: calc(100vh - 40px);
         display: flex;
@@ -354,15 +354,15 @@
       }
 
       .wd-step-image {
-        width: 400px;
+        width: 200px;
         height: auto;
-        max-height: 500px;
+        max-height: 150px;
         object-fit: contain;
         border-radius: 6px;
-        border: 1px solid #dee2e6;
         flex-shrink: 0;
         cursor: pointer;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        order: 1;
       }
 
       .wd-step-image:hover {
@@ -374,6 +374,7 @@
         margin: 0;
         padding-right: 20px;
         flex: 1;
+        order: -1;
       }
 
       .wd-step-content li {
@@ -450,6 +451,33 @@
         border-radius: 4px;
       }
 
+      .wd-modal-close-btn {
+        position: absolute;
+        top: -50px;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .wd-modal-close-btn:hover {
+        background: rgba(0, 0, 0, 0.8);
+        transform: scale(1.1);
+      }
+
+      .wd-modal-close-btn i {
+        font-size: 16px;
+      }
+
       /* Responsive for step content */
       @media (max-width: 768px) {
         .wd-step-content {
@@ -460,7 +488,12 @@
         .wd-step-image {
           width: 100%;
           height: auto;
-          max-height: 300px;
+          max-height: 200px;
+          order: 0;
+        }
+
+        .wd-step-content ul {
+          order: 0;
         }
 
         .wd-modal-content {
@@ -471,10 +504,16 @@
           top: -50px;
           right: 0;
         }
+
+        .wd-modal-close-btn {
+          bottom: -70px;
+          padding: 10px 20px;
+          font-size: 14px;
+        }
       }
 
       /* Responsive Design */
-      @media (max-width: 1024px) {
+      @media (max-width: 1200px) {
         .wd-help-layout {
           grid-template-columns: 1fr;
           gap: 20px;
@@ -1056,6 +1095,7 @@
               <div id="articleContent" style="display: none;">
                 <div class="wd-article-header">
                 <h1 class="wd-article-title">إنشاء متجر جديد في منصة وايدرز</h1>
+                <!--
                 <div class="wd-article-meta">
                   <span class="wd-article-meta-item">
                     <i class="far fa-calendar-alt"></i>
@@ -1070,6 +1110,7 @@
                     1,234 مشاهدة
                   </span>
                 </div>
+                -->
               </div>
 
               <div class="wd-article-content">
@@ -1271,6 +1312,9 @@ const payment = await processPayment(paymentConfig);</code></pre>
         <span class="wd-modal-close" onclick="closeImageModal()">&times;</span>
         <img class="wd-modal-image" id="modalImage" src="" alt="">
         <div class="wd-modal-caption" id="modalCaption"></div>
+        <button class="wd-modal-close-btn" onclick="closeImageModal()">
+          <i class="fas fa-times"></i>
+        </button>
       </div>
     </div>
 
@@ -1475,34 +1519,94 @@ const payment = await processPayment(paymentConfig);</code></pre>
       'new-conversation': {
         title: 'بدء محادثة جديدة',
         content: `
-          <p>تعلم كيف تبدأ محادثة جديدة مع أي جهة اتصال.</p>
-          <ul>
-            <li>اضغط على زر "محادثة جديدة"</li>
-            <li>اختر جهة الاتصال</li>
-            <li>ابدأ الكتابة وأرسل الرسالة</li>
-          </ul>
+          <h2>الخطوة الأولى</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/conversation/1.png" alt="الخطوة الأولى - قسم المحادثات" class="wd-step-image">
+            <ul>
+              <li>توجه إلى <a href="https://apps.widers.net/chat" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم المحادثات</a></li>
+              <li>اضغط زر "بدء محادثة جديدة"</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الثانية</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/conversation/2.png" alt="الخطوة الثانية - إعدادات المحادثة" class="wd-step-image">
+            <ul>
+              <li><strong>اختر نوع جهة الاتصال:</strong> جهة اتصال موجودة أو جهة اتصال جديدة</li>
+              <li><strong>اختر جهة الاتصال:</strong> من قائمة جهات الاتصال المتاحة</li>
+              <li><strong>اختر قناة التواصل:</strong> واتساب، تليجرام، أو غيرها</li>
+              <li><strong>اختر الموظف المسؤول:</strong> (اختياري) لتعيين موظف معين للمحادثة</li>
+              <li><strong>اختر الوسوم:</strong> (اختياري) لتصنيف المحادثة</li>
+              <li><strong>اختر قالب الرسالة:</strong> لبدء المحادثة </li>
+              <li><strong>اضغط "بدء المحادثة"</strong> لإتمام العملية</li>
+            </ul>
+          </div>
         `
       },
       'filter-conversations': {
         title: 'فلترة المحادثات',
         content: `
-          <p>استخدم خاصية الفلترة للعثور على المحادثات بسهولة.</p>
-          <ul>
-            <li>استخدم شريط البحث</li>
-            <li>اختر الفلتر المناسب (غير مقروءة، مؤرشفة...)</li>
-          </ul>
+          <h2>الخطوة الأولى</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/conversation/3.png" alt="الخطوة الأولى - قسم المحادثات" class="wd-step-image">
+            <ul>
+              <li>توجه إلى <a href="https://apps.widers.net/chat" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم المحادثات</a></li>
+              <li>اضغط على الفلتر</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الثانية</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/conversation/4.png" alt="الخطوة الثانية - خيارات الفلترة" class="wd-step-image">
+            <ul>
+              <li><strong>اختر الحالة: </strong>مفتوح أو مغلق أو صامت أو غير صامت أو مقروء أو غير مقروء أو الكل</li>
+              <li><strong>اختر الوقت: </strong>الأحدث (تاريخ الإنشاء) أو الأقدم (تاريخ الإنشاء) أو الأحدث (تاريخ التحديث) أو الأقدم (تاريخ التحديث)</li>
+                <li><strong>اختر الوسوم:</strong> لتصفية المحادثات حسب الوسوم المحددة</li>
+            </ul>
+          </div>
         `
       },
       'conversation-actions': {
         title: 'إجراءات المحادثة',
         content: `
-          <p>تعرف على الإجراءات المتاحة لكل محادثة مثل الحذف أو التصدير.</p>
+          <h2>الخطوة الأولى</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/conversation/5.png" alt="الخطوة الأولى - قسم المحادثات" class="wd-step-image">
+            <ul>
+              <li>توجه إلى <a href="https://apps.widers.net/chat" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم المحادثات</a></li>
+              <li>اختر المحادثة</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الثانية</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/conversation/6.png" alt="الخطوة الثانية - إعدادات المحادثة" class="wd-step-image">
+            <ul>
+              <li><strong>اختر الموظف المكلف:</strong> لتعيين موظف معين للمتابعة</li>
+              <li><strong>أضف وسوم للمحادثة:</strong> لتصنيف وتنظيم المحادثة</li>
+            </ul>
+          </div>
         `
       },
       'conversation-status': {
         title: 'حالات المحادثة',
         content: `
-          <p>شرح حالات المحادثة (جديدة، قيد الانتظار، منتهية...)</p>
+          <h2>الخطوة الأولى</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/conversation/5.png" alt="الخطوة الأولى - قسم المحادثات" class="wd-step-image">
+            <ul>
+              <li>توجه إلى <a href="https://apps.widers.net/chat" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم المحادثات</a></li>
+              <li>اختر المحادثة</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الثانية</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/conversation/7.png" alt="الخطوة الثانية - تغيير حالة المحادثة" class="wd-step-image">
+            <ul>
+              <li><strong>اختر إغلاق أو فتح المحادثة:</strong> لتغيير حالة المحادثة حسب الحاجة</li>
+            </ul>
+          </div>
         `
       },
       'add-contact': {

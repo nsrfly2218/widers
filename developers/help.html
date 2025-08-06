@@ -98,6 +98,8 @@
         max-height: calc(100vh - 40px);
         display: flex;
         flex-direction: column;
+        transform: translateZ(0);
+        will-change: transform;
       }
 
       .wd-sidebar-tabs {
@@ -133,6 +135,8 @@
         flex: 1;
         overflow-y: auto;
         overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
       }
 
       /* Categories */
@@ -171,6 +175,9 @@
       .wd-category-articles {
         display: none;
         padding: 10px 0;
+        will-change: height;
+        transform: translateZ(0);
+        backface-visibility: hidden;
       }
 
       .wd-category-articles.expanded {
@@ -363,6 +370,10 @@
         cursor: pointer;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         order: 1;
+        will-change: transform;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        loading: lazy;
       }
 
       .wd-step-image:hover {
@@ -723,6 +734,114 @@
           justify-content: center;
         }
       }
+
+      /* Subcategories */
+      .wd-subcategory {
+        margin-bottom: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+        overflow: hidden;
+      }
+
+      .wd-subcategory-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 15px;
+        cursor: pointer;
+        background: #f1f3f4;
+        border-bottom: 1px solid #e9ecef;
+        transition: background 0.3s ease;
+      }
+
+      .wd-subcategory-header:hover {
+        background: #e8eaed;
+      }
+
+      .wd-subcategory-header h4 {
+        color: #333;
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
+
+      .wd-subcategory-icon {
+        color: #666;
+        font-size: 12px;
+        transition: transform 0.3s ease;
+      }
+
+      .wd-subcategory-header.expanded .wd-subcategory-icon {
+        transform: rotate(180deg);
+      }
+
+      .wd-subcategory-articles {
+        display: none;
+        padding: 10px 15px;
+        will-change: height;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+      }
+
+      .wd-subcategory-articles.expanded {
+        display: block;
+      }
+
+      .wd-subcategory-articles .wd-article-link {
+        display: block;
+        padding: 6px 12px;
+        margin: 3px 0;
+        color: #666;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        font-size: 13px;
+        margin-right: 10px;
+      }
+
+      .wd-subcategory-articles .wd-article-link:hover {
+        background: #e6f4ea;
+        color: #00bc60;
+      }
+
+      .wd-subcategory-articles .wd-article-link.active {
+        background: #00bc60;
+        color: white;
+        font-weight: 500;
+      }
+
+      /* Smooth transitions for better UX */
+      .wd-category-articles,
+      .wd-subcategory-articles {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Optimize images */
+      .wd-step-image {
+        will-change: transform;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+      }
+
+      /* Lazy loading for images */
+      .wd-step-image {
+        loading: lazy;
+      }
+
+      /* Reduce repaints */
+      .wd-help-sidebar {
+        transform: translateZ(0);
+        will-change: transform;
+      }
+
+      /* Optimize scrolling */
+      .wd-sidebar-content {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+      }
     </style>
   </head>
   <body>
@@ -969,9 +1088,9 @@
                       <i class="fas fa-chevron-down wd-category-icon"></i>
                     </div>
                     <div class="wd-category-articles">
-                      <a href="#" class="wd-article-link" data-article-id="whatsapp-integration">ربط واتساب</a>
-                      <a href="#" class="wd-article-link" data-article-id="webhook-setup">إعداد Webhook</a>
-                      <a href="#" class="wd-article-link" data-article-id="api-usage">استخدام الـ API</a>
+                      <a href="#" class="wd-article-link">انشاء تدفق</a>
+                      <a href="#" class="wd-article-link">تعديل تدفق</a>
+                      <a href="#" class="wd-article-link">بناء تدفق</a>
                     </div>
                   </div>
 
@@ -984,9 +1103,8 @@
                       <i class="fas fa-chevron-down wd-category-icon"></i>
                     </div>
                     <div class="wd-category-articles">
-                      <a href="#" class="wd-article-link" data-article-id="security-settings">إعدادات الأمان</a>
-                      <a href="#" class="wd-article-link" data-article-id="data-protection">حماية البيانات</a>
-                      <a href="#" class="wd-article-link" data-article-id="permissions-management">إدارة الصلاحيات</a>
+                      <a href="#" class="wd-article-link" data-article-id="security-settings"> إنشاء حملة</a>
+                      <a href="#" class="wd-article-link" data-article-id="data-protection">عرض حملة</a>
                     </div>
                   </div>
                 </div>
@@ -1003,11 +1121,11 @@
                     </div>
                     <div class="wd-category-articles">
                       <a href="#" class="wd-article-link"
-                        >خطوات البداية السريعة</a
+                        >إضافة حدث</a
                       >
-                      <a href="#" class="wd-article-link">أفضل الممارسات</a>
+                      <a href="#" class="wd-article-link">حجز جديد</a>
                       <a href="#" class="wd-article-link"
-                        >تجنب الأخطاء الشائعة</a
+                        >إضافة مورد</a
                       >
                     </div>
                   </div>
@@ -1021,11 +1139,73 @@
                       <i class="fas fa-chevron-down wd-category-icon"></i>
                     </div>
                     <div class="wd-category-articles">
-                      <a href="#" class="wd-article-link">تحسين سرعة الموقع</a>
-                      <a href="#" class="wd-article-link">تحسين SEO</a>
-                      <a href="#" class="wd-article-link">زيادة المبيعات</a>
+                      <div class="wd-subcategory">
+                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                          <h4>متغيرات المستخدم</h4>
+                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                        </div>
+                        <div class="wd-subcategory-articles">
+                          <a href="#" class="wd-article-link" data-article-id="add-variable">انشاء متغير</a>
+                          <a href="#" class="wd-article-link" data-article-id="edit-variable">تعديل متغير</a>
+                        </div>
+                      </div>
+                      <div class="wd-subcategory">
+                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                          <h4>الرد الآلي</h4>
+                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                        </div>
+                        <div class="wd-subcategory-articles">
+                          <a href="#" class="wd-article-link" data-article-id="add-auto-reply">انشاء رد آلي افتراضي</a>
+                          <a href="#" class="wd-article-link" data-article-id="edit-auto-reply">انشاء رد آلي بسيط</a>
+                          <a href="#" class="wd-article-link" data-article-id="edit-auto-reply">انشاء رد آلي قائم على قالب</a>
+                          <a href="#" class="wd-article-link" data-article-id="edit-auto-reply">انشاء رد آلي قائم على تدفق</a>
+                          <a href="#" class="wd-article-link" data-article-id="edit-auto-reply">تعديل رد آلي</a>
+                        </div>
+                      </div>
+                      <div class="wd-subcategory">
+                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                          <h4>رحلة العميل</h4>
+                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                        </div>
+                        <div class="wd-subcategory-articles">
+                          <a href="#" class="wd-article-link" data-article-id="add-journey">انشاء رحلة</a>
+                          <a href="#" class="wd-article-link" data-article-id="edit-journey">تعديل رحلة</a>
+                        </div>
+                      </div>
+                      <div class="wd-subcategory">
+                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                          <h4>الوسوم</h4>
+                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                        </div>
+                        <div class="wd-subcategory-articles">
+                          <a href="#" class="wd-article-link" data-article-id="add-tag">انشاء وسم</a>
+                          <a href="#" class="wd-article-link" data-article-id="edit-tag">تعديل وسم</a>
+                        </div>
+                      </div>
+                      <div class="wd-subcategory">
+                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                          <h4>الاختصارات</h4>
+                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                        </div>
+                        <div class="wd-subcategory-articles">
+                          <a href="#" class="wd-article-link" data-article-id="add-shortcut">انشاء اختصار</a>
+                          <a href="#" class="wd-article-link" data-article-id="edit-shortcut">تعديل اختصار</a>
+                        </div>
+                      </div>
+                      <div class="wd-subcategory">
+                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                          <h4>قوالب الواتساب</h4>
+                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                        </div>
+                        <div class="wd-subcategory-articles">
+                          <a href="#" class="wd-article-link" data-article-id="add-template">انشاء قالب</a>
+                          <a href="#" class="wd-article-link" data-article-id="edit-template">انشاء قالب محادثة</a>
+                          <a href="#" class="wd-article-link" data-article-id="edit-template">مزامنة القوالب</a>
+                        </div>
+                      </div>
                     </div>
                   </div>
+
 
                   <div class="wd-help-category">
                     <div
@@ -1036,11 +1216,45 @@
                       <i class="fas fa-chevron-down wd-category-icon"></i>
                     </div>
                     <div class="wd-category-articles">
-                      <a href="#" class="wd-article-link">تحسين سرعة الموقع</a>
-                      <a href="#" class="wd-article-link">تحسين SEO</a>
-                      <a href="#" class="wd-article-link">زيادة المبيعات</a>
+                      <div class="wd-subcategory">
+                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                          <h4>السجلات</h4>
+                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                        </div>
+                        <div class="wd-subcategory-articles">
+                        </div>
+                      </div>
+                      <div class="wd-subcategory">
+                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                          <h4>التكاملات</h4>
+                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                        </div>
+                        <div class="wd-subcategory-articles">
+                          <a href="#" class="wd-article-link" data-article-id="add-integration">التكامل مع سلة</a>
+                        </div>
+                      </div>
+                      <div class="wd-subcategory">
+                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                          <h4>Webhooks</h4>
+                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                        </div>
+                        <div class="wd-subcategory-articles">
+                          <a href="#" class="wd-article-link" data-article-id="add-webhook">إضافة Webhook</a>
+                          <a href="#" class="wd-article-link" data-article-id="edit-webhook">تعديل Webhook</a>
+                          <a href="#" class="wd-article-link" data-article-id="edit-webhook">سجلات Webhook</a>
+                        </div>
+                      </div>
+                      <div class="wd-subcategory">
+                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                          <h4>API</h4>
+                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                        </div>
+                        <div class="wd-subcategory-articles">
+                        </div>
+                      </div>
                     </div>
                   </div>
+
 
                   <div class="wd-help-category">
                     <div
@@ -1051,11 +1265,45 @@
                       <i class="fas fa-chevron-down wd-category-icon"></i>
                     </div>
                     <div class="wd-category-articles">
-                      <a href="#" class="wd-article-link">تحسين سرعة الموقع</a>
-                      <a href="#" class="wd-article-link">تحسين SEO</a>
-                      <a href="#" class="wd-article-link">زيادة المبيعات</a>
+                      <div class="wd-subcategory">
+                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                          <h4>إعدادات الحساب</h4>
+                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                        </div>
+                        <div class="wd-subcategory-articles">
+                          <a href="#" class="wd-article-link" data-article-id="add-account-setting">تعديل الملف الشخصي</a>
+                          <a href="#" class="wd-article-link" data-article-id="edit-account-setting">تعديل امان الحساب</a>
+                        </div>
+                      </div>
+                      <div class="wd-subcategory">
+                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                          <h4>الموظفين</h4>
+                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                        </div>
+                        <div class="wd-subcategory-articles">
+                          <a href="#" class="wd-article-link" data-article-id="add-staff">إضافة موظف</a>
+                          <a href="#" class="wd-article-link" data-article-id="edit-staff">تعديل موظف</a>
+                        </div>
+                      </div>
+                      <a href="#" class="wd-article-link" data-article-id="staff-settings">إعدادات الموظفين</a>
+                      <div class="wd-subcategory">
+                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                          <h4>قنوات التواصل</h4>
+                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                        </div>
+                        <div class="wd-subcategory-articles">
+                          <a href="#" class="wd-article-link" data-article-id="add-channel">إضافة قناة</a>
+                          <a href="#" class="wd-article-link" data-article-id="edit-channel">تعديل قناة</a>
+                        </div>
+                      </div>
+                      <a href="#" class="wd-article-link" data-article-id="webhook-settings">إعدادات Webhook</a>
+                      <a href="#" class="wd-article-link" data-article-id="chat-settings">إعدادات المحادثة</a>
+                      <a href="#" class="wd-article-link" data-article-id="automation-settings">إعدادات الأتمتة</a>
+                      <a href="#" class="wd-article-link" data-article-id="links-settings">إعدادات الروابط</a>
+                      <a href="#" class="wd-article-link" data-article-id="plan-settings">الباقة</a>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -1325,6 +1573,25 @@ const payment = await processPayment(paymentConfig);</code></pre>
         const articles = header.nextElementSibling;
         const icon = header.querySelector(".wd-category-icon");
 
+        // إغلاق جميع القوائم الأخرى
+        document.querySelectorAll(".wd-category-header").forEach((otherHeader) => {
+          if (otherHeader !== header) {
+            const otherArticles = otherHeader.nextElementSibling;
+            const otherIcon = otherHeader.querySelector(".wd-category-icon");
+            otherArticles.classList.remove("expanded");
+            otherHeader.classList.remove("expanded");
+          }
+        });
+
+        // إغلاق جميع الأقسام الفرعية
+        document.querySelectorAll(".wd-subcategory-header").forEach((subHeader) => {
+          const subArticles = subHeader.nextElementSibling;
+          const subIcon = subHeader.querySelector(".wd-subcategory-icon");
+          subArticles.classList.remove("expanded");
+          subHeader.classList.remove("expanded");
+        });
+
+        // تبديل حالة القائمة الحالية
         if (articles.classList.contains("expanded")) {
           articles.classList.remove("expanded");
           header.classList.remove("expanded");
@@ -1394,6 +1661,31 @@ const payment = await processPayment(paymentConfig);</code></pre>
           toggleCategory(firstCategory);
         }
       });
+
+      // Toggle subcategory expansion
+      function toggleSubcategory(header) {
+        const articles = header.nextElementSibling;
+        const icon = header.querySelector(".wd-subcategory-icon");
+
+        // إغلاق جميع الأقسام الفرعية الأخرى
+        document.querySelectorAll(".wd-subcategory-header").forEach((otherHeader) => {
+          if (otherHeader !== header) {
+            const otherArticles = otherHeader.nextElementSibling;
+            const otherIcon = otherHeader.querySelector(".wd-subcategory-icon");
+            otherArticles.classList.remove("expanded");
+            otherHeader.classList.remove("expanded");
+          }
+        });
+
+        // تبديل حالة القسم الفرعي الحالي
+        if (articles.classList.contains("expanded")) {
+          articles.classList.remove("expanded");
+          header.classList.remove("expanded");
+        } else {
+          articles.classList.add("expanded");
+          header.classList.add("expanded");
+        }
+      }
     </script>
     <script>
     // قاعدة بيانات مصغرة للمحتوى (يمكنك التوسعة لاحقاً)
@@ -1612,29 +1904,125 @@ const payment = await processPayment(paymentConfig);</code></pre>
       'add-contact': {
         title: 'إضافة جهة إتصال',
         content: `
-          <p>لإضافة جهة اتصال جديدة اتبع الخطوات التالية:</p>
-          <ul>
-            <li>ادخل إلى قسم جهات الاتصال</li>
-            <li>اضغط على زر "إضافة"</li>
-            <li>أدخل بيانات الجهة واحفظ</li>
-          </ul>
+          <h2>الخطوة الأولى</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/contacts/1.png" alt="الخطوة الأولى - قسم جهات الاتصال" class="wd-step-image">
+            <ul>
+              <li>توجه إلى <a href="https://apps.widers.net/contacts/contacts" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم جهات الاتصال</a></li>
+              <li>اضغط زر "جهة اتصال جديدة"</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الثانية</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/contacts/2.png" alt="الخطوة الثانية - إدخال بيانات جهة الاتصال" class="wd-step-image">
+            <ul>
+              <li><strong>أدخل اسم جهة الاتصال:</strong> الاسم الكامل للشخص أو المؤسسة</li>
+              <li><strong>أدخل رقم الهاتف:</strong> رقم الهاتف مع مفتاح الدولة</li>
+              <li><strong>أدخل البريد الإلكتروني:</strong> (اختياري) للتواصل عبر البريد الإلكتروني</li>
+              <li><strong>اختر المجموعة:</strong> (اختياري) لتصنيف جهة الاتصال</li>
+              <li><strong>اضغط "حفظ جهة الاتصال":</strong> لحفظ البيانات</li>
+            </ul>
+          </div>
         `
       },
       'edit-contact': {
         title: 'تعديل جهة إتصال',
-        content: `<p>يمكنك تعديل بيانات أي جهة اتصال من خلال الضغط على زر التعديل بجانب الجهة.</p>`
+        content: `
+          <h2>الخطوة الأولى</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/contacts/3.png" alt="الخطوة الأولى - قسم جهات الاتصال" class="wd-step-image">
+            <ul>
+              <li>توجه إلى <a href="https://apps.widers.net/contacts/contacts" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم جهات الاتصال</a></li>
+              <li>اختر جهة الاتصال للتعديل</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الثانية</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/contacts/4.png" alt="الخطوة الثانية - تعديل بيانات جهة الاتصال" class="wd-step-image">
+            <ul>
+              <li><strong>أدخل التعديلات على:</strong>
+                <ul>
+                  <li>اسم جهة الاتصال</li>
+                  <li>رقم الهاتف</li>
+                  <li>البريد الإلكتروني</li>
+                  <li>المجموعة</li>
+                  <li>الحقول المخصصة</li>
+                </ul>
+              </li>
+              <li><strong>اضغط "حفظ التعديلات":</strong> لحفظ التغييرات</li>
+            </ul>
+          </div>
+        `
       },
       'filter-contacts': {
         title: 'فلترة جهات الاتصال',
-        content: `<p>استخدم خاصية الفلترة للبحث عن جهات الاتصال حسب الاسم أو المجموعة.</p>`
+        content: `
+          <h2>الخطوة الأولى</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/contacts/5.png" alt="الخطوة الأولى - قسم جهات الاتصال" class="wd-step-image">
+            <ul>
+              <li>توجه إلى <a href="https://apps.widers.net/contacts/contacts" style="color: #00bc60; text-decoration: none; font-weight: 600;">جهات الاتصال</a></li>
+              <li>اضغط فلترة</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الثانية</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/contacts/6.png" alt="الخطوة الثانية - خيارات الفلترة" class="wd-step-image">
+            <ul>
+              <li><strong>ابحث بالاسم أو رقم الجوال أو المجموعة أو الدولة أو البريد الإلكتروني أو حالة الاشتراك</strong></li>
+              <li><strong>اضغط تطبيق الفلتر</strong></li>
+            </ul>
+          </div>
+        `
       },
       'import-export-contacts': {
         title: 'استيراد وتصدير جهات الاتصال',
-        content: `<p>يمكنك استيراد أو تصدير جهات الاتصال من خلال ملف Excel أو CSV.</p>`
+        content: `
+          <h2>الخطوة الأولى</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/contacts/7.png" alt="الخطوة الأولى - قسم جهات الاتصال" class="wd-step-image">
+            <ul>
+              <li>توجه إلى <a href="https://apps.widers.net/contacts/contacts" style="color: #00bc60; text-decoration: none; font-weight: 600;">جهات الاتصال</a></li>
+              <li>اضغط على استيراد أو تصدير</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الثانية</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/contacts/8.png" alt="الخطوة الثانية - إعدادات الاستيراد" class="wd-step-image">
+            <ul>
+              <li><strong>اختر ملف:</strong> ارفع ملف CSV يحتوي على بيانات جهات الاتصال</li>
+              <li><strong>اختر المجموعة:</strong> (اختياري) لتصنيف جهات الاتصال المستوردة</li>
+              <li><strong>اضغط استيراد:</strong> لبدء عملية الاستيراد</li>
+            </ul>
+          </div>
+        `
       },
       'add-group': {
         title: 'اضافة مجموعة',
-        content: `<p>لإنشاء مجموعة جديدة من جهات الاتصال، اضغط على زر "مجموعة جديدة" وأدخل اسم المجموعة.</p>`
+        content: `
+          <h2>الخطوة الأولى</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/contacts/9.png" alt="الخطوة الأولى - قسم جهات الاتصال" class="wd-step-image">
+            <ul>
+              <li>توجه إلى <a href="https://apps.widers.net/contacts/contacts" style="color: #00bc60; text-decoration: none; font-weight: 600;">جهات الاتصال</a></li>
+              <li>اضغط المجموعات</li>
+              <li>اضغط مجموعة جديدة</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الثانية</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/contacts/10.png" alt="الخطوة الثانية - إنشاء المجموعة" class="wd-step-image">
+            <ul>
+              <li><strong>أدخل اسم المجموعة:</strong> اسم واضح ووصفي للمجموعة</li>
+              <li><strong>اضغط حفظ المجموعة:</strong> لحفظ المجموعة الجديدة</li>
+            </ul>
+          </div>
+        `
       },
       'whatsapp-integration': {
         title: 'ربط واتساب',
@@ -1659,6 +2047,134 @@ const payment = await processPayment(paymentConfig);</code></pre>
       'permissions-management': {
         title: 'إدارة الصلاحيات',
         content: `<p>كيفية إدارة صلاحيات المستخدمين وتحديد الأدوار.</p>`
+      },
+      'add-variable': {
+        title: 'إضافة متغير',
+        content: `<p>شرح إضافة متغير جديد في النظام.</p>`
+      },
+      'edit-variable': {
+        title: 'تعديل متغير',
+        content: `<p>شرح تعديل متغير موجود في النظام.</p>`
+      },
+      'add-auto-reply': {
+        title: 'إضافة رد آلي',
+        content: `<p>شرح إضافة رد آلي جديد في النظام.</p>`
+      },
+      'edit-auto-reply': {
+        title: 'تعديل رد آلي',
+        content: `<p>شرح تعديل رد آلي موجود في النظام.</p>`
+      },
+      'add-journey': {
+        title: 'إضافة رحلة',
+        content: `<p>شرح إضافة رحلة جديدة في النظام.</p>`
+      },
+      'edit-journey': {
+        title: 'تعديل رحلة',
+        content: `<p>شرح تعديل رحلة موجودة في النظام.</p>`
+      },
+      'add-tag': {
+        title: 'إضافة وسوم',
+        content: `<p>شرح إضافة وسوم جديدة في النظام.</p>`
+      },
+      'edit-tag': {
+        title: 'تعديل وسوم',
+        content: `<p>شرح تعديل وسوم موجودة في النظام.</p>`
+      },
+      'add-shortcut': {
+        title: 'إضافة اختصار',
+        content: `<p>شرح إضافة اختصار جديد في النظام.</p>`
+      },
+      'edit-shortcut': {
+        title: 'تعديل اختصار',
+        content: `<p>شرح تعديل اختصار موجود في النظام.</p>`
+      },
+      'add-template': {
+        title: 'إضافة قالب',
+        content: `<p>شرح إضافة قالب جديد في النظام.</p>`
+      },
+      'edit-template': {
+        title: 'تعديل قالب',
+        content: `<p>شرح تعديل قالب موجود في النظام.</p>`
+      },
+      'add-log': {
+        title: 'إضافة سجل',
+        content: `<p>شرح إضافة سجل جديد في النظام.</p>`
+      },
+      'edit-log': {
+        title: 'تعديل سجل',
+        content: `<p>شرح تعديل سجل موجود في النظام.</p>`
+      },
+      'add-integration': {
+        title: 'إضافة تكامل',
+        content: `<p>شرح إضافة تكامل جديد في النظام.</p>`
+      },
+      'edit-integration': {
+        title: 'تعديل تكامل',
+        content: `<p>شرح تعديل تكامل موجود في النظام.</p>`
+      },
+      'add-webhook': {
+        title: 'إضافة Webhook',
+        content: `<p>شرح إضافة Webhook جديد في النظام.</p>`
+      },
+      'edit-webhook': {
+        title: 'تعديل Webhook',
+        content: `<p>شرح تعديل Webhook موجود في النظام.</p>`
+      },
+      'add-api': {
+        title: 'إضافة API',
+        content: `<p>شرح إضافة API جديد في النظام.</p>`
+      },
+      'edit-api': {
+        title: 'تعديل API',
+        content: `<p>شرح تعديل API موجود في النظام.</p>`
+      },
+      'add-account-setting': {
+        title: 'إضافة إعداد',
+        content: `<p>شرح إضافة إعداد جديد في النظام.</p>`
+      },
+      'edit-account-setting': {
+        title: 'تعديل إعداد',
+        content: `<p>شرح تعديل إعداد موجود في النظام.</p>`
+      },
+      'add-staff': {
+        title: 'إضافة موظف',
+        content: `<p>شرح إضافة موظف جديد في النظام.</p>`
+      },
+      'edit-staff': {
+        title: 'تعديل موظف',
+        content: `<p>شرح تعديل موظف موجود في النظام.</p>`
+      },
+      'staff-settings': {
+        title: 'إعدادات الموظفين',
+        content: `<p>شرح إعدادات الموظفين في النظام.</p>`
+      },
+      'add-channel': {
+        title: 'إضافة قناة',
+        content: `<p>شرح إضافة قناة جديدة في النظام.</p>`
+      },
+      'edit-channel': {
+        title: 'تعديل قناة',
+        content: `<p>شرح تعديل قناة موجودة في النظام.</p>`
+      },
+      'webhook-settings': {
+        title: 'إعدادات Webhook',
+        content: `<p>شرح إعدادات Webhook في النظام.</p>`
+      },
+      'chat-settings': {
+        title: 'إعدادات المحادثة',
+        content: `<p>شرح إعدادات المحادثة في النظام.</p>`
+      },
+      'automation-settings': {
+        title: 'إعدادات الأتمتة',
+        content: `<p>شرح إعدادات الأتمتة في النظام.</p>`
+      },
+      'links-settings': {
+        title: 'إعدادات الروابط',
+        content: `<p>شرح إعدادات الروابط في النظام.</p>`
+      },
+      'plan-settings': {
+        title: 'الباقة',
+        content: `<p>شرح الباقة في النظام.</p>`
       }
     };
 

@@ -1088,9 +1088,9 @@
                       <i class="fas fa-chevron-down wd-category-icon"></i>
                     </div>
                     <div class="wd-category-articles">
-                      <a href="#" class="wd-article-link">انشاء تدفق</a>
-                      <a href="#" class="wd-article-link">تعديل تدفق</a>
-                      <a href="#" class="wd-article-link">بناء تدفق</a>
+                      <a href="#" class="wd-article-link" data-article-id="add-flow">انشاء تدفق</a>
+                      <a href="#" class="wd-article-link" data-article-id="edit-flow">تعديل تدفق</a>
+                      <a href="#" class="wd-article-link" data-article-id="build-flow">بناء تدفق</a>
                     </div>
                   </div>
 
@@ -1789,12 +1789,71 @@ const payment = await processPayment(paymentConfig);</code></pre>
       'payment-setup': {
         title: 'اعداد طريقة الدفع',
         content: `
-          <p>شرح إعداد طرق الدفع المختلفة وربط بوابات الدفع الإلكترونية.</p>
-          <ol>
-            <li>ادخل إلى إعدادات الدفع</li>
-            <li>اختر بوابة الدفع المناسبة</li>
-            <li>أدخل بيانات الحساب البنكي أو البطاقة</li>
-          </ol>
+          <h2>الخطوة الأولى</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/payment/1.png" alt="الخطوة الأولى - مدير أعمال ميتا" class="wd-step-image">
+            <ul>
+              <li>توجه إلى <a href="https://business.facebook.com/" target="_blank" style="color: #00bc60; text-decoration: none; font-weight: 600;">مدير أعمال ميتا</a></li>
+              <li>اضغط على الإعدادات</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الثانية</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/payment/2.png" alt="الخطوة الثانية - حسابات واتساب" class="wd-step-image">
+            <ul>
+              <li>اضغط على حسابات واتساب</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الثالثة</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/payment/3.png" alt="الخطوة الثالثة - اختيار حساب الواتساب" class="wd-step-image">
+            <ul>
+              <li>اختر حساب الواتساب</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الرابعة</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/payment/4.png" alt="الخطوة الرابعة - إعدادات الدفع" class="wd-step-image">
+            <ul>
+              <li>اضغط على إعدادات الدفع</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الخامسة</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/payment/5.png" alt="الخطوة الخامسة - إضافة طريقة دفع" class="wd-step-image">
+            <ul>
+              <li>اضغط على إضافة طريقة دفع</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة السادسة</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/payment/6.png" alt="الخطوة السادسة - التالي" class="wd-step-image">
+            <ul>
+              <li>اضغط التالي</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة السابعة</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/payment/7.png" alt="الخطوة السابعة - تفاصيل البطاقة" class="wd-step-image">
+            <ul>
+              <li>أدخل تفاصيل البطاقة</li>
+              <li>اضغط على حفظ</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الثامنة</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/payment/8.png" alt="الخطوة الثامنة - تحديد البطاقة الافتراضية" class="wd-step-image">
+            <ul>
+              <li>حدد البطاقة المضافة كافتراضي</li>
+            </ul>
+          </div>
         `
       },
       'account-troubleshooting': {
@@ -2175,7 +2234,81 @@ const payment = await processPayment(paymentConfig);</code></pre>
       'plan-settings': {
         title: 'الباقة',
         content: `<p>شرح الباقة في النظام.</p>`
-      }
+      },
+      'add-flow': {
+        title: 'انشاء تدفق',
+        content: `
+          <h2>الخطوة الأولى</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/flows/1.png" alt="الخطوة الأولى - قسم التدفقات" class="wd-step-image">
+            <ul>
+              <li>توجه إلى <a href="https://apps.widers.net/flowmaker" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم التدفقات</a></li>
+              <li>اضغط على "تدفق جديد"</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الثانية</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/flows/2.png" alt="الخطوة الثانية - إعدادات التدفق" class="wd-step-image">
+            <ul>
+              <li><strong>أدخل اسم التدفق:</strong> اسم واضح ووصفي للتدفق</li>
+              <li><strong>وصف التدفق:</strong> (اختياري) شرح مفصل عن وظيفة التدفق</li>
+              <li><strong>اختر حالة التدفق:</strong> نشط أو غير نشط</li>
+              <li><strong>اضغط إنشاء التدفق:</strong> لحفظ التدفق الجديد</li>
+            </ul>
+          </div>
+        `
+      },
+      'edit-flow': {
+        title: 'تعديل تدفق',
+        content: `
+          <h2>الخطوة الأولى</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/flows/3.png" alt="الخطوة الأولى - قسم التدفقات" class="wd-step-image">
+            <ul>
+              <li>توجه إلى <a href="https://apps.widers.net/flowmaker" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم التدفقات</a></li>
+              <li>اختر التدفق للتعديل</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الثانية</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/flows/4.png" alt="الخطوة الثانية - تعديل معلومات التدفق" class="wd-step-image">
+            <ul>
+              <li><strong>عدل على معلومات التدفق:</strong>
+                <ul>
+                  <li>اسم التدفق</li>
+                  <li>وصف التدفق</li>
+                  <li>حالة التدفق</li>
+                </ul>
+              </li>
+              <li><strong>اضغط على حفظ التعديلات:</strong> لحفظ التغييرات</li>
+            </ul>
+          </div>
+        `
+      },
+      'build-flow': {
+        title: 'بناء تدفق',
+        content: `
+          <h2>الخطوة الأولى</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/flows/5.png" alt="الخطوة الأولى - قسم التدفقات" class="wd-step-image">
+            <ul>
+              <li>توجه إلى <a href="https://apps.widers.net/flowmaker" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم التدفقات</a></li>
+              <li>اختر التدفق للبناء</li>
+            </ul>
+          </div>
+
+          <h2>الخطوة الثانية</h2>
+          <div class="wd-step-content">
+            <img src="../imgs/flows/6.png" alt="الخطوة الثانية - باني التدفقات" class="wd-step-image">
+            <ul>
+              <li><strong>أدخل التعديلات على باني التدفقات:</strong> قم بتصميم وتكوين خطوات التدفق</li>
+              <li><strong>اضغط على حفظ:</strong> لحفظ التغييرات</li>
+            </ul>
+          </div>
+        `
+      },
     };
 
     // تحميل المحتوى عند الضغط على عنصر

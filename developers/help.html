@@ -10,7 +10,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <style>
-
       /* Breadcrumb Navigation */
       .wd-breadcrumb {
         display: flex;
@@ -373,7 +372,6 @@
         will-change: transform;
         transform: translateZ(0);
         backface-visibility: hidden;
-        loading: lazy;
       }
 
       .wd-step-image:hover {
@@ -639,8 +637,13 @@
       }
 
       @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
       }
 
       /* Welcome Message */
@@ -828,7 +831,9 @@
 
       /* Lazy loading for images */
       .wd-step-image {
-        loading: lazy;
+        will-change: transform;
+        transform: translateZ(0);
+        backface-visibility: hidden;
       }
 
       /* Reduce repaints */
@@ -844,6 +849,7 @@
       }
     </style>
   </head>
+
   <body>
     <div class="wd-container">
       <!-- القسم الأول: القائمة الجانبية -->
@@ -1040,9 +1046,24 @@
                       <i class="fas fa-chevron-down wd-category-icon"></i>
                     </div>
                     <div class="wd-category-articles">
-                      <a href="#" class="wd-article-link active" data-article-id="whatsapp-setup">اعداد حساب واتساب</a>
-                      <a href="#" class="wd-article-link" data-article-id="payment-setup">اعداد طريقة الدفع</a>
-                      <a href="#" class="wd-article-link" data-article-id="account-troubleshooting">حلول مشاكل الحساب</a>
+                      <a
+                        href="#"
+                        class="wd-article-link active"
+                        data-article-id="whatsapp-setup"
+                        >اعداد حساب واتساب</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="payment-setup"
+                        >اعداد طريقة الدفع</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="account-troubleshooting"
+                        >حلول مشاكل الحساب</a
+                      >
                     </div>
                   </div>
 
@@ -1055,10 +1076,30 @@
                       <i class="fas fa-chevron-down wd-category-icon"></i>
                     </div>
                     <div class="wd-category-articles">
-                      <a href="#" class="wd-article-link" data-article-id="new-conversation">بدء محادثة جديدة</a>
-                      <a href="#" class="wd-article-link" data-article-id="filter-conversations">فلترة المحادثات</a>
-                      <a href="#" class="wd-article-link" data-article-id="conversation-actions">إجراءات المحادثة</a>
-                      <a href="#" class="wd-article-link" data-article-id="conversation-status">حالات المحادثة</a>
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="new-conversation"
+                        >بدء محادثة جديدة</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="filter-conversations"
+                        >فلترة المحادثات</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="conversation-actions"
+                        >إجراءات المحادثة</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="conversation-status"
+                        >حالات المحادثة</a
+                      >
                     </div>
                   </div>
 
@@ -1071,11 +1112,36 @@
                       <i class="fas fa-chevron-down wd-category-icon"></i>
                     </div>
                     <div class="wd-category-articles">
-                      <a href="#" class="wd-article-link" data-article-id="add-contact">إضافة جهة إتصال</a>
-                      <a href="#" class="wd-article-link" data-article-id="edit-contact">تعديل جهة إتصال</a>
-                      <a href="#" class="wd-article-link" data-article-id="filter-contacts">فلترة جهات الاتصال</a>
-                      <a href="#" class="wd-article-link" data-article-id="import-export-contacts">استيراد وتصدير جهات الاتصال</a>
-                      <a href="#" class="wd-article-link" data-article-id="add-group">اضافة مجموعة</a>
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="add-contact"
+                        >إضافة جهة إتصال</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="edit-contact"
+                        >تعديل جهة إتصال</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="filter-contacts"
+                        >فلترة جهات الاتصال</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="import-export-contacts"
+                        >استيراد وتصدير جهات الاتصال</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="add-group"
+                        >اضافة مجموعة</a
+                      >
                     </div>
                   </div>
 
@@ -1084,13 +1150,28 @@
                       class="wd-category-header"
                       onclick="toggleCategory(this)"
                     >
-                      <span class="wd-category-title">التدفقات</span>
+                      <span class="wd-category-title">التدفقات (روبوتات الدردشة)</span>
                       <i class="fas fa-chevron-down wd-category-icon"></i>
                     </div>
                     <div class="wd-category-articles">
-                      <a href="#" class="wd-article-link" data-article-id="add-flow">انشاء تدفق</a>
-                      <a href="#" class="wd-article-link" data-article-id="edit-flow">تعديل تدفق</a>
-                      <a href="#" class="wd-article-link" data-article-id="build-flow">بناء تدفق</a>
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="add-flow"
+                        >انشاء تدفق</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="edit-flow"
+                        >تعديل تدفق</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="build-flow"
+                        >بناء تدفق</a
+                      >
                     </div>
                   </div>
 
@@ -1103,8 +1184,19 @@
                       <i class="fas fa-chevron-down wd-category-icon"></i>
                     </div>
                     <div class="wd-category-articles">
-                      <a href="#" class="wd-article-link" data-article-id="security-settings"> إنشاء حملة</a>
-                      <a href="#" class="wd-article-link" data-article-id="data-protection">عرض حملة</a>
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="add-campaign"
+                      >
+                        إنشاء حملة</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="view-campaign"
+                        >عرض حملة</a
+                      >
                     </div>
                   </div>
                 </div>
@@ -1120,13 +1212,9 @@
                       <i class="fas fa-chevron-down wd-category-icon"></i>
                     </div>
                     <div class="wd-category-articles">
-                      <a href="#" class="wd-article-link"
-                        >إضافة حدث</a
-                      >
+                      <a href="#" class="wd-article-link">إضافة حدث</a>
                       <a href="#" class="wd-article-link">حجز جديد</a>
-                      <a href="#" class="wd-article-link"
-                        >إضافة مورد</a
-                      >
+                      <a href="#" class="wd-article-link">إضافة مورد</a>
                     </div>
                   </div>
 
@@ -1140,72 +1228,181 @@
                     </div>
                     <div class="wd-category-articles">
                       <div class="wd-subcategory">
-                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                        <div
+                          class="wd-subcategory-header"
+                          onclick="toggleSubcategory(this)"
+                        >
                           <h4>متغيرات المستخدم</h4>
-                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                          <i
+                            class="fas fa-chevron-down wd-subcategory-icon"
+                          ></i>
                         </div>
                         <div class="wd-subcategory-articles">
-                          <a href="#" class="wd-article-link" data-article-id="add-variable">انشاء متغير</a>
-                          <a href="#" class="wd-article-link" data-article-id="edit-variable">تعديل متغير</a>
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-variable"
+                            >انشاء متغير</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="edit-variable"
+                            >تعديل أو حذف متغير</a
+                          >
                         </div>
                       </div>
                       <div class="wd-subcategory">
-                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                        <div
+                          class="wd-subcategory-header"
+                          onclick="toggleSubcategory(this)"
+                        >
                           <h4>الرد الآلي</h4>
-                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                          <i
+                            class="fas fa-chevron-down wd-subcategory-icon"
+                          ></i>
                         </div>
                         <div class="wd-subcategory-articles">
-                          <a href="#" class="wd-article-link" data-article-id="add-auto-reply">انشاء رد آلي افتراضي</a>
-                          <a href="#" class="wd-article-link" data-article-id="edit-auto-reply">انشاء رد آلي بسيط</a>
-                          <a href="#" class="wd-article-link" data-article-id="edit-auto-reply">انشاء رد آلي قائم على قالب</a>
-                          <a href="#" class="wd-article-link" data-article-id="edit-auto-reply">انشاء رد آلي قائم على تدفق</a>
-                          <a href="#" class="wd-article-link" data-article-id="edit-auto-reply">تعديل رد آلي</a>
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-default-auto-reply"
+                            >انشاء رد آلي افتراضي</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-simple-auto-reply"
+                            >انشاء رد آلي بسيط</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-template-auto-reply"
+                            >انشاء رد آلي قائم على قالب</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-flow-auto-reply"
+                            >انشاء رد آلي قائم على تدفق</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="edit-auto-reply"
+                            >تعديل أو حذف رد آلي</a
+                          >
                         </div>
                       </div>
                       <div class="wd-subcategory">
-                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                        <div
+                          class="wd-subcategory-header"
+                          onclick="toggleSubcategory(this)"
+                        >
                           <h4>رحلة العميل</h4>
-                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                          <i
+                            class="fas fa-chevron-down wd-subcategory-icon"
+                          ></i>
                         </div>
                         <div class="wd-subcategory-articles">
-                          <a href="#" class="wd-article-link" data-article-id="add-journey">انشاء رحلة</a>
-                          <a href="#" class="wd-article-link" data-article-id="edit-journey">تعديل رحلة</a>
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-journey"
+                            >انشاء رحلة</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="edit-journey"
+                            >تعديل أو حذف رحلة</a
+                          >
                         </div>
                       </div>
                       <div class="wd-subcategory">
-                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                        <div
+                          class="wd-subcategory-header"
+                          onclick="toggleSubcategory(this)"
+                        >
                           <h4>الوسوم</h4>
-                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                          <i
+                            class="fas fa-chevron-down wd-subcategory-icon"
+                          ></i>
                         </div>
                         <div class="wd-subcategory-articles">
-                          <a href="#" class="wd-article-link" data-article-id="add-tag">انشاء وسم</a>
-                          <a href="#" class="wd-article-link" data-article-id="edit-tag">تعديل وسم</a>
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-tag"
+                            >انشاء وسم</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="edit-tag"
+                            >تعديل أو حذف وسم</a
+                          >
                         </div>
                       </div>
                       <div class="wd-subcategory">
-                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                        <div
+                          class="wd-subcategory-header"
+                          onclick="toggleSubcategory(this)"
+                        >
                           <h4>الاختصارات</h4>
-                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                          <i
+                            class="fas fa-chevron-down wd-subcategory-icon"
+                          ></i>
                         </div>
                         <div class="wd-subcategory-articles">
-                          <a href="#" class="wd-article-link" data-article-id="add-shortcut">انشاء اختصار</a>
-                          <a href="#" class="wd-article-link" data-article-id="edit-shortcut">تعديل اختصار</a>
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-shortcut"
+                            >انشاء اختصار</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="edit-shortcut"
+                            >تعديل أو حذف اختصار</a
+                          >
                         </div>
                       </div>
                       <div class="wd-subcategory">
-                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                        <div
+                          class="wd-subcategory-header"
+                          onclick="toggleSubcategory(this)"
+                        >
                           <h4>قوالب الواتساب</h4>
-                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                          <i
+                            class="fas fa-chevron-down wd-subcategory-icon"
+                          ></i>
                         </div>
                         <div class="wd-subcategory-articles">
-                          <a href="#" class="wd-article-link" data-article-id="add-template">انشاء قالب</a>
-                          <a href="#" class="wd-article-link" data-article-id="edit-template">انشاء قالب محادثة</a>
-                          <a href="#" class="wd-article-link" data-article-id="edit-template">مزامنة القوالب</a>
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-template"
+                            >انشاء قالب</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-chat-template"
+                            >انشاء قالب محادثة</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="sync-template"
+                            >مزامنة القوالب</a
+                          >
                         </div>
                       </div>
                     </div>
                   </div>
-
 
                   <div class="wd-help-category">
                     <div
@@ -1217,44 +1414,81 @@
                     </div>
                     <div class="wd-category-articles">
                       <div class="wd-subcategory">
-                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                        <div
+                          class="wd-subcategory-header"
+                          onclick="toggleSubcategory(this)"
+                        >
                           <h4>السجلات</h4>
-                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                          <i
+                            class="fas fa-chevron-down wd-subcategory-icon"
+                          ></i>
                         </div>
-                        <div class="wd-subcategory-articles">
-                        </div>
+                        <div class="wd-subcategory-articles"></div>
                       </div>
                       <div class="wd-subcategory">
-                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                        <div
+                          class="wd-subcategory-header"
+                          onclick="toggleSubcategory(this)"
+                        >
                           <h4>التكاملات</h4>
-                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                          <i
+                            class="fas fa-chevron-down wd-subcategory-icon"
+                          ></i>
                         </div>
                         <div class="wd-subcategory-articles">
-                          <a href="#" class="wd-article-link" data-article-id="add-integration">التكامل مع سلة</a>
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-integration"
+                            >التكامل مع سلة</a
+                          >
                         </div>
                       </div>
                       <div class="wd-subcategory">
-                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                        <div
+                          class="wd-subcategory-header"
+                          onclick="toggleSubcategory(this)"
+                        >
                           <h4>Webhooks</h4>
-                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                          <i
+                            class="fas fa-chevron-down wd-subcategory-icon"
+                          ></i>
                         </div>
                         <div class="wd-subcategory-articles">
-                          <a href="#" class="wd-article-link" data-article-id="add-webhook">إضافة Webhook</a>
-                          <a href="#" class="wd-article-link" data-article-id="edit-webhook">تعديل Webhook</a>
-                          <a href="#" class="wd-article-link" data-article-id="edit-webhook">سجلات Webhook</a>
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-webhook"
+                            >إضافة Webhook</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="edit-webhook"
+                            >تعديل Webhook</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="edit-webhook"
+                            >سجلات Webhook</a
+                          >
                         </div>
                       </div>
                       <div class="wd-subcategory">
-                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                        <div
+                          class="wd-subcategory-header"
+                          onclick="toggleSubcategory(this)"
+                        >
                           <h4>API</h4>
-                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                          <i
+                            class="fas fa-chevron-down wd-subcategory-icon"
+                          ></i>
                         </div>
-                        <div class="wd-subcategory-articles">
-                        </div>
+                        <div class="wd-subcategory-articles"></div>
                       </div>
                     </div>
                   </div>
-
 
                   <div class="wd-help-category">
                     <div
@@ -1266,44 +1500,118 @@
                     </div>
                     <div class="wd-category-articles">
                       <div class="wd-subcategory">
-                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                        <div
+                          class="wd-subcategory-header"
+                          onclick="toggleSubcategory(this)"
+                        >
                           <h4>إعدادات الحساب</h4>
-                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                          <i
+                            class="fas fa-chevron-down wd-subcategory-icon"
+                          ></i>
                         </div>
                         <div class="wd-subcategory-articles">
-                          <a href="#" class="wd-article-link" data-article-id="add-account-setting">تعديل الملف الشخصي</a>
-                          <a href="#" class="wd-article-link" data-article-id="edit-account-setting">تعديل امان الحساب</a>
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-account-setting"
+                            >تعديل الملف الشخصي</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="edit-account-setting"
+                            >تعديل امان الحساب</a
+                          >
                         </div>
                       </div>
                       <div class="wd-subcategory">
-                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                        <div
+                          class="wd-subcategory-header"
+                          onclick="toggleSubcategory(this)"
+                        >
                           <h4>الموظفين</h4>
-                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                          <i
+                            class="fas fa-chevron-down wd-subcategory-icon"
+                          ></i>
                         </div>
                         <div class="wd-subcategory-articles">
-                          <a href="#" class="wd-article-link" data-article-id="add-staff">إضافة موظف</a>
-                          <a href="#" class="wd-article-link" data-article-id="edit-staff">تعديل موظف</a>
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-staff"
+                            >إضافة موظف</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="edit-staff"
+                            >تعديل موظف</a
+                          >
                         </div>
                       </div>
-                      <a href="#" class="wd-article-link" data-article-id="staff-settings">إعدادات الموظفين</a>
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="staff-settings"
+                        >إعدادات الموظفين</a
+                      >
                       <div class="wd-subcategory">
-                        <div class="wd-subcategory-header" onclick="toggleSubcategory(this)">
+                        <div
+                          class="wd-subcategory-header"
+                          onclick="toggleSubcategory(this)"
+                        >
                           <h4>قنوات التواصل</h4>
-                          <i class="fas fa-chevron-down wd-subcategory-icon"></i>
+                          <i
+                            class="fas fa-chevron-down wd-subcategory-icon"
+                          ></i>
                         </div>
                         <div class="wd-subcategory-articles">
-                          <a href="#" class="wd-article-link" data-article-id="add-channel">إضافة قناة</a>
-                          <a href="#" class="wd-article-link" data-article-id="edit-channel">تعديل قناة</a>
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-channel"
+                            >إضافة قناة</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="edit-channel"
+                            >تعديل قناة</a
+                          >
                         </div>
                       </div>
-                      <a href="#" class="wd-article-link" data-article-id="webhook-settings">إعدادات Webhook</a>
-                      <a href="#" class="wd-article-link" data-article-id="chat-settings">إعدادات المحادثة</a>
-                      <a href="#" class="wd-article-link" data-article-id="automation-settings">إعدادات الأتمتة</a>
-                      <a href="#" class="wd-article-link" data-article-id="links-settings">إعدادات الروابط</a>
-                      <a href="#" class="wd-article-link" data-article-id="plan-settings">الباقة</a>
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="webhook-settings"
+                        >إعدادات Webhook</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="chat-settings"
+                        >إعدادات المحادثة</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="automation-settings"
+                        >إعدادات الأتمتة</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="links-settings"
+                        >إعدادات الروابط</a
+                      >
+                      <a
+                        href="#"
+                        class="wd-article-link"
+                        data-article-id="plan-settings"
+                        >الباقة</a
+                      >
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -1321,7 +1629,10 @@
                 <div class="wd-welcome-content">
                   <i class="fas fa-book-open"></i>
                   <h2>مرحباً بك في مكتبة الشروحات</h2>
-                  <p>يرجى اختيار أحد أقسام الشروحات من القائمة الجانبية لعرض المحتوى المطلوب</p>
+                  <p>
+                    يرجى اختيار أحد أقسام الشروحات من القائمة الجانبية لعرض
+                    المحتوى المطلوب
+                  </p>
                   <div class="wd-welcome-features">
                     <div class="wd-feature">
                       <i class="fas fa-search"></i>
@@ -1340,10 +1651,12 @@
               </div>
 
               <!-- Article Content -->
-              <div id="articleContent" style="display: none;">
+              <div id="articleContent" style="display: none">
                 <div class="wd-article-header">
-                <h1 class="wd-article-title">إنشاء متجر جديد في منصة وايدرز</h1>
-                <!--
+                  <h1 class="wd-article-title">
+                    إنشاء متجر جديد في منصة وايدرز
+                  </h1>
+                  <!--
                 <div class="wd-article-meta">
                   <span class="wd-article-meta-item">
                     <i class="far fa-calendar-alt"></i>
@@ -1358,90 +1671,90 @@
                     1,234 مشاهدة
                   </span>
                 </div>
-                -->
-              </div>
+                --></div>
 
-              <div class="wd-article-content">
-                <p>
-                  مرحباً بك في دليل إنشاء متجر جديد في منصة وايدرز! سنرشدك خلال
-                  الخطوات الأساسية لإنشاء متجرك الإلكتروني الأول.
-                </p>
+                <div class="wd-article-content">
+                  <p>
+                    مرحباً بك في دليل إنشاء متجر جديد في منصة وايدرز! سنرشدك
+                    خلال الخطوات الأساسية لإنشاء متجرك الإلكتروني الأول.
+                  </p>
 
-                <h2>المتطلبات الأساسية</h2>
-                <p>قبل البدء في إنشاء متجرك، تأكد من توفر العناصر التالية:</p>
-                <ul>
-                  <li>حساب نشط في منصة وايدرز</li>
-                  <li>معلومات الشركة الأساسية</li>
-                  <li>شعار الشركة (اختياري)</li>
-                  <li>معلومات الاتصال</li>
-                  <li>طريقة دفع صالحة</li>
-                </ul>
-
-                <h2>خطوات إنشاء المتجر</h2>
-                <ol>
-                  <li>
-                    <strong>تسجيل الدخول:</strong>
-                    <p>
-                      قم بتسجيل الدخول إلى لوحة التحكم الخاصة بك في منصة وايدرز.
-                    </p>
-                  </li>
-                  <li>
-                    <strong>إنشاء متجر جديد:</strong>
-                    <p>اضغط على زر "إنشاء متجر جديد" في لوحة التحكم.</p>
-                  </li>
-                  <li>
-                    <strong>إدخال المعلومات الأساسية:</strong>
-                    <p>املأ النموذج بالمعلومات التالية:</p>
-                    <ul>
-                      <li>اسم المتجر</li>
-                      <li>وصف المتجر</li>
-                      <li>فئة المتجر</li>
-                      <li>العنوان</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <strong>إعداد المدفوعات:</strong>
-                    <p>
-                      قم بربط حسابك البنكي أو بطاقة الائتمان لتلقي المدفوعات.
-                    </p>
-                  </li>
-                  <li>
-                    <strong>تخصيص التصميم:</strong>
-                    <p>اختر قالب التصميم المناسب لمتجرك وقم بتخصيصه.</p>
-                  </li>
-                  <li>
-                    <strong>إضافة المنتجات:</strong>
-                    <p>ابدأ بإضافة منتجاتك الأولى إلى المتجر.</p>
-                  </li>
-                </ol>
-
-                <div class="wd-tips-section">
-                  <h4>
-                    <i class="fas fa-lightbulb"></i>
-                    نصائح مهمة
-                  </h4>
+                  <h2>المتطلبات الأساسية</h2>
+                  <p>قبل البدء في إنشاء متجرك، تأكد من توفر العناصر التالية:</p>
                   <ul>
-                    <li>اختر اسماً واضحاً ومميزاً لمتجرك</li>
-                    <li>اكتب وصفاً شاملاً ومقنعاً</li>
-                    <li>استخدم صوراً عالية الجودة للمنتجات</li>
-                    <li>حدد أسعاراً تنافسية ومناسبة</li>
+                    <li>حساب نشط في منصة وايدرز</li>
+                    <li>معلومات الشركة الأساسية</li>
+                    <li>شعار الشركة (اختياري)</li>
+                    <li>معلومات الاتصال</li>
+                    <li>طريقة دفع صالحة</li>
                   </ul>
-                </div>
 
-                <h2>إعداد المدفوعات</h2>
-                <p>
-                  لتلقي المدفوعات من عملائك، تحتاج إلى إعداد طريقة دفع صالحة.
-                  تدعم منصة وايدرز العديد من طرق الدفع:
-                </p>
-                <ul>
-                  <li>البطاقات الائتمانية (Visa, MasterCard)</li>
-                  <li>المحافظ الإلكترونية (PayPal, Apple Pay)</li>
-                  <li>التحويلات البنكية</li>
-                  <li>الدفع عند الاستلام</li>
-                </ul>
+                  <h2>خطوات إنشاء المتجر</h2>
+                  <ol>
+                    <li>
+                      <strong>تسجيل الدخول:</strong>
+                      <p>
+                        قم بتسجيل الدخول إلى لوحة التحكم الخاصة بك في منصة
+                        وايدرز.
+                      </p>
+                    </li>
+                    <li>
+                      <strong>إنشاء متجر جديد:</strong>
+                      <p>اضغط على زر "إنشاء متجر جديد" في لوحة التحكم.</p>
+                    </li>
+                    <li>
+                      <strong>إدخال المعلومات الأساسية:</strong>
+                      <p>املأ النموذج بالمعلومات التالية:</p>
+                      <ul>
+                        <li>اسم المتجر</li>
+                        <li>وصف المتجر</li>
+                        <li>فئة المتجر</li>
+                        <li>العنوان</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>إعداد المدفوعات:</strong>
+                      <p>
+                        قم بربط حسابك البنكي أو بطاقة الائتمان لتلقي المدفوعات.
+                      </p>
+                    </li>
+                    <li>
+                      <strong>تخصيص التصميم:</strong>
+                      <p>اختر قالب التصميم المناسب لمتجرك وقم بتخصيصه.</p>
+                    </li>
+                    <li>
+                      <strong>إضافة المنتجات:</strong>
+                      <p>ابدأ بإضافة منتجاتك الأولى إلى المتجر.</p>
+                    </li>
+                  </ol>
 
-                <h3>كود مثال لإعداد الدفع</h3>
-                <pre><code>// مثال على إعداد الدفع
+                  <div class="wd-tips-section">
+                    <h4>
+                      <i class="fas fa-lightbulb"></i>
+                      نصائح مهمة
+                    </h4>
+                    <ul>
+                      <li>اختر اسماً واضحاً ومميزاً لمتجرك</li>
+                      <li>اكتب وصفاً شاملاً ومقنعاً</li>
+                      <li>استخدم صوراً عالية الجودة للمنتجات</li>
+                      <li>حدد أسعاراً تنافسية ومناسبة</li>
+                    </ul>
+                  </div>
+
+                  <h2>إعداد المدفوعات</h2>
+                  <p>
+                    لتلقي المدفوعات من عملائك، تحتاج إلى إعداد طريقة دفع صالحة.
+                    تدعم منصة وايدرز العديد من طرق الدفع:
+                  </p>
+                  <ul>
+                    <li>البطاقات الائتمانية (Visa, MasterCard)</li>
+                    <li>المحافظ الإلكترونية (PayPal, Apple Pay)</li>
+                    <li>التحويلات البنكية</li>
+                    <li>الدفع عند الاستلام</li>
+                  </ul>
+
+                  <h3>كود مثال لإعداد الدفع</h3>
+                  <pre><code>// مثال على إعداد الدفع
 const paymentConfig = {
   method: 'card',
   currency: 'SAR',
@@ -1452,42 +1765,43 @@ const paymentConfig = {
 // إرسال طلب الدفع
 const payment = await processPayment(paymentConfig);</code></pre>
 
-                <h2>الخطوات التالية</h2>
-                <p>بعد إنشاء متجرك بنجاح، يمكنك:</p>
-                <ul>
-                  <li>إضافة المزيد من المنتجات</li>
-                  <li>تخصيص تصميم المتجر</li>
-                  <li>إعداد طرق الشحن</li>
-                  <li>إعداد التكاملات مع منصات أخرى</li>
-                  <li>بدء حملات التسويق</li>
-                </ul>
+                  <h2>الخطوات التالية</h2>
+                  <p>بعد إنشاء متجرك بنجاح، يمكنك:</p>
+                  <ul>
+                    <li>إضافة المزيد من المنتجات</li>
+                    <li>تخصيص تصميم المتجر</li>
+                    <li>إعداد طرق الشحن</li>
+                    <li>إعداد التكاملات مع منصات أخرى</li>
+                    <li>بدء حملات التسويق</li>
+                  </ul>
 
-                <div class="wd-quick-actions">
-                  <a href="#" class="wd-quick-action">
-                    <i class="fas fa-play"></i>
-                    <span>شاهد الفيديو التعليمي</span>
+                  <div class="wd-quick-actions">
+                    <a href="#" class="wd-quick-action">
+                      <i class="fas fa-play"></i>
+                      <span>شاهد الفيديو التعليمي</span>
+                    </a>
+                    <a href="#" class="wd-quick-action">
+                      <i class="fas fa-download"></i>
+                      <span>تحميل الدليل الكامل</span>
+                    </a>
+                    <a href="#" class="wd-quick-action">
+                      <i class="fas fa-headset"></i>
+                      <span>تواصل مع الدعم</span>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Article Navigation -->
+                <div class="wd-article-navigation">
+                  <a href="#" class="wd-nav-link disabled">
+                    <i class="fas fa-chevron-right"></i>
+                    <span>المقال السابق</span>
                   </a>
-                  <a href="#" class="wd-quick-action">
-                    <i class="fas fa-download"></i>
-                    <span>تحميل الدليل الكامل</span>
-                  </a>
-                  <a href="#" class="wd-quick-action">
-                    <i class="fas fa-headset"></i>
-                    <span>تواصل مع الدعم</span>
+                  <a href="#" class="wd-nav-link">
+                    <span>المقال التالي</span>
+                    <i class="fas fa-chevron-left"></i>
                   </a>
                 </div>
-              </div>
-
-              <!-- Article Navigation -->
-              <div class="wd-article-navigation">
-                <a href="#" class="wd-nav-link disabled">
-                  <i class="fas fa-chevron-right"></i>
-                  <span>المقال السابق</span>
-                </a>
-                <a href="#" class="wd-nav-link">
-                  <span>المقال التالي</span>
-                  <i class="fas fa-chevron-left"></i>
-                </a>
               </div>
             </div>
           </div>
@@ -1558,7 +1872,7 @@ const payment = await processPayment(paymentConfig);</code></pre>
     <div class="wd-image-modal" id="imageModal">
       <div class="wd-modal-content">
         <span class="wd-modal-close" onclick="closeImageModal()">&times;</span>
-        <img class="wd-modal-image" id="modalImage" src="" alt="">
+        <img class="wd-modal-image" id="modalImage" src="" alt="" />
         <div class="wd-modal-caption" id="modalCaption"></div>
         <button class="wd-modal-close-btn" onclick="closeImageModal()">
           <i class="fas fa-times"></i>
@@ -1574,22 +1888,26 @@ const payment = await processPayment(paymentConfig);</code></pre>
         const icon = header.querySelector(".wd-category-icon");
 
         // إغلاق جميع القوائم الأخرى
-        document.querySelectorAll(".wd-category-header").forEach((otherHeader) => {
-          if (otherHeader !== header) {
-            const otherArticles = otherHeader.nextElementSibling;
-            const otherIcon = otherHeader.querySelector(".wd-category-icon");
-            otherArticles.classList.remove("expanded");
-            otherHeader.classList.remove("expanded");
-          }
-        });
+        document
+          .querySelectorAll(".wd-category-header")
+          .forEach((otherHeader) => {
+            if (otherHeader !== header) {
+              const otherArticles = otherHeader.nextElementSibling;
+              const otherIcon = otherHeader.querySelector(".wd-category-icon");
+              otherArticles.classList.remove("expanded");
+              otherHeader.classList.remove("expanded");
+            }
+          });
 
         // إغلاق جميع الأقسام الفرعية
-        document.querySelectorAll(".wd-subcategory-header").forEach((subHeader) => {
-          const subArticles = subHeader.nextElementSibling;
-          const subIcon = subHeader.querySelector(".wd-subcategory-icon");
-          subArticles.classList.remove("expanded");
-          subHeader.classList.remove("expanded");
-        });
+        document
+          .querySelectorAll(".wd-subcategory-header")
+          .forEach((subHeader) => {
+            const subArticles = subHeader.nextElementSibling;
+            const subIcon = subHeader.querySelector(".wd-subcategory-icon");
+            subArticles.classList.remove("expanded");
+            subHeader.classList.remove("expanded");
+          });
 
         // تبديل حالة القائمة الحالية
         if (articles.classList.contains("expanded")) {
@@ -1668,14 +1986,18 @@ const payment = await processPayment(paymentConfig);</code></pre>
         const icon = header.querySelector(".wd-subcategory-icon");
 
         // إغلاق جميع الأقسام الفرعية الأخرى
-        document.querySelectorAll(".wd-subcategory-header").forEach((otherHeader) => {
-          if (otherHeader !== header) {
-            const otherArticles = otherHeader.nextElementSibling;
-            const otherIcon = otherHeader.querySelector(".wd-subcategory-icon");
-            otherArticles.classList.remove("expanded");
-            otherHeader.classList.remove("expanded");
-          }
-        });
+        document
+          .querySelectorAll(".wd-subcategory-header")
+          .forEach((otherHeader) => {
+            if (otherHeader !== header) {
+              const otherArticles = otherHeader.nextElementSibling;
+              const otherIcon = otherHeader.querySelector(
+                ".wd-subcategory-icon"
+              );
+              otherArticles.classList.remove("expanded");
+              otherHeader.classList.remove("expanded");
+            }
+          });
 
         // تبديل حالة القسم الفرعي الحالي
         if (articles.classList.contains("expanded")) {
@@ -1688,11 +2010,11 @@ const payment = await processPayment(paymentConfig);</code></pre>
       }
     </script>
     <script>
-    // قاعدة بيانات مصغرة للمحتوى (يمكنك التوسعة لاحقاً)
-    const articlesData = {
-      'whatsapp-setup': {
-        title: 'اعداد حساب واتساب',
-        content: `
+      // قاعدة بيانات مصغرة للمحتوى (يمكنك التوسعة لاحقاً)
+      const articlesData = {
+        "whatsapp-setup": {
+          title: "اعداد حساب واتساب",
+          content: `
           <h2>تجهيز متطلبات الربط</h2>
           <p>قبل البدء، تأكد من توفر الآتي:</p>
           <ul>
@@ -1784,11 +2106,11 @@ const payment = await processPayment(paymentConfig);</code></pre>
               <li>اختر اكمال لاتمام الربط</li>
             </ul>
           </div>
-        `
-      },
-      'payment-setup': {
-        title: 'اعداد طريقة الدفع',
-        content: `
+        `,
+        },
+        "payment-setup": {
+          title: "اعداد طريقة الدفع",
+          content: `
           <h2>الخطوة الأولى</h2>
           <div class="wd-step-content">
             <img src="../imgs/payment/1.png" alt="الخطوة الأولى - مدير أعمال ميتا" class="wd-step-image">
@@ -1854,22 +2176,22 @@ const payment = await processPayment(paymentConfig);</code></pre>
               <li>حدد البطاقة المضافة كافتراضي</li>
             </ul>
           </div>
-        `
-      },
-      'account-troubleshooting': {
-        title: 'حلول مشاكل الحساب',
-        content: `
+        `,
+        },
+        "account-troubleshooting": {
+          title: "حلول مشاكل الحساب",
+          content: `
           <p>دليل لحل أشهر مشاكل الحساب مثل نسيان كلمة المرور أو مشاكل التحقق.</p>
           <ul>
             <li>استخدم خاصية استعادة كلمة المرور</li>
             <li>تأكد من صحة البريد الإلكتروني</li>
             <li>تواصل مع الدعم الفني إذا استمرت المشكلة</li>
           </ul>
-        `
-      },
-      'new-conversation': {
-        title: 'بدء محادثة جديدة',
-        content: `
+        `,
+        },
+        "new-conversation": {
+          title: "بدء محادثة جديدة",
+          content: `
           <h2>الخطوة الأولى</h2>
           <div class="wd-step-content">
             <img src="../imgs/conversation/1.png" alt="الخطوة الأولى - قسم المحادثات" class="wd-step-image">
@@ -1892,11 +2214,11 @@ const payment = await processPayment(paymentConfig);</code></pre>
               <li><strong>اضغط "بدء المحادثة"</strong> لإتمام العملية</li>
             </ul>
           </div>
-        `
-      },
-      'filter-conversations': {
-        title: 'فلترة المحادثات',
-        content: `
+        `,
+        },
+        "filter-conversations": {
+          title: "فلترة المحادثات",
+          content: `
           <h2>الخطوة الأولى</h2>
           <div class="wd-step-content">
             <img src="../imgs/conversation/3.png" alt="الخطوة الأولى - قسم المحادثات" class="wd-step-image">
@@ -1915,11 +2237,11 @@ const payment = await processPayment(paymentConfig);</code></pre>
                 <li><strong>اختر الوسوم:</strong> لتصفية المحادثات حسب الوسوم المحددة</li>
             </ul>
           </div>
-        `
-      },
-      'conversation-actions': {
-        title: 'إجراءات المحادثة',
-        content: `
+        `,
+        },
+        "conversation-actions": {
+          title: "إجراءات المحادثة",
+          content: `
           <h2>الخطوة الأولى</h2>
           <div class="wd-step-content">
             <img src="../imgs/conversation/5.png" alt="الخطوة الأولى - قسم المحادثات" class="wd-step-image">
@@ -1937,11 +2259,11 @@ const payment = await processPayment(paymentConfig);</code></pre>
               <li><strong>أضف وسوم للمحادثة:</strong> لتصنيف وتنظيم المحادثة</li>
             </ul>
           </div>
-        `
-      },
-      'conversation-status': {
-        title: 'حالات المحادثة',
-        content: `
+        `,
+        },
+        "conversation-status": {
+          title: "حالات المحادثة",
+          content: `
           <h2>الخطوة الأولى</h2>
           <div class="wd-step-content">
             <img src="../imgs/conversation/5.png" alt="الخطوة الأولى - قسم المحادثات" class="wd-step-image">
@@ -1958,11 +2280,11 @@ const payment = await processPayment(paymentConfig);</code></pre>
               <li><strong>اختر إغلاق أو فتح المحادثة:</strong> لتغيير حالة المحادثة حسب الحاجة</li>
             </ul>
           </div>
-        `
-      },
-      'add-contact': {
-        title: 'إضافة جهة إتصال',
-        content: `
+        `,
+        },
+        "add-contact": {
+          title: "إضافة جهة إتصال",
+          content: `
           <h2>الخطوة الأولى</h2>
           <div class="wd-step-content">
             <img src="../imgs/contacts/1.png" alt="الخطوة الأولى - قسم جهات الاتصال" class="wd-step-image">
@@ -1983,11 +2305,11 @@ const payment = await processPayment(paymentConfig);</code></pre>
               <li><strong>اضغط "حفظ جهة الاتصال":</strong> لحفظ البيانات</li>
             </ul>
           </div>
-        `
-      },
-      'edit-contact': {
-        title: 'تعديل جهة إتصال',
-        content: `
+        `,
+        },
+        "edit-contact": {
+          title: "تعديل جهة إتصال",
+          content: `
           <h2>الخطوة الأولى</h2>
           <div class="wd-step-content">
             <img src="../imgs/contacts/3.png" alt="الخطوة الأولى - قسم جهات الاتصال" class="wd-step-image">
@@ -2013,11 +2335,11 @@ const payment = await processPayment(paymentConfig);</code></pre>
               <li><strong>اضغط "حفظ التعديلات":</strong> لحفظ التغييرات</li>
             </ul>
           </div>
-        `
-      },
-      'filter-contacts': {
-        title: 'فلترة جهات الاتصال',
-        content: `
+        `,
+        },
+        "filter-contacts": {
+          title: "فلترة جهات الاتصال",
+          content: `
           <h2>الخطوة الأولى</h2>
           <div class="wd-step-content">
             <img src="../imgs/contacts/5.png" alt="الخطوة الأولى - قسم جهات الاتصال" class="wd-step-image">
@@ -2035,11 +2357,11 @@ const payment = await processPayment(paymentConfig);</code></pre>
               <li><strong>اضغط تطبيق الفلتر</strong></li>
             </ul>
           </div>
-        `
-      },
-      'import-export-contacts': {
-        title: 'استيراد وتصدير جهات الاتصال',
-        content: `
+        `,
+        },
+        "import-export-contacts": {
+          title: "استيراد وتصدير جهات الاتصال",
+          content: `
           <h2>الخطوة الأولى</h2>
           <div class="wd-step-content">
             <img src="../imgs/contacts/7.png" alt="الخطوة الأولى - قسم جهات الاتصال" class="wd-step-image">
@@ -2058,11 +2380,11 @@ const payment = await processPayment(paymentConfig);</code></pre>
               <li><strong>اضغط استيراد:</strong> لبدء عملية الاستيراد</li>
             </ul>
           </div>
-        `
-      },
-      'add-group': {
-        title: 'اضافة مجموعة',
-        content: `
+        `,
+        },
+        "add-group": {
+          title: "اضافة مجموعة",
+          content: `
           <h2>الخطوة الأولى</h2>
           <div class="wd-step-content">
             <img src="../imgs/contacts/9.png" alt="الخطوة الأولى - قسم جهات الاتصال" class="wd-step-image">
@@ -2081,309 +2403,592 @@ const payment = await processPayment(paymentConfig);</code></pre>
               <li><strong>اضغط حفظ المجموعة:</strong> لحفظ المجموعة الجديدة</li>
             </ul>
           </div>
-        `
-      },
-      'whatsapp-integration': {
-        title: 'ربط واتساب',
-        content: `<p>شرح ربط المنصة مع واتساب للأعمال.</p>`
-      },
-      'webhook-setup': {
-        title: 'إعداد Webhook',
-        content: `<p>شرح كيفية إعداد Webhook لاستقبال الإشعارات من المنصة.</p>`
-      },
-      'api-usage': {
-        title: 'استخدام الـ API',
-        content: `<p>دليل استخدام واجهة برمجة التطبيقات (API) الخاصة بالمنصة.</p>`
-      },
-      'security-settings': {
-        title: 'إعدادات الأمان',
-        content: `<p>تعرف على إعدادات الأمان المتقدمة لحماية حسابك وبياناتك.</p>`
-      },
-      'data-protection': {
-        title: 'حماية البيانات',
-        content: `<p>طرق حماية بيانات العملاء والالتزام بمعايير الخصوصية.</p>`
-      },
-      'permissions-management': {
-        title: 'إدارة الصلاحيات',
-        content: `<p>كيفية إدارة صلاحيات المستخدمين وتحديد الأدوار.</p>`
-      },
-      'add-variable': {
-        title: 'إضافة متغير',
-        content: `<p>شرح إضافة متغير جديد في النظام.</p>`
-      },
-      'edit-variable': {
-        title: 'تعديل متغير',
-        content: `<p>شرح تعديل متغير موجود في النظام.</p>`
-      },
-      'add-auto-reply': {
-        title: 'إضافة رد آلي',
-        content: `<p>شرح إضافة رد آلي جديد في النظام.</p>`
-      },
-      'edit-auto-reply': {
-        title: 'تعديل رد آلي',
-        content: `<p>شرح تعديل رد آلي موجود في النظام.</p>`
-      },
-      'add-journey': {
-        title: 'إضافة رحلة',
-        content: `<p>شرح إضافة رحلة جديدة في النظام.</p>`
-      },
-      'edit-journey': {
-        title: 'تعديل رحلة',
-        content: `<p>شرح تعديل رحلة موجودة في النظام.</p>`
-      },
-      'add-tag': {
-        title: 'إضافة وسوم',
-        content: `<p>شرح إضافة وسوم جديدة في النظام.</p>`
-      },
-      'edit-tag': {
-        title: 'تعديل وسوم',
-        content: `<p>شرح تعديل وسوم موجودة في النظام.</p>`
-      },
-      'add-shortcut': {
-        title: 'إضافة اختصار',
-        content: `<p>شرح إضافة اختصار جديد في النظام.</p>`
-      },
-      'edit-shortcut': {
-        title: 'تعديل اختصار',
-        content: `<p>شرح تعديل اختصار موجود في النظام.</p>`
-      },
-      'add-template': {
-        title: 'إضافة قالب',
-        content: `<p>شرح إضافة قالب جديد في النظام.</p>`
-      },
-      'edit-template': {
-        title: 'تعديل قالب',
-        content: `<p>شرح تعديل قالب موجود في النظام.</p>`
-      },
-      'add-log': {
-        title: 'إضافة سجل',
-        content: `<p>شرح إضافة سجل جديد في النظام.</p>`
-      },
-      'edit-log': {
-        title: 'تعديل سجل',
-        content: `<p>شرح تعديل سجل موجود في النظام.</p>`
-      },
-      'add-integration': {
-        title: 'إضافة تكامل',
-        content: `<p>شرح إضافة تكامل جديد في النظام.</p>`
-      },
-      'edit-integration': {
-        title: 'تعديل تكامل',
-        content: `<p>شرح تعديل تكامل موجود في النظام.</p>`
-      },
-      'add-webhook': {
-        title: 'إضافة Webhook',
-        content: `<p>شرح إضافة Webhook جديد في النظام.</p>`
-      },
-      'edit-webhook': {
-        title: 'تعديل Webhook',
-        content: `<p>شرح تعديل Webhook موجود في النظام.</p>`
-      },
-      'add-api': {
-        title: 'إضافة API',
-        content: `<p>شرح إضافة API جديد في النظام.</p>`
-      },
-      'edit-api': {
-        title: 'تعديل API',
-        content: `<p>شرح تعديل API موجود في النظام.</p>`
-      },
-      'add-account-setting': {
-        title: 'إضافة إعداد',
-        content: `<p>شرح إضافة إعداد جديد في النظام.</p>`
-      },
-      'edit-account-setting': {
-        title: 'تعديل إعداد',
-        content: `<p>شرح تعديل إعداد موجود في النظام.</p>`
-      },
-      'add-staff': {
-        title: 'إضافة موظف',
-        content: `<p>شرح إضافة موظف جديد في النظام.</p>`
-      },
-      'edit-staff': {
-        title: 'تعديل موظف',
-        content: `<p>شرح تعديل موظف موجود في النظام.</p>`
-      },
-      'staff-settings': {
-        title: 'إعدادات الموظفين',
-        content: `<p>شرح إعدادات الموظفين في النظام.</p>`
-      },
-      'add-channel': {
-        title: 'إضافة قناة',
-        content: `<p>شرح إضافة قناة جديدة في النظام.</p>`
-      },
-      'edit-channel': {
-        title: 'تعديل قناة',
-        content: `<p>شرح تعديل قناة موجودة في النظام.</p>`
-      },
-      'webhook-settings': {
-        title: 'إعدادات Webhook',
-        content: `<p>شرح إعدادات Webhook في النظام.</p>`
-      },
-      'chat-settings': {
-        title: 'إعدادات المحادثة',
-        content: `<p>شرح إعدادات المحادثة في النظام.</p>`
-      },
-      'automation-settings': {
-        title: 'إعدادات الأتمتة',
-        content: `<p>شرح إعدادات الأتمتة في النظام.</p>`
-      },
-      'links-settings': {
-        title: 'إعدادات الروابط',
-        content: `<p>شرح إعدادات الروابط في النظام.</p>`
-      },
-      'plan-settings': {
-        title: 'الباقة',
-        content: `<p>شرح الباقة في النظام.</p>`
-      },
-      'add-flow': {
-        title: 'انشاء تدفق',
-        content: `
-          <h2>الخطوة الأولى</h2>
-          <div class="wd-step-content">
-            <img src="../imgs/flows/1.png" alt="الخطوة الأولى - قسم التدفقات" class="wd-step-image">
-            <ul>
-              <li>توجه إلى <a href="https://apps.widers.net/flowmaker" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم التدفقات</a></li>
-              <li>اضغط على "تدفق جديد"</li>
-            </ul>
-          </div>
+        `,
+        },
+        "whatsapp-integration": {
+          title: "ربط واتساب",
+          content: `<p>شرح ربط المنصة مع واتساب للأعمال.</p>`,
+        },
+        "webhook-setup": {
+          title: "إعداد Webhook",
+          content: `<p>شرح كيفية إعداد Webhook لاستقبال الإشعارات من المنصة.</p>`,
+        },
+        "api-usage": {
+          title: "استخدام الـ API",
+          content: `<p>دليل استخدام واجهة برمجة التطبيقات (API) الخاصة بالمنصة.</p>`,
+        },
+        "security-settings": {
+          title: "إعدادات الأمان",
+          content: `<p>تعرف على إعدادات الأمان المتقدمة لحماية حسابك وبياناتك.</p>`,
+        },
+        "data-protection": {
+          title: "حماية البيانات",
+          content: `<p>طرق حماية بيانات العملاء والالتزام بمعايير الخصوصية.</p>`,
+        },
+        "permissions-management": {
+          title: "إدارة الصلاحيات",
+          content: `<p>كيفية إدارة صلاحيات المستخدمين وتحديد الأدوار.</p>`,
+        },
+        "add-variable": {
+          title: "إضافة متغير",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/1.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/contacts/fields" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > متغيرات المستخدم</li>
+                <li>اضغط إضافة متغير جديد</li>
+              </ul>
+            </div>
 
-          <h2>الخطوة الثانية</h2>
-          <div class="wd-step-content">
-            <img src="../imgs/flows/2.png" alt="الخطوة الثانية - إعدادات التدفق" class="wd-step-image">
-            <ul>
-              <li><strong>أدخل اسم التدفق:</strong> اسم واضح ووصفي للتدفق</li>
-              <li><strong>وصف التدفق:</strong> (اختياري) شرح مفصل عن وظيفة التدفق</li>
-              <li><strong>اختر حالة التدفق:</strong> نشط أو غير نشط</li>
-              <li><strong>اضغط إنشاء التدفق:</strong> لحفظ التدفق الجديد</li>
-            </ul>
-          </div>
-        `
-      },
-      'edit-flow': {
-        title: 'تعديل تدفق',
-        content: `
-          <h2>الخطوة الأولى</h2>
-          <div class="wd-step-content">
-            <img src="../imgs/flows/3.png" alt="الخطوة الأولى - قسم التدفقات" class="wd-step-image">
-            <ul>
-              <li>توجه إلى <a href="https://apps.widers.net/flowmaker" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم التدفقات</a></li>
-              <li>اختر التدفق للتعديل</li>
-            </ul>
-          </div>
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/2.png" alt="الخطوة الثانية - إعدادات المتغير" class="wd-step-image">
+              <ul>
+                <li><strong>أدخل اسم المتغير:</strong> اسم واضح ووصفي للمتغير</li>
+                <li><strong>أدخل نوع المتغير:</strong> نص، رقم، تاريخ، أو بريد الالكتروني</li>
+                <li><strong>وصف المتغير:</strong> (اختياري) شرح مفصل عن وظيفة المتغير</li>
+                <li><strong>اضغط إنشاء المتغير:</strong> لحفظ المتغير الجديد</li>
+              </ul>
+            </div>
+          `,
+        },
+        "edit-variable": {
+          title: "تعديل أو حذف متغير",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/24.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/contacts/fields" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > متغيرات المستخدم</li>
+                <li>اضغط على تعديل أو حذف متغير</li>
+              </ul>
+            </div>
+          `
+        },
+        "add-simple-auto-reply": {
+          title: "انشاء رد آلي بسيط",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/8.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/contents" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > الرد الآلي</li>
+                <li>اضغط على رد آلي جديد</li>
+              </ul>
+            </div>
 
-          <h2>الخطوة الثانية</h2>
-          <div class="wd-step-content">
-            <img src="../imgs/flows/4.png" alt="الخطوة الثانية - تعديل معلومات التدفق" class="wd-step-image">
-            <ul>
-              <li><strong>عدل على معلومات التدفق:</strong>
-                <ul>
-                  <li>اسم التدفق</li>
-                  <li>وصف التدفق</li>
-                  <li>حالة التدفق</li>
-                </ul>
-              </li>
-              <li><strong>اضغط على حفظ التعديلات:</strong> لحفظ التغييرات</li>
-            </ul>
-          </div>
-        `
-      },
-      'build-flow': {
-        title: 'بناء تدفق',
-        content: `
-          <h2>الخطوة الأولى</h2>
-          <div class="wd-step-content">
-            <img src="../imgs/flows/5.png" alt="الخطوة الأولى - قسم التدفقات" class="wd-step-image">
-            <ul>
-              <li>توجه إلى <a href="https://apps.widers.net/flowmaker" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم التدفقات</a></li>
-              <li>اختر التدفق للبناء</li>
-            </ul>
-          </div>
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/9.png" alt="الخطوة الثانية - إعدادات الرد الآلي" class="wd-step-image">
+              <ul>
+                <li><strong>أدخل الاسم:</strong> اسم واضح ووصفي للرد الآلي</li>
+                <li><strong>النص المرسل:</strong> الرسالة التي سيتم إرسالها</li>
+                <li><strong>اختر نوع الرد:</strong> نوع الرد المناسب</li>
+                <li><strong>أدخل المشغل:</strong> الكلمة أو العبارة التي ستشغل الرد الآلي</li>
+                <li><strong>الرأس:</strong> عنوان الرسالة</li>
+                <li><strong>التذييل:</strong> خاتمة الرسالة</li>
+              </ul>
+            </div>
 
-          <h2>الخطوة الثانية</h2>
-          <div class="wd-step-content">
-            <img src="../imgs/flows/6.png" alt="الخطوة الثانية - باني التدفقات" class="wd-step-image">
-            <ul>
-              <li><strong>أدخل التعديلات على باني التدفقات:</strong> قم بتصميم وتكوين خطوات التدفق</li>
-              <li><strong>اضغط على حفظ:</strong> لحفظ التغييرات</li>
-            </ul>
-          </div>
-        `
-      },
-    };
+            <h2>الخطوة الثالثة</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/10.png" alt="الخطوة الثالثة - خيارات إضافية" class="wd-step-image">
+              <ul>
+                <li><strong>الخيار 1: رد آلي مع أزرار الرد</strong> (اختياري)</li>
+                <li><strong>أو</strong></li>
+                <li><strong>الخيار 2: رد آلي مع رابط الزر - URL</strong> (اختياري)</li>
+              </ul>
+            </div>
+          `,
+        },
+        "add-flow-auto-reply": {
+          title: "انشاء رد آلي قائم على تدفق",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/5.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/replies" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > الرد الآلي</li>
+                <li>اضغط رد آلي تدفق</li>
+              </ul>
+            </div>
 
-    // تحميل المحتوى عند الضغط على عنصر
-    document.querySelectorAll('.wd-article-link').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        // تفعيل الرابط المختار
-        document.querySelectorAll('.wd-article-link').forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
-        // إظهار مؤشر التحميل
-        document.getElementById('loadingSpinner').classList.add('show');
-        document.getElementById('articleContent').style.display = 'none';
-        document.getElementById('welcomeMessage').style.display = 'none'; // إخفاء الرسالة الترحيبية عند تحميل المحتوى
-        // جلب المعرف
-        const articleId = this.getAttribute('data-article-id');
-        setTimeout(() => {
-          // تحديث العنوان والمحتوى
-          if (articlesData[articleId]) {
-            document.querySelector('.wd-article-title').textContent = articlesData[articleId].title;
-            document.querySelector('.wd-article-content').innerHTML = articlesData[articleId].content;
-            // إضافة event listeners للصور بعد تحميل المحتوى
-            addImageModalListeners();
-          } else {
-            document.querySelector('.wd-article-title').textContent = 'المقال غير موجود';
-            document.querySelector('.wd-article-content').innerHTML = '<p>عذراً، لا يوجد محتوى لهذا المقال.</p>';
-          }
-          document.getElementById('loadingSpinner').classList.remove('show');
-          document.getElementById('articleContent').style.display = 'block';
-          document.getElementById('welcomeMessage').style.display = 'none'; // إخفاء الرسالة الترحيبية عند عرض المحتوى
-        }, 400); // محاكاة تحميل
-      });
-    });
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/6.png" alt="الخطوة الثانية - إنشاء رد آلي جديد" class="wd-step-image">
+              <ul>
+                <li>اضغط رد آلي جديد</li>
+              </ul>
+            </div>
 
-    // Image Modal Functions
-    function openImageModal(imageSrc, imageAlt) {
-      const modal = document.getElementById('imageModal');
-      const modalImage = document.getElementById('modalImage');
-      const modalCaption = document.getElementById('modalCaption');
-      
-      modalImage.src = imageSrc;
-      modalImage.alt = imageAlt;
-      modalCaption.textContent = imageAlt;
-      
-      modal.classList.add('show');
-      document.body.style.overflow = 'hidden'; // منع التمرير
-    }
+            <h2>الخطوة الثالثة</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/7.png" alt="الخطوة الثالثة - إعدادات الرد الآلي" class="wd-step-image">
+              <ul>
+                <li><strong>أدخل الاسم:</strong> اسم واضح ووصفي للرد الآلي</li>
+                <li><strong>الوصف:</strong> (اختياري) شرح مفصل عن وظيفة الرد الآلي</li>
+                <li><strong>المشغل:</strong> الكلمة أو العبارة التي ستشغل الرد الآلي</li>
+                <li><strong>اختر التدفق:</strong> التدفق الذي سيتم تنفيذه عند التشغيل</li>
+                <li><strong>اضغط على حفظ:</strong> لحفظ الرد الآلي الجديد</li>
+              </ul>
+            </div>
+          `,
+        },
+        "add-journey": {
+          title: "انشاء رحلة",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/25.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/journiesindex" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > رحلة العميل</li>
+                <li>اضغط على رحلة جديدة</li>
+              </ul>
+            </div>
 
-    function closeImageModal() {
-      const modal = document.getElementById('imageModal');
-      modal.classList.remove('show');
-      document.body.style.overflow = 'auto'; // إعادة التمرير
-    }
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/26.png" alt="الخطوة الثانية - إعدادات الرحلة" class="wd-step-image">
+              <ul>
+                <li><strong>أدخل اسم الرحلة:</strong> اسم واضح ووصفي للرحلة</li>
+                <li><strong>وصف الرحلة:</strong> (اختياري) شرح مفصل عن هدف الرحلة ومراحلها</li>
+                <li><strong>اضغط على حفظ:</strong> لحفظ الرحلة الجديدة</li>
+              </ul>
+            </div>
+          `
+        },
+        "edit-journey": {
+          title: "تعديل أو حذف رحلة",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/27.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/journiesindex" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > رحلة العميل</li>
+                <li>اضغط على تعديل أو حذف</li>
+              </ul>
+            </div>
+          `
+        },
+        "add-tag": {
+          title: "إضافة وسوم",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/14.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/tags" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > الوسوم</li>
+                <li>اضغط على إضافة وسم</li>
+              </ul>
+            </div>
 
-    function addImageModalListeners() {
-      // إضافة event listeners لجميع الصور في المحتوى
-      document.querySelectorAll('.wd-step-image').forEach(img => {
-        img.addEventListener('click', function() {
-          openImageModal(this.src, this.alt);
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/15.png" alt="الخطوة الثانية - إعدادات الوسم" class="wd-step-image">
+              <ul>
+                <li><strong>أدخل اسم الوسم:</strong> اسم واضح ووصفي للوسم</li>
+                <li><strong>وصف الوسم:</strong> (اختياري) شرح مفصل عن وظيفة الوسم</li>
+                <li><strong>أدخل لون الوسم:</strong> اختيار لون مميز للوسم</li>
+                <li><strong>اضغط على إنشاء الوسم:</strong> لحفظ الوسم الجديد</li>
+              </ul>
+            </div>
+          `,
+        },
+        "edit-tag": {
+          title: "تعديل أو حذف وسم",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/16.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/tags" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > الوسوم</li>
+                <li>اضغط على تعديل أو حذف الوسم</li>
+              </ul>
+            </div>
+          `,
+        },
+        "add-shortcut": {
+          title: "انشاء اختصار",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/17.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/replies?type=qr" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > الاختصارات</li>
+                <li>اضغط على إضافة اختصار</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/18.png" alt="الخطوة الثانية - إعدادات الاختصار" class="wd-step-image">
+              <ul>
+                <li><strong>أدخل اسم الاختصار:</strong> اسم واضح ووصفي للاختصار</li>
+                <li><strong>الرد التلقائي:</strong> النص الذي سيتم إرساله عند استخدام الاختصار</li>
+                <li><strong>اضغط على إنشاء الاختصار:</strong> لحفظ الاختصار الجديد</li>
+              </ul>
+            </div>
+          `,
+        },
+        "edit-shortcut": {
+          title: "تعديل أو حذف اختصار",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/19.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/replies?type=qr" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > الاختصارات</li>
+                <li>اضغط على تعديل أو حذف الاختصار</li>
+              </ul>
+            </div>
+          `,
+        },
+        "add-template": {
+          title: "انشاء قالب",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/20.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/templates" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > قوالب الواتساب</li>
+                <li>اضغط على إضافة قالب</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/21.png" alt="الخطوة الثانية - إعدادات القالب الأساسية" class="wd-step-image">
+              <ul>
+                <li><strong>أدخل اسم القالب:</strong> اسم واضح ووصفي للقالب</li>
+                <li><strong>اختر نوع القالب:</strong> تسويقية أو خدمية</li>
+                <li><strong>حدد اللغة:</strong> اللغة المستخدمة في القالب</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثالثة</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/22.png" alt="الخطوة الثالثة - محتوى القالب" class="wd-step-image">
+              <ul>
+                <li><strong>اختر رأس الرسالة (اختياري):</strong> نص أو صورة أو فيديو أو ملف</li>
+                <li><strong>أدخل محتوى القالب:</strong> النص الرئيسي للرسالة</li>
+                <li><strong>أضف تذييل الرسالة (اختياري):</strong> معلومات إضافية في نهاية الرسالة</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الرابعة</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/23.png" alt="الخطوة الرابعة - الأزرار والإنشاء" class="wd-step-image">
+              <ul>
+                <li><strong>أضف الأزرار (اختياري):</strong> + رد سريع أو رابط أو هاتف أو نسخ رمز</li>
+                <li><strong>اضغط على إنشاء القالب:</strong> لحفظ القالب في النظام</li>
+              </ul>
+            </div>
+          `,
+        },
+        "edit-auto-reply": {
+          title: "تعديل أو حذف رد آلي",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/13.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/contents" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > الرد الآلي</li>
+                <li>اضغط على تعديل أو حذف الرد الآلي</li>
+              </ul>
+            </div>
+          `,
+        },
+        "add-flow": {
+          title: "انشاء تدفق",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/flows/1.png" alt="الخطوة الأولى - قسم التدفقات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/flows" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم التدفقات</a></li>
+                <li>اضغط على "تدفق جديد"</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/flows/2.png" alt="الخطوة الثانية - إعدادات التدفق" class="wd-step-image">
+              <ul>
+                <li><strong>أدخل اسم التدفق:</strong> اسم واضح ووصفي للتدفق</li>
+                <li><strong>وصف التدفق:</strong> (اختياري) شرح مفصل عن وظيفة التدفق</li>
+                <li><strong>اختر حالة التدفق:</strong> نشط أو غير نشط</li>
+                <li><strong>اضغط إنشاء التدفق:</strong> لحفظ التدفق الجديد</li>
+              </ul>
+            </div>
+          `
+        },
+        "edit-flow": {
+          title: "تعديل تدفق",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/flows/3.png" alt="الخطوة الأولى - قسم التدفقات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/flowmaker" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم التدفقات</a></li>
+                <li>اختر التدفق للتعديل</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/flows/4.png" alt="الخطوة الثانية - تعديل معلومات التدفق" class="wd-step-image">
+              <ul>
+                <li><strong>عدل على معلومات التدفق:</strong>
+                  <ul>
+                    <li>اسم التدفق</li>
+                    <li>وصف التدفق</li>
+                    <li>حالة التدفق</li>
+                  </ul>
+                </li>
+                <li><strong>اضغط على حفظ التعديلات:</strong> لحفظ التغييرات</li>
+              </ul>
+            </div>
+          `
+        },
+        "build-flow": {
+          title: "بناء تدفق",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/flows/5.png" alt="الخطوة الأولى - قسم التدفقات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/flowmaker" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم التدفقات</a></li>
+                <li>اختر التدفق للبناء</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/flows/6.png" alt="الخطوة الثانية - باني التدفقات" class="wd-step-image">
+              <ul>
+                <li><strong>أدخل التعديلات على باني التدفقات:</strong> قم بتصميم وتكوين خطوات التدفق</li>
+                <li><strong>اضغط على حفظ:</strong> لحفظ التغييرات</li>
+              </ul>
+            </div>
+          `
+        },
+        "add-campaign": {
+          title: "إنشاء حملة",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/campaigns/1.png" alt="الخطوة الأولى - قسم الحملات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/campaigns" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم الحملات</a></li>
+                <li>اضغط على حملة جديدة</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/campaigns/2.png" alt="الخطوة الثانية - إعدادات الحملة" class="wd-step-image">
+              <ul>
+                <li><strong>أدخل اسم الحملة:</strong> اسم واضح ووصفي للحملة</li>
+                <li><strong>وصف الحملة:</strong> (اختياري) شرح مفصل عن هدف الحملة</li>
+                <li><strong>اختر قناة التواصل:</strong> واتساب، تليجرام، أو غيرها</li>
+                <li><strong>اختر المجموعة:</strong> جهات الاتصال المستهدفة</li>
+                <li><strong>اختر نوع الرسالة:</strong> قالب رسالة</li>
+                <li><strong>اختر قالب الرسالة:</strong> الرسالة المراد إرسالها</li>
+                <li><strong>اختر وقت الحملة:</strong> موعد بدء الحملة</li>
+              </ul>
+            </div>
+          `
+        },
+        "view-campaign": {
+          title: "عرض حملة",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/campaigns/3.png" alt="الخطوة الأولى - قسم الحملات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/campaigns" style="color: #00bc60; text-decoration: none; font-weight: 600;">قسم الحملات</a></li>
+                <li>اختر حملة للعرض</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/campaigns/4.png" alt="الخطوة الثانية - تقرير الحملة" class="wd-step-image">
+              <ul>
+                <li><strong>اضغط على تقرير الحملة:</strong> لتنزيل إحصائيات وتفاصيل الحملة</li>
+              </ul>
+            </div>
+          `
+        },
+        "add-default-auto-reply": {
+          title: "انشاء رد آلي افتراضي",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/3.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/contents" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > الرد الآلي</li>
+                <li>اضغط على افتراضي</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/4.png" alt="الخطوة الثانية - إعدادات الرد الآلي الافتراضي" class="wd-step-image">
+              <ul>
+                <li><strong>فعل أو ألغ تفعيل الرد الافتراضي:</strong> لتفعيل أو إلغاء تفعيل الميزة</li>
+                <li><strong>اختر المدة:</strong> الوقت الذي سيتم فيه إرسال الرد الآلي</li>
+                <li><strong>اختر تدفق الرد الآلي:</strong> التدفق الذي سيتم تنفيذه</li>
+                <li><strong>اضغط على حفظ:</strong> لحفظ الإعدادات</li>
+              </ul>
+            </div>
+          `
+        },
+        "add-template-auto-reply": {
+          title: "انشاء رد آلي قائم على قالب",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/11.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/contents" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > الرد الآلي</li>
+                <li>اضغط على رد آلي قائم على قالب</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/12.png" alt="الخطوة الثانية - إعدادات الرد الآلي" class="wd-step-image">
+              <ul>
+                <li><strong>أدخل قناة التواصل:</strong> اختيار القناة المناسبة</li>
+                <li><strong>اختر قناة التواصل:</strong> واتساب، تليجرام، أو غيرها</li>
+                <li><strong>اختر قالب رسالة:</strong> القالب الجاهز للاستخدام</li>
+                <li><strong>اختر نوع الرد:</strong> نوع الرد المناسب</li>
+                <li><strong>أدخل المشغل:</strong> الكلمة أو العبارة التي ستشغل الرد الآلي</li>
+                <li><strong>اضغط انشاء حملة:</strong> لحفظ الرد الآلي</li>
+              </ul>
+            </div>
+          `
+        },
+        "add-chat-template": {
+          title: "انشاء قالب محادثة",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/28.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/templates" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > قوالب الواتساب</li>
+                <li>اضغط على إعداد القالب</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/29.png" alt="الخطوة الثانية - متغيرات القالب" class="wd-step-image">
+              <ul>
+                <li><strong>أدخل متغيرات القالب:</strong> المتغيرات المطلوبة للقالب</li>
+                <li><strong>اضغط على حفظ الإعدادات:</strong> لحفظ إعدادات القالب</li>
+              </ul>
+            </div>
+          `
+        },
+        "sync-template": {
+          title: "مزامنة القوالب",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/contents/30.png" alt="الخطوة الأولى - قسم المحتويات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/templates" style="color: #00bc60; text-decoration: none; font-weight: 600;">المحتويات</a> > قوالب الواتساب</li>
+                <li>اضغط على زر مزامنة</li>
+              </ul>
+            </div>
+          `
+        },
+      };
+
+      // تحميل المحتوى عند الضغط على عنصر
+      document.querySelectorAll(".wd-article-link").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          // تفعيل الرابط المختار
+          document
+            .querySelectorAll(".wd-article-link")
+            .forEach((l) => l.classList.remove("active"));
+          this.classList.add("active");
+          // إظهار مؤشر التحميل
+          document.getElementById("loadingSpinner").classList.add("show");
+          document.getElementById("articleContent").style.display = "none";
+          document.getElementById("welcomeMessage").style.display = "none"; // إخفاء الرسالة الترحيبية عند تحميل المحتوى
+          // جلب المعرف
+          const articleId = this.getAttribute("data-article-id");
+          setTimeout(() => {
+            // تحديث العنوان والمحتوى
+            if (articlesData[articleId]) {
+              document.querySelector(".wd-article-title").textContent =
+                articlesData[articleId].title;
+              document.querySelector(".wd-article-content").innerHTML =
+                articlesData[articleId].content;
+              // إضافة event listeners للصور بعد تحميل المحتوى
+              addImageModalListeners();
+            } else {
+              document.querySelector(".wd-article-title").textContent =
+                "المقال غير موجود";
+              document.querySelector(".wd-article-content").innerHTML =
+                "<p>عذراً، لا يوجد محتوى لهذا المقال.</p>";
+            }
+            document.getElementById("loadingSpinner").classList.remove("show");
+            document.getElementById("articleContent").style.display = "block";
+            document.getElementById("welcomeMessage").style.display = "none"; // إخفاء الرسالة الترحيبية عند عرض المحتوى
+          }, 400); // محاكاة تحميل
         });
       });
-    }
 
-    // إغلاق المودال عند الضغط خارج الصورة
-    document.getElementById('imageModal').addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeImageModal();
-      }
-    });
+      // Image Modal Functions
+      function openImageModal(imageSrc, imageAlt) {
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+        const modalCaption = document.getElementById("modalCaption");
 
-    // إغلاق المودال بمفتاح ESC
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeImageModal();
+        modalImage.src = imageSrc;
+        modalImage.alt = imageAlt;
+        modalCaption.textContent = imageAlt;
+
+        modal.classList.add("show");
+        document.body.style.overflow = "hidden"; // منع التمرير
       }
-    });
+
+      function closeImageModal() {
+        const modal = document.getElementById("imageModal");
+        modal.classList.remove("show");
+        document.body.style.overflow = "auto"; // إعادة التمرير
+      }
+
+      function addImageModalListeners() {
+        // إضافة event listeners لجميع الصور في المحتوى
+        document.querySelectorAll(".wd-step-image").forEach((img) => {
+          img.addEventListener("click", function () {
+            openImageModal(this.src, this.alt);
+          });
+        });
+      }
+
+      // إغلاق المودال عند الضغط خارج الصورة
+      document
+        .getElementById("imageModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeImageModal();
+          }
+        });
+
+      // إغلاق المودال بمفتاح ESC
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeImageModal();
+        }
+      });
     </script>
   </body>
 </html>

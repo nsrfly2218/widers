@@ -1027,12 +1027,14 @@
           <div class="wd-help-layout">
             <!-- Sidebar -->
             <div class="wd-help-sidebar">
+<!--
               <div class="wd-sidebar-tabs">
                 <button class="wd-sidebar-tab active" data-tab="general">
                   الويب
                 </button>
                 <button class="wd-sidebar-tab" data-tab="tips">التطبيق</button>
               </div>
+              -->
 
               <div class="wd-sidebar-content">
                 <!-- General Tab -->
@@ -1495,7 +1497,20 @@
                             class="fas fa-chevron-down wd-subcategory-icon"
                           ></i>
                         </div>
-                        <div class="wd-subcategory-articles"></div>
+                        <div class="wd-subcategory-articles">
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="filter-logs"
+                            >فلترة السجلات</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="view-log-details"
+                            >عرض تفاصيل السجل</a
+                          >
+                        </div>
                       </div>
                       <div class="wd-subcategory">
                         <div
@@ -1542,7 +1557,7 @@
                           <a
                             href="#"
                             class="wd-article-link"
-                            data-article-id="edit-webhook"
+                            data-article-id="webhook-logs"
                             >سجلات Webhook</a
                           >
                         </div>
@@ -1557,7 +1572,20 @@
                             class="fas fa-chevron-down wd-subcategory-icon"
                           ></i>
                         </div>
-                        <div class="wd-subcategory-articles"></div>
+                        <div class="wd-subcategory-articles">
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="add-api-campaign"
+                            >إضافة حملة API</a
+                          >
+                          <a
+                            href="#"
+                            class="wd-article-link"
+                            data-article-id="view-api-campaign"
+                            >عرض وتنزيل حملة API</a
+                          >
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -3294,6 +3322,217 @@ const payment = await processPayment(paymentConfig);</code></pre>
             </div>
           `
         },
+        "add-api-campaign": {
+          title: "إضافة حملة API",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/8.png" alt="الخطوة الأولى - قسم API" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/api/wpbox/campaings/apis" style="color: #00bc60; text-decoration: none; font-weight: 600;">المطورين</a> > API</li>
+                <li>اضغط على حملات API</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/9.png" alt="الخطوة الثانية - إضافة حملة API" class="wd-step-image">
+              <ul>
+                <li>اضغط إضافة حملة API</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثالثة</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/10.png" alt="الخطوة الثالثة - إعدادات الحملة" class="wd-step-image">
+              <ul>
+                <li><strong>أدخل اسم الحملة:</strong> اسم واضح ووصفي للحملة</li>
+                <li><strong>وصف الحملة:</strong> (اختياري) شرح مفصل عن هدف الحملة</li>
+                <li><strong>اختر قناة التواصل:</strong> واتساب، تليجرام، أو غيرها</li>
+                <li><strong>اختر قالب الرسالة:</strong> الرسالة المراد إرسالها</li>
+                <li><strong>اضغط إنشاء حملة API:</strong> لحفظ الحملة الجديدة</li>
+              </ul>
+            </div>
+          `
+        },
+        "view-api-campaign": {
+          title: "عرض وتنزيل حملة API",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/11.png" alt="الخطوة الأولى - قسم API" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/api/wpbox/campaings/apis" style="color: #00bc60; text-decoration: none; font-weight: 600;">المطورين</a> > API</li>
+                <li>اختر الحملة لعرض التقرير</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/12.png" alt="الخطوة الثانية - تقرير الحملة" class="wd-step-image">
+              <ul>
+                <li><strong>اضغط على تقرير الحملة:</strong> لتنزيل إحصائيات وتفاصيل الحملة</li>
+              </ul>
+            </div>
+          `
+        },
+        "filter-logs": {
+          title: "فلترة السجلات",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/1.png" alt="الخطوة الأولى - قسم السجلات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/logs" style="color: #00bc60; text-decoration: none; font-weight: 600;">المطورين </a>> السجلات</li>
+                <li>اختر نوع السجلات</li>
+                <li>اضغط على تطبيق الفلتر</li>
+              </ul>
+            </div>
+          `
+        },
+        "view-log-details": {
+          title: "عرض تفاصيل السجل",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/2.png" alt="الخطوة الأولى - قسم السجلات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/logs" style="color: #00bc60; text-decoration: none; font-weight: 600;">المطورين </a>> السجلات</li>
+                <li>اختر السجل لعرض التفاصيل</li>
+              </ul>
+            </div>
+          `
+        },
+        "add-integration": {
+          title: "التكامل مع سلة",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/3.png" alt="الخطوة الأولى - قسم التكاملات" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/user/integrations" style="color: #00bc60; text-decoration: none; font-weight: 600;">المطورين</a> > التكاملات</li>
+                <li>اضغط على إعداد</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/4.png" alt="الخطوة الثانية - نسخ رابط الإشعارات" class="wd-step-image">
+              <ul>
+                <li>قم بنسخ رابط الإشعارات ولصقه في متجرك على سلة</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثالثة</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/5.png" alt="الخطوة الثالثة - تفعيل الإشعارات" class="wd-step-image">
+              <ul>
+                <li>قم بتفعيل الإشعارات المطلوبة وتحديد رد آلي (تدفق) لكل إشعار على حدة</li>
+                <li><strong>طلب جديد:</strong> عند إنشاء طلب جديد في المتجر</li>
+                <li><strong>تحديث حالة الطلب:</strong> عند تغيير حالة الطلب</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الرابعة</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/6.png" alt="الخطوة الرابعة - إعدادات العميل" class="wd-step-image">
+              <ul>
+                <li><strong>عميل جديد:</strong> عند تسجيل عميل جديد</li>
+                <li><strong>رمز تحقق العميل:</strong> عند إرسال رمز التحقق للعميل</li>
+                <li><strong>السلة المتروكة:</strong> عند إرسال إشعارات السلة المتروكة</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الخامسة</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/7.png" alt="الخطوة الخامسة - إعدادات إضافية" class="wd-step-image">
+              <ul>
+                <li><strong>تقييم الطلب:</strong> عند تقييم الطلب</li>
+                <li><strong>تتبع الطلب:</strong> عند تتبع الطلب</li>
+                <li><strong>فاتورة الطلب:</strong> عند إضافة فاتورة الطلب</li>
+                <li><strong>اضغط حفظ التغييرات:</strong> لحفظ جميع الإعدادات</li>
+              </ul>
+            </div>
+          `
+        },
+        "add-webhook": {
+          title: "إضافة Webhook",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/13.png" alt="الخطوة الأولى - قسم Webhook" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/inbound-webhook" style="color: #00bc60; text-decoration: none; font-weight: 600;">المطورين</a> > Webhook</li>
+                <li>اضغط على إضافة Webhook</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/14.png" alt="الخطوة الثانية - إعدادات Webhook" class="wd-step-image">
+              <ul>
+                <li><strong>أدخل اسم الويب هوك:</strong> اسم واضح ووصفي للـ Webhook</li>
+                <li><strong>اضغط على إنشاء الويب هوك:</strong> لحفظ الـ Webhook الجديد</li>
+              </ul>
+            </div>
+          `
+        },
+        "edit-webhook": {
+          title: "تعديل Webhook",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/17.png" alt="الخطوة الأولى - قسم Webhook" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/inbound-webhook" style="color: #00bc60; text-decoration: none; font-weight: 600;">المطورين</a> > Webhook</li>
+                <li>اختر Webhook للتعديل</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/18.png" alt="الخطوة الثانية - إعدادات Webhook" class="wd-step-image">
+              <ul>
+                <li><strong>قم بنسخ رابط الويبهوك ولصقه في المكان المخصص لإرسال الإشعارات</strong></li>
+                <li><strong>اختر التدفق:</strong> التدفق المراد تنفيذه عند استقبال الإشعارات</li>
+                <li><strong>اضغط على معاينة المحتوى:</strong> ثم قم باختيار معرف مفتاح رقم الجوال</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثالثة</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/19.png" alt="الخطوة الثالثة - إضافة ربط جديد" class="wd-step-image">
+              <ul>
+                <li><strong>اضغط على إضافة ربط جديد:</strong> لإضافة ربط جديد للبيانات</li>
+                <li><strong>قم باختيار مفتاح JSON:</strong> المفتاح المراد استخراجه من البيانات</li>
+                <li><strong>قم باختيار متغير لحفظ القيمة:</strong> المتغير الذي سيتم حفظ القيمة فيه</li>
+                <li><strong>ادخل القيمة الافتراضية:</strong> (افتراضي) القيمة التي ستظهر إذا لم يتم العثور على المفتاح</li>
+                <li><strong>اضغط على حفظ التغييرات:</strong> لحفظ جميع التعديلات</li>
+              </ul>
+            </div>
+          `
+        },
+        "webhook-logs": {
+          title: "سجلات Webhook",
+          content: `
+            <h2>الخطوة الأولى</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/15.png" alt="الخطوة الأولى - قسم Webhook" class="wd-step-image">
+              <ul>
+                <li>توجه إلى <a href="https://apps.widers.net/inbound-webhook" style="color: #00bc60; text-decoration: none; font-weight: 600;">المطورين</a> > Webhook</li>
+                <li>اختر Webhook لعرض السجلات</li>
+              </ul>
+            </div>
+
+            <h2>الخطوة الثانية</h2>
+            <div class="wd-step-content">
+              <img src="../imgs/developers/16.png" alt="الخطوة الثانية - عرض التفاصيل" class="wd-step-image">
+              <ul>
+                <li><strong>اضغط على عرض التفاصيل:</strong> لرؤية تفاصيل سجلات Webhook</li>
+              </ul>
+            </div>
+          `
+        },
       };
 
       // تحميل المحتوى عند الضغط على عنصر
@@ -3380,4 +3619,11 @@ const payment = await processPayment(paymentConfig);</code></pre>
     </script>
   </body>
 </html>
+
+
+
+
+
+
+
 
